@@ -42,7 +42,7 @@ INCLUDE_DIRECTORIES( BEFORE
 	${LIBCOPASI_SOURCE_DIR}/expat/lib
     ${LIBCOPASI_SOURCE_DIR}/muparser
     ${LIBCOPASI_SOURCE_DIR}/lapack/INCLUDE
-	${LIBCOPASI_SOURCE_DIR}/libstruct/include
+	${LIBCOPASI_SOURCE_DIR}/libstructural/include
 )
 
 #output folder for libraries same as exe's
@@ -63,6 +63,6 @@ ADD_SUBDIRECTORY( libSBML )    #systems biology markup language parser
 ADD_SUBDIRECTORY( antimony )   #human-readable test-based reaction networks
 ADD_SUBDIRECTORY( boost )      #regular expressions
 ADD_SUBDIRECTORY( copasi )     #simulation and analysis package
-ADD_SUBDIRECTORY( libstruct )   #network structural analysis based on stoichiometry matrix
+ADD_SUBDIRECTORY( libstructural )   #network structural analysis based on stoichiometry matrix
 ADD_SUBDIRECTORY( galib )   #genetic algorithms library
 
