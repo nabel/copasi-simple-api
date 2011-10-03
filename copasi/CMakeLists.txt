@@ -1,5 +1,3 @@
-SET(LIBRARY_OUTPUT_PATH ${EXECUTABLE_OUTPUT_PATH})
-
 #---------------------
 #    OS STUFF
 #---------------------
@@ -129,6 +127,12 @@ ADD_LIBRARY( copasi
   ${EXPAT_SRC_FILES}
 )
 
+IF (WIN32 AND NOT MINGW)
+	SET( boost_library_name libboost_regex-vc100-mt-gd-1_48)
+ELSE (WIN32 AND NOT MINGW)
+	SET( boost_library_name boost_regex)
+ENDIF (WIN32 AND NOT MINGW)
+
 TARGET_LINK_LIBRARIES( copasi
   copasi
   sbml
@@ -140,7 +144,7 @@ TARGET_LINK_LIBRARIES( copasi
   galib
   structural
   muparser
-  boost_regex
+  ${boost_library_name}
 )
 
 #----------------------------------
