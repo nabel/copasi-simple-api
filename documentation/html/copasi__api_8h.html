@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>Copasi Simple API: copasi/copasi_api.h File Reference</title>
+<title>Copasi API: /home/deepak/copasi-simple-api/copasi_api.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/search.js"></script>
@@ -19,7 +19,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Copasi Simple API</div>
+   <div id="projectname">Copasi API&#160;<span id="projectnumber">1.0</span></div>
+   <div id="projectbrief">Simple C API for Copasi</div>
   </td>
  </tr>
  </tbody>
@@ -59,7 +60,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div class="summary">
 <a href="#nested-classes">Data Structures</a>  </div>
   <div class="headertitle">
-<h1>copasi/copasi_api.h File Reference</h1>  </div>
+<h1>/home/deepak/copasi-simple-api/copasi_api.h File Reference</h1>  </div>
 </div>
 <div class="contents">
 
@@ -80,10 +81,12 @@ Data Structures</h2></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Memory management</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#afb781ad02eaef984e47c868071ebd968">copasi_end</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy copasi -- MUST BE CALLED at the end of program  <a href="#afb781ad02eaef984e47c868071ebd968"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#abc2d742f859eb00c34198942b22aa44c">cRemoveModel</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">remove a model  <a href="#abc2d742f859eb00c34198942b22aa44c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb781ad02eaef984e47c868071ebd968"></a><!-- doxytag: member="copasi_api.h::copasi_end" ref="afb781ad02eaef984e47c868071ebd968" args="()" -->
+TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#afb781ad02eaef984e47c868071ebd968">copasi_end</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy copasi -- MUST BE CALLED at the end of program <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc2d742f859eb00c34198942b22aa44c"></a><!-- doxytag: member="copasi_api.h::cRemoveModel" ref="abc2d742f859eb00c34198942b22aa44c" args="(copasi_model)" -->
+TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#abc2d742f859eb00c34198942b22aa44c">cRemoveModel</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">remove a model <br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Read and write models</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a47461611858d592fedeb39f141b37d2a">cReadAntimonyFile</a> (const char *filename)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create a model from an Antimony or SBML file  <a href="#a47461611858d592fedeb39f141b37d2a"></a><br/></td></tr>
@@ -127,66 +130,72 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a01316099febb0ab0223aabae0a16d85b">cSetReactionRate</a> (<a class="el" href="structcopasi__reaction.html">copasi_reaction</a> reaction, const char *formula)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set reaction rate equation  <a href="#a01316099febb0ab0223aabae0a16d85b"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Time course simulation</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a2105addec217217e5443df8d4cac8405">cSimulateDeterministic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a2105addec217217e5443df8d4cac8405">cSimulateDeterministic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">simulate using LSODA numerical integrator  <a href="#a2105addec217217e5443df8d4cac8405"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab016ea8bc8fd0b0ef8b8772df7f4ce6f">cSimulateStochastic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab016ea8bc8fd0b0ef8b8772df7f4ce6f">cSimulateStochastic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">simulate using exact stochastic algorithm  <a href="#ab016ea8bc8fd0b0ef8b8772df7f4ce6f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a020fee137ecf7d4afac06cc28fb93593">cSimulateHybrid</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a020fee137ecf7d4afac06cc28fb93593">cSimulateHybrid</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">simulate using Hybrid algorithm/deterministic algorithm  <a href="#a020fee137ecf7d4afac06cc28fb93593"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a1f5e5f87546b2f0bf7cb35adf8f27269">cSimulateTauLeap</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a1f5e5f87546b2f0bf7cb35adf8f27269">cSimulateTauLeap</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">simulate using Tau Leap stochastic algorithm  <a href="#a1f5e5f87546b2f0bf7cb35adf8f27269"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Steady state analysis</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a84e5cf0adfd288496ce99c159466d588">cGetSteadyState</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a84e5cf0adfd288496ce99c159466d588">cGetSteadyState</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">bring the system to steady state  <a href="#a84e5cf0adfd288496ce99c159466d588"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a91bf4879afe60144ee2b4ef93bea5375">cGetSteadyState2</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int iter)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a91bf4879afe60144ee2b4ef93bea5375">cGetSteadyState2</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int iter)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">bring the system to steady state using normal simulation  <a href="#a91bf4879afe60144ee2b4ef93bea5375"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a51e1ca71152a647f65e0db1acd61c1ae">cGetJacobian</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a51e1ca71152a647f65e0db1acd61c1ae">cGetJacobian</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the Jacobian at the current state  <a href="#a51e1ca71152a647f65e0db1acd61c1ae"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a66d89582f7a3f03a401bdc545b6f0988">cGetEigenvalues</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a66d89582f7a3f03a401bdc545b6f0988">cGetEigenvalues</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the eigenvalues of the Jacobian at the current state  <a href="#a66d89582f7a3f03a401bdc545b6f0988"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Metabolic control analysis (MCA)</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#addcf896840b47879e6d798bde19a90f8">cGetScaledFluxControlCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#addcf896840b47879e6d798bde19a90f8">cGetScaledFluxControlCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">add a compartment to the model  <a href="#addcf896840b47879e6d798bde19a90f8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a541a5a9bc6c1b1baa9c70ea90d9008ce">cGetUnscaledElasticities</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a541a5a9bc6c1b1baa9c70ea90d9008ce">cGetUnscaledElasticities</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">unscaled elasticities  <a href="#a541a5a9bc6c1b1baa9c70ea90d9008ce"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aab904177bab67739d23d567e009a70bc">cGetUnscaledConcentrationControlCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aab904177bab67739d23d567e009a70bc">cGetUnscaledConcentrationControlCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">unscaled elasticities  <a href="#aab904177bab67739d23d567e009a70bc"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ad66d997065734159cd3247a677be6130">cGetUnscaledFluxControlCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ad66d997065734159cd3247a677be6130">cGetUnscaledFluxControlCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">unscaled flux control coefficients  <a href="#ad66d997065734159cd3247a677be6130"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab00fb8a17ab62fec98a6676492bbbee0">cGetScaledElasticities</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab00fb8a17ab62fec98a6676492bbbee0">cGetScaledElasticities</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">scaled elasticities  <a href="#ab00fb8a17ab62fec98a6676492bbbee0"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aa97b65b9e76607410e5e2f5dc542a488">cGetScaledConcentrationConcentrationCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aa97b65b9e76607410e5e2f5dc542a488">cGetScaledConcentrationConcentrationCoeffs</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">scaled concentration control coefficients  <a href="#aa97b65b9e76607410e5e2f5dc542a488"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Stoichiometry matrix and matrix analysis</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a20ebd712913a16482e937b148bf56500">cGetFullStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a20ebd712913a16482e937b148bf56500">cGetFullStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">full stoichiometry matrix  <a href="#a20ebd712913a16482e937b148bf56500"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a1f2af4fd2e7fc76bbe1cf6d1b511af52">cGetReducedStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a1f2af4fd2e7fc76bbe1cf6d1b511af52">cGetReducedStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">reduced stoichiometry matrix  <a href="#a1f2af4fd2e7fc76bbe1cf6d1b511af52"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#adbbf76f9519bdbd9f3bfe58f2ca68cd9">cGetElementaryFluxModes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#adbbf76f9519bdbd9f3bfe58f2ca68cd9">cGetElementaryFluxModes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">elementary flux modes  <a href="#adbbf76f9519bdbd9f3bfe58f2ca68cd9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a0e4d9fdd71cbeece4ab50d4fcf85071a">cGetGammaMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a0e4d9fdd71cbeece4ab50d4fcf85071a">cGetGammaMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get Gamma matrix (i.e. conservation laws)  <a href="#a0e4d9fdd71cbeece4ab50d4fcf85071a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a13a703198cee0880660d4f5d623107c8">cGetKMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a13a703198cee0880660d4f5d623107c8">cGetKMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get K matrix (right nullspace)  <a href="#a13a703198cee0880660d4f5d623107c8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab5cc0b31cd6b3b198452b2386f1a5720">cGetK0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab5cc0b31cd6b3b198452b2386f1a5720">cGetK0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get K0 matrix  <a href="#ab5cc0b31cd6b3b198452b2386f1a5720"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a5fb43c43fb091591e0bd9869131e987f">cGetLinkMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a5fb43c43fb091591e0bd9869131e987f">cGetLinkMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get L matrix (left nullspace)  <a href="#a5fb43c43fb091591e0bd9869131e987f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aeeb23919f7cc7a8a82c7a385212cc20c">cGetL0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aeeb23919f7cc7a8a82c7a385212cc20c">cGetL0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get L0 matrix  <a href="#aeeb23919f7cc7a8a82c7a385212cc20c"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Optimization (incomplete)</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_matrix&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a9d781d24f9d5db2074cbb4217a7078c7">cOptimize</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *objective, tc_matrix input)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a9d781d24f9d5db2074cbb4217a7078c7">cOptimize</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *objective, <a class="el" href="structtc__matrix.html">tc_matrix</a> input)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">fit the model parameters to time-series data  <a href="#a9d781d24f9d5db2074cbb4217a7078c7"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a88e3cb68a2b7a267ce1d2b7ce6bc93ab">cSetOptimizerIterations</a> (int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aed8211cd5cac8d330d6d122e9e58e4cf">cSetOptimizerSize</a> (int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab31e2de03fceb06d165f3c8c07d45af4">cSetOptimizerMutationRate</a> (double)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a461c0a59f0b160c5598918036d036b7b">cSetOptimizerCrossoverRate</a> (double)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88e3cb68a2b7a267ce1d2b7ce6bc93ab"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerIterations" ref="a88e3cb68a2b7a267ce1d2b7ce6bc93ab" args="(int)" -->
+TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerIterations</b> (int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed8211cd5cac8d330d6d122e9e58e4cf"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerSize" ref="aed8211cd5cac8d330d6d122e9e58e4cf" args="(int)" -->
+TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerSize</b> (int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab31e2de03fceb06d165f3c8c07d45af4"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerMutationRate" ref="ab31e2de03fceb06d165f3c8c07d45af4" args="(double)" -->
+TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerMutationRate</b> (double)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a461c0a59f0b160c5598918036d036b7b"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerCrossoverRate" ref="a461c0a59f0b160c5598918036d036b7b" args="(double)" -->
+TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerCrossoverRate</b> (double)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Simple C API for the Copasi C++ library. </p>
 <p>This is a C API for the COPASI C++ library. Rate equations in COPASI require the "complete name", e.g. instead of X, the rate must specify &lt;model.compartment.X&gt;. In this C API, those complete names are stored in a hash table. The API replaces the simple strings, i.e. "C", with the complete names by using the hash-table. This is mainly for speed; otherwise, every cSetReactionRate would be searching through the entire model for each of its variables. The hash-table idea is used for functions such as cSetValue, which can set the value of a parameter or that of a molecular species. Again, it uses the hash table to identify what a variable is.</p>
 <p>The C API hides the C++ classes by casting some of the main classes into void pointers inside C structs.</p>
-<p>QtCore is used for providing the hash-table feature and regular expression (QHash and QRegExp). This should be replaced with the boost library at some point. </p>
+<p>std::map is used for performing the hashing (it is not a real hash-table, but close enough). boost::regex is used for string substitutions. </p>
+
+<p>Definition in file <a class="el" href="copasi__api_8h_source.html">copasi_api.h</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
 <a class="anchor" id="ab24bea25b0e39d1c76a060c3b51436e6"></a><!-- doxytag: member="copasi_api.h::cAddProduct" ref="ab24bea25b0e39d1c76a060c3b51436e6" args="(copasi_reaction reaction, const char *species, double stoichiometry)" -->
 <div class="memitem">
@@ -566,7 +575,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetEigenvalues </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetEigenvalues </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -583,7 +592,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix with 1 row and n columns, each containing an eigenvalue </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix with 1 row and n columns, each containing an eigenvalue </dd></dl>
 
 </div>
 </div>
@@ -592,7 +601,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetElementaryFluxModes </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetElementaryFluxModes </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -609,7 +618,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix with reactions as rows (with rownames) and flux modes as columns (no column names) </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix with reactions as rows (with rownames) and flux modes as columns (no column names) </dd></dl>
 
 </div>
 </div>
@@ -618,7 +627,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetFullStoichiometryMatrix </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetFullStoichiometryMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -635,7 +644,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -644,7 +653,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetGammaMatrix </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetGammaMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -661,7 +670,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -670,7 +679,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetJacobian </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetJacobian </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -687,7 +696,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix with n rows and n columns, where n = number of species </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix with n rows and n columns, where n = number of species </dd></dl>
 
 </div>
 </div>
@@ -696,7 +705,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetK0Matrix </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetK0Matrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -713,7 +722,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -722,7 +731,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetKMatrix </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetKMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -739,7 +748,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -748,7 +757,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetL0Matrix </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetL0Matrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -765,7 +774,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -774,7 +783,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetLinkMatrix </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetLinkMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -791,7 +800,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -800,7 +809,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetReducedStoichiometryMatrix </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetReducedStoichiometryMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -817,7 +826,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -826,7 +835,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetScaledConcentrationConcentrationCoeffs </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetScaledConcentrationConcentrationCoeffs </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -843,7 +852,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -852,7 +861,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetScaledElasticities </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetScaledElasticities </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -869,7 +878,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -878,7 +887,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetScaledFluxControlCoeffs </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetScaledFluxControlCoeffs </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -897,14 +906,14 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix</dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></dd></dl>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="this struct is used to contain a pointer to an instance of a COPASI class">copasi_model</a></td><td>model </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -913,7 +922,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetSteadyState </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetSteadyState </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -930,7 +939,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix with 1 row and n columns, where n = number of species </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix with 1 row and n columns, where n = number of species </dd></dl>
 
 </div>
 </div>
@@ -939,7 +948,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetSteadyState2 </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetSteadyState2 </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -967,7 +976,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix with 1 row and n columns, where n = number of species </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix with 1 row and n columns, where n = number of species </dd></dl>
 
 </div>
 </div>
@@ -976,7 +985,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetUnscaledConcentrationControlCoeffs </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetUnscaledConcentrationControlCoeffs </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -994,7 +1003,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -1003,7 +1012,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetUnscaledElasticities </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetUnscaledElasticities </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -1020,7 +1029,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -1029,7 +1038,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cGetUnscaledFluxControlCoeffs </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetUnscaledFluxControlCoeffs </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -1046,25 +1055,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="afb781ad02eaef984e47c868071ebd968"></a><!-- doxytag: member="copasi_api.h::copasi_end" ref="afb781ad02eaef984e47c868071ebd968" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT void copasi_end </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>destroy copasi -- MUST BE CALLED at the end of program </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -1073,7 +1064,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cOptimize </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cOptimize </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -1087,7 +1078,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">tc_matrix&#160;</td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
           <td class="paramname"><em>input</em>&#160;</td>
         </tr>
         <tr>
@@ -1104,7 +1095,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="this struct is used to contain a pointer to an instance of a COPASI class">copasi_model</a></td><td>model </td></tr>
     <tr><td class="paramname">char</td><td>* filename (tab separated) </td></tr>
-    <tr><td class="paramname">tc_matrix</td><td>parameters to optimize. rownames should contain parameter names, column 1 contains parameter min-values, and column 2 contains parameter max values </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>parameters to optimize. rownames should contain parameter names, column 1 contains parameter min-values, and column 2 contains parameter max values </td></tr>
     <tr><td class="paramname">char</td><td>* pick method. Use of of the following: "GeneticAlgorithm", "LevenbergMarquardt", "SimulatedAnnealing", "NelderMead", "SRES", "ParticleSwarm", "SteepestDescent", "RandomSearch"</td></tr>
   </table>
   </dd>
@@ -1114,7 +1105,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="this struct is used to contain a pointer to an instance of a COPASI class">copasi_model</a></td><td>model </td></tr>
     <tr><td class="paramname">char</td><td>* objective function or filename </td></tr>
-    <tr><td class="paramname">tc_matrix</td><td>parameter initial values and min and max values (3 columns) </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>parameter initial values and min and max values (3 columns) </td></tr>
   </table>
   </dd>
 </dl>
@@ -1196,25 +1187,6 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__model.html" title="this struct is used to contain a pointer to an instance of a COPASI class">copasi_model</a> a new copasi model </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="abc2d742f859eb00c34198942b22aa44c"></a><!-- doxytag: member="copasi_api.h::cRemoveModel" ref="abc2d742f859eb00c34198942b22aa44c" args="(copasi_model)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT void cRemoveModel </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>remove a model </p>
 
 </div>
 </div>
@@ -1392,74 +1364,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a461c0a59f0b160c5598918036d036b7b"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerCrossoverRate" ref="a461c0a59f0b160c5598918036d036b7b" args="(double)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT void cSetOptimizerCrossoverRate </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="a88e3cb68a2b7a267ce1d2b7ce6bc93ab"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerIterations" ref="a88e3cb68a2b7a267ce1d2b7ce6bc93ab" args="(int)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT void cSetOptimizerIterations </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="ab31e2de03fceb06d165f3c8c07d45af4"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerMutationRate" ref="ab31e2de03fceb06d165f3c8c07d45af4" args="(double)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT void cSetOptimizerMutationRate </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
-<a class="anchor" id="aed8211cd5cac8d330d6d122e9e58e4cf"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerSize" ref="aed8211cd5cac8d330d6d122e9e58e4cf" args="(int)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT void cSetOptimizerSize </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-</div>
-</div>
 <a class="anchor" id="a01316099febb0ab0223aabae0a16d85b"></a><!-- doxytag: member="copasi_api.h::cSetReactionRate" ref="a01316099febb0ab0223aabae0a16d85b" args="(copasi_reaction reaction, const char *formula)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1589,7 +1493,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cSimulateDeterministic </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateDeterministic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -1631,7 +1535,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix of concentration or particles </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of concentration or particles </dd></dl>
 
 </div>
 </div>
@@ -1640,7 +1544,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cSimulateHybrid </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateHybrid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -1682,7 +1586,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix of concentration or particles </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of concentration or particles </dd></dl>
 
 </div>
 </div>
@@ -1691,7 +1595,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cSimulateStochastic </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateStochastic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -1733,7 +1637,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix of concentration or particles </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of concentration or particles </dd></dl>
 
 </div>
 </div>
@@ -1742,7 +1646,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT tc_matrix cSimulateTauLeap </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateTauLeap </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -1784,7 +1688,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_matrix matrix of concentration or particles </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of concentration or particles </dd></dl>
 
 </div>
 </div>
@@ -1830,7 +1734,7 @@ Functions</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -1839,7 +1743,7 @@ Functions</h2></td></tr>
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Thu Sep 29 2011 22:44:02 for Copasi Simple API by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 16:27:37 for Copasi API by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

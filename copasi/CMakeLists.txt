@@ -110,7 +110,7 @@ FILE( GLOB copasi_SRC_FILES
 	${LIBCOPASI_SOURCE_DIR}/copasi/MIRIAM/WebServicesIssues/*.cpp
 	${LIBCOPASI_SOURCE_DIR}/copasi/copasi_api.cpp
 	${LIBCOPASI_SOURCE_DIR}/TC_structs.c
-	${LIBCOPASI_SOURCE_DIR}/mtrand.c
+	${LIBCOPASI_SOURCE_DIR}/copasi/mtrand.c
 )
 
 ADD_DEFINITIONS(-DHAVE_EXPAT_CONFIG_H)
