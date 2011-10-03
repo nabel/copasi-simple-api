@@ -13,6 +13,9 @@ IF (UNIX AND NOT APPLE)
     SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 ENDIF(UNIX AND NOT APPLE)
 
+SET (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIBCOPASI_BINARY_DIR})
+SET (EXECUTABLE_OUTPUT_PATH ${LIBCOPASI_BINARY_DIR})
+
 # CMake not supporting Win32 MinGW?
 
 IF( WIN32 AND MINGW)
@@ -44,9 +47,6 @@ INCLUDE_DIRECTORIES( BEFORE
     ${LIBCOPASI_SOURCE_DIR}/lapack/INCLUDE
 	${LIBCOPASI_SOURCE_DIR}/libstructural/include
 )
-
-#output folder for libraries same as exe's
-SET(LIBRARY_OUTPUT_PATH ${EXECUTABLE_OUTPUT_PATH})
 
 #build individual subdirectories using CMakeLists.txt in each directory
 
