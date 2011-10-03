@@ -42,6 +42,7 @@ INCLUDE_DIRECTORIES( BEFORE
 	${LIBCOPASI_SOURCE_DIR}/expat/lib
     ${LIBCOPASI_SOURCE_DIR}/muparser
     ${LIBCOPASI_SOURCE_DIR}/lapack/INCLUDE
+	${LIBCOPASI_SOURCE_DIR}/libstructural/include
 )
 
 #output folder for libraries same as exe's
