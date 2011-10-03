@@ -157,7 +157,7 @@ ENDIF( WIN32 )
 #  COPASI api
 #----------------------------------
 
-OPTION( TEST_COPASI_API "test copasi api" OFF )
+OPTION( TEST_COPASI_API "test copasi api" ON )
 
 IF (TEST_COPASI_API)
   ADD_EXECUTABLE(copasi_api_test test_copasi.c)
