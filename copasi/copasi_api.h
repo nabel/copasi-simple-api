@@ -15,8 +15,8 @@ hash table to identify what a variable is.
 The C API hides the C++ classes by casting some of the main classes into void pointers inside
 C structs. 
 
-QtCore is used for providing the hash-table feature and regular expression (QHash and QRegExp). This
-should be replaced with the boost library at some point. 
+std::map is used for performing the hashing (it is not a real hash-table, but close enough).
+boost::regex is used for string substitutions.
 */
 
 #include "TC_structs.h"
