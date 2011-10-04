@@ -1,3 +1,27 @@
+/*! \mainpage Simplifed API for the COPASI Library
+ *
+ * \section intro_sec Introduction
+ *
+ * The developers of COPASI provide COPASI as a reusable library as well as
+ * the well known COPASI user interface. The library however has a fairly
+ * complex API and can take some time getting used. We have therefore layered 
+ * on top of the COPASI library a new C based API that we feel is much simpler
+ * to use. For example, to run a simple SBML model and generate time series data
+ * we would call:
+ *  
+ * copasi_model m;
+ *
+ * tc_matrix output;
+ * 
+ * m = cReadSBMLFile ("mymode.xml");
+ * 
+ * output = cSimulationDeterministic (m, 0, 10, 100); 
+ *
+ * \section install_sec Installation
+ *
+ * Installation documentation is provided in the main google code page.
+ */
+
 #ifndef COPASI_SIMPLE_C_API
 #define COPASI_SIMPLE_C_API
  /**
@@ -321,14 +345,15 @@ TCAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, dou
  \ingroup Simulation
 */
 TCAPIEXPORT tc_matrix cGetSteadyState(copasi_model model);
+
 /*! 
- \brief bring the system to steady state using normal simulation
+ \brief bring the system to steady state by doing a short simulation first
  \param copasi_model model
  \param int max iterations (each iteration doubles the time duration)
  \return tc_matrix matrix with 1 row and n columns, where n = number of species
  \ingroup Simulation
 */
-TCAPIEXPORT tc_matrix cGetSteadyState2(copasi_model model, int iter);
+TCAPIEXPORT tc_matrix cGetSteadyStateAndSimulate(copasi_model model, int iter);
 
 /*! 
  \brief get the Jacobian at the current state
