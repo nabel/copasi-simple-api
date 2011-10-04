@@ -1342,7 +1342,7 @@ tc_matrix cGetJacobian(copasi_model model)
 	return tc_createMatrix(0,0);
 }
 
-tc_matrix cGetSteadyState2(copasi_model model, int maxiter)
+tc_matrix cGetSteadyStateAndSimulate(copasi_model model, int maxiter)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
@@ -1526,7 +1526,7 @@ tc_matrix cGetSteadyState(copasi_model model)
 		return output;
 	}
 
-	return cGetSteadyState2(model,10);
+	return cGetSteadyStateAndSimulate(model,10);
 }
 
 tc_matrix cGetEigenvalues(copasi_model model)
