@@ -21,7 +21,7 @@ boost::regex is used for string substitutions.
 
 #include "TC_structs.h"
 
-/*!\brief this struct is used to contain a pointer to an instance of a COPASI class*/
+/*!\brief This struct is used to contain a pointer to an instance of a COPASI object*/
 typedef struct  
 { 
 	void * CopasiModelPtr;
@@ -30,7 +30,7 @@ typedef struct
 	char * errorMessage; 
 } copasi_model;
 
-/*!\brief this struct is used to contain a pointer to an instance of a COPASI class*/
+/*!\brief This struct is used to contain a pointer to an instance of a COPASI reaction object*/
 typedef struct  
 {
 	void * CopasiReactionPtr;
@@ -38,7 +38,7 @@ typedef struct
 	void * qHash; 
 } copasi_reaction;
 
-/*!\brief this struct is used to contain a pointer to an instance of a COPASI class*/
+/*!\brief This struct is used to contain a pointer to an instance of a COPASI compartment object*/
 typedef struct  
 {
 	void * CopasiCompartmentPtr;
