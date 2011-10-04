@@ -20,7 +20,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Copasi API&#160;<span id="projectnumber">1.0</span></div>
-   <div id="projectbrief">Simple C API for Copasi</div>
+   <div id="projectbrief">C API for the COPASI C++ library</div>
   </td>
  </tr>
  </tbody>
@@ -53,6 +53,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li><a href="classes.html"><span>Data&#160;Structure&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
 </div>
@@ -71,22 +72,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a061459acc9e078fa4699e0e349887215"></a><!-- doxytag: member="tc_matrix::rows" ref="a061459acc9e078fa4699e0e349887215" args="" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>rows</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4407a60bc4387adae24cee658711f2d9"></a><!-- doxytag: member="tc_matrix::cols" ref="a4407a60bc4387adae24cee658711f2d9" args="" -->
-int&#160;</td><td class="memItemRight" valign="bottom"><b>cols</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2098158062e3e63fce7d2575b324c386"></a><!-- doxytag: member="tc_matrix::values" ref="a2098158062e3e63fce7d2575b324c386" args="" -->
-double *&#160;</td><td class="memItemRight" valign="bottom"><b>values</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a849ae0ac65ab7a5816c6a0756a39b217"></a><!-- doxytag: member="tc_matrix::rownames" ref="a849ae0ac65ab7a5816c6a0756a39b217" args="" -->
-<a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><b>rownames</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2420ce9407aefbe0e23d47e7f33b45f3"></a><!-- doxytag: member="tc_matrix::colnames" ref="a2420ce9407aefbe0e23d47e7f33b45f3" args="" -->
-<a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><b>colnames</b></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtc__matrix.html#a061459acc9e078fa4699e0e349887215">rows</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtc__matrix.html#a4407a60bc4387adae24cee658711f2d9">cols</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtc__matrix.html#a2098158062e3e63fce7d2575b324c386">values</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtc__matrix.html#a849ae0ac65ab7a5816c6a0756a39b217">rownames</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtc__matrix.html#a2420ce9407aefbe0e23d47e7f33b45f3">colnames</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i,j-th value in <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> M. </p>
+</div><hr/><h2>Field Documentation</h2>
+<a class="anchor" id="a2420ce9407aefbe0e23d47e7f33b45f3"></a><!-- doxytag: member="tc_matrix::colnames" ref="a2420ce9407aefbe0e23d47e7f33b45f3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structtc__strings.html">tc_strings</a> <a class="el" href="structtc__matrix.html#a2420ce9407aefbe0e23d47e7f33b45f3">colnames</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
-<p>Definition at line <a class="el" href="_t_c__structs_8h_source.html#l00057">57</a> of file <a class="el" href="_t_c__structs_8h_source.html">TC_structs.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+</div>
+</div>
+<a class="anchor" id="a4407a60bc4387adae24cee658711f2d9"></a><!-- doxytag: member="tc_matrix::cols" ref="a4407a60bc4387adae24cee658711f2d9" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structtc__matrix.html#a4407a60bc4387adae24cee658711f2d9">cols</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a849ae0ac65ab7a5816c6a0756a39b217"></a><!-- doxytag: member="tc_matrix::rownames" ref="a849ae0ac65ab7a5816c6a0756a39b217" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structtc__strings.html">tc_strings</a> <a class="el" href="structtc__matrix.html#a849ae0ac65ab7a5816c6a0756a39b217">rownames</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a061459acc9e078fa4699e0e349887215"></a><!-- doxytag: member="tc_matrix::rows" ref="a061459acc9e078fa4699e0e349887215" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="structtc__matrix.html#a061459acc9e078fa4699e0e349887215">rows</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a2098158062e3e63fce7d2575b324c386"></a><!-- doxytag: member="tc_matrix::values" ref="a2098158062e3e63fce7d2575b324c386" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double* <a class="el" href="structtc__matrix.html#a2098158062e3e63fce7d2575b324c386">values</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>/home/deepak/copasi-simple-api/<a class="el" href="_t_c__structs_8h_source.html">TC_structs.h</a></li>
 </ul>
 </div>
@@ -95,7 +155,7 @@ double *&#160;</td><td class="memItemRight" valign="bottom"><b>values</b></td></
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -104,7 +164,7 @@ double *&#160;</td><td class="memItemRight" valign="bottom"><b>values</b></td></
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 16:27:37 for Copasi API by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 17:33:01 for Copasi API by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>

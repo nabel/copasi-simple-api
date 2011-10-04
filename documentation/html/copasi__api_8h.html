@@ -20,7 +20,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
    <div id="projectname">Copasi API&#160;<span id="projectnumber">1.0</span></div>
-   <div id="projectbrief">Simple C API for Copasi</div>
+   <div id="projectbrief">C API for the COPASI C++ library</div>
   </td>
  </tr>
  </tbody>
@@ -66,7 +66,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Simple C API for the Copasi C++ library.  
 <a href="#_details">More...</a></p>
-<div class="textblock"><code>#include &quot;TC_structs.h&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="_t_c__structs_8h_source.html">TC_structs.h</a>&quot;</code><br/>
 </div>
 <p><a href="copasi__api_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -81,12 +81,10 @@ Data Structures</h2></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Memory management</div></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afb781ad02eaef984e47c868071ebd968"></a><!-- doxytag: member="copasi_api.h::copasi_end" ref="afb781ad02eaef984e47c868071ebd968" args="()" -->
-TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#afb781ad02eaef984e47c868071ebd968">copasi_end</a> ()</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy copasi -- MUST BE CALLED at the end of program <br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abc2d742f859eb00c34198942b22aa44c"></a><!-- doxytag: member="copasi_api.h::cRemoveModel" ref="abc2d742f859eb00c34198942b22aa44c" args="(copasi_model)" -->
-TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#abc2d742f859eb00c34198942b22aa44c">cRemoveModel</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">remove a model <br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#afb781ad02eaef984e47c868071ebd968">copasi_end</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">destroy copasi -- MUST BE CALLED at the end of program  <a href="#afb781ad02eaef984e47c868071ebd968"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#abc2d742f859eb00c34198942b22aa44c">cRemoveModel</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">remove a model  <a href="#abc2d742f859eb00c34198942b22aa44c"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Read and write models</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a47461611858d592fedeb39f141b37d2a">cReadAntimonyFile</a> (const char *filename)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create a model from an Antimony or SBML file  <a href="#a47461611858d592fedeb39f141b37d2a"></a><br/></td></tr>
@@ -96,6 +94,8 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create a model from an SBML string  <a href="#a22a36c8d5b5e8ac8643e774014feb7df"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a8f781345fc19529439bbe6d42c9c3355">cWriteSBMLFile</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *filename)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">save a model as an SBML file  <a href="#a8f781345fc19529439bbe6d42c9c3355"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a44cb74d3541273cfc7e64e7e3e0f2359">cWriteAntimonyFile</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">save a model as an Antimony file  <a href="#a44cb74d3541273cfc7e64e7e3e0f2359"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Create model</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ae797f3bdea43852219b02deb7c3a83f3">cCreateModel</a> (const char *name)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create a model  <a href="#ae797f3bdea43852219b02deb7c3a83f3"></a><br/></td></tr>
@@ -180,22 +180,16 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td colspan="2"><div class="groupHeader">Optimization (incomplete)</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a9d781d24f9d5db2074cbb4217a7078c7">cOptimize</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *objective, <a class="el" href="structtc__matrix.html">tc_matrix</a> input)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">fit the model parameters to time-series data  <a href="#a9d781d24f9d5db2074cbb4217a7078c7"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88e3cb68a2b7a267ce1d2b7ce6bc93ab"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerIterations" ref="a88e3cb68a2b7a267ce1d2b7ce6bc93ab" args="(int)" -->
-TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerIterations</b> (int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed8211cd5cac8d330d6d122e9e58e4cf"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerSize" ref="aed8211cd5cac8d330d6d122e9e58e4cf" args="(int)" -->
-TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerSize</b> (int)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab31e2de03fceb06d165f3c8c07d45af4"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerMutationRate" ref="ab31e2de03fceb06d165f3c8c07d45af4" args="(double)" -->
-TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerMutationRate</b> (double)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a461c0a59f0b160c5598918036d036b7b"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerCrossoverRate" ref="a461c0a59f0b160c5598918036d036b7b" args="(double)" -->
-TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptimizerCrossoverRate</b> (double)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a88e3cb68a2b7a267ce1d2b7ce6bc93ab">cSetOptimizerIterations</a> (int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#aed8211cd5cac8d330d6d122e9e58e4cf">cSetOptimizerSize</a> (int)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ab31e2de03fceb06d165f3c8c07d45af4">cSetOptimizerMutationRate</a> (double)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a461c0a59f0b160c5598918036d036b7b">cSetOptimizerCrossoverRate</a> (double)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Simple C API for the Copasi C++ library. </p>
 <p>This is a C API for the COPASI C++ library. Rate equations in COPASI require the "complete name", e.g. instead of X, the rate must specify &lt;model.compartment.X&gt;. In this C API, those complete names are stored in a hash table. The API replaces the simple strings, i.e. "C", with the complete names by using the hash-table. This is mainly for speed; otherwise, every cSetReactionRate would be searching through the entire model for each of its variables. The hash-table idea is used for functions such as cSetValue, which can set the value of a parameter or that of a molecular species. Again, it uses the hash table to identify what a variable is.</p>
 <p>The C API hides the C++ classes by casting some of the main classes into void pointers inside C structs.</p>
 <p>std::map is used for performing the hashing (it is not a real hash-table, but close enough). boost::regex is used for string substitutions. </p>
-
-<p>Definition in file <a class="el" href="copasi__api_8h_source.html">copasi_api.h</a>.</p>
 </div><hr/><h2>Function Documentation</h2>
 <a class="anchor" id="ab24bea25b0e39d1c76a060c3b51436e6"></a><!-- doxytag: member="copasi_api.h::cAddProduct" ref="ab24bea25b0e39d1c76a060c3b51436e6" args="(copasi_reaction reaction, const char *species, double stoichiometry)" -->
 <div class="memitem">
@@ -1059,6 +1053,24 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 
 </div>
 </div>
+<a class="anchor" id="afb781ad02eaef984e47c868071ebd968"></a><!-- doxytag: member="copasi_api.h::copasi_end" ref="afb781ad02eaef984e47c868071ebd968" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void copasi_end </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>destroy copasi -- MUST BE CALLED at the end of program </p>
+
+</div>
+</div>
 <a class="anchor" id="a9d781d24f9d5db2074cbb4217a7078c7"></a><!-- doxytag: member="copasi_api.h::cOptimize" ref="a9d781d24f9d5db2074cbb4217a7078c7" args="(copasi_model model, const char *objective, tc_matrix input)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1187,6 +1199,25 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__model.html" title="this struct is used to contain a pointer to an instance of a COPASI class">copasi_model</a> a new copasi model </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="abc2d742f859eb00c34198942b22aa44c"></a><!-- doxytag: member="copasi_api.h::cRemoveModel" ref="abc2d742f859eb00c34198942b22aa44c" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cRemoveModel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>remove a model </p>
 
 </div>
 </div>
@@ -1361,6 +1392,74 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>int 0=new value created 1=found existing value </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a461c0a59f0b160c5598918036d036b7b"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerCrossoverRate" ref="a461c0a59f0b160c5598918036d036b7b" args="(double)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetOptimizerCrossoverRate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a88e3cb68a2b7a267ce1d2b7ce6bc93ab"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerIterations" ref="a88e3cb68a2b7a267ce1d2b7ce6bc93ab" args="(int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetOptimizerIterations </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ab31e2de03fceb06d165f3c8c07d45af4"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerMutationRate" ref="ab31e2de03fceb06d165f3c8c07d45af4" args="(double)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetOptimizerMutationRate </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aed8211cd5cac8d330d6d122e9e58e4cf"></a><!-- doxytag: member="copasi_api.h::cSetOptimizerSize" ref="aed8211cd5cac8d330d6d122e9e58e4cf" args="(int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetOptimizerSize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
 
 </div>
 </div>
@@ -1692,6 +1791,42 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 
 </div>
 </div>
+<a class="anchor" id="a44cb74d3541273cfc7e64e7e3e0f2359"></a><!-- doxytag: member="copasi_api.h::cWriteAntimonyFile" ref="a44cb74d3541273cfc7e64e7e3e0f2359" args="(copasi_model model, const char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cWriteAntimonyFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>save a model as an Antimony file </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="this struct is used to contain a pointer to an instance of a COPASI class">copasi_model</a></td><td>copasi model </td></tr>
+    <tr><td class="paramname">char*</td><td>file name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a8f781345fc19529439bbe6d42c9c3355"></a><!-- doxytag: member="copasi_api.h::cWriteSBMLFile" ref="a8f781345fc19529439bbe6d42c9c3355" args="(copasi_model model, const char *filename)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1734,7 +1869,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -1743,7 +1878,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 </iframe>
 </div>
 
-<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 16:27:37 for Copasi API by&#160;
+<hr class="footer"/><address class="footer"><small>Generated on Mon Oct 3 2011 17:33:01 for Copasi API by&#160;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.7.3 </small></address>
 </body>
