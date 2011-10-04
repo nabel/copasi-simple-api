@@ -1150,6 +1150,17 @@ void cWriteSBMLFile(copasi_model model, const char * filename)
 		pDataModel->exportSBML(filename, true, 2, 3);
 }
 
+void cWriteAntimonyFile(copasi_model model, const char * filename)
+{
+	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
+	if (pDataModel)
+	{
+		pDataModel->exportSBML(filename, true, 2, 3);
+		loadSBMLFile(filename);
+		writeAntimonyFile(filename,NULL);
+	}
+}
+
 copasi_model cReadAntimonyFile(const char * filename)
 {
 	copasi_init();
