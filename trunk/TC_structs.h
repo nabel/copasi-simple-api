@@ -1,3 +1,9 @@
+ /**
+  * @file    TC_structs.h
+  * @brief   Additional structures use with the Simple C API
+
+ */
+
 #ifndef TINKERCELL_CSTRUCTS_H
 #define TINKERCELL_CSTRUCTS_H
 
