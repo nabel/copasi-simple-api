@@ -9,14 +9,50 @@
  * to use. For example, to run a simple SBML model and generate time series data
  * we would call:
  *  
- * copasi_model m;
- *
- * tc_matrix output;
- * 
- * m = cReadSBMLFile ("mymode.xml");
- * 
- * output = cSimulationDeterministic (m, 0, 10, 100); 
- *
+ @code
+ copasi_model m;
+ tc_matrix output;
+  
+ m = cReadSBMLFile ("mymodel.xml");
+  
+ output = cSimulationDeterministic (m, 0, 10, 100); 
+ @endcode
+ 
+ More complex example:
+ 
+ @code
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include "copasi_api.h"
+
+ int main(int nargs, char** argv)
+ {
+        tc_matrix efm, output, params;
+        copasi_model m1, m2;
+        
+        if (nargs < 2)
+        {
+            m1 = model1();
+        }
+        else
+        {
+            printf("loading model file %s\n", argv[1]);
+            m1 = cReadSBMLFile(argv[1]);        
+        }
+
+        cWriteAntimonyFile(m1, "model.txt");
+        
+        printf("Antimony file written to model.txt\nSimulating...\n");  
+        output = cSimulateDeterministic(m1, 0, 100, 1000);  //model, start, end, num. points
+        printf("output.tab has %i rows and %i columns\n",output.rows, output.cols);
+        tc_printMatrixToFile("output.tab", output);
+        tc_deleteMatrix(output);
+                 
+        cRemoveModel(m1);
+        copasi_end();
+        return 0;
+ }
+ @endcode
  * \section install_sec Installation
  *
  * Installation documentation is provided in the main google code page.
@@ -110,6 +146,7 @@ TCAPIEXPORT copasi_model cReadAntimonyFile(const char * filename);
  \ingroup Simulation
 */
 TCAPIEXPORT copasi_model cReadSBMLFile(const char * filename);
+
 /*! 
  \brief create a model from an SBML string
  \param char* SBML string
@@ -117,6 +154,7 @@ TCAPIEXPORT copasi_model cReadSBMLFile(const char * filename);
  \ingroup Simulation
 */
 TCAPIEXPORT copasi_model cReadSBMLString(const char * sbml);
+
 /*! 
  \brief save a model as an SBML file
  \param copasi_model copasi model
@@ -135,7 +173,7 @@ TCAPIEXPORT void cWriteAntimonyFile(copasi_model model, const char * filename);
 
 /** \} */
 /**
-  * @name Create model
+  * @name Create model group
   */
 /** \{ */
 
@@ -163,6 +201,7 @@ TCAPIEXPORT void cCompileModel(copasi_model model, int substitute_nested_assignm
  \ingroup Simulation
 */
 TCAPIEXPORT copasi_compartment cCreateCompartment(copasi_model model, const char* name, double volume);
+
 /*! 
  \brief set a volume of compartment
  \param copasi_model model
@@ -171,6 +210,7 @@ TCAPIEXPORT copasi_compartment cCreateCompartment(copasi_model model, const char
  \ingroup Simulation
 */
 TCAPIEXPORT void cSetVolume(copasi_model, const char * compartment, double volume);
+
 /*! 
  \brief set the concentration of a species, volume of a compartment, or value of a parameter
       The function will figure out which using the name (fast lookup using hashtables).
@@ -200,6 +240,7 @@ TCAPIEXPORT void cCreateSpecies(copasi_compartment compartment, const char* name
  \ingroup Simulation
 */
 TCAPIEXPORT void cSetBoundarySpecies(copasi_model model, const char * species, int isBoundary);
+
 /*! 
  \brief set a species as boundary or floating (will remove any assignment rules)
  \param copasi_model model
@@ -242,10 +283,15 @@ TCAPIEXPORT int cCreateVariable(copasi_model model, const char * name, const cha
  \brief add a trigger and a response, where the response is defined by a target variable and an assignment formula
  \param copasi_model model
  \param char * event name
- \param char * trigger
+ \param char * trigger formula
  \param char * response: name of variable or species
  \param char* response: assignment formula
  \return int 0=failed 1=success
+ 
+ Example Usage. The following code will create an envent where the parameter k1 is halved when time > 10.
+ @code
+ result = cCreateEvent (m, "myEvent", "time > 10", "k1", "k1=k1/2");
+ @endcode
  \ingroup Simulation
 */
 TCAPIEXPORT int cCreateEvent(copasi_model model, const char * name, const char * trigger, const char * variable, const char * formula);
@@ -255,30 +301,55 @@ TCAPIEXPORT int cCreateEvent(copasi_model model, const char * name, const char *
  \param copasi_model model
  \param char* species name
  \return copasi_reaction a new reaction
+ 
+ @code
+ r = cCreateReaction (m, "J1")
+ @endcode
  \ingroup Simulation
 */
 TCAPIEXPORT copasi_reaction cCreateReaction(copasi_model model, const char* name);
+
 /*! 
  \brief add a reactant to a reaction
  \param copasi_reaction reaction
  \param char * reactant
  \param double stoichiometry
+ 
+ @code
+ cCreateReaction (m, "S1", 1);
+ @endcode
  \ingroup Simulation
 */
 TCAPIEXPORT void cAddReactant(copasi_reaction reaction, const char * species, double stoichiometry);
+
 /*! 
  \brief add a product to a reaction
  \param copasi_reaction reaction
  \param char * product
  \param double stoichiometry
+ 
+ Create a reaction J1: 2 A -> B + C
+ @code
+ r = cCreateReaction (m, "J1");
+ cAddReactant (r, "A", 2);
+ cAddProduct (r, "B", 1);
+ cAddProduct (r, "C", 1);
+ @endcode
+
  \ingroup Simulation
 */
 TCAPIEXPORT void cAddProduct(copasi_reaction reaction, const char * species, double stoichiometry);
+
 /*! 
  \brief set reaction rate equation
  \param copasi_reaction reaction
  \param char* custom formula
  \return int success=1 failure=0
+ 
+ @code
+ result = cSetReactionRate (r, "k1*S1");
+ @endcode
+ 
  \ingroup Simulation
 */
 TCAPIEXPORT int cSetReactionRate(copasi_reaction reaction, const char * formula);
@@ -297,19 +368,26 @@ TCAPIEXPORT int cSetReactionRate(copasi_reaction reaction, const char * formula)
  \param double end time
  \param int number of steps in the output
  \return tc_matrix matrix of concentration or particles
+ 
+ @code
+ result = cvSimulateDeterministic (m, 0.0, 10.0, 100);
+ @endcode
  \ingroup Simulation
 */
 TCAPIEXPORT tc_matrix cSimulateDeterministic(copasi_model model, double startTime, double endTime, int numSteps);
+
 /*! 
  \brief simulate using exact stochastic algorithm
  \param copasi_model model
-  \param double start time
+ \param double start time
  \param double end time
  \param int number of steps in the output
  \return tc_matrix matrix of concentration or particles
+ 
  \ingroup Simulation
 */
 TCAPIEXPORT tc_matrix cSimulateStochastic(copasi_model model, double startTime, double endTime, int numSteps);
+
 /*! 
  \brief simulate using Hybrid algorithm/deterministic algorithm
  \param copasi_model model
@@ -320,6 +398,7 @@ TCAPIEXPORT tc_matrix cSimulateStochastic(copasi_model model, double startTime, 
  \ingroup Simulation
 */
 TCAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, double endTime, int numSteps);
+
 /*! 
  \brief simulate using Tau Leap stochastic algorithm
  \param copasi_model model
@@ -356,7 +435,7 @@ TCAPIEXPORT tc_matrix cGetSteadyState(copasi_model model);
 TCAPIEXPORT tc_matrix cGetSteadyStateAndSimulate(copasi_model model, int iter);
 
 /*! 
- \brief get the Jacobian at the current state
+ \brief get the full Jacobian at the current state
  \param copasi_model model
  \return tc_matrix matrix with n rows and n columns, where n = number of species
  \ingroup Simulation

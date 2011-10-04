@@ -115,7 +115,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">save a model as an SBML file  <a href="#a8f781345fc19529439bbe6d42c9c3355"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a44cb74d3541273cfc7e64e7e3e0f2359">cWriteAntimonyFile</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *filename)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">save a model as an Antimony file  <a href="#a44cb74d3541273cfc7e64e7e3e0f2359"></a><br/></td></tr>
-<tr><td colspan="2"><div class="groupHeader">Create model</div></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Create model group</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#ae797f3bdea43852219b02deb7c3a83f3">cCreateModel</a> (const char *name)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">create a model  <a href="#ae797f3bdea43852219b02deb7c3a83f3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a393b60110fe629257daf1ba225c19973">cCompileModel</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int substitute_nested_assignments)</td></tr>
@@ -163,7 +163,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#af9338e52f93be7daeba4111ef33775d5">cGetSteadyStateAndSimulate</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int iter)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">bring the system to steady state by doing a short simulation first  <a href="#af9338e52f93be7daeba4111ef33775d5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a51e1ca71152a647f65e0db1acd61c1ae">cGetJacobian</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the Jacobian at the current state  <a href="#a51e1ca71152a647f65e0db1acd61c1ae"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the full Jacobian at the current state  <a href="#a51e1ca71152a647f65e0db1acd61c1ae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a66d89582f7a3f03a401bdc545b6f0988">cGetEigenvalues</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the eigenvalues of the Jacobian at the current state  <a href="#a66d89582f7a3f03a401bdc545b6f0988"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Metabolic control analysis (MCA)</div></td></tr>
@@ -250,11 +250,16 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a></td><td>reaction </td></tr>
     <tr><td class="paramname">char</td><td>* product </td></tr>
-    <tr><td class="paramname">double</td><td>stoichiometry </td></tr>
+    <tr><td class="paramname">double</td><td>stoichiometry</td></tr>
   </table>
   </dd>
 </dl>
-
+<p>Create a reaction J1: 2 A -&gt; B + C </p>
+<div class="fragment"><pre class="fragment"> r = <a class="code" href="copasi__api_8h.html#a7e704796eebcdb6e138ff7bfa64ff1a4" title="add a species or set an existing species as fixed">cCreateReaction</a> (m, <span class="stringliteral">&quot;J1&quot;</span>);
+ <a class="code" href="copasi__api_8h.html#aea1d98a0d70811e2e1387363414b27d8" title="add a reactant to a reaction">cAddReactant</a> (r, <span class="stringliteral">&quot;A&quot;</span>, 2);
+ <a class="code" href="copasi__api_8h.html#ab24bea25b0e39d1c76a060c3b51436e6" title="add a product to a reaction">cAddProduct</a> (r, <span class="stringliteral">&quot;B&quot;</span>, 1);
+ <a class="code" href="copasi__api_8h.html#ab24bea25b0e39d1c76a060c3b51436e6" title="add a product to a reaction">cAddProduct</a> (r, <span class="stringliteral">&quot;C&quot;</span>, 1);
+</pre></div> 
 </div>
 </div>
 <a class="anchor" id="aea1d98a0d70811e2e1387363414b27d8"></a><!-- doxytag: member="copasi_api.h::cAddReactant" ref="aea1d98a0d70811e2e1387363414b27d8" args="(copasi_reaction reaction, const char *species, double stoichiometry)" -->
@@ -293,11 +298,12 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a></td><td>reaction </td></tr>
     <tr><td class="paramname">char</td><td>* reactant </td></tr>
-    <tr><td class="paramname">double</td><td>stoichiometry </td></tr>
+    <tr><td class="paramname">double</td><td>stoichiometry</td></tr>
   </table>
   </dd>
 </dl>
-
+<div class="fragment"><pre class="fragment"> <a class="code" href="copasi__api_8h.html#a7e704796eebcdb6e138ff7bfa64ff1a4" title="add a species or set an existing species as fixed">cCreateReaction</a> (m, <span class="stringliteral">&quot;S1&quot;</span>, 1);
+</pre></div> 
 </div>
 </div>
 <a class="anchor" id="a393b60110fe629257daf1ba225c19973"></a><!-- doxytag: member="copasi_api.h::cCompileModel" ref="a393b60110fe629257daf1ba225c19973" args="(copasi_model model, int substitute_nested_assignments)" -->
@@ -427,14 +433,16 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
     <tr><td class="paramname">char</td><td>* event name </td></tr>
-    <tr><td class="paramname">char</td><td>* trigger </td></tr>
+    <tr><td class="paramname">char</td><td>* trigger formula </td></tr>
     <tr><td class="paramname">char</td><td>* response: name of variable or species </td></tr>
     <tr><td class="paramname">char*</td><td>response: assignment formula </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>int 0=failed 1=success </dd></dl>
-
+<dl class="return"><dt><b>Returns:</b></dt><dd>int 0=failed 1=success</dd></dl>
+<p>Example Usage. The following code will create an envent where the parameter k1 is halved when time &gt; 10. </p>
+<div class="fragment"><pre class="fragment"> result = <a class="code" href="copasi__api_8h.html#a94cbbd1a04cf521ec9342ffa61deb1e9" title="add a trigger and a response, where the response is defined by a target variable and an assignment fo...">cCreateEvent</a> (m, <span class="stringliteral">&quot;myEvent&quot;</span>, <span class="stringliteral">&quot;time &gt; 10&quot;</span>, <span class="stringliteral">&quot;k1&quot;</span>, <span class="stringliteral">&quot;k1=k1/2&quot;</span>);
+</pre></div> 
 </div>
 </div>
 <a class="anchor" id="ae797f3bdea43852219b02deb7c3a83f3"></a><!-- doxytag: member="copasi_api.h::cCreateModel" ref="ae797f3bdea43852219b02deb7c3a83f3" args="(const char *name)" -->
@@ -496,8 +504,9 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> a new reaction </dd></dl>
-
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> a new reaction</dd></dl>
+<div class="fragment"><pre class="fragment"> r = <a class="code" href="copasi__api_8h.html#a7e704796eebcdb6e138ff7bfa64ff1a4" title="add a species or set an existing species as fixed">cCreateReaction</a> (m, <span class="stringliteral">&quot;J1&quot;</span>)
+</pre></div> 
 </div>
 </div>
 <a class="anchor" id="aa32ab75587401cfc24428e86a0d215b5"></a><!-- doxytag: member="copasi_api.h::cCreateSpecies" ref="aa32ab75587401cfc24428e86a0d215b5" args="(copasi_compartment compartment, const char *name, double initialValue)" -->
@@ -706,7 +715,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 </div>
 <div class="memdoc">
 
-<p>get the Jacobian at the current state </p>
+<p>get the full Jacobian at the current state </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
@@ -1414,8 +1423,9 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>int success=1 failure=0 </dd></dl>
-
+<dl class="return"><dt><b>Returns:</b></dt><dd>int success=1 failure=0</dd></dl>
+<div class="fragment"><pre class="fragment"> result = <a class="code" href="copasi__api_8h.html#a01316099febb0ab0223aabae0a16d85b" title="set reaction rate equation">cSetReactionRate</a> (r, <span class="stringliteral">&quot;k1*S1&quot;</span>);
+</pre></div> 
 </div>
 </div>
 <a class="anchor" id="ad0116984e87902a9b608a08717570a20"></a><!-- doxytag: member="copasi_api.h::cSetValue" ref="ad0116984e87902a9b608a08717570a20" args="(copasi_model, const char *name, double value)" -->
@@ -1552,8 +1562,9 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of concentration or particles </dd></dl>
-
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of concentration or particles</dd></dl>
+<div class="fragment"><pre class="fragment"> result = cvSimulateDeterministic (m, 0.0, 10.0, 100);
+</pre></div> 
 </div>
 </div>
 <a class="anchor" id="a020fee137ecf7d4afac06cc28fb93593"></a><!-- doxytag: member="copasi_api.h::cSimulateHybrid" ref="a020fee137ecf7d4afac06cc28fb93593" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
@@ -1799,7 +1810,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 3 2011 21:15:55 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 4 2011 16:50:42 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

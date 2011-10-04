@@ -1,6 +1,6 @@
  /**
   * @file    TC_structs.h
-  * @brief   Additional structures use with the Simple C API
+  * @brief   Additional structures used with the Simple C API
 
  */
 
