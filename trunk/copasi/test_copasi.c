@@ -25,7 +25,7 @@ int main(int nargs, char** argv)
 	cWriteAntimonyFile(m1, "model.txt");
 	
 	printf("Antimony file written to model.txt\nSimulating...\n");	
-	output = cSimulateDeterministic(m1, 0, 10, 100);  //model, start, end, num. points
+	output = cSimulateDeterministic(m1, 0, 100, 1000);  //model, start, end, num. points
 	printf("output.tab has %i rows and %i columns\n",output.rows, output.cols);
 	tc_printMatrixToFile("output.tab", output);
 	tc_deleteMatrix(output);
