@@ -160,8 +160,8 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td colspan="2"><div class="groupHeader">Steady state analysis</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a84e5cf0adfd288496ce99c159466d588">cGetSteadyState</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">bring the system to steady state  <a href="#a84e5cf0adfd288496ce99c159466d588"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a91bf4879afe60144ee2b4ef93bea5375">cGetSteadyState2</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int iter)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">bring the system to steady state using normal simulation  <a href="#a91bf4879afe60144ee2b4ef93bea5375"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#af9338e52f93be7daeba4111ef33775d5">cGetSteadyStateAndSimulate</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int iter)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">bring the system to steady state by doing a short simulation first  <a href="#af9338e52f93be7daeba4111ef33775d5"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a51e1ca71152a647f65e0db1acd61c1ae">cGetJacobian</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the Jacobian at the current state  <a href="#a51e1ca71152a647f65e0db1acd61c1ae"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a66d89582f7a3f03a401bdc545b6f0988">cGetEigenvalues</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
@@ -960,12 +960,12 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 
 </div>
 </div>
-<a class="anchor" id="a91bf4879afe60144ee2b4ef93bea5375"></a><!-- doxytag: member="copasi_api.h::cGetSteadyState2" ref="a91bf4879afe60144ee2b4ef93bea5375" args="(copasi_model model, int iter)" -->
+<a class="anchor" id="af9338e52f93be7daeba4111ef33775d5"></a><!-- doxytag: member="copasi_api.h::cGetSteadyStateAndSimulate" ref="af9338e52f93be7daeba4111ef33775d5" args="(copasi_model model, int iter)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetSteadyState2 </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetSteadyStateAndSimulate </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -985,7 +985,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 </div>
 <div class="memdoc">
 
-<p>bring the system to steady state using normal simulation </p>
+<p>bring the system to steady state by doing a short simulation first </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
@@ -1799,7 +1799,7 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><b>cSetOptim
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Oct 3 2011 21:06:39 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 3 2011 21:15:55 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
