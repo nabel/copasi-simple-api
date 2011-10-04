@@ -7,16 +7,24 @@ copasi_model model2(); //positive feebdack gene regulation
 copasi_model model3();
 void eigen(copasi_model, const char*); //compute eigenvalues by changing parameters (similar to root-locus)
 
-int main()
+int main(int nargs, char** argv)
 {
 	tc_matrix efm, output, params;
 	copasi_model m1, m2;
 	
-	printf("creating model...\n");	
-	m1 = model1();
-    //m1 = cReadSBMLFile("model1.sbml");
-    
-	printf("simulating...\n");	
+	if (nargs < 2)
+	{
+		m1 = model1();
+	}
+	else
+	{
+		printf("loading model file %s\n", argv[1]);
+	    m1 = cReadSBMLFile(argv[1]);	
+	}
+
+	cWriteAntimonyFile(m1, "model.txt");
+	
+	printf("Antimony file written to model.txt\nSimulating...\n");	
 	output = cSimulateDeterministic(m1, 0, 10, 100);  //model, start, end, num. points
 	printf("output.tab has %i rows and %i columns\n",output.rows, output.cols);
 	tc_printMatrixToFile("output.tab", output);

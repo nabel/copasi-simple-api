@@ -101,6 +101,14 @@ TCAPIEXPORT copasi_model cReadSBMLString(const char * sbml);
 */
 TCAPIEXPORT void cWriteSBMLFile(copasi_model model, const char * filename);
 
+/*! 
+ \brief save a model as an Antimony file
+ \param copasi_model copasi model
+ \param char* file name
+ \ingroup Simulation
+*/
+TCAPIEXPORT void cWriteAntimonyFile(copasi_model model, const char * filename);
+
 /** \} */
 /**
   * @name Create model
