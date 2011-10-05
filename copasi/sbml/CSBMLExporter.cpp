@@ -2682,7 +2682,7 @@ const std::string CSBMLExporter::exportModelToString(CCopasiDataModel& dataModel
   createSBMLDocument(dataModel);
 
   if (this->mpSBMLDocument && this->mpSBMLDocument->getModel())
-    dataModel.getListOfLayouts()->exportToSBML((static_cast<const LayoutModelPlugin*>(this->mpSBMLDocument->getModel()->getPlugin("layout")))->getListOfLayouts(),
+    dataModel.getListOfLayouts()->exportToSBML((ListOfLayouts*)((static_cast<const LayoutModelPlugin*>(this->mpSBMLDocument->getModel()->getPlugin("layout")))->getListOfLayouts()),
         dataModel.getCopasi2SBMLMap(), mIdMap);
 
 #ifdef COPASI_DEBUG
@@ -6475,7 +6475,7 @@ void CSBMLExporter::collectIds(const CCopasiDataModel& dataModel, std::map<std::
 
       if (!id.empty())
         {
-          idMap.insert(std::pair<const std::string, const SBase*>(id, NULL));
+          idMap.insert(std::pair<const std::string, const SBase*>(id, (const SBase*)NULL));
         }
     }
 
