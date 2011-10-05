@@ -105,7 +105,7 @@ Introduction</h2>
         
         printf(<span class="stringliteral">&quot;Antimony file written to model.txt\nSimulating...\n&quot;</span>);  
         output = <a class="code" href="copasi__api_8h.html#a2105addec217217e5443df8d4cac8405" title="simulate using LSODA numerical integrator">cSimulateDeterministic</a>(m1, 0, 100, 1000);  <span class="comment">//model, start, end, num. points</span>
-        printf(<span class="stringliteral">&quot;output.tab has %i rows and %i columns\n&quot;</span>,output.rows, output.cols);
+        printf(<span class="stringliteral">&quot;output.tab has %i rows and %i columns\n&quot;</span>,output.<a class="code" href="structtc__matrix.html#a061459acc9e078fa4699e0e349887215">rows</a>, output.<a class="code" href="structtc__matrix.html#a4407a60bc4387adae24cee658711f2d9">cols</a>);
         tc_printMatrixToFile(<span class="stringliteral">&quot;output.tab&quot;</span>, output);
         tc_deleteMatrix(output);
                  
@@ -122,7 +122,7 @@ Installation</h2>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -134,7 +134,7 @@ Installation</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 4 2011 16:50:42 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 4 2011 18:44:36 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
