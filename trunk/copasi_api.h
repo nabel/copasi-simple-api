@@ -320,7 +320,7 @@ TCAPIEXPORT int cCreateVariable(copasi_model model, const char * name, const cha
  
  Example Usage. The following code will create an event where the parameter k1 is halved when time > 10.
  @code
- result = cCreateEvent (m, "myEvent", "time > 10", "k1", "k1=k1/2");
+ result = cCreateEvent (m, "myEvent", "time gt 10", "k1", "k1/2");
  @endcode
  \ingroup Simulation
 */
@@ -450,7 +450,8 @@ TCAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, dou
 
 
 /*! 
- \brief Bring the system to steady state
+ \brief Bring the system to steady state by solving for the zeros of the ODE's. 
+             Performs an initial simulation before solving.
  \param copasi_model model
  \return tc_matrix steady state matrix of species with 1 row and n columns, where n = number of species
  \ingroup Simulation
@@ -458,13 +459,14 @@ TCAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, dou
 TCAPIEXPORT tc_matrix cGetSteadyState(copasi_model model);
 
 /*! 
- \brief Bring the system to steady state by doing a short simulation first
+ \brief Bring the system to steady state by doing repeated simulations.
+             Use this is cGetSteadyState
  \param copasi_model model
  \param int max iterations (each iteration doubles the time duration)
  \return tc_matrix steady state matrix of species with 1 row and n columns, where n = number of species
  \ingroup Simulation
 */
-TCAPIEXPORT tc_matrix cGetSteadyStateAndSimulate(copasi_model model, int iter);
+TCAPIEXPORT tc_matrix cGetSteadyStateUsingSimulation(copasi_model model, int iter);
 
 /*! 
  \brief Get the full Jacobian at the current state

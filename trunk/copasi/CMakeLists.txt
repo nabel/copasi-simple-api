@@ -23,16 +23,17 @@ ENDIF(WIN32)
 
 INCLUDE_DIRECTORIES( 
 	BEFORE
-	${LIBCOPASI_SOURCE_DIR}/libSBML/include
-	${LIBCOPASI_SOURCE_DIR}/libSBML/src
-	${LIBCOPASI_SOURCE_DIR}/copasi
-	${LIBCOPASI_SOURCE_DIR}/raptor/src
-	${LIBCOPASI_SOURCE_DIR}/raptor/librdfa
-	${LIBCOPASI_SOURCE_DIR}/raptor/util
-	${LIBCOPASI_SOURCE_DIR}/antimony
-	${LIBCOPASI_SOURCE_DIR}/galib/ga
-	${LIBCOPASI_SOURCE_DIR}/galib
-	${LIBCOPASI_SOURCE_DIR}/libstructural/include/
+	${CMAKE_CURRENT_SOURCE_DIR}/../expat/
+	${CMAKE_CURRENT_SOURCE_DIR}/../expat/lib
+	${CMAKE_CURRENT_SOURCE_DIR}/../libsbml/src
+	${CMAKE_CURRENT_SOURCE_DIR}
+	${CMAKE_CURRENT_SOURCE_DIR}/../raptor/src
+	${CMAKE_CURRENT_SOURCE_DIR}/../raptor/librdfa
+	${CMAKE_CURRENT_SOURCE_DIR}/../raptor/util
+	${CMAKE_CURRENT_SOURCE_DIR}/../antimony
+	${CMAKE_CURRENT_SOURCE_DIR}/../galib/ga
+	${CMAKE_CURRENT_SOURCE_DIR}/../galib
+	${CMAKE_CURRENT_SOURCE_DIR}/../libstructural/include/
 )
 
 #---------------------
@@ -79,42 +80,42 @@ ENDIF(APPLE)
 #--------------------------
 
 FILE( GLOB copasi_SRC_FILES
-	${LIBCOPASI_SOURCE_DIR}/copasi/model/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/compareExpressions/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/CopasiDataModel/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/crosssection/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/elementaryFluxModes/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/function/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/layout/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/libs/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/lyap/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/moieties/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/odepack++/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/optimization/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/parameterFitting/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/plot/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/randomGenerator/*.cpp	
-	${LIBCOPASI_SOURCE_DIR}/copasi/sbml/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/sbmlunit/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/scan/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/sensitivities/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/steadystate/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/report/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/trajectory/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/tss/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/tssanalysis/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/utilities/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/xml/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/commandline/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/MIRIAM/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/MIRIAM/WebServicesIssues/*.cpp
-	${LIBCOPASI_SOURCE_DIR}/copasi/copasi_api.cpp
-	${LIBCOPASI_SOURCE_DIR}/TC_structs.c
-	${LIBCOPASI_SOURCE_DIR}/copasi/mtrand.c
+	${CMAKE_CURRENT_SOURCE_DIR}/model/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/compareExpressions/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/CopasiDataModel/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/crosssection/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/elementaryFluxModes/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/function/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/layout/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/libs/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/lyap/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/moieties/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/odepack++/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/optimization/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/parameterFitting/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/plot/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/randomGenerator/*.cpp	
+	${CMAKE_CURRENT_SOURCE_DIR}/sbml/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/sbmlunit/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/scan/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/sensitivities/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/steadystate/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/report/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/trajectory/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/tss/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/tssanalysis/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/utilities/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/xml/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/commandline/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/MIRIAM/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/MIRIAM/WebServicesIssues/*.cpp
+	${CMAKE_CURRENT_SOURCE_DIR}/copasi_api.cpp
+	${TINKERCELL_SOURCE_DIR}/API/TC_structs.c
+	${CMAKE_CURRENT_SOURCE_DIR}/../mtrand.c
 )
 
 ADD_DEFINITIONS(-DHAVE_EXPAT_CONFIG_H)
-FILE( GLOB  EXPAT_SRC_FILES   ${LIBCOPASI_SOURCE_DIR}/expat/lib/*.c)
+FILE( GLOB  EXPAT_SRC_FILES   ${CMAKE_CURRENT_SOURCE_DIR}/../expat/lib/*.c)
 
 #--------------------------
 #  MAKE libcopasi
@@ -164,7 +165,7 @@ ENDIF( WIN32 )
 #  COPASI api
 #----------------------------------
 
-OPTION( TEST_COPASI_API "test copasi api" ON )
+OPTION( TEST_COPASI_API "test copasi api" OFF )
 
 IF (TEST_COPASI_API)
   ADD_EXECUTABLE(copasi_api_test test_copasi.c)
