@@ -484,7 +484,7 @@ int cSetGlobalParameter(copasi_model model, const char * name, double value)
 	return 0;
 }
 
-void cSetBoundarySpecies(copasi_model model, const char * name, int isBoundary)
+void cSetSpeciesType (copasi_model model, const char * name, int isBoundary)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
