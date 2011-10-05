@@ -83,7 +83,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 
-<p>Additional structures used with the Simple C API.  
+<p>Additional structures and methods used with the Simple C API.  
 <a href="#details">More...</a></p>
 
 <p><a href="_t_c__structs_8h_source.html">Go to the source code of this file.</a></p>
@@ -101,66 +101,66 @@ Data Structures</h2></td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#ae002755f9b0c066e483739ca280f0624">tc_createMatrix</a> (int rows, int cols)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a matrix with the given rows and columns.  <a href="#ae002755f9b0c066e483739ca280f0624"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a matrix with the given number of rows and columns.  <a href="#ae002755f9b0c066e483739ca280f0624"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__table.html">tc_table</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a3bd40650ce42655839a4dcd1763c55a7">tc_createTable</a> (int rows, int cols)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a strings table with the given rows and columns.  <a href="#a3bd40650ce42655839a4dcd1763c55a7"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a strings table with the given number of rows and columns.  <a href="#a3bd40650ce42655839a4dcd1763c55a7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a0eee271a817a4648a092efe408c14ddd">tc_createStringsArray</a> (int len)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an array of strings.  <a href="#a0eee271a817a4648a092efe408c14ddd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__items.html">tc_items</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#abc847652e7c131ced50891b792bd5aa7">tc_createItemsArray</a> (int len)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create an array of items.  <a href="#abc847652e7c131ced50891b792bd5aa7"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a91b18a6248efc10e23addc136c1f54f4">tc_getMatrixValue</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M, int i, int j)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get i,jth value from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>  <a href="#a91b18a6248efc10e23addc136c1f54f4"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get i,jth value from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>.  <a href="#a91b18a6248efc10e23addc136c1f54f4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#aa6c160e731934ab8eb9252df326ec92b">tc_setMatrixValue</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M, int i, int j, double d)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set i,jth value of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>  <a href="#aa6c160e731934ab8eb9252df326ec92b"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set i,jth value of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>.  <a href="#aa6c160e731934ab8eb9252df326ec92b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a689a7fc3c680da61fe60112765744240">tc_getRowName</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M, int i)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get ith row name from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>  <a href="#a689a7fc3c680da61fe60112765744240"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ith row name from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>.  <a href="#a689a7fc3c680da61fe60112765744240"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a77864663e95c177ca02402f8c54d2611">tc_setRowName</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M, int i, const char *s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set ith row name for a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>  <a href="#a77864663e95c177ca02402f8c54d2611"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set ith row name for a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>.  <a href="#a77864663e95c177ca02402f8c54d2611"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a1921babb52fdf726ffb60ae90545f222">tc_getColumnName</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M, int j)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>  <a href="#a1921babb52fdf726ffb60ae90545f222"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>.  <a href="#a1921babb52fdf726ffb60ae90545f222"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#afecc7bf4b1d71d47a74ea989232beacd">tc_setColumnName</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M, int j, const char *s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>  <a href="#afecc7bf4b1d71d47a74ea989232beacd"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>.  <a href="#afecc7bf4b1d71d47a74ea989232beacd"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#ae5ff42a7cf98f9d1af8c1441c6992e19">tc_getTableValue</a> (<a class="el" href="structtc__table.html">tc_table</a> S, int i, int j)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get i,j-th string in a table  <a href="#ae5ff42a7cf98f9d1af8c1441c6992e19"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get i,j-th string in a table.  <a href="#ae5ff42a7cf98f9d1af8c1441c6992e19"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a9331f104e603984d78d89df206ddbda8">tc_setTableValue</a> (<a class="el" href="structtc__table.html">tc_table</a> S, int i, int j, const char *s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set i,jth string in a table  <a href="#a9331f104e603984d78d89df206ddbda8"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set i,jth string in a table.  <a href="#a9331f104e603984d78d89df206ddbda8"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a0d98c7974fee8578839096b2b44e777b">tc_getString</a> (<a class="el" href="structtc__strings.html">tc_strings</a> S, int i)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get ith string in array of strings  <a href="#a0d98c7974fee8578839096b2b44e777b"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ith string in array of strings.  <a href="#a0d98c7974fee8578839096b2b44e777b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a40a48777b9ac76b892b77cfa5376712f">tc_setString</a> (<a class="el" href="structtc__strings.html">tc_strings</a> S, int i, const char *c)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set ith string in array of strings  <a href="#a40a48777b9ac76b892b77cfa5376712f"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set ith string in array of strings.  <a href="#a40a48777b9ac76b892b77cfa5376712f"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a4979b55eee3456519b30223029af06af">tc_getItem</a> (<a class="el" href="structtc__items.html">tc_items</a> A, int i)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get ith long item in array of items  <a href="#a4979b55eee3456519b30223029af06af"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get ith long item in array of items.  <a href="#a4979b55eee3456519b30223029af06af"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a4c5ba6ccbc0462996882b12f76d7034c">tc_setItem</a> (<a class="el" href="structtc__items.html">tc_items</a> A, int i, long o)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">set ith long item in array of items  <a href="#a4c5ba6ccbc0462996882b12f76d7034c"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set ith long item in array of items.  <a href="#a4c5ba6ccbc0462996882b12f76d7034c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a20f5569ba1ff80cc15359a8bc008ce0a">tc_getStringIndex</a> (<a class="el" href="structtc__strings.html">tc_strings</a> A, const char *s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the index of a string in the array  <a href="#a20f5569ba1ff80cc15359a8bc008ce0a"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the index of a string in the array.  <a href="#a20f5569ba1ff80cc15359a8bc008ce0a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#af6570d7d845263e79b7a1bd8f9bef14c">tc_getRowIndex</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a>, const char *s)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the row number of a row name  <a href="#af6570d7d845263e79b7a1bd8f9bef14c"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a3925344f766b82fe1972fd37d6d73ab4">tc_getColumnIndex</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a>, const char *s)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">get the column number of a column name  <a href="#a3925344f766b82fe1972fd37d6d73ab4"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the column number of a column name.  <a href="#a3925344f766b82fe1972fd37d6d73ab4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a4ced7d8d8f300f44d5deeb78d88a1c23">tc_deleteMatrix</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a matrix  <a href="#a4ced7d8d8f300f44d5deeb78d88a1c23"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a matrix.  <a href="#a4ced7d8d8f300f44d5deeb78d88a1c23"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#aff3eabdc05e5e362735a2cb345c299a9">tc_deleteTable</a> (<a class="el" href="structtc__table.html">tc_table</a> M)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">delete a strings table  <a href="#aff3eabdc05e5e362735a2cb345c299a9"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a strings table.  <a href="#aff3eabdc05e5e362735a2cb345c299a9"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#ac50d759290a9a13d3be48d18f189fb39">tc_deleteItemsArray</a> (<a class="el" href="structtc__items.html">tc_items</a> A)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">delete an array of items  <a href="#ac50d759290a9a13d3be48d18f189fb39"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an array of items.  <a href="#ac50d759290a9a13d3be48d18f189fb39"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#abd1a7689f0a2c67bac13b2e1725ee0a0">tc_deleteStringsArray</a> (<a class="el" href="structtc__strings.html">tc_strings</a> C)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">delete an array of strings  <a href="#abd1a7689f0a2c67bac13b2e1725ee0a0"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete an array of strings.  <a href="#abd1a7689f0a2c67bac13b2e1725ee0a0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#aa3f4e51a76b5d4999308edf9128b3d20">tc_appendColumns</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> A, <a class="el" href="structtc__matrix.html">tc_matrix</a> B)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">combine two matrices by appending their columns. row size must be equal for both matrices  <a href="#aa3f4e51a76b5d4999308edf9128b3d20"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine two matrices by appending their columns. row size must be equal for both matrices.  <a href="#aa3f4e51a76b5d4999308edf9128b3d20"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a988916e73cc4244d1eb5cd2b89aea766">tc_appendRows</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> A, <a class="el" href="structtc__matrix.html">tc_matrix</a> B)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">combine two matrices by appending their row. column sizes must be equal for both matrices  <a href="#a988916e73cc4244d1eb5cd2b89aea766"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Combine two matrices by appending their row. column sizes must be equal for both matrices.  <a href="#a988916e73cc4244d1eb5cd2b89aea766"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#afd5e48e35113e4e575e6fd08da441ddf">tc_printMatrixToFile</a> (const char *file, <a class="el" href="structtc__matrix.html">tc_matrix</a> M)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print a matrix to file  <a href="#afd5e48e35113e4e575e6fd08da441ddf"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a matrix to file.  <a href="#afd5e48e35113e4e575e6fd08da441ddf"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a2be4a764e3be8338447d69a79bef5432">tc_printOutMatrix</a> (<a class="el" href="structtc__matrix.html">tc_matrix</a> M)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print a matrix to stdout  <a href="#a2be4a764e3be8338447d69a79bef5432"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a matrix to stdout.  <a href="#a2be4a764e3be8338447d69a79bef5432"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#a9882a9883fb461a6b2e87b25b00720b0">tc_printTableToFile</a> (const char *file, <a class="el" href="structtc__table.html">tc_table</a> M)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print a table to file  <a href="#a9882a9883fb461a6b2e87b25b00720b0"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a table to file.  <a href="#a9882a9883fb461a6b2e87b25b00720b0"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_t_c__structs_8h.html#acd0512b52320aff70fd8970c32445a42">tc_printOutTable</a> (<a class="el" href="structtc__table.html">tc_table</a> M)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">print a table to stdout  <a href="#acd0512b52320aff70fd8970c32445a42"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a table to stdout.  <a href="#acd0512b52320aff70fd8970c32445a42"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p>Additional structures used with the Simple C API. </p>
+<div class="textblock"><p>Additional structures and methods used with the Simple C API. </p>
 </div><hr/><h2>Function Documentation</h2>
 <a class="anchor" id="aa3f4e51a76b5d4999308edf9128b3d20"></a><!-- doxytag: member="TC_structs.h::tc_appendColumns" ref="aa3f4e51a76b5d4999308edf9128b3d20" args="(tc_matrix A, tc_matrix B)" -->
 <div class="memitem">
@@ -187,7 +187,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>combine two matrices by appending their columns. row size must be equal for both matrices </p>
+<p>Combine two matrices by appending their columns. row size must be equal for both matrices. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>first matrix </td></tr>
@@ -224,7 +224,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>combine two matrices by appending their row. column sizes must be equal for both matrices </p>
+<p>Combine two matrices by appending their row. column sizes must be equal for both matrices. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>first matrix </td></tr>
@@ -287,7 +287,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Create a matrix with the given rows and columns. </p>
+<p>Create a matrix with the given number of rows and columns. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">int</td><td>number of rows </td></tr>
@@ -350,7 +350,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Create a strings table with the given rows and columns. </p>
+<p>Create a strings table with the given number of rows and columns. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">int</td><td>number of rows </td></tr>
@@ -377,7 +377,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>delete an array of items </p>
+<p>Delete an array of items. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">&amp;tc_items</td><td>pointer to array </td></tr>
@@ -402,7 +402,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>delete a matrix </p>
+<p>Delete a matrix. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">&amp;tc_matrix</td><td>pointer to matrix </td></tr>
@@ -427,7 +427,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>delete an array of strings </p>
+<p>Delete an array of strings. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">&amp;tc_strings</td><td>pointer to array </td></tr>
@@ -452,7 +452,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>delete a strings table </p>
+<p>Delete a strings table. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">&amp;tc_table</td><td>pointer to table </td></tr>
@@ -487,7 +487,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get the column number of a column name </p>
+<p>Get the column number of a column name. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>matrix </td></tr>
@@ -524,7 +524,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </p>
+<p>Get jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>matrix </td></tr>
@@ -561,7 +561,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get ith long item in array of items </p>
+<p>Get ith long item in array of items. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__items.html" title="An array of int objects with length information. Use tc_getItem(M,i) to get the i-th item...">tc_items</a></td><td>array </td></tr>
@@ -604,7 +604,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get i,jth value from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </p>
+<p>Get i,jth value from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>matrix </td></tr>
@@ -613,7 +613,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>double value at the given row, column </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double value at the given row, column</dd></dl>
+<p>Use tc_setMatrixValue(M,i,j,value) to set a value </p>
 
 </div>
 </div>
@@ -679,7 +680,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get ith row name from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </p>
+<p>Get ith row name from a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>matrix </td></tr>
@@ -716,7 +717,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get ith string in array of strings </p>
+<p>Get ith string in array of strings. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a></td><td>array </td></tr>
@@ -753,7 +754,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get the index of a string in the array </p>
+<p>Get the index of a string in the array. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a></td><td>array </td></tr>
@@ -796,7 +797,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>get i,j-th string in a table </p>
+<p>Get i,j-th string in a table. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__table.html" title="A 2D table of strings with row and column names. Use tc_getTableValue(M,i,j) to get the i...">tc_table</a></td><td>table </td></tr>
@@ -834,7 +835,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>print a matrix to file </p>
+<p>Print a matrix to file. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">char*</td><td>file name </td></tr>
@@ -860,7 +861,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>print a matrix to stdout </p>
+<p>Print a matrix to stdout. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">char*</td><td>file name </td></tr>
@@ -886,7 +887,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>print a table to stdout </p>
+<p>Print a table to stdout. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__table.html" title="A 2D table of strings with row and column names. Use tc_getTableValue(M,i,j) to get the i...">tc_table</a></td><td></td></tr>
@@ -921,7 +922,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>print a table to file </p>
+<p>Print a table to file. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">char*</td><td>file name </td></tr>
@@ -963,7 +964,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>set jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </p>
+<p>Set jth column name of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>matrix </td></tr>
@@ -1006,7 +1007,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>set ith long item in array of items </p>
+<p>Set ith long item in array of items. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__items.html" title="An array of int objects with length information. Use tc_getItem(M,i) to get the i-th item...">tc_items</a></td><td>array </td></tr>
@@ -1055,7 +1056,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>set i,jth value of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </p>
+<p>Set i,jth value of a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>matrix </td></tr>
@@ -1099,7 +1100,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>set ith row name for a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </p>
+<p>Set ith row name for a <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a>. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>matrix </td></tr>
@@ -1142,7 +1143,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>set ith string in array of strings </p>
+<p>Set ith string in array of strings. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a></td><td>array </td></tr>
@@ -1191,7 +1192,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>set i,jth string in a table </p>
+<p>Set i,jth string in a table. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structtc__table.html" title="A 2D table of strings with row and column names. Use tc_getTableValue(M,i,j) to get the i...">tc_table</a></td><td>table </td></tr>
@@ -1210,7 +1211,7 @@ Functions</h2></td></tr>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -1222,7 +1223,7 @@ Functions</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Oct 4 2011 16:50:42 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Oct 4 2011 18:44:36 for Copasi API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
