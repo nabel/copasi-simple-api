@@ -1,6 +1,15 @@
+Version  1.0
+------------
+
+This work was funded by subcontract NIHGMS grant: GM076692 
+from James Glazier, Indiana University.
+
+Authors: Deepak Chandran and Herbert M Sauro
+
 ==================
      ABOUT
 ==================
+
 This is a simplified C API to the Copasi C++ library. The API uses 
 a few data structures that wrap Copasi's C++ classes as well as 
 provide some additional features, such as being able to use simple
@@ -31,9 +40,9 @@ If you are using TortoiseSVN, first create an empty folder called copasi-api. Th
 right-click on that newly created folder and select "SVN Checkout". Enter 
 https://copasi-simple-api.googlecode.com/svn/trunk/ as the source URL
 
-==========================
-  BUILDING THE LIBRARY
-==========================
+===================================================
+  BUILDING THE LIBRARY FOR WINDOWS, MAC AND LINUX
+===================================================
 
 Lets assume that the source code is located in a folder named "copasi-simple-api"
 
