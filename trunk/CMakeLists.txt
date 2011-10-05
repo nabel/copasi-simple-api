@@ -59,7 +59,7 @@ ENDIF(BUILD_LAPACK)
 ADD_SUBDIRECTORY( muparser )  #math parser
 ADD_SUBDIRECTORY( curl )      #needed by raptor
 ADD_SUBDIRECTORY( raptor )    #RDF parser
-ADD_SUBDIRECTORY( libsbml )    #systems biology markup language parser
+ADD_SUBDIRECTORY( sbml )    #systems biology markup language parser
 ADD_SUBDIRECTORY( antimony )   #human-readable test-based reaction networks
 ADD_SUBDIRECTORY( boost )      #regular expressions
 ADD_SUBDIRECTORY( copasi )     #simulation and analysis package
