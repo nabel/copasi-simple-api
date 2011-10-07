@@ -16,14 +16,7 @@
  m = cReadSBMLFile ("mymodel.xml");
   
  output = cSimulationDeterministic (m, 0, 10, 100); 
-
- tc_printMatrixToFile("output.tab", output);  //write to file
-
- //cleanup
- tc_deleteMatrix(output);                 
- cRemoveModel(m1);
- copasi_end();  //required at the very end
-@endcode
+ @endcode
  
  More complex example:
  
@@ -32,90 +25,37 @@
  #include <stdio.h>
  #include "copasi_api.h"
 
- copasi_model model1() //create oscillator model
- {
-	//model named M
-	copasi_model model = cCreateModel("M");
-	copasi_reaction R1, R2, R3;
-	copasi_compartment cell;
-	
-	//species
-	cell = cCreateCompartment(model, "cell", 1.0);
-	cCreateSpecies(cell, "A", 4);
-	cCreateSpecies(cell, "B", 3);
-	cCreateSpecies(cell, "C", 2);
-	
-	//parameters
-	cSetValue(model, "k1", 0.2);   //k1
-	cSetValue(model, "k2", 0.5);   //k2
-	cSetValue(model, "k3", 1);   //k3
-	
-	//reactions -- make sure all parameters or species are defined BEFORE this step
-	R1 = cCreateReaction(model, "R1");  // A+B -> 2B
-	cAddReactant(R1, "A", 1.0);
-	cAddReactant(R1, "B", 1.0);
-	cAddProduct(R1, "B", 2.0);
-	cSetReactionRate(R1, "k1*A*B");
-
-	R2 = cCreateReaction(model, "R2");  //B+C -> 2C
-	cAddReactant(R2, "B", 1.0);
-	cAddReactant(R2, "C", 1.0);
-	cAddProduct(R2, "C", 2.0);
-	cSetReactionRate(R2, "k2*B*C");
-
-	R3 = cCreateReaction(model, "R3"); //C+A -> 2A
-	cAddReactant(R3, "C", 1.0);
-	cAddReactant(R3, "A", 1.0);
-	cAddProduct(R3, "A", 2.0);
-	cSetReactionRate(R3, "k3*C*A");
-
-	cCreateEvent(model, "event1", "time > 10", "k3", "k3/2.0");
-	return model;
- }
  int main(int nargs, char** argv)
  {
-	tc_matrix efm, output, params;
-	copasi_model m1, m2;
+        tc_matrix efm, output, params;
+        copasi_model m1, m2;
+        
+        if (nargs < 2)
+        {
+            m1 = model1();
+        }
+        else
+        {
+            printf("loading model file %s\n", argv[1]);
+            m1 = cReadSBMLFile(argv[1]);        
+        }
 
-	m1 = model1();
-
-	output = cSimulateDeterministic(m1, 0, 100, 1000);  //model, start, end, num. points        
-
-	//write to file
-	cWriteAntimonyFile(m1, "model.txt");
-	tc_printMatrixToFile("output.tab", output);
-
-	//cleanup
-	tc_deleteMatrix(output);                 
-	cRemoveModel(m1);
-	copasi_end();
-	return 0;
+        cWriteAntimonyFile(m1, "model.txt");
+        
+        printf("Antimony file written to model.txt\nSimulating...\n");  
+        output = cSimulateDeterministic(m1, 0, 100, 1000);  //model, start, end, num. points
+        printf("output.tab has %i rows and %i columns\n",output.rows, output.cols);
+        tc_printMatrixToFile("output.tab", output);
+        tc_deleteMatrix(output);
+                 
+        cRemoveModel(m1);
+        copasi_end();
+        return 0;
  }
- 
  @endcode
  * \section install_sec Installation
  *
- * The initial phase of the build process is the same for each platform, that is installing CMake and generating the appropriate build files, eg sln files for Visual Studio, make files for Linux and Mac.
-
-Lets assume that the source code is located in a folder named "copasi-simple-api"
-
-1) Install Cmake from cmake.org.  For Linux, just type 'apt-get cmake cmake-gui' 
-
-2) Run cmake-gui. In the Cmake program, find two text boxes labeled, "where is the source code" and "where to build" 
-
-3) Type the full copasi-simple-api/ folder path for the line that says "where is the source code"
-
-4) Type copasi-simple-api/BUILD folder path for the line that says "where to build"
-
-5) Click the "Configure" button
-
-6) Cmake will create the BUILD folder and then ask you to select the compiler. It is recommended that you use standard compilers, e.g. gcc for Unix and Visual Studio or MinGW for MS Windows. 
-
-7) Once configuration is done, click the "Generate" button
-
-8) Go to the copasi-simple-api/BUILD folder. If you used Visual Studio as the compiler, you will find a project file (.sln) -- open it. Find the copasi_api_test, right-click on it, and set it as the startup project. If you used GCC or MinGW, "cd" into the BUILD folder and run "make copasi_api_test" 
-
-9) Run copasi_api_test.  This is an example code using the copasi API. Now you can replace copasi_api_test with your own program. 
+ * Installation documentation is provided in the main google code page.
  */
 
 #ifndef COPASI_SIMPLE_C_API
@@ -147,7 +87,8 @@ typedef struct
 	void * CopasiModelPtr;
 	void * CopasiDataModelPtr;
 	void * qHash;
-	char * errorMessage; 
+	char * errorMessage;
+	char * warningMessage;
 } copasi_model;
 
 /*!\brief This struct is used to contain a pointer to an instance of a COPASI reaction object*/
