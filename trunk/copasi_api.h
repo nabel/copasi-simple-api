@@ -9,18 +9,18 @@
  * to use. For example, to run a simple SBML model and generate time series data
  * we would call:
  *  
- @code
+ \code
  copasi_model m;
  tc_matrix output;
   
  m = cReadSBMLFile ("mymodel.xml");
   
  output = cSimulationDeterministic (m, 0, 10, 100); 
- @endcode
+ \endcode
  
  More complex example:
  
- @code
+ \code
  #include <stdlib.h>
  #include <stdio.h>
  #include "copasi_api.h"
@@ -52,11 +52,32 @@
         copasi_end();
         return 0;
  }
- @endcode
+ \endcode
  * \section install_sec Installation
  *
  * Installation documentation is provided in the main google code page.
- */
+
+ \defgroup loadsave Read and Write models
+ \brief Read and write models to files or strings. Support for SBML and Antimony formats.
+
+ \defgroup create Define models
+ \brief Create models and set model components using code
+
+ \defgroup state Get current state of system
+ \brief Compute derivatives, fluxed, and other values of the system at the current state
+
+ \defgroup simulation Time-course simulation
+ \brief Deterministic, stochastic, and hybrid simulation algorithms
+
+ \defgroup mca Metabolic Control Analysis
+ \brief Calculate control coefficients and sensitivities
+
+ \defgroup matrix Stoichiometry analysis
+ \brief Linear algebra based methods for analyzing a reaction network
+
+ \defgroup optim Parameter optimization
+ \brief Optimization of parameters to match given data
+*/
 
 #ifndef COPASI_SIMPLE_C_API
 #define COPASI_SIMPLE_C_API
@@ -289,9 +310,9 @@ TCAPIEXPORT void cSetAmount(copasi_model, const char * species, double amount);
  \param char* formula, use 0 to remove assignment rule
  \return int 0=failed 1=success
  
- @code
+ \code
  result = cSetAssignmentRule (m, "S1", "sin (time*k1)");
- @endcode
+ \endcode
  \ingroup create
 */
 TCAPIEXPORT int cSetAssignmentRule(copasi_model model, const char * species, const char * formula);
@@ -329,9 +350,9 @@ TCAPIEXPORT int cCreateVariable(copasi_model model, const char * name, const cha
  \return int 0=failed 1=success
  
  Example Usage. The following code will create an event where the parameter k1 is halved when time > 10.
- @code
+ \code
  result = cCreateEvent (m, "myEvent", "time > 10", "k1", "k1/2");
- @endcode
+ \endcode
  \ingroup create
 */
 TCAPIEXPORT int cCreateEvent(copasi_model model, const char * name, const char * trigger, const char * variable, const char * formula);
@@ -343,10 +364,10 @@ TCAPIEXPORT int cCreateEvent(copasi_model model, const char * name, const char *
  \param char* reaction name
  \return copasi_reaction a new reaction
  
- @code
+ \code
  r = cCreateReaction (m, "J1")
- @endcode
- \ingroup Create
+ \endcode
+ \ingroup create
 */
 TCAPIEXPORT copasi_reaction cCreateReaction(copasi_model model, const char* name);
 
@@ -357,10 +378,10 @@ TCAPIEXPORT copasi_reaction cCreateReaction(copasi_model model, const char* name
  \param char * reactant
  \param double stoichiometry
  
- @code
+ \code
  cCreateReaction (m, "S1", 1);
- @endcode
- \ingroup Create
+ \endcode
+ \ingroup create
 */
 TCAPIEXPORT void cAddReactant(copasi_reaction reaction, const char * species, double stoichiometry);
 
@@ -371,14 +392,14 @@ TCAPIEXPORT void cAddReactant(copasi_reaction reaction, const char * species, do
  \param double stoichiometry
  
  Create a reaction J1: 2 A -> B + C
- @code
+ \code
  r = cCreateReaction (m, "J1");
  cAddReactant (r, "A", 2);
  cAddProduct (r, "B", 1);
  cAddProduct (r, "C", 1);
- @endcode
+ \endcode
 
- \ingroup Create
+ \ingroup create
 */
 TCAPIEXPORT void cAddProduct(copasi_reaction reaction, const char * species, double stoichiometry);
 
@@ -388,12 +409,12 @@ TCAPIEXPORT void cAddProduct(copasi_reaction reaction, const char * species, dou
  \param char* custom formula
  \return int success=1 failure=0
  
- @code
+ \code
  int result;
  result = cSetReactionRate (r, "k1*S1");
- @endcode
+ \endcode
  
- \ingroup Create model
+ \ingroup create
 */
 TCAPIEXPORT int cSetReactionRate(copasi_reaction reaction, const char * formula);
 
@@ -407,7 +428,7 @@ TCAPIEXPORT int cSetReactionRate(copasi_reaction reaction, const char * formula)
  \brief get the current concentrations of all species
  \param copasi_model model
  \return tc_matrix matrix of with 1 row and n columns, where n = number of species
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT tc_matrix cGetConcentrations(copasi_model);
 
@@ -415,7 +436,7 @@ TCAPIEXPORT tc_matrix cGetConcentrations(copasi_model);
  \brief get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume
  \param copasi_model model
  \return tc_matrix matrix of with 1 row and n columns, where n = number of species
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT tc_matrix cGetAmounts(copasi_model);
 
@@ -424,7 +445,7 @@ TCAPIEXPORT tc_matrix cGetAmounts(copasi_model);
  \param copasi_model model
  \param string species name
  \return double concentration. -1 indicates that a species by this name was not found
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT double cGetConcentration(copasi_model, const char * name);
 
@@ -433,7 +454,7 @@ TCAPIEXPORT double cGetConcentration(copasi_model, const char * name);
  \param copasi_model model
  \param string species name
  \return double amount. -1 indicates that a species by this name was not found
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT double cGetAmount(copasi_model, const char * name);
 
@@ -441,7 +462,7 @@ TCAPIEXPORT double cGetAmount(copasi_model, const char * name);
  \brief Compute the current rates of change for all species
  \param copasi_model model
  \return tc_matrix matrix of with 1 row and n columns, where n = number of species
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT tc_matrix cGetDerivatives(copasi_model);
 
@@ -449,7 +470,7 @@ TCAPIEXPORT tc_matrix cGetDerivatives(copasi_model);
  \brief Compute current flux through all the reactions
  \param copasi_model model
  \return tc_matrix matrix of with 1 row and n columns, where n = number of reactions
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT tc_matrix cGetFluxes(copasi_model);
 
@@ -458,7 +479,7 @@ TCAPIEXPORT tc_matrix cGetFluxes(copasi_model);
  \param copasi_model model
  \param string reaction name, e.g. "J1"
  \return double rate. If reaction by this name does not exist that NaN will be returned
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT double cGetFlux(copasi_model, const char * name);
 
@@ -467,7 +488,7 @@ TCAPIEXPORT double cGetFlux(copasi_model, const char * name);
  \param copasi_model model
  \param string reaction name, e.g. "J1"
  \return double rate. If reaction by this name does not exist that NaN will be returned
- \ingroup System state
+ \ingroup state
 */
 TCAPIEXPORT double cGetParticleFlux(copasi_model, const char * name);
 
@@ -486,10 +507,10 @@ TCAPIEXPORT double cGetParticleFlux(copasi_model, const char * name);
  \param int number of steps in the output
  \return tc_matrix matrix of concentration or particles
  
- @code
+ \code
  result = cvSimulateDeterministic (m, 0.0, 10.0, 100);
- @endcode
- \ingroup Simulation
+ \endcode
+ \ingroup simulation
 */
 TCAPIEXPORT tc_matrix cSimulateDeterministic(copasi_model model, double startTime, double endTime, int numSteps);
 
@@ -501,7 +522,7 @@ TCAPIEXPORT tc_matrix cSimulateDeterministic(copasi_model model, double startTim
  \param int number of steps in the output
  \return tc_matrix matrix of concentration or particles
  
- \ingroup Simulation
+ \ingroup simulation
 */
 TCAPIEXPORT tc_matrix cSimulateStochastic(copasi_model model, double startTime, double endTime, int numSteps);
 
@@ -512,7 +533,7 @@ TCAPIEXPORT tc_matrix cSimulateStochastic(copasi_model model, double startTime, 
  \param double end time
  \param int number of steps in the output
  \return tc_matrix matrix of concentration or particles
- \ingroup Simulation
+ \ingroup simulation
 */
 TCAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, double endTime, int numSteps);
 
@@ -523,7 +544,7 @@ TCAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, doub
  \param double end time
  \param int number of steps in the output
  \return tc_matrix matrix of concentration or particles
- \ingroup Simulation
+ \ingroup simulation
 */
 TCAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, double endTime, int numSteps);
 
@@ -673,7 +694,7 @@ TCAPIEXPORT tc_matrix cGetElementaryFluxModes(copasi_model model);
  \brief Compute the Gamma matrix (i.e. conservation laws)
  \param copasi_model model
  \return tc_matrix 
- \ingroup Structural
+ \ingroup matrix
 */
 TCAPIEXPORT tc_matrix cGetGammaMatrix(copasi_model model);
 
@@ -682,7 +703,7 @@ TCAPIEXPORT tc_matrix cGetGammaMatrix(copasi_model model);
  \brief Compute the K matrix (right nullspace)
  \param copasi_model model
  \return tc_matrix 
- \ingroup Structural
+ \ingroup matrix
 */
 TCAPIEXPORT tc_matrix cGetKMatrix(copasi_model model);
 
@@ -691,7 +712,7 @@ TCAPIEXPORT tc_matrix cGetKMatrix(copasi_model model);
  \brief Compute the K0 matrix
  \param copasi_model model
  \return tc_matrix 
- \ingroup Structural
+ \ingroup matrix
 */
 TCAPIEXPORT tc_matrix cGetK0Matrix(copasi_model model);
 
@@ -700,7 +721,7 @@ TCAPIEXPORT tc_matrix cGetK0Matrix(copasi_model model);
  \brief Compute the L matrix (link matrix, left nullspace)
  \param copasi_model model
  \return tc_matrix 
- \ingroup Structural
+ \ingroup matrix
 */
 TCAPIEXPORT tc_matrix cGetLinkMatrix(copasi_model model);
 
@@ -709,7 +730,7 @@ TCAPIEXPORT tc_matrix cGetLinkMatrix(copasi_model model);
  \brief Compute the L0 matrix
  \param copasi_model model
  \return tc_matrix 
- \ingroup Structural
+ \ingroup matrix
 */
 TCAPIEXPORT tc_matrix cGetL0Matrix(copasi_model model);
 
