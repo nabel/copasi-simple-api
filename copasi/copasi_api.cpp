@@ -172,7 +172,7 @@ void copasi_end()
 
 int cSetAssignmentRuleHelper(copasi_model , CMetab * , const char * );
 
-int copasi_cleanup_assignments(copasi_model model, bool doWhile=false)
+int copasi_cleanup_assignments(copasi_model model)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
 	if (!hash) return 0;
@@ -195,8 +195,9 @@ int copasi_cleanup_assignments(copasi_model model, bool doWhile=false)
 		}
 
 	int retval = 1;
-	bool replace_needed = doWhile;
+	bool replace_needed = true;
 	
+#ifndef COPASI_NO_ASSIGNMENT_REORDERING
 	while (replace_needed)
 	{
 		replace_needed = false;
@@ -213,6 +214,7 @@ int copasi_cleanup_assignments(copasi_model model, bool doWhile=false)
 					}
 			}
 	}
+#endif
 
 	for (CCMap::iterator i = hash->begin(); i != hash->end(); i++)
 		if ((*i).second.species && !(*i).second.assignmentRule.empty())
@@ -1000,12 +1002,12 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 	return 0;
 }
 
-void cCompileModel(copasi_model model, int subs)
+void cCompileModel(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	
 	if (!pModel) return;
-	copasi_cleanup_assignments(model, (bool)subs);
+	copasi_cleanup_assignments(model);
 	
 	CCopasiVectorNS < CCompartment > & compartments = pModel->getCompartments();
 	CCopasiVector< CMetab > & species = pModel->getMetabolites();
@@ -1302,7 +1304,7 @@ tc_matrix cGetJacobian(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1376,7 +1378,7 @@ tc_matrix cGetSteadyStateUsingSimulation(copasi_model model, int maxiter)
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
 	
-	cCompileModel(model,0);
+	cCompileModel(model);
 
     int iter = 0;
     double err = 2.0, eps = 0.01, time = 10.0;
@@ -1471,7 +1473,7 @@ tc_matrix cGetSteadyState(copasi_model model)
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
 	
-	cCompileModel(model,1);
+	cCompileModel(model);
 
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	CTrajectoryTask* pTrajTask = dynamic_cast<CTrajectoryTask*>(TaskList["Time-Course"]);
@@ -1599,7 +1601,7 @@ tc_matrix cGetEigenvalues(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1656,7 +1658,7 @@ tc_matrix cGetUnscaledElasticities(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1724,7 +1726,7 @@ tc_matrix cGetUnscaledConcentrationControlCoeffs(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1792,7 +1794,7 @@ tc_matrix cGetUnscaledFluxControlCoeffs(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1860,7 +1862,7 @@ tc_matrix cGetScaledElasticities(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1928,7 +1930,7 @@ tc_matrix cGetScaledConcentrationConcentrationCoeffs(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1996,7 +1998,7 @@ tc_matrix cGetScaledFluxControlCoeffs(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,1);
+	cCompileModel(model);
 	
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -2114,7 +2116,7 @@ tc_matrix cGetReducedStoichiometryMatrix(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,0);
+	cCompileModel(model);
 	
 	CCopasiVector< CMetab > & species = pModel->getMetabolitesX();
 	CCopasiVectorNS < CReaction > & reacs = pModel->getReactions();
@@ -2143,7 +2145,7 @@ tc_matrix cGetFullStoichiometryMatrix(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,0);
+	cCompileModel(model);
 	
 	CCopasiVector< CMetab > & species = pModel->getMetabolites();
 	CCopasiVectorNS < CReaction > & reacs = pModel->getReactions();
@@ -2172,7 +2174,7 @@ tc_matrix cGetElementaryFluxModes(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	
 	if (!pModel || !pDataModel) return tc_createMatrix(0,0);
-	cCompileModel(model,0);
+	cCompileModel(model);
 	
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 

@@ -225,10 +225,9 @@ TCAPIEXPORT copasi_model cCreateModel(const char * name);
 /*! 
  \brief This function is only needed for calling COPASI methods not found in this library. This function compiles the COPASI model; it is called internally by the simulate and other anlysis functions. 
  \param copasi_model model
- \param int substitute nested assignments
  \ingroup create
 */
-TCAPIEXPORT void cCompileModel(copasi_model model, int substitute_nested_assignments);
+TCAPIEXPORT void cCompileModel(copasi_model model);
 
 
 /*! 
