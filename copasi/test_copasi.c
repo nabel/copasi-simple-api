@@ -9,44 +9,71 @@ void eigen(copasi_model, const char*); //compute eigenvalues by changing paramet
 
 int main()
 {
-	tc_matrix efm, output, params;
-	copasi_model m1, m2;
+	tc_matrix results;
+	copasi_model m;
 	
 	printf("creating model...\n");
-	m1 = model1();
-    //m1 = cReadSBMLFile("model1.sbml");
+	m = model1();
+    //m = cReadSBMLFile("model1.sbml");
     
 	printf("simulating...\n");	
-	output = cSimulateDeterministic(m1, 0, 20, 100);  //model, start, end, num. points
-	printf("output.tab has %i rows and %i columns\n",output.rows, output.cols);
-	tc_printMatrixToFile("output.tab", output);
-	tc_deleteMatrix(output);
+	results = cSimulateDeterministic(m, 0, 20, 100);  //model, start, end, num. points
+
+	printf("results.tab has simulation data\n\n");
+	tc_printMatrixToFile("results.tab", results);
+	tc_deleteMatrix(results);
+
+	results = cGetFluxes(m);
+
+	printf("fluxes:\n");
+	tc_printOutMatrix(results);
+	tc_deleteMatrix(results);
+
+	results = cGetDerivatives(m);
+
+	printf("\n\nderivatives:\n");
+	tc_printOutMatrix(results);
+	tc_deleteMatrix(results);
+	
+	
 	//printf("%s\n",m1.errorMessage);
-	/*params = tc_createMatrix(3,3);
+	/*
+	//the optmization code below works but 
+	//has been tested only a couple of times
+
+	//setup for optimization using GA
+	params = tc_createMatrix(3,3);
 	tc_setRowName(params,0,"k1");
 	tc_setRowName(params,1,"k2");
 	tc_setRowName(params,2,"k3");
+
+	//intial values
 	tc_setMatrixValue(params, 0, 0, 1);
 	tc_setMatrixValue(params, 0, 1, 0.0);
 	tc_setMatrixValue(params, 0, 2, 5.0);
+
+ 	//min values
 	tc_setMatrixValue(params, 1, 0, 1);
 	tc_setMatrixValue(params, 1, 1, 0.0);
 	tc_setMatrixValue(params, 1, 2, 5.0);
+
+	//max values
 	tc_setMatrixValue(params, 2, 0, 1);
 	tc_setMatrixValue(params, 2, 1, 0.0);
 	tc_setMatrixValue(params, 2, 2, 5.0);
 	
 	cSetValue(m1,"k1",2.0);
 	cSetValue(m1,"k2",1.0);
-	cSetValue(m1,"k3",1.0);*/
+	cSetValue(m1,"k3",1.0);
 	
-	//cSetOptimizerIterations(10);
-	//output = cOptimize(m1, "output.tab", params);
-	//tc_printMatrixToFile("params.out", output);
-	//tc_deleteMatrix(output);
+	cSetOptimizerIterations(10);  //set num interations
+	results = cOptimize(m1, "output.tab", params); //optimize
+	tc_printMatrixToFile("params.out", results);  //optimized parameters
+	tc_deleteMatrix(results);
+	*/
 
 	//cleanup	
-	cRemoveModel(m1);
+	cRemoveModel(m);
 	copasi_end();
 	return 0;
 }
