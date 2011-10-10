@@ -63,7 +63,7 @@ ADD_SUBDIRECTORY( sbml )    #systems biology markup language parser
 ADD_SUBDIRECTORY( antimony )   #human-readable test-based reaction networks
 ADD_SUBDIRECTORY( boost )      #regular expressions
 
-OPTION(DISABLE_ASSIGNMENT_REORDERING CACHE STRING "Turning this on can cause issues when assignment rules are dependent on one another" OFF)
+OPTION(DISABLE_ASSIGNMENT_REORDERING "Turning this on can cause issues when assignment rules are dependent on one another" OFF)
 ADD_SUBDIRECTORY( copasi )     #simulation and analysis package
 ADD_SUBDIRECTORY( libstructural )   #network structural analysis based on stoichiometry matrix
 ADD_SUBDIRECTORY( galib )   #genetic algorithms library
