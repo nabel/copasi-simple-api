@@ -789,6 +789,19 @@ TCAPIEXPORT void cSetOptimizerMutationRate(double);
 */
 TCAPIEXPORT void cSetOptimizerCrossoverRate(double);
 
+/*! 
+ \brief do not modify assignment rules
+             warning: disabling this may cause numerical errors in time-course simulations
+ \ingroup cleanup
+*/
+TCAPIEXPORT void cDisableAssignmentRuleReordering();
+
+/*! 
+ \brief modify assignment rules to avoid dependencies between assignment rules (default)
+ \ingroup cleanup
+*/
+TCAPIEXPORT void cEnableAssignmentRuleReordering();
+
 END_C_DECLS
 #endif
 
