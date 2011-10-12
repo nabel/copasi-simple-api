@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>CopasiAPI: Simplifed API for the COPASI Library</title>
+<title>COPASI C API: Simplifed API for the COPASI Library</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -26,10 +26,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">CopasiAPI
+   <div id="projectname">COPASI C API
    &#160;<span id="projectnumber">1.0</span>
    </div>
-   
+   <div id="projectbrief">Simple C API for COPASI simulation package</div>
   </td>
   
   
@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -106,9 +106,9 @@ Introduction</h2>
         
         printf(<span class="stringliteral">&quot;Antimony file written to model.txt\nSimulating...\n&quot;</span>);  
         output = <a class="code" href="group__simulation.html#ga2105addec217217e5443df8d4cac8405" title="Simulate using LSODA numerical integrator.">cSimulateDeterministic</a>(m1, 0, 100, 1000);  <span class="comment">//model, start, end, num. points</span>
-        printf(<span class="stringliteral">&quot;output.tab has %i rows and %i columns\n&quot;</span>,output.<a class="code" href="structtc__matrix.html#a061459acc9e078fa4699e0e349887215">rows</a>, output.<a class="code" href="structtc__matrix.html#a4407a60bc4387adae24cee658711f2d9">cols</a>);
-        tc_printMatrixToFile(<span class="stringliteral">&quot;output.tab&quot;</span>, output);
-        tc_deleteMatrix(output);
+        printf(<span class="stringliteral">&quot;output.tab has %i rows and %i columns\n&quot;</span>,output.<a class="code" href="structtc__matrix.html#a180a9c2fddabff7fca9f6edc30c7e528">rows</a>, output.<a class="code" href="structtc__matrix.html#a63c7febfd56bd520d20bb16ca6eeca9b">cols</a>);
+        <a class="code" href="_t_c__structs_8h.html#afd5e48e35113e4e575e6fd08da441ddf" title="Print a matrix to file.">tc_printMatrixToFile</a>(<span class="stringliteral">&quot;output.tab&quot;</span>, output);
+        <a class="code" href="_t_c__structs_8h.html#a4ced7d8d8f300f44d5deeb78d88a1c23" title="Delete a matrix.">tc_deleteMatrix</a>(output);
                  
         <a class="code" href="copasi__api_8h.html#abc2d742f859eb00c34198942b22aa44c" title="remove a model">cRemoveModel</a>(m1);
         <a class="code" href="copasi__api_8h.html#afb781ad02eaef984e47c868071ebd968" title="destroy copasi -- MUST BE CALLED at the end of program">copasi_end</a>();
@@ -123,7 +123,7 @@ Installation</h2>
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -135,7 +135,7 @@ Installation</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 15:58:57 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 12 2011 16:37:48 for COPASI C API by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
