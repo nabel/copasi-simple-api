@@ -681,7 +681,7 @@ TCAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model);
  \return int numberOfCompartments
  \ingroup compartment
 */
-TCAPIEXPORT int cGetNumberOfCompartments (copasi_model);
+TCAPIEXPORT int cGetNumberOfCompartments (copasi_model)
 
 /*! 
  \brief Get the list of compartment names
@@ -689,7 +689,7 @@ TCAPIEXPORT int cGetNumberOfCompartments (copasi_model);
  \return tc_string compartmentNames
  \ingroup compartment
 */
-TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model);
+TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model)
 
 
 /*! 
@@ -700,9 +700,7 @@ TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model);
  \ingroup compartment
 */
 TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int);
-{
-	 return 0.0;
-}
+
 
 /*! 
  \brief Set a compartment volume by index
@@ -712,9 +710,7 @@ TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int);
  \ingroup compartment
 */
 TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double);
-{
-	
-}
+
 
 // -----------------------------------------------------------------------
 /** \} */
