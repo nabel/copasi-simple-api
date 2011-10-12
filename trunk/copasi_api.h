@@ -482,7 +482,7 @@ TCAPIEXPORT tc_matrix cGetReactionRates(copasi_model);
  \return double array of reaction rates
  \ingroup reaction
 */
-TCAPIEXPORT double[] getReactionRatesEx(double[]);
+TCAPIEXPORT double[] cGetReactionRatesEx(double[]);
 
 // -----------------------------------------------------------------------
 /** \} */
