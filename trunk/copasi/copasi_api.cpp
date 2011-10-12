@@ -3403,13 +3403,13 @@ TCAPIEXPORT tc_string cGetGlobalParameterNames (copasi_model)
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-TCAPIEXPORT double cGetGlobalParameterByIndex (copasi_model, int);
+TCAPIEXPORT double cGetGlobalParameterByIndex (copasi_model, int)
 {
 	 return 0.0;
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-TCAPIEXPORT void cSetGlobalParameterByIndex (copasi_model, int, double);
+TCAPIEXPORT void cSetGlobalParameterByIndex (copasi_model, int, double)
 {
 	
 }
@@ -3438,13 +3438,13 @@ TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model)
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
-TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int);
+TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int)
 {
 	 return 0.0;
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double);
+TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double)
 {
 	
 }
