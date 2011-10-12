@@ -63,9 +63,18 @@
  \defgroup create Define models
  \brief Create models and set model components using code
 
- \defgroup state Get current state of system
+ \defgroup state Current state of system
  \brief Compute derivatives, fluxed, and other values of the system at the current state
 
+ \defgroup reaction Reaction group
+ \brief Get information about reaction rates
+  
+ \defgroup parameters Parameter group
+ \brief set and get global and local parameters
+ 
+ \defgroup compartment Compartment group
+ \brief set and get information on compartments
+ 
  \defgroup simulation Time-course simulation
  \brief Deterministic, stochastic, and hybrid simulation algorithms
 
@@ -130,6 +139,7 @@ typedef struct
 
 BEGIN_C_DECLS
 
+// -----------------------------------------------------------------------
 /**
   * @name Memory management
   */
@@ -147,6 +157,8 @@ TCAPIEXPORT void copasi_end();
 */
 TCAPIEXPORT void cRemoveModel(copasi_model);
 
+
+// -----------------------------------------------------------------------
 /** \} */
 /**
   * @name Read and write models
@@ -207,6 +219,7 @@ TCAPIEXPORT void cWriteSBMLFile(copasi_model model, const char * filename);
 TCAPIEXPORT void cWriteAntimonyFile(copasi_model model, const char * filename);
 
 
+// -----------------------------------------------------------------------
 /** \} */
 /**
   * @name Create model group
@@ -417,30 +430,128 @@ TCAPIEXPORT void cAddProduct(copasi_reaction reaction, const char * species, dou
 */
 TCAPIEXPORT int cSetReactionRate(copasi_reaction reaction, const char * formula);
 
+
+// -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name Get current state of system
+  * @name Reaction group
   */
 /** \{ */
 
 /*! 
- \brief get the current concentrations of all species
+ \brief Get the number of reactions in the model
+ \param copasi_model model
+ \return int Returns the number of reactions in the model
+ \ingroup reaction
+*/
+TCAPIEXPORT tc_matrix cGetNumberOfReactions (copasi_model);
+
+
+/*! 
+ \brief Get the list of reaction names
+ \param copasi_model model
+ \return tc_string array of char * and length n, where n = number of reactions
+ \ingroup reaction
+*/
+TCAPIEXPORT ts_string cGetReactionNames (copasi_model);
+
+
+/*! 
+ \brief Get the reaction rate for the ith reaction
+ \param copasi_model model
+ \param int reactionId
+ \return double reaction rate for ith reaction
+ \ingroup reaction
+*/
+TCAPIEXPORT int cGetReactionRate(copasi_model, int);
+
+
+/*! 
+ \brief Returns the vector of current reaction rates
+ \param copasi_modl model
+ \return double array of reaction rates
+ \ingroup reaction
+*/
+TCAPIEXPORT tc_matrix cGetReactionRates(copasi_model);
+
+
+/*! 
+ \brief Returns the rates of change given an array of new floating species concentrations
+ \param copasi_model model
+ \param double[] Array of floating concentrations
+ \return double array of reaction rates
+ \ingroup reaction
+*/
+TCAPIEXPORT double[] getReactionRatesEx(double[]);
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Current state of system
+  */
+/** \{ */
+
+/*! 
+ \brief Get the current concentrations of all species
  \param copasi_model model
  \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ The names of the species are included in the matrix column labels
  \ingroup state
 */
 TCAPIEXPORT tc_matrix cGetConcentrations(copasi_model);
 
 /*! 
- \brief get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume
+ \brief Get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume
  \param copasi_model model
  \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ The names of the species are included in the matrix column labels
  \ingroup state
 */
 TCAPIEXPORT tc_matrix cGetAmounts(copasi_model);
 
 /*! 
- \brief get the current concentration of a species
+ \brief Get a list of all species names, including floating and boundary species
+ \param copasi_model model
+ \return tc_string array of char * and length n, where n = number of species
+ \ingroup state
+*/
+TCAPIEXPOR tc_strings cGetAllSpeciesNames(copasi_model model);
+
+/*! 
+ \brief Get the number of floating species - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return number of species
+ \ingroup state
+*/
+TCAPIEXPOR int cGetNumberFloatingSpecies(copasi_model model);
+
+/*! 
+ \brief Get the number of boundary species - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return number of species
+ \ingroup state
+*/
+TCAPIEXPOR int cGetNumberBoundarySpecies(copasi_model model);
+
+
+/*! 
+ \brief Get a list the floating species names - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return tc_string array of char * and length n, where n = number of species
+ \ingroup state
+*/
+TCAPIEXPOR tc_strings cGetFloatingSpeciesNames(copasi_model model);
+
+/*! 
+ \brief Get a list of boundary species names - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return tc_string array of char * and length n, where n = number of species
+ \ingroup state
+*/
+TCAPIEXPOR tc_strings cGetBoundarySpeciesNames(copasi_model model);
+
+/*! 
+ \brief Get the current concentration of a species
  \param copasi_model model
  \param string species name
  \return double concentration. -1 indicates that a species by this name was not found
@@ -449,7 +560,7 @@ TCAPIEXPORT tc_matrix cGetAmounts(copasi_model);
 TCAPIEXPORT double cGetConcentration(copasi_model, const char * name);
 
 /*! 
- \brief get the current amount of a species. The amounts are calculated from the concentrations and compartment volume
+ \brief Get the current amount of a species. The amounts are calculated from the concentrations and compartment volume
  \param copasi_model model
  \param string species name
  \return double amount. -1 indicates that a species by this name was not found
@@ -463,21 +574,14 @@ TCAPIEXPORT double cGetAmount(copasi_model, const char * name);
  \return tc_matrix matrix of with 1 row and n columns, where n = number of species
  \ingroup state
 */
-TCAPIEXPORT tc_matrix cGetDerivatives(copasi_model);
-
-/*! 
- \brief Compute current flux through all the reactions
- \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of reactions
- \ingroup state
-*/
-TCAPIEXPORT tc_matrix cGetFluxes(copasi_model);
+TCAPIEXPORT tc_matrix cGetRatesOfChange(copasi_model);
 
 /*! 
  \brief Compute current flux through the given reactions
  \param copasi_model model
  \param string reaction name, e.g. "J1"
  \return double rate. If reaction by this name does not exist that NaN will be returned
+  The names of the fluxes are included in the matrix column labels
  \ingroup state
 */
 TCAPIEXPORT double cGetFlux(copasi_model, const char * name);
@@ -491,6 +595,57 @@ TCAPIEXPORT double cGetFlux(copasi_model, const char * name);
 */
 TCAPIEXPORT double cGetParticleFlux(copasi_model, const char * name);
 
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Parameter group
+  */
+/** \{ */
+
+/*! 
+ \brief Get the number of global parameters
+ \param copasi_model model
+ \return int numberOfGlobalParameters. Returns the number of gloabal parameters in the model
+ \ingroup parameter
+*/
+TCAPIEXPORT int cGetNumberOfGlobalParameters (copasi_model);
+
+/*! 
+ \brief Get the lsit of global parameter names
+ \param copasi_model model 
+ \return tc_string array of char * and length n, where n = number of global parameters
+ \ingroup parameter
+*/
+TCAPIEXPORT tc_string cGetGlobalParameterNames (copasi_model);
+
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Compartment group
+  */
+/** \{ */
+
+/*! 
+ \brief Get the number of compartments
+ \param copasi_model model
+ \return int numberOfCompartments
+ \ingroup compartment
+*/
+TCAPIEXPORT int cGetNumberOfCompartments (copasi_model);
+
+/*! 
+ \brief Get the list of compartment names
+ \param copasi_model model
+ \return tc_string compartmentNames
+ \ingroup compartment
+*/
+
+TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model);
+
+
+// -----------------------------------------------------------------------
 /** \} */
 /**
   * @name Time course simulation
@@ -547,6 +702,8 @@ TCAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, doub
 */
 TCAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, double endTime, int numSteps);
 
+
+// -----------------------------------------------------------------------
 /** \} */
 /**
   * @name Steady state analysis 
@@ -588,6 +745,8 @@ TCAPIEXPORT tc_matrix cGetJacobian(copasi_model model);
 */
 TCAPIEXPORT tc_matrix cGetEigenvalues(copasi_model model);
 
+
+// -----------------------------------------------------------------------
 /** \} */
 /**
   * @name Metabolic control analysis (MCA)
@@ -655,6 +814,7 @@ TCAPIEXPORT tc_matrix cGetUnscaledElasticities(copasi_model model);
 TCAPIEXPORT tc_matrix cGetScaledElasticities(copasi_model model);
 
 
+// -----------------------------------------------------------------------
 /** \} */
 /**
   * @name Stoichiometry matrix and matrix analysis
@@ -734,6 +894,7 @@ TCAPIEXPORT tc_matrix cGetLinkMatrix(copasi_model model);
 TCAPIEXPORT tc_matrix cGetL0Matrix(copasi_model model);
 
 
+// -----------------------------------------------------------------------
 /** \} */
 /**
   * @name Optimization
