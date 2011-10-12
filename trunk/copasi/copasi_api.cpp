@@ -282,6 +282,11 @@ void clearCopasiModel(copasi_model model)
 	hash->clear();
 }
 
+// ------------------------------------------------------------------
+// Create model group
+// ------------------------------------------------------------------
+
+
 copasi_model cCreateModel(const char * name)
 {
 	copasi_init();
@@ -3158,6 +3163,78 @@ int replaceSubstring(std::string& s,const std::string& from, const std::string& 
 	return cnt;
 }
 
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT tc_matrix cGetNumberOfReactions (copasi_model);
+{
+	  return 0;
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT ts_string cGetReactionNames (copasi_model);
+{
+	return tc_createStringsArray(0);
+}
+
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT int cGetReactionRate(copasi_model, int);
+{
+	return 0;
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT double[] getReactionRatesEx(double[])
+{
+  return null;	
+}
+
+TCAPIEXPORT tc_matrix cGetReactionRates(copasi_model);
+
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	
+	if (!pModel) return tc_createMatrix(0,0);
+
+	const CCopasiVectorNS < CReaction > & reactions = pModel->getReactions();
+
+	tc_matrix res  = tc_createMatrix(1, reactions.size());
+
+	for (int i=0; i < reactions.size(); ++i)
+		if (reactions[i])
+		{
+			tc_setColumnName(res, i, reactions[i]->getObjectName().c_str());
+			tc_setMatrixValue(res, 0, i, reactions[i]->calculateFlux());
+		}
+	
+	return res;
+}
+
+
+// --------------------------------------------------------------------
+
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR tc_strings cGetFloatingSpeciesNames(copasi_model model)
+{
+	return tc_createStringsArray(0);
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR tc_strings cGetBoundarySpeciesNames(copasi_model model)
+{
+	return tc_createStringsArray(0);
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR int cGetNumberFloatingSpecies(copasi_model model);
+{
+	return 0;
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR int cGetNumberBoundarySpecies(copasi_model model);
+{
+	return 0;
+}
 
 tc_matrix cGetConcentrations(copasi_model model)
 {
@@ -3177,6 +3254,27 @@ tc_matrix cGetConcentrations(copasi_model model)
 			tc_setMatrixValue(res, 0, i, species[i]->getConcentration());
 		}
 	
+	return res;
+}
+
+
+tc_strings cGetAllSpeciesNames(copasi_model model)
+{
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	CCMap * hash = (CCMap*)(model.qHash);
+	
+	if (!pModel) return tc_createStringsArray(0);
+
+	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
+
+	tc_matrix res  = return tc_createStringsArray(species.size());
+
+	for (int i=0; i < species.size(); ++i)
+		if (species[i])
+		{
+			tc_setString(res, i, species[i]->getObjectName().c_str());
+		}
+
 	return res;
 }
 
@@ -3230,7 +3328,7 @@ double cGetAmount(copasi_model model, const char * name)
 	return CMetab::convertToNumber( p.species->getConcentration(), *p.species->getCompartment(), pModel );
 }
 
-tc_matrix cGetDerivatives(copasi_model model)
+tc_matrix cGetRatesOfChange(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	
@@ -3250,26 +3348,6 @@ tc_matrix cGetDerivatives(copasi_model model)
 		}
 	
 	pModel->calculateDerivatives(res.values);
-	return res;
-}
-
-tc_matrix cGetFluxes(copasi_model model)
-{
-	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	
-	if (!pModel) return tc_createMatrix(0,0);
-
-	const CCopasiVectorNS < CReaction > & reactions = pModel->getReactions();
-
-	tc_matrix res  = tc_createMatrix(1, reactions.size());
-
-	for (int i=0; i < reactions.size(); ++i)
-		if (reactions[i])
-		{
-			tc_setColumnName(res, i, reactions[i]->getObjectName().c_str());
-			tc_setMatrixValue(res, 0, i, reactions[i]->calculateFlux());
-		}
-	
 	return res;
 }
 
@@ -3307,3 +3385,33 @@ double cGetParticleFlux(copasi_model model, const char * name)
 	return p.reaction->calculateParticleFlux();
 }
 
+
+// ------------------------------------------------------------------
+// Parameter Group
+// ------------------------------------------------------------------
+
+TCAPIEXPORT int cGetNumberOfGlobalParameters (copasi_model)
+{
+	return 0;
+}
+
+TCAPIEXPORT tc_string cGetGlobalParameterNames (copasi_model)
+{
+	return tc_createStringsArray(0);
+}
+
+// ------------------------------------------------------------------
+// Compartment Group
+// ------------------------------------------------------------------
+
+
+TCAPIEXPORT int cGetNumberOfCompartments (copasi_model)
+{
+	return 0;
+}
+
+
+TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model)
+{
+	return tc_createStringsArray(0);
+}
