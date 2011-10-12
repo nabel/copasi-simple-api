@@ -3390,28 +3390,61 @@ double cGetParticleFlux(copasi_model model, const char * name)
 // Parameter Group
 // ------------------------------------------------------------------
 
+// STUB: NEEDS TO BE IMPLEMENTED
 TCAPIEXPORT int cGetNumberOfGlobalParameters (copasi_model)
 {
 	return 0;
 }
 
+// STUB: NEEDS TO BE IMPLEMENTED
 TCAPIEXPORT tc_string cGetGlobalParameterNames (copasi_model)
 {
 	return tc_createStringsArray(0);
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT double cGetGlobalParameterByIndex (copasi_model, int);
+{
+	 return 0.0;
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT void cSetGlobalParameterByIndex (copasi_model, int, double);
+{
+	
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model)
+{
+	return tc_createMatrix(0,0);
 }
 
 // ------------------------------------------------------------------
 // Compartment Group
 // ------------------------------------------------------------------
 
-
+// STUB: NEEDS TO BE IMPLEMENTED
 TCAPIEXPORT int cGetNumberOfCompartments (copasi_model)
 {
 	return 0;
 }
 
-
+// STUB: NEEDS TO BE IMPLEMENTED
 TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model)
 {
 	return tc_createStringsArray(0);
+}
+
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int);
+{
+	 return 0.0;
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double);
+{
+	
 }
