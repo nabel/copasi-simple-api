@@ -69,6 +69,12 @@
  \defgroup reaction Reaction group
  \brief Get information about reaction rates
   
+ \defgroup boundary Boundary species group
+ \brief Get information about reaction rates
+ 
+ \defgroup floating Floating species group
+ \brief Get information about reaction rates
+  
  \defgroup parameters Parameter group
  \brief set and get global and local parameters
  
@@ -487,6 +493,54 @@ TCAPIEXPORT double[] cGetReactionRatesEx(double[]);
 // -----------------------------------------------------------------------
 /** \} */
 /**
+  * @name Boundary Species Group
+  */
+/** \{ */
+
+/*! 
+ \brief Get the number of boundary species - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return number of species
+ \ingroup boundary
+*/
+TCAPIEXPOR int cGetNumberBoundarySpecies(copasi_model model);
+
+
+/*! 
+ \brief Get a list of boundary species names - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return tc_string array of char * and length n, where n = number of species
+ \ingroup state
+*/
+TCAPIEXPOR tc_strings cGetBoundarySpeciesNames(copasi_model model);
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Floating Species Group
+  */
+/** \{ */
+
+/*! 
+ \brief Get the number of floating species - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return number of species
+ \ingroup floating
+*/
+TCAPIEXPOR int cGetNumberFloatingSpecies(copasi_model model);
+
+/*! 
+ \brief Get a list the floating species names - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return tc_string array of char * and length n, where n = number of species
+ \ingroup state
+*/
+TCAPIEXPOR tc_strings cGetFloatingSpeciesNames(copasi_model model);
+
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
   * @name Current state of system
   */
 /** \{ */
@@ -517,38 +571,6 @@ TCAPIEXPORT tc_matrix cGetAmounts(copasi_model);
 */
 TCAPIEXPOR tc_strings cGetAllSpeciesNames(copasi_model model);
 
-/*! 
- \brief Get the number of floating species - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return number of species
- \ingroup state
-*/
-TCAPIEXPOR int cGetNumberFloatingSpecies(copasi_model model);
-
-/*! 
- \brief Get the number of boundary species - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return number of species
- \ingroup state
-*/
-TCAPIEXPOR int cGetNumberBoundarySpecies(copasi_model model);
-
-
-/*! 
- \brief Get a list the floating species names - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return tc_string array of char * and length n, where n = number of species
- \ingroup state
-*/
-TCAPIEXPOR tc_strings cGetFloatingSpeciesNames(copasi_model model);
-
-/*! 
- \brief Get a list of boundary species names - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return tc_string array of char * and length n, where n = number of species
- \ingroup state
-*/
-TCAPIEXPOR tc_strings cGetBoundarySpeciesNames(copasi_model model);
 
 /*! 
  \brief Get the current concentration of a species
@@ -612,12 +634,38 @@ TCAPIEXPORT double cGetParticleFlux(copasi_model, const char * name);
 TCAPIEXPORT int cGetNumberOfGlobalParameters (copasi_model);
 
 /*! 
- \brief Get the lsit of global parameter names
+ \brief Get the list of global parameter names
  \param copasi_model model 
  \return tc_string array of char * and length n, where n = number of global parameters
  \ingroup parameter
 */
 TCAPIEXPORT tc_string cGetGlobalParameterNames (copasi_model);
+
+/*! 
+ \brief Get the value of a global parameter by index
+ \param copasi_model model 
+ \param int index ith global parameter
+ \return double returned value of parameter
+ \ingroup parameter
+*/
+TCAPIEXPORT double cGetGlobalParameterByIndex (copasi_model, int);
+
+/*! 
+ \brief Set the value of a global parameter by index
+ \param copasi_model model 
+ \param int index ith global parameter
+ \param double Value to set parameter to
+ \ingroup parameter
+*/
+TCAPIEXPORT void cSetGlobalParameterByIndex (copasi_model, int, double);
+
+/*! 
+ \brief Get a list of the global parameters
+ \param copasi_model model 
+ \return tc_matrix A vector containing the values for the global parameters.
+ \ingroup parameter
+*/
+TCAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model);
 
 
 // -----------------------------------------------------------------------
@@ -641,9 +689,32 @@ TCAPIEXPORT int cGetNumberOfCompartments (copasi_model);
  \return tc_string compartmentNames
  \ingroup compartment
 */
-
 TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model);
 
+
+/*! 
+ \brief Get the compartment volume by index
+ \param copasi_model model
+ \param int index ith compartment
+ \return double Voluem of compartment 
+ \ingroup compartment
+*/
+TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int);
+{
+	 return 0.0;
+}
+
+/*! 
+ \brief Set a compartment volume by index
+ \param copasi_model model
+ \param int index ith compartment
+ \param double volume Volume of ith compartment
+ \ingroup compartment
+*/
+TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double);
+{
+	
+}
 
 // -----------------------------------------------------------------------
 /** \} */
@@ -675,7 +746,6 @@ TCAPIEXPORT tc_matrix cSimulateDeterministic(copasi_model model, double startTim
  \param double end time
  \param int number of steps in the output
  \return tc_matrix matrix of concentration or particles
- 
  \ingroup simulation
 */
 TCAPIEXPORT tc_matrix cSimulateStochastic(copasi_model model, double startTime, double endTime, int numSteps);
