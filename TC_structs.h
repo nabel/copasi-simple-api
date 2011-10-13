@@ -78,8 +78,8 @@ typedef struct
 {
 	int rows, cols;
 	char ** strings;
-	tc_strings rownames;
-	tc_strings colnames;
+	tc_strings rownames;  /*!< Pointer to list of column labels */
+	tc_strings colnames;  /*!< Pointer to list of column labels */
 } tc_table;
 
 
