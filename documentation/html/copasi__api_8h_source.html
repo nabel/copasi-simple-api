@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>COPASI C API: C:/Users/Deepak/Projects/copasi-simple-api/copasi_api.h Source File</title>
+<title>CopasiAPI: copasi_api.h Source File</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -26,10 +26,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">COPASI C API
+   <div id="projectname">CopasiAPI
    &#160;<span id="projectnumber">1.0</span>
    </div>
-   <div id="projectbrief">Simple C API for COPASI simulation package</div>
+   
   </td>
   
   
@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,256 +70,314 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 <div class="header">
   <div class="headertitle">
-<div class="title">C:/Users/Deepak/Projects/copasi-simple-api/copasi_api.h</div>  </div>
+<div class="title">copasi_api.h</div>  </div>
 </div>
 <div class="contents">
 <a href="copasi__api_8h.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 
-<a name="l00091"></a>00091 <span class="preprocessor">#ifndef COPASI_SIMPLE_C_API</span>
-<a name="l00092"></a>00092 <span class="preprocessor"></span><span class="preprocessor">#define COPASI_SIMPLE_C_API</span>
-<a name="l00093"></a>00093 <span class="preprocessor"></span>
-<a name="l00112"></a>00112 <span class="preprocessor">#include &quot;<a class="code" href="_t_c__structs_8h.html" title="Additional structures and methods used with the Simple C API.">TC_structs.h</a>&quot;</span>
-<a name="l00113"></a>00113 
-<a name="l00115"></a><a class="code" href="structcopasi__model.html">00115</a> <span class="keyword">typedef</span> <span class="keyword">struct  </span>
-<a name="l00116"></a>00116 { 
-<a name="l00117"></a>00117         <span class="keywordtype">void</span> * CopasiModelPtr;
-<a name="l00118"></a>00118         <span class="keywordtype">void</span> * CopasiDataModelPtr;
-<a name="l00119"></a>00119         <span class="keywordtype">void</span> * qHash;
-<a name="l00120"></a>00120         <span class="keywordtype">char</span> * errorMessage;
-<a name="l00121"></a>00121         <span class="keywordtype">char</span> * warningMessage;
-<a name="l00122"></a>00122 } <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>;
-<a name="l00123"></a>00123 
-<a name="l00125"></a><a class="code" href="structcopasi__reaction.html">00125</a> <span class="keyword">typedef</span> <span class="keyword">struct  </span>
-<a name="l00126"></a>00126 {
-<a name="l00127"></a>00127         <span class="keywordtype">void</span> * CopasiReactionPtr;
-<a name="l00128"></a>00128         <span class="keywordtype">void</span> * CopasiModelPtr;
-<a name="l00129"></a>00129         <span class="keywordtype">void</span> * qHash; 
-<a name="l00130"></a>00130 } <a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a>;
-<a name="l00131"></a>00131 
-<a name="l00133"></a><a class="code" href="structcopasi__compartment.html">00133</a> <span class="keyword">typedef</span> <span class="keyword">struct  </span>
-<a name="l00134"></a>00134 {
-<a name="l00135"></a>00135         <span class="keywordtype">void</span> * CopasiCompartmentPtr;
-<a name="l00136"></a>00136         <span class="keywordtype">void</span> * CopasiModelPtr; 
-<a name="l00137"></a>00137         <span class="keywordtype">void</span> * qHash; 
-<a name="l00138"></a>00138 } <a class="code" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a>;
-<a name="l00139"></a>00139 
-<a name="l00140"></a>00140 BEGIN_C_DECLS
-<a name="l00141"></a>00141 
-<a name="l00142"></a>00142 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00152"></a>00152 <span class="comment"></span>TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="copasi__api_8h.html#afb781ad02eaef984e47c868071ebd968" title="destroy copasi -- MUST BE CALLED at the end of program">copasi_end</a>();
-<a name="l00153"></a>00153 
-<a name="l00158"></a>00158 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="copasi__api_8h.html#abc2d742f859eb00c34198942b22aa44c" title="remove a model">cRemoveModel</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
-<a name="l00159"></a>00159 
-<a name="l00160"></a>00160 
-<a name="l00161"></a>00161 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00174"></a>00174 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#ga47461611858d592fedeb39f141b37d2a" title="Create a model from an Antimony, see antimony.sf.net for details of Antimony syntax.">cReadAntimonyFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
-<a name="l00175"></a>00175 
-<a name="l00176"></a>00176 
-<a name="l00183"></a>00183 TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#gaaf526d1776eecbae273a702083f35136" title="Create a model from an Antimony string.">cReadAntimonyString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * sbml);
+<a name="l00100"></a>00100 <span class="preprocessor">#ifndef COPASI_SIMPLE_C_API</span>
+<a name="l00101"></a>00101 <span class="preprocessor"></span><span class="preprocessor">#define COPASI_SIMPLE_C_API</span>
+<a name="l00102"></a>00102 <span class="preprocessor"></span>
+<a name="l00121"></a>00121 <span class="preprocessor">#include &quot;<a class="code" href="_t_c__structs_8h.html" title="Additional structures and methods used with the Simple C API.">TC_structs.h</a>&quot;</span>
+<a name="l00122"></a>00122 
+<a name="l00124"></a><a class="code" href="structcopasi__model.html">00124</a> <span class="keyword">typedef</span> <span class="keyword">struct  </span>
+<a name="l00125"></a>00125 { 
+<a name="l00126"></a>00126         <span class="keywordtype">void</span> * CopasiModelPtr;
+<a name="l00127"></a>00127         <span class="keywordtype">void</span> * CopasiDataModelPtr;
+<a name="l00128"></a>00128         <span class="keywordtype">void</span> * qHash;
+<a name="l00129"></a>00129         <span class="keywordtype">char</span> * errorMessage;
+<a name="l00130"></a>00130         <span class="keywordtype">char</span> * warningMessage;
+<a name="l00131"></a>00131 } <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>;
+<a name="l00132"></a>00132 
+<a name="l00134"></a><a class="code" href="structcopasi__reaction.html">00134</a> <span class="keyword">typedef</span> <span class="keyword">struct  </span>
+<a name="l00135"></a>00135 {
+<a name="l00136"></a>00136         <span class="keywordtype">void</span> * CopasiReactionPtr;
+<a name="l00137"></a>00137         <span class="keywordtype">void</span> * CopasiModelPtr;
+<a name="l00138"></a>00138         <span class="keywordtype">void</span> * qHash; 
+<a name="l00139"></a>00139 } <a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a>;
+<a name="l00140"></a>00140 
+<a name="l00142"></a><a class="code" href="structcopasi__compartment.html">00142</a> <span class="keyword">typedef</span> <span class="keyword">struct  </span>
+<a name="l00143"></a>00143 {
+<a name="l00144"></a>00144         <span class="keywordtype">void</span> * CopasiCompartmentPtr;
+<a name="l00145"></a>00145         <span class="keywordtype">void</span> * CopasiModelPtr; 
+<a name="l00146"></a>00146         <span class="keywordtype">void</span> * qHash; 
+<a name="l00147"></a>00147 } <a class="code" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a>;
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149 BEGIN_C_DECLS
+<a name="l00150"></a>00150 
+<a name="l00151"></a>00151 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00161"></a>00161 <span class="comment"></span>TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="copasi__api_8h.html#afb781ad02eaef984e47c868071ebd968" title="destroy copasi -- MUST BE CALLED at the end of program">copasi_end</a>();
+<a name="l00162"></a>00162 
+<a name="l00167"></a>00167 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="copasi__api_8h.html#abc2d742f859eb00c34198942b22aa44c" title="remove a model">cRemoveModel</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00168"></a>00168 
+<a name="l00169"></a>00169 
+<a name="l00170"></a>00170 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00183"></a>00183 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#ga47461611858d592fedeb39f141b37d2a" title="Create a model from an Antimony, see antimony.sf.net for details of Antimony syntax.">cReadAntimonyFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
 <a name="l00184"></a>00184 
 <a name="l00185"></a>00185 
-<a name="l00192"></a>00192 TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#gabc7ff9a39c495829cf55f2a9ad0e3829" title="Create a model from an SBML file.">cReadSBMLFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
+<a name="l00192"></a>00192 TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#gaaf526d1776eecbae273a702083f35136" title="Create a model from an Antimony string.">cReadAntimonyString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * sbml);
 <a name="l00193"></a>00193 
 <a name="l00194"></a>00194 
-<a name="l00201"></a>00201 TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#ga22a36c8d5b5e8ac8643e774014feb7df" title="Create a model from an SBML string.">cReadSBMLString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * sbml);
+<a name="l00201"></a>00201 TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#gabc7ff9a39c495829cf55f2a9ad0e3829" title="Create a model from an SBML file.">cReadSBMLFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
 <a name="l00202"></a>00202 
 <a name="l00203"></a>00203 
-<a name="l00210"></a>00210 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__loadsave.html#ga8f781345fc19529439bbe6d42c9c3355" title="Save a model as an SBML file.">cWriteSBMLFile</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
+<a name="l00210"></a>00210 TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__loadsave.html#ga22a36c8d5b5e8ac8643e774014feb7df" title="Create a model from an SBML string.">cReadSBMLString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * sbml);
 <a name="l00211"></a>00211 
 <a name="l00212"></a>00212 
-<a name="l00219"></a>00219 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__loadsave.html#ga44cb74d3541273cfc7e64e7e3e0f2359" title="Save a model as an Antimony file, see antimony.sf.net for details of Antimony syntax.">cWriteAntimonyFile</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
+<a name="l00219"></a>00219 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__loadsave.html#ga8f781345fc19529439bbe6d42c9c3355" title="Save a model as an SBML file.">cWriteSBMLFile</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
 <a name="l00220"></a>00220 
 <a name="l00221"></a>00221 
-<a name="l00222"></a>00222 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00235"></a>00235 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__create.html#gae797f3bdea43852219b02deb7c3a83f3" title="Create a model.">cCreateModel</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
-<a name="l00236"></a>00236 
-<a name="l00237"></a>00237 
-<a name="l00243"></a>00243 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaf577781bb2cbd0e574b67553bcd1e871" title="This function is only needed for calling COPASI methods not found in this library. This function compiles the COPASI model; it is called internally by the simulate and other anlysis functions.">cCompileModel</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00244"></a>00244 
+<a name="l00228"></a>00228 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__loadsave.html#ga44cb74d3541273cfc7e64e7e3e0f2359" title="Save a model as an Antimony file, see antimony.sf.net for details of Antimony syntax.">cWriteAntimonyFile</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * filename);
+<a name="l00229"></a>00229 
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00244"></a>00244 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> <a class="code" href="group__create.html#gae797f3bdea43852219b02deb7c3a83f3" title="Create a model.">cCreateModel</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> * name);
 <a name="l00245"></a>00245 
-<a name="l00253"></a>00253 TCAPIEXPORT <a class="code" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a> <a class="code" href="group__create.html#ga2256ee7e63c6d4481aa88de4a7197744" title="Create compartment.">cCreateCompartment</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <span class="keywordtype">double</span> volume);
+<a name="l00246"></a>00246 
+<a name="l00252"></a>00252 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaf577781bb2cbd0e574b67553bcd1e871" title="This function is only needed for calling COPASI methods not found in this library. This function compiles the COPASI model; it is called internally by the simulate and other anlysis functions.">cCompileModel</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00253"></a>00253 
 <a name="l00254"></a>00254 
-<a name="l00255"></a>00255 
-<a name="l00263"></a>00263 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#ga058f2de9af7a432acda12ef753607560" title="Set a volume of compartment.">cSetVolume</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * compartment, <span class="keywordtype">double</span> volume);
+<a name="l00262"></a>00262 TCAPIEXPORT <a class="code" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a> <a class="code" href="group__create.html#ga2256ee7e63c6d4481aa88de4a7197744" title="Create compartment.">cCreateCompartment</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <span class="keywordtype">double</span> volume);
+<a name="l00263"></a>00263 
 <a name="l00264"></a>00264 
-<a name="l00265"></a>00265 
-<a name="l00276"></a>00276 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#gad0116984e87902a9b608a08717570a20" title="Set the concentration of a species, volume of a compartment, or value of a parameter The function wil...">cSetValue</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">double</span> value);
-<a name="l00277"></a>00277 
-<a name="l00278"></a>00278 
-<a name="l00286"></a>00286 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaa32ab75587401cfc24428e86a0d215b5" title="Add a species to the model.">cCreateSpecies</a>(<a class="code" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a> compartment, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <span class="keywordtype">double</span> initialValue);
+<a name="l00272"></a>00272 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#ga058f2de9af7a432acda12ef753607560" title="Set a volume of compartment.">cSetVolume</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * compartment, <span class="keywordtype">double</span> volume);
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274 
+<a name="l00285"></a>00285 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#gad0116984e87902a9b608a08717570a20" title="Set the concentration of a species, volume of a compartment, or value of a parameter The function wil...">cSetValue</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">double</span> value);
+<a name="l00286"></a>00286 
 <a name="l00287"></a>00287 
-<a name="l00288"></a>00288 
-<a name="l00296"></a>00296 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#ga47c4b62f7a401d970fcd5591cd812023" title="Set a species as boundary or floating (will remove any assignment rules)">cSetSpeciesType</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">int</span> isBoundary);
+<a name="l00295"></a>00295 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaa32ab75587401cfc24428e86a0d215b5" title="Add a species to the model.">cCreateSpecies</a>(<a class="code" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a> compartment, <span class="keyword">const</span> <span class="keywordtype">char</span>* name, <span class="keywordtype">double</span> initialValue);
+<a name="l00296"></a>00296 
 <a name="l00297"></a>00297 
-<a name="l00298"></a>00298 
-<a name="l00306"></a>00306 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaacba2364a8b2e16b06bd0da8d8cf64a8" title="Set a species concentration.">cSetConcentration</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> conc);
+<a name="l00305"></a>00305 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#ga47c4b62f7a401d970fcd5591cd812023" title="Set a species as boundary or floating (will remove any assignment rules)">cSetSpeciesType</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">int</span> isBoundary);
+<a name="l00306"></a>00306 
 <a name="l00307"></a>00307 
-<a name="l00315"></a>00315 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#ga89583b7a6246f28b95ed55cfb2ce13ba" title="Set a species amounts.">cSetAmount</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> amount);
+<a name="l00315"></a>00315 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaacba2364a8b2e16b06bd0da8d8cf64a8" title="Set a species concentration.">cSetConcentration</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> conc);
 <a name="l00316"></a>00316 
-<a name="l00317"></a>00317 
-<a name="l00330"></a>00330 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#ga3dfda78229a90f1bb8916a215a594d23" title="Set the assignment rule for a species (automatically assumes boundary species)">cSetAssignmentRule</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
-<a name="l00331"></a>00331 
-<a name="l00332"></a>00332 
-<a name="l00341"></a>00341 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#gacf1a8676b569ae54e95d23f3bd9c9424" title="Set the value of an existing global parameter or create a new global parameter.">cSetGlobalParameter</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">double</span> value);
-<a name="l00342"></a>00342 
-<a name="l00343"></a>00343 
-<a name="l00352"></a>00352 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#gadab52a6ffc91d247d311c5dcfb66c216" title="Create a new variable that is not a constant by a formula.">cCreateVariable</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
-<a name="l00353"></a>00353 
-<a name="l00354"></a>00354 
-<a name="l00370"></a>00370 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#ga94cbbd1a04cf521ec9342ffa61deb1e9" title="Add a trigger and a response, where the response is defined by a target variable and an assignment fo...">cCreateEvent</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keyword">const</span> <span class="keywordtype">char</span> * trigger, <span class="keyword">const</span> <span class="keywordtype">char</span> * variable, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
-<a name="l00371"></a>00371 
-<a name="l00372"></a>00372 
-<a name="l00384"></a>00384 TCAPIEXPORT <a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> <a class="code" href="group__create.html#ga7e704796eebcdb6e138ff7bfa64ff1a4" title="Create a new reaction with a given name.">cCreateReaction</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span>* name);
-<a name="l00385"></a>00385 
-<a name="l00386"></a>00386 
-<a name="l00398"></a>00398 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaea1d98a0d70811e2e1387363414b27d8" title="Add a reactant to a reaction.">cAddReactant</a>(<a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> reaction, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> stoichiometry);
-<a name="l00399"></a>00399 
-<a name="l00416"></a>00416 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gab24bea25b0e39d1c76a060c3b51436e6" title="Add a product to a reaction.">cAddProduct</a>(<a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> reaction, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> stoichiometry);
-<a name="l00417"></a>00417 
-<a name="l00431"></a>00431 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#ga01316099febb0ab0223aabae0a16d85b" title="Set reaction rate equation.">cSetReactionRate</a>(<a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> reaction, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
-<a name="l00432"></a>00432 
-<a name="l00433"></a>00433 
-<a name="l00434"></a>00434 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00447"></a>00447 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__reaction.html#gac90d323b8395f59e1030b1d7be6ab803" title="Get the number of reactions in the model.">cGetNumberOfReactions</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
-<a name="l00448"></a>00448 
-<a name="l00449"></a>00449 
-<a name="l00456"></a>00456 TCAPIEXPORT ts_string <a class="code" href="group__reaction.html#ga6f2b751655575d86cbd02cfb6009e71c" title="Get the list of reaction names.">cGetReactionNames</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00324"></a>00324 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#ga89583b7a6246f28b95ed55cfb2ce13ba" title="Set a species amounts.">cSetAmount</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> amount);
+<a name="l00325"></a>00325 
+<a name="l00326"></a>00326 
+<a name="l00339"></a>00339 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#ga3dfda78229a90f1bb8916a215a594d23" title="Set the assignment rule for a species (automatically assumes boundary species)">cSetAssignmentRule</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
+<a name="l00340"></a>00340 
+<a name="l00341"></a>00341 
+<a name="l00350"></a>00350 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#gacf1a8676b569ae54e95d23f3bd9c9424" title="Set the value of an existing global parameter or create a new global parameter.">cSetGlobalParameter</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keywordtype">double</span> value);
+<a name="l00351"></a>00351 
+<a name="l00352"></a>00352 
+<a name="l00361"></a>00361 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#gadab52a6ffc91d247d311c5dcfb66c216" title="Create a new variable that is not a constant by a formula.">cCreateVariable</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
+<a name="l00362"></a>00362 
+<a name="l00363"></a>00363 
+<a name="l00379"></a>00379 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#ga94cbbd1a04cf521ec9342ffa61deb1e9" title="Add a trigger and a response, where the response is defined by a target variable and an assignment fo...">cCreateEvent</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * name, <span class="keyword">const</span> <span class="keywordtype">char</span> * trigger, <span class="keyword">const</span> <span class="keywordtype">char</span> * variable, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
+<a name="l00380"></a>00380 
+<a name="l00381"></a>00381 
+<a name="l00393"></a>00393 TCAPIEXPORT <a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> <a class="code" href="group__create.html#ga7e704796eebcdb6e138ff7bfa64ff1a4" title="Create a new reaction with a given name.">cCreateReaction</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span>* name);
+<a name="l00394"></a>00394 
+<a name="l00395"></a>00395 
+<a name="l00407"></a>00407 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gaea1d98a0d70811e2e1387363414b27d8" title="Add a reactant to a reaction.">cAddReactant</a>(<a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> reaction, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> stoichiometry);
+<a name="l00408"></a>00408 
+<a name="l00425"></a>00425 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__create.html#gab24bea25b0e39d1c76a060c3b51436e6" title="Add a product to a reaction.">cAddProduct</a>(<a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> reaction, <span class="keyword">const</span> <span class="keywordtype">char</span> * species, <span class="keywordtype">double</span> stoichiometry);
+<a name="l00426"></a>00426 
+<a name="l00440"></a>00440 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__create.html#ga01316099febb0ab0223aabae0a16d85b" title="Set reaction rate equation.">cSetReactionRate</a>(<a class="code" href="structcopasi__reaction.html" title="This struct is used to contain a pointer to an instance of a COPASI reaction object.">copasi_reaction</a> reaction, <span class="keyword">const</span> <span class="keywordtype">char</span> * formula);
+<a name="l00441"></a>00441 
+<a name="l00442"></a>00442 
+<a name="l00443"></a>00443 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00456"></a>00456 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__reaction.html#gac90d323b8395f59e1030b1d7be6ab803" title="Get the number of reactions in the model.">cGetNumberOfReactions</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
 <a name="l00457"></a>00457 
 <a name="l00458"></a>00458 
-<a name="l00466"></a>00466 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__reaction.html#ga1e4639e3657d6f5f9235c8aefe64b6f7" title="Get the reaction rate for the ith reaction.">cGetReactionRate</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keywordtype">int</span>);
+<a name="l00465"></a>00465 TCAPIEXPORT ts_string <a class="code" href="group__reaction.html#ga6f2b751655575d86cbd02cfb6009e71c" title="Get the list of reaction names.">cGetReactionNames</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00466"></a>00466 
 <a name="l00467"></a>00467 
-<a name="l00468"></a>00468 
-<a name="l00475"></a>00475 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__reaction.html#gaacddbd9a97c446e3ce0c842852cdbc02" title="Returns the vector of current reaction rates.">cGetReactionRates</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00475"></a>00475 TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__reaction.html#ga1e4639e3657d6f5f9235c8aefe64b6f7" title="Get the reaction rate for the ith reaction.">cGetReactionRate</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keywordtype">int</span>);
 <a name="l00476"></a>00476 
 <a name="l00477"></a>00477 
-<a name="l00485"></a>00485 TCAPIEXPORT <span class="keywordtype">double</span>[] <a class="code" href="group__reaction.html#ga8778368a59ab9d7759858f813ad18ef3" title="Returns the rates of change given an array of new floating species concentrations.">cGetReactionRatesEx</a>(<span class="keywordtype">double</span>[]);
+<a name="l00484"></a>00484 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__reaction.html#gaacddbd9a97c446e3ce0c842852cdbc02" title="Returns the vector of current reaction rates.">cGetReactionRates</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00485"></a>00485 
 <a name="l00486"></a>00486 
-<a name="l00487"></a>00487 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00501"></a>00501 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__state.html#ga60817c141f5392d9c2769967da2c2d06" title="Get the current concentrations of all species.">cGetConcentrations</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
-<a name="l00502"></a>00502 
-<a name="l00510"></a>00510 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__state.html#gaf9c47999fbb983801d06eeb99c204014" title="Get the current amounts of all species. The amounts are calculated from the concentrations and compar...">cGetAmounts</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00494"></a>00494 TCAPIEXPORT <span class="keywordtype">double</span>[] <a class="code" href="group__reaction.html#ga8778368a59ab9d7759858f813ad18ef3" title="Returns the rates of change given an array of new floating species concentrations.">cGetReactionRatesEx</a>(<span class="keywordtype">double</span>[]);
+<a name="l00495"></a>00495 
+<a name="l00496"></a>00496 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00509"></a>00509 <span class="comment"></span>TCAPIEXPOR <span class="keywordtype">int</span> <a class="code" href="group__boundary.html#ga226f7f1f93a4885f2c0fd1155fa400a7" title="Get the number of boundary species - CURRENTLY NOT IMPLEMENTED.">cGetNumberOfBoundarySpecies</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00510"></a>00510 
 <a name="l00511"></a>00511 
-<a name="l00518"></a>00518 TCAPIEXPOR <a class="code" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> <a class="code" href="group__state.html#gad4ca23336d4ea42beb13857fe45cf49f" title="Get a list of all species names, including floating and boundary species.">cGetAllSpeciesNames</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00518"></a>00518 TCAPIEXPOR <a class="code" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> <a class="code" href="group__boundary.html#ga72c0930583487daada02d81458b434bf" title="Get a list of boundary species names - CURRENTLY NOT IMPLEMENTED.">cGetBoundarySpeciesNames</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
 <a name="l00519"></a>00519 
-<a name="l00526"></a>00526 TCAPIEXPOR <span class="keywordtype">int</span> <a class="code" href="group__state.html#ga1d7c1358507e01e542767429ca070b28" title="Get the number of floating species - CURRENTLY NOT IMPLEMENTED.">cGetNumberFloatingSpecies</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00526"></a>00526 TCAPIEXPOR <span class="keywordtype">void</span> <a class="code" href="group__boundary.html#ga2dd3d37a138abb7bc4edb3e872566874" title="Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED.">cSetBoundarySpeciesByIndex</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">int</span> index);
 <a name="l00527"></a>00527 
-<a name="l00534"></a>00534 TCAPIEXPOR <span class="keywordtype">int</span> <a class="code" href="group__state.html#ga62a88c6450d600ba08519be40d42a9f8" title="Get the number of boundary species - CURRENTLY NOT IMPLEMENTED.">cGetNumberBoundarySpecies</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00534"></a>00534 TCAPIEXPOR <span class="keywordtype">void</span> <a class="code" href="group__boundary.html#ga848a997eafa873397a047869458e25d8" title="Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED.">cSetBoundarySpeciesConcentrations</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> d);
 <a name="l00535"></a>00535 
-<a name="l00536"></a>00536 
-<a name="l00543"></a>00543 TCAPIEXPOR <a class="code" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> <a class="code" href="group__state.html#gae21ed75660f8719c2eff758337557392" title="Get a list the floating species names - CURRENTLY NOT IMPLEMENTED.">cGetFloatingSpeciesNames</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00542"></a>00542 TCAPIEXPOR <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__boundary.html#gab2ecf325b40ea05d6392b8549e662b26" title="Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED.">cGetBoundarySpeciesConcentrations</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00543"></a>00543 
 <a name="l00544"></a>00544 
-<a name="l00551"></a>00551 TCAPIEXPOR <a class="code" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> <a class="code" href="group__state.html#ga72c0930583487daada02d81458b434bf" title="Get a list of boundary species names - CURRENTLY NOT IMPLEMENTED.">cGetBoundarySpeciesNames</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00552"></a>00552 
-<a name="l00560"></a>00560 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga3d94fda6ce5bc6e4db425c2172766cf9" title="Get the current concentration of a species.">cGetConcentration</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
-<a name="l00561"></a>00561 
-<a name="l00569"></a>00569 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga9541271dacbb4f1cdefc9df1d3119300" title="Get the current amount of a species. The amounts are calculated from the concentrations and compartme...">cGetAmount</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
-<a name="l00570"></a>00570 
-<a name="l00577"></a>00577 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__state.html#gad8230bc02ff2e1f5d6e25f9833e829f4" title="Compute the current rates of change for all species.">cGetRatesOfChange</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
-<a name="l00578"></a>00578 
-<a name="l00587"></a>00587 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga7e163f8a5fd4c6cc7a4d63b5a75f82e8" title="Compute current flux through the given reactions.">cGetFlux</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
-<a name="l00588"></a>00588 
-<a name="l00596"></a>00596 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga660c16a7548b62d3a5073765edc583b8" title="Compute current flux through the given reactions in terms of particles.">cGetParticleFlux</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
-<a name="l00597"></a>00597 
-<a name="l00598"></a>00598 
-<a name="l00599"></a>00599 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00612"></a>00612 <span class="comment"></span>TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="copasi__api_8h.html#a84557d304b5959e348fa9b44d2340d5d" title="Get the number of global parameters.">cGetNumberOfGlobalParameters</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
-<a name="l00613"></a>00613 
-<a name="l00620"></a>00620 TCAPIEXPORT tc_string <a class="code" href="copasi__api_8h.html#a3acfdeadcf5df9e13917278db99049c4" title="Get the lsit of global parameter names.">cGetGlobalParameterNames</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00552"></a>00552 TCAPIEXPOR <span class="keywordtype">double</span> <a class="code" href="group__boundary.html#gaf162d7a1a5b647346592ff2c77231794" title="Get a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED.">cGetBoundarySpeciesByIndex</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">int</span> index);
+<a name="l00553"></a>00553 
+<a name="l00554"></a>00554 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00567"></a>00567 <span class="comment"></span>TCAPIEXPOR <span class="keywordtype">int</span> <a class="code" href="group__floating.html#ga1d7c1358507e01e542767429ca070b28" title="Get the number of floating species - CURRENTLY NOT IMPLEMENTED.">cGetNumberFloatingSpecies</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00568"></a>00568 
+<a name="l00575"></a>00575 TCAPIEXPOR <a class="code" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> <a class="code" href="group__floating.html#gae21ed75660f8719c2eff758337557392" title="Get a list the floating species names - CURRENTLY NOT IMPLEMENTED.">cGetFloatingSpeciesNames</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00576"></a>00576 
+<a name="l00577"></a>00577 
+<a name="l00584"></a>00584 TCAPIEXPOR <span class="keywordtype">void</span> <a class="code" href="group__floating.html#ga785a3e356155b5c6052c32fe486c73f4" title="Set a floating species concentration by index - CURRENTLY NOT IMPLEMENTED.">cSetFloatingSpeciesByIndex</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">int</span> index);
+<a name="l00585"></a>00585 
+<a name="l00586"></a>00586 
+<a name="l00594"></a>00594 TCAPIEXPOR <span class="keywordtype">double</span> <a class="code" href="group__floating.html#gaf97e0e53ff25d86d0d38b7c99fc5c565" title="Get a floating species concentration by index - CURRENTLY NOT IMPLEMENTED.">cGetFloatingSpeciesByIndex</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">int</span> index);
+<a name="l00595"></a>00595 
+<a name="l00602"></a>00602 TCAPIEXPOR <span class="keywordtype">void</span> <a class="code" href="group__floating.html#ga7d9249dc1cf55f117dd05ab83cdce60a" title="Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED.">cSetFloatingSpeciesConcentrations</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> sp);
+<a name="l00603"></a>00603 
+<a name="l00610"></a>00610 TCAPIEXPOR <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__floating.html#gaaf66dbe1aac9a246cfa65896c095706d" title="Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED.">cGetFloatingSpeciesConcentrations</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00611"></a>00611 
+<a name="l00612"></a>00612 
+<a name="l00619"></a>00619 TCAPIEXPOR <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__floating.html#ga81a8183241d25309531b83d53fb501ff" title="Get the initial floating species concentrations - CURRENTLY NOT IMPLEMENTED.">cGetFloatingSpeciesIntitialConcentrations</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00620"></a>00620 
 <a name="l00621"></a>00621 
-<a name="l00622"></a>00622 
-<a name="l00623"></a>00623 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00636"></a>00636 <span class="comment"></span>TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__compartment.html#ga87ee17633841fa2c07ae78d76d614cce" title="Get the number of compartments.">cGetNumberOfCompartments</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00628"></a>00628 TCAPIEXPOR <span class="keywordtype">void</span> <a class="code" href="group__floating.html#gab9093ed72cbc378c70074e7964ade0b7" title="Set the initial floating species concentrations - CURRENTLY NOT IMPLEMENTED.">cSetFloatingSpeciesIntitialConcentrations</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model; <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> sp);
+<a name="l00629"></a>00629 
+<a name="l00636"></a>00636 TCAPIEXPOR <span class="keywordtype">void</span> <a class="code" href="group__floating.html#ga023398bdfda49b66de725d3be20f40bb" title="Set the initial floating species concentration of the ith species - CURRENTLY NOT IMPLEMENTED...">cSetFloatingSpeciesIntitialConcentrationByIndex</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model; <span class="keywordtype">int</span> index; <span class="keywordtype">double</span> sp);
 <a name="l00637"></a>00637 
-<a name="l00645"></a>00645 TCAPIEXPORT tc_string <a class="code" href="group__compartment.html#gabcc398576a781fe1e1b42f55cb5a1bfe" title="Get the list of compartment names.">cGetCompartmentNames</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
-<a name="l00646"></a>00646 
-<a name="l00647"></a>00647 
-<a name="l00648"></a>00648 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00669"></a>00669 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#ga2105addec217217e5443df8d4cac8405" title="Simulate using LSODA numerical integrator.">cSimulateDeterministic</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
+<a name="l00638"></a>00638 
+<a name="l00639"></a>00639 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00652"></a>00652 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__rate_of_change.html#gad8230bc02ff2e1f5d6e25f9833e829f4" title="Compute the current rates of change for all species.">cGetRatesOfChange</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00653"></a>00653 
+<a name="l00661"></a>00661 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__rate_of_change.html#ga082f21c0d0ffed40a4be5b1027e583f5" title="Compute the current rates of change for the ith species.">cGetRateOfChange</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keywordtype">int</span> index);
+<a name="l00662"></a>00662 
+<a name="l00669"></a>00669 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__rate_of_change.html#gad9d35dba268f03baf0afbf08bd95d3a9" title="Returns the names used to represent the rates of change.">cGetRatesOfChangeNames</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
 <a name="l00670"></a>00670 
-<a name="l00681"></a>00681 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#gab016ea8bc8fd0b0ef8b8772df7f4ce6f" title="Simulate using exact stochastic algorithm.">cSimulateStochastic</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
-<a name="l00682"></a>00682 
-<a name="l00692"></a>00692 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#ga020fee137ecf7d4afac06cc28fb93593" title="Simulate using Hybrid algorithm/deterministic algorithm.">cSimulateHybrid</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
-<a name="l00693"></a>00693 
-<a name="l00703"></a>00703 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#ga1f5e5f87546b2f0bf7cb35adf8f27269" title="Simulate using Tau Leap stochastic algorithm.">cSimulateTauLeap</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
-<a name="l00704"></a>00704 
+<a name="l00678"></a>00678 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__rate_of_change.html#gaa756b5a0ca4e41b930b8d9487e57a29c" title="Returns the rates of change given a vector of floating species concentrations.">cGetRatesOfChangeEx</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> sp);
+<a name="l00679"></a>00679 
+<a name="l00680"></a>00680 
+<a name="l00681"></a>00681 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00695"></a>00695 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__state.html#ga60817c141f5392d9c2769967da2c2d06" title="Get the current concentrations of all species.">cGetConcentrations</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00696"></a>00696 
+<a name="l00704"></a>00704 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__state.html#gaf9c47999fbb983801d06eeb99c204014" title="Get the current amounts of all species. The amounts are calculated from the concentrations and compar...">cGetAmounts</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
 <a name="l00705"></a>00705 
-<a name="l00706"></a>00706 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00721"></a>00721 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#a84e5cf0adfd288496ce99c159466d588" title="Bring the system to steady state by solving for the zeros of the ODE&#39;s. Performs an initial simulatio...">cGetSteadyState</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00722"></a>00722 
-<a name="l00731"></a>00731 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#abe077e83b30207140d85f6cde51b5197" title="Bring the system to steady state by doing repeated simulations. Use this is cGetSteadyState.">cGetSteadyStateUsingSimulation</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keywordtype">int</span> iter);
+<a name="l00712"></a>00712 TCAPIEXPOR <a class="code" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> <a class="code" href="group__state.html#gad4ca23336d4ea42beb13857fe45cf49f" title="Get a list of all species names, including floating and boundary species.">cGetAllSpeciesNames</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00713"></a>00713 
+<a name="l00714"></a>00714 
+<a name="l00722"></a>00722 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga3d94fda6ce5bc6e4db425c2172766cf9" title="Get the current concentration of a species.">cGetConcentration</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00723"></a>00723 
+<a name="l00731"></a>00731 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga9541271dacbb4f1cdefc9df1d3119300" title="Get the current amount of a species. The amounts are calculated from the concentrations and compartme...">cGetAmount</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
 <a name="l00732"></a>00732 
-<a name="l00739"></a>00739 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#a51e1ca71152a647f65e0db1acd61c1ae" title="Get the full Jacobian at the current state.">cGetJacobian</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00746"></a>00746 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#a66d89582f7a3f03a401bdc545b6f0988" title="Get the eigenvalues of the Jacobian at the current state.">cGetEigenvalues</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00747"></a>00747 
-<a name="l00748"></a>00748 
-<a name="l00749"></a>00749 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00764"></a>00764 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gad66d997065734159cd3247a677be6130" title="Compute the unscaled flux control coefficients.">cGetUnscaledFluxControlCoeffs</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00765"></a>00765 
-<a name="l00766"></a>00766 
-<a name="l00774"></a>00774 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gaddcf896840b47879e6d798bde19a90f8" title="Compute the scaled flux control coefficients.">cGetScaledFluxControlCoeffs</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00775"></a>00775 
+<a name="l00733"></a>00733 
+<a name="l00742"></a>00742 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga7e163f8a5fd4c6cc7a4d63b5a75f82e8" title="Compute current flux through the given reactions.">cGetFlux</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00743"></a>00743 
+<a name="l00751"></a>00751 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="group__state.html#ga660c16a7548b62d3a5073765edc583b8" title="Compute current flux through the given reactions in terms of particles.">cGetParticleFlux</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keyword">const</span> <span class="keywordtype">char</span> * name);
+<a name="l00752"></a>00752 
+<a name="l00753"></a>00753 
+<a name="l00754"></a>00754 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00767"></a>00767 <span class="comment"></span>TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="copasi__api_8h.html#a84557d304b5959e348fa9b44d2340d5d" title="Get the number of global parameters.">cGetNumberOfGlobalParameters</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00768"></a>00768 
+<a name="l00775"></a>00775 TCAPIEXPORT tc_string <a class="code" href="copasi__api_8h.html#a3acfdeadcf5df9e13917278db99049c4" title="Get the list of global parameter names.">cGetGlobalParameterNames</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
 <a name="l00776"></a>00776 
-<a name="l00784"></a>00784 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gaab904177bab67739d23d567e009a70bc" title="Compute the unscaled concentration control coefficients.">cGetUnscaledConcentrationControlCoeffs</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
+<a name="l00784"></a>00784 TCAPIEXPORT <span class="keywordtype">double</span> <a class="code" href="copasi__api_8h.html#af078918ade14783152609b7914dfdec2" title="Get the value of a global parameter by index.">cGetGlobalParameterByIndex</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keywordtype">int</span>);
 <a name="l00785"></a>00785 
-<a name="l00786"></a>00786 
-<a name="l00794"></a>00794 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gaa97b65b9e76607410e5e2f5dc542a488" title="Compute the scaled concentration control coefficients.">cGetScaledConcentrationConcentrationCoeffs</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00795"></a>00795 
-<a name="l00796"></a>00796 
-<a name="l00804"></a>00804 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#ga541a5a9bc6c1b1baa9c70ea90d9008ce" title="Compute the unscaled elasticities.">cGetUnscaledElasticities</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00805"></a>00805 
-<a name="l00806"></a>00806 
-<a name="l00814"></a>00814 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gab00fb8a17ab62fec98a6676492bbbee0" title="Compute the scaled elasticities.">cGetScaledElasticities</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00815"></a>00815 
-<a name="l00816"></a>00816 
-<a name="l00817"></a>00817 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00831"></a>00831 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga20ebd712913a16482e937b148bf56500" title="Return the full stoichiometry matrix, N.">cGetFullStoichiometryMatrix</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00832"></a>00832 
-<a name="l00833"></a>00833 
-<a name="l00840"></a>00840 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga1f2af4fd2e7fc76bbe1cf6d1b511af52" title="Return the reduced stoichiometry matrix, Nr.">cGetReducedStoichiometryMatrix</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00841"></a>00841 
-<a name="l00842"></a>00842 
-<a name="l00849"></a>00849 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#gadbbf76f9519bdbd9f3bfe58f2ca68cd9" title="Compute the elementary flux modes.">cGetElementaryFluxModes</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00850"></a>00850 
-<a name="l00851"></a>00851 
-<a name="l00858"></a>00858 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga0e4d9fdd71cbeece4ab50d4fcf85071a" title="Compute the Gamma matrix (i.e. conservation laws)">cGetGammaMatrix</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00859"></a>00859 
-<a name="l00860"></a>00860 
-<a name="l00867"></a>00867 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga13a703198cee0880660d4f5d623107c8" title="Compute the K matrix (right nullspace)">cGetKMatrix</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00868"></a>00868 
-<a name="l00869"></a>00869 
-<a name="l00876"></a>00876 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#gab5cc0b31cd6b3b198452b2386f1a5720" title="Compute the K0 matrix.">cGetK0Matrix</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00877"></a>00877 
-<a name="l00878"></a>00878 
-<a name="l00885"></a>00885 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga5fb43c43fb091591e0bd9869131e987f" title="Compute the L matrix (link matrix, left nullspace)">cGetLinkMatrix</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00886"></a>00886 
+<a name="l00793"></a>00793 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="copasi__api_8h.html#a41c4dbeb78c9072c3bfb9d8f45cac3d4" title="Set the value of a global parameter by index.">cSetGlobalParameterByIndex</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keywordtype">int</span>, <span class="keywordtype">double</span>);
+<a name="l00794"></a>00794 
+<a name="l00801"></a>00801 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#a3e1f529aa304334311a16b2c7847ca68" title="Get a list of the global parameters.">cGetGlobalParameters</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>);
+<a name="l00802"></a>00802 
+<a name="l00809"></a>00809 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="copasi__api_8h.html#a5b50aeff127c67f5f53333aec7f060fa" title="Set the vector of global parameters.">cSetGlobalParameterValues</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> gp);
+<a name="l00810"></a>00810 
+<a name="l00811"></a>00811 
+<a name="l00812"></a>00812 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00825"></a>00825 <span class="comment"></span>TCAPIEXPORT <span class="keywordtype">int</span> <a class="code" href="group__compartment.html#gab8e758b7f408e6d7ea78cb8c61304d69" title="Get the number of compartments.">cGetNumberOfCompartments</a> (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>)
+<a name="l00826"></a>00826 
+<a name="l00827"></a>00827 
+<a name="l00833"></a>00833 TCAPIEXPORT tc_string cGetCompartmentNames (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>)
+<a name="l00834"></a>00834 
+<a name="l00835"></a>00835 
+<a name="l00843"></a>00843 TCAPIEXPORT <span class="keywordtype">double</span> cGetCompartmentByIndex (<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a>, <span class="keywordtype">int</span>);
+<a name="l00844"></a>00844 
+<a name="l00845"></a>00845 
+<a name="l00853"></a>00853 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__compartment.html#gadfad233595859c4e9710f3e2c642f8f4" title="Set a compartment volume by index.">cSetCompartmentByIndex</a> (copasi_model, <span class="keywordtype">int</span>, <span class="keywordtype">double</span>);
+<a name="l00854"></a>00854 
+<a name="l00855"></a>00855 
+<a name="l00862"></a>00862 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__compartment.html#gaa66445005b164c1082ce53910aadb3f8" title="Set a compartment volumes using a vector of compartment values.">cSetCompartmentVolumes</a> (copasi_model, <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> v);
+<a name="l00863"></a>00863 
+<a name="l00864"></a>00864 
+<a name="l00865"></a>00865 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00886"></a>00886 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#ga2105addec217217e5443df8d4cac8405" title="Simulate using LSODA numerical integrator.">cSimulateDeterministic</a>(copasi_model model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
 <a name="l00887"></a>00887 
-<a name="l00894"></a>00894 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#gaeeb23919f7cc7a8a82c7a385212cc20c" title="Compute the L0 matrix.">cGetL0Matrix</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model);
-<a name="l00895"></a>00895 
-<a name="l00896"></a>00896 
-<a name="l00897"></a>00897 <span class="comment">// -----------------------------------------------------------------------</span>
-<a name="l00913"></a>00913 <span class="comment"></span><span class="comment">//TCAPIEXPORT void cFitModelToData(copasi_model model, const char * filename, tc_matrix params, const char * method);</span>
-<a name="l00914"></a>00914 
-<a name="l00923"></a>00923 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__optim.html#ga9d781d24f9d5db2074cbb4217a7078c7" title="fit the model parameters to time-series data">cOptimize</a>(<a class="code" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> model, <span class="keyword">const</span> <span class="keywordtype">char</span> * objective, <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> input);
-<a name="l00924"></a>00924 
-<a name="l00930"></a>00930 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga88e3cb68a2b7a267ce1d2b7ce6bc93ab" title="set the number of iterations for the genetic algorithm based optimizer">cSetOptimizerIterations</a>(<span class="keywordtype">int</span>);
-<a name="l00931"></a>00931 
-<a name="l00937"></a>00937 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#gaed8211cd5cac8d330d6d122e9e58e4cf" title="set the number of random seeds for the genetic algorithm based optimizer">cSetOptimizerSize</a>(<span class="keywordtype">int</span>);
+<a name="l00897"></a>00897 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#gab016ea8bc8fd0b0ef8b8772df7f4ce6f" title="Simulate using exact stochastic algorithm.">cSimulateStochastic</a>(copasi_model model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
+<a name="l00898"></a>00898 
+<a name="l00908"></a>00908 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#ga020fee137ecf7d4afac06cc28fb93593" title="Simulate using Hybrid algorithm/deterministic algorithm.">cSimulateHybrid</a>(copasi_model model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
+<a name="l00909"></a>00909 
+<a name="l00919"></a>00919 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__simulation.html#ga1f5e5f87546b2f0bf7cb35adf8f27269" title="Simulate using Tau Leap stochastic algorithm.">cSimulateTauLeap</a>(copasi_model model, <span class="keywordtype">double</span> startTime, <span class="keywordtype">double</span> endTime, <span class="keywordtype">int</span> numSteps);
+<a name="l00920"></a>00920 
+<a name="l00921"></a>00921 
+<a name="l00922"></a>00922 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00937"></a>00937 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#a84e5cf0adfd288496ce99c159466d588" title="Bring the system to steady state by solving for the zeros of the ODE&#39;s. Performs an initial simulatio...">cGetSteadyState</a>(copasi_model model);
 <a name="l00938"></a>00938 
-<a name="l00944"></a>00944 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#gab31e2de03fceb06d165f3c8c07d45af4" title="set the mutation rate, or step size, for the genetic algorithm based optimizer">cSetOptimizerMutationRate</a>(<span class="keywordtype">double</span>);
-<a name="l00945"></a>00945 
-<a name="l00951"></a>00951 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga461c0a59f0b160c5598918036d036b7b" title="set the probability of crossover for the genetic algorithm based optimizer">cSetOptimizerCrossoverRate</a>(<span class="keywordtype">double</span>);
-<a name="l00952"></a>00952 
-<a name="l00958"></a>00958 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga2844b2393259fef256be2e9c68277cf2" title="do not modify assignment rules warning: disabling this may cause numerical errors in time-course simu...">cDisableAssignmentRuleReordering</a>();
-<a name="l00959"></a>00959 
-<a name="l00964"></a>00964 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga6163c62d139b632e8752545f789ea3ee" title="modify assignment rules to avoid dependencies between assignment rules (default)">cEnableAssignmentRuleReordering</a>();
-<a name="l00965"></a>00965 
-<a name="l00966"></a>00966 END_C_DECLS
-<a name="l00967"></a>00967 <span class="preprocessor">#endif</span>
-<a name="l00968"></a>00968 <span class="preprocessor"></span>
+<a name="l00947"></a>00947 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#abe077e83b30207140d85f6cde51b5197" title="Bring the system to steady state by doing repeated simulations. Use this is cGetSteadyState.">cGetSteadyStateUsingSimulation</a>(copasi_model model, <span class="keywordtype">int</span> iter);
+<a name="l00948"></a>00948 
+<a name="l00955"></a>00955 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#a51e1ca71152a647f65e0db1acd61c1ae" title="Get the full Jacobian at the current state.">cGetJacobian</a>(copasi_model model);
+<a name="l00962"></a>00962 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="copasi__api_8h.html#a66d89582f7a3f03a401bdc545b6f0988" title="Get the eigenvalues of the Jacobian at the current state.">cGetEigenvalues</a>(copasi_model model);
+<a name="l00963"></a>00963 
+<a name="l00964"></a>00964 
+<a name="l00965"></a>00965 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00980"></a>00980 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gad66d997065734159cd3247a677be6130" title="Compute the unscaled flux control coefficients.">cGetUnscaledFluxControlCoeffs</a>(copasi_model model);
+<a name="l00981"></a>00981 
+<a name="l00982"></a>00982 
+<a name="l00990"></a>00990 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gaddcf896840b47879e6d798bde19a90f8" title="Compute the scaled flux control coefficients.">cGetScaledFluxControlCoeffs</a>(copasi_model model);
+<a name="l00991"></a>00991 
+<a name="l00992"></a>00992 
+<a name="l01000"></a>01000 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gaab904177bab67739d23d567e009a70bc" title="Compute the unscaled concentration control coefficients.">cGetUnscaledConcentrationControlCoeffs</a>(copasi_model model);
+<a name="l01001"></a>01001 
+<a name="l01002"></a>01002 
+<a name="l01010"></a>01010 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gaa97b65b9e76607410e5e2f5dc542a488" title="Compute the scaled concentration control coefficients.">cGetScaledConcentrationConcentrationCoeffs</a>(copasi_model model);
+<a name="l01011"></a>01011 
+<a name="l01012"></a>01012 
+<a name="l01020"></a>01020 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#ga541a5a9bc6c1b1baa9c70ea90d9008ce" title="Compute the unscaled elasticities.">cGetUnscaledElasticities</a>(copasi_model model);
+<a name="l01021"></a>01021 
+<a name="l01022"></a>01022 
+<a name="l01030"></a>01030 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__mca.html#gab00fb8a17ab62fec98a6676492bbbee0" title="Compute the scaled elasticities.">cGetScaledElasticities</a>(copasi_model model);
+<a name="l01031"></a>01031 
+<a name="l01032"></a>01032 
+<a name="l01033"></a>01033 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l01047"></a>01047 <span class="comment"></span>TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga20ebd712913a16482e937b148bf56500" title="Return the full stoichiometry matrix, N.">cGetFullStoichiometryMatrix</a>(copasi_model model);
+<a name="l01048"></a>01048 
+<a name="l01049"></a>01049 
+<a name="l01056"></a>01056 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga1f2af4fd2e7fc76bbe1cf6d1b511af52" title="Return the reduced stoichiometry matrix, Nr.">cGetReducedStoichiometryMatrix</a>(copasi_model model);
+<a name="l01057"></a>01057 
+<a name="l01058"></a>01058 
+<a name="l01065"></a>01065 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#gadbbf76f9519bdbd9f3bfe58f2ca68cd9" title="Compute the elementary flux modes.">cGetElementaryFluxModes</a>(copasi_model model);
+<a name="l01066"></a>01066 
+<a name="l01067"></a>01067 
+<a name="l01074"></a>01074 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga0e4d9fdd71cbeece4ab50d4fcf85071a" title="Compute the Gamma matrix (i.e. conservation laws)">cGetGammaMatrix</a>(copasi_model model);
+<a name="l01075"></a>01075 
+<a name="l01076"></a>01076 
+<a name="l01083"></a>01083 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga13a703198cee0880660d4f5d623107c8" title="Compute the K matrix (right nullspace)">cGetKMatrix</a>(copasi_model model);
+<a name="l01084"></a>01084 
+<a name="l01085"></a>01085 
+<a name="l01092"></a>01092 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#gab5cc0b31cd6b3b198452b2386f1a5720" title="Compute the K0 matrix.">cGetK0Matrix</a>(copasi_model model);
+<a name="l01093"></a>01093 
+<a name="l01094"></a>01094 
+<a name="l01101"></a>01101 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#ga5fb43c43fb091591e0bd9869131e987f" title="Compute the L matrix (link matrix, left nullspace)">cGetLinkMatrix</a>(copasi_model model);
+<a name="l01102"></a>01102 
+<a name="l01103"></a>01103 
+<a name="l01110"></a>01110 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__matrix.html#gaeeb23919f7cc7a8a82c7a385212cc20c" title="Compute the L0 matrix.">cGetL0Matrix</a>(copasi_model model);
+<a name="l01111"></a>01111 
+<a name="l01112"></a>01112 
+<a name="l01113"></a>01113 <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l01129"></a>01129 <span class="comment"></span><span class="comment">//TCAPIEXPORT void cFitModelToData(copasi_model model, const char * filename, tc_matrix params, const char * method);</span>
+<a name="l01130"></a>01130 
+<a name="l01139"></a>01139 TCAPIEXPORT <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> <a class="code" href="group__optim.html#ga9d781d24f9d5db2074cbb4217a7078c7" title="fit the model parameters to time-series data">cOptimize</a>(copasi_model model, const <span class="keywordtype">char</span> * objective, <a class="code" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> input);
+<a name="l01140"></a>01140 
+<a name="l01146"></a>01146 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga88e3cb68a2b7a267ce1d2b7ce6bc93ab" title="set the number of iterations for the genetic algorithm based optimizer">cSetOptimizerIterations</a>(<span class="keywordtype">int</span>);
+<a name="l01147"></a>01147 
+<a name="l01153"></a>01153 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#gaed8211cd5cac8d330d6d122e9e58e4cf" title="set the number of random seeds for the genetic algorithm based optimizer">cSetOptimizerSize</a>(<span class="keywordtype">int</span>);
+<a name="l01154"></a>01154 
+<a name="l01160"></a>01160 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#gab31e2de03fceb06d165f3c8c07d45af4" title="set the mutation rate, or step size, for the genetic algorithm based optimizer">cSetOptimizerMutationRate</a>(<span class="keywordtype">double</span>);
+<a name="l01161"></a>01161 
+<a name="l01167"></a>01167 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga461c0a59f0b160c5598918036d036b7b" title="set the probability of crossover for the genetic algorithm based optimizer">cSetOptimizerCrossoverRate</a>(<span class="keywordtype">double</span>);
+<a name="l01168"></a>01168 
+<a name="l01174"></a>01174 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga2844b2393259fef256be2e9c68277cf2" title="do not modify assignment rules warning: disabling this may cause numerical errors in time-course simu...">cDisableAssignmentRuleReordering</a>();
+<a name="l01175"></a>01175 
+<a name="l01180"></a>01180 TCAPIEXPORT <span class="keywordtype">void</span> <a class="code" href="group__optim.html#ga6163c62d139b632e8752545f789ea3ee" title="modify assignment rules to avoid dependencies between assignment rules (default)">cEnableAssignmentRuleReordering</a>();
+<a name="l01181"></a>01181 
+<a name="l01182"></a>01182 END_C_DECLS
+<a name="l01183"></a>01183 <span class="preprocessor">#endif</span>
+<a name="l01184"></a>01184 <span class="preprocessor"></span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->
@@ -327,7 +385,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -339,7 +397,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 16:37:48 for COPASI C API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 12 2011 20:33:37 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
