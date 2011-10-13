@@ -23,13 +23,13 @@ int main()
 	tc_printMatrixToFile("results.tab", results);
 	tc_deleteMatrix(results);
 
-	results = cGetFluxes(m);
+	results = cGetReactionRates(m);
 
 	printf("fluxes:\n");
 	tc_printOutMatrix(results);
 	tc_deleteMatrix(results);
 
-	results = cGetDerivatives(m);
+	results = cGetRatesOfChange(m);
 
 	printf("\n\nderivatives:\n");
 	tc_printOutMatrix(results);

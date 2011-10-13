@@ -251,6 +251,12 @@ TCAPIEXPORT copasi_model cCreateModel(const char * name);
 */
 TCAPIEXPORT void cCompileModel(copasi_model model);
 
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Compartment group
+  */
+/** \{ */
 
 /*! 
  \brief Create compartment
@@ -261,7 +267,6 @@ TCAPIEXPORT void cCompileModel(copasi_model model);
 */
 TCAPIEXPORT copasi_compartment cCreateCompartment(copasi_model model, const char* name, double volume);
 
-
 /*! 
  \brief Set a volume of compartment
  \param copasi_model model
@@ -271,58 +276,30 @@ TCAPIEXPORT copasi_compartment cCreateCompartment(copasi_model model, const char
 */
 TCAPIEXPORT void cSetVolume(copasi_model, const char * compartment, double volume);
 
-
 /*! 
- \brief Set the concentration of a species, volume of a compartment, or value of a parameter
-      The function will figure out which using the name (fast lookup using hashtables).
-      If the name does not exist in the model, a new global parameter will be created.
+ \brief Get the vector of compartment names and volumes
  \param copasi_model model
- \param char * name
- \param double value
- \return 0 if new variable was created. 1 if existing variable was found
- \ingroup create
+ \return tc_matrix column vector with compartment names as row names
+ \ingroup compartment
 */
-TCAPIEXPORT int cSetValue(copasi_model, const char * name, double value);
 
+TCAPIEXPORT tc_matrix cGetCompartments (copasi_model);
 
 /*! 
- \brief Add a species to the model
- \param copasi_compartment model
- \param char* species name
- \param double initial value (concentration or count, depending on the model)
- \ingroup create
-*/
-TCAPIEXPORT void cCreateSpecies(copasi_compartment compartment, const char* name, double initialValue);
-
-
-/*! 
- \brief Set a species as boundary or floating (will remove any assignment rules)
+ \brief Set a compartment volumes using a vector of compartment values
  \param copasi_model model
-  \param char * name
- \param int boundary = 1, floating = 0 (default)
- \ingroup create
+ \param double volume Vector of compartment volumes
+ \ingroup compartment
 */
-TCAPIEXPORT void cSetSpeciesType(copasi_model model, const char * species, int isBoundary);
+TCAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v);
 
 
-/*! 
- \brief Set a species concentration
- \param copasi_model model
- \param char * species name
- \param double concentration
- \ingroup create
-*/
-TCAPIEXPORT void cSetConcentration(copasi_model, const char * species, double conc);
-
-/*! 
- \brief Set a species amounts
- \param copasi_model model
- \param char * species name
- \param double amount
- \ingroup create
-*/
-TCAPIEXPORT void cSetAmount(copasi_model, const char * species, double amount);
-
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Assignments (forcing functions)
+  */
+/** \{ */
 
 /*! 
  \brief Set the assignment rule for a species (automatically assumes boundary species)
@@ -338,20 +315,8 @@ TCAPIEXPORT void cSetAmount(copasi_model, const char * species, double amount);
 */
 TCAPIEXPORT int cSetAssignmentRule(copasi_model model, const char * species, const char * formula);
 
-
 /*! 
- \brief Set the value of an existing global parameter or create a new global parameter
- \param copasi_model model
- \param char* parameter name
- \param double value
-  \return int 0=new value created 1=found existing value
- \ingroup create
-*/
-TCAPIEXPORT int cSetGlobalParameter(copasi_model model, const char * name, double value);
-
-
-/*! 
- \brief Create a new variable that is not a constant by a formula
+ \brief Create a new variable that is defined by a formula
  \param copasi_model model
  \param char* name of new variable
  \param char* formula
@@ -359,6 +324,13 @@ TCAPIEXPORT int cSetGlobalParameter(copasi_model model, const char * name, doubl
  \ingroup create
 */
 TCAPIEXPORT int cCreateVariable(copasi_model model, const char * name, const char * formula);
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Events
+  */
+/** \{ */
 
 
 /*! 
@@ -377,6 +349,13 @@ TCAPIEXPORT int cCreateVariable(copasi_model model, const char * name, const cha
  \ingroup create
 */
 TCAPIEXPORT int cCreateEvent(copasi_model model, const char * name, const char * trigger, const char * variable, const char * formula);
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Reaction group
+  */
+/** \{ */
 
 
 /*!
@@ -439,297 +418,23 @@ TCAPIEXPORT void cAddProduct(copasi_reaction reaction, const char * species, dou
 */
 TCAPIEXPORT int cSetReactionRate(copasi_reaction reaction, const char * formula);
 
-
-// -----------------------------------------------------------------------
-/** \} */
-/**
-  * @name Reaction group
-  */
-/** \{ */
-
 /*! 
- \brief Get the number of reactions in the model
+ \brief Get the list of reaction names and their current fluxes
  \param copasi_model model
- \return int Returns the number of reactions in the model
- \ingroup reaction
-*/
-TCAPIEXPORT tc_matrix cGetNumberOfReactions (copasi_model);
-
-
-/*! 
- \brief Get the list of reaction names
- \param copasi_model model
- \return tc_string array of char * and length n, where n = number of reactions
- \ingroup reaction
-*/
-TCAPIEXPORT ts_string cGetReactionNames (copasi_model);
-
-
-/*! 
- \brief Get the reaction rate for the ith reaction
- \param copasi_model model
- \param int reactionId
- \return double reaction rate for ith reaction
- \ingroup reaction
-*/
-TCAPIEXPORT int cGetReactionRate(copasi_model, int);
-
-
-/*! 
- \brief Returns the vector of current reaction rates
- \param copasi_modl model
- \return double array of reaction rates
+ \return tc_matrix row vector with column names corresponding to reaction names
+ \sa tc_matrix
  \ingroup reaction
 */
 TCAPIEXPORT tc_matrix cGetReactionRates(copasi_model);
 
-
 /*! 
- \brief Returns the rates of change given an array of new floating species concentrations
+ \brief Get the list of reaction names
  \param copasi_model model
- \param double[] Array of floating concentrations
- \return double array of reaction rates
+ \return tc_strings array of char * with the given length
+ \sa tc_strings
  \ingroup reaction
 */
-TCAPIEXPORT double[] cGetReactionRatesEx(double[]);
-
-// -----------------------------------------------------------------------
-/** \} */
-/**
-  * @name Boundary Species Group
-  */
-/** \{ */
-
-/*! 
- \brief Get the number of boundary species - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return number of species
- \ingroup boundary
-*/
-TCAPIEXPOR int cGetNumberOfBoundarySpecies(copasi_model model);
-
-
-/*! 
- \brief Get a list of boundary species names - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return tc_string array of char * and length n, where n = number of species
- \ingroup boundary
-*/
-TCAPIEXPOR tc_strings cGetBoundarySpeciesNames(copasi_model model);
-
-/*! 
- \brief Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param int index ith boundary species
- \ingroup boundary
-*/
-TCAPIEXPOR void cSetBoundarySpeciesByIndex (copasi_model model, int index);
-
-/*! 
- \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param tc_matric Vector of boundary species concentrations
- \ingroup boundary
-*/
-TCAPIEXPOR void cSetBoundarySpeciesConcentrations (copasi_model model, tc_matrix d);
-
-/*! 
- \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param tc_matrix Vector of boundary species concentrations
- \ingroup boundary
-*/
-TCAPIEXPOR tc_matrix cGetBoundarySpeciesConcentrations (copasi_model model);
-
-
-/*! 
- \brief Get a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param int index ith boundary species
- \return double Concentration of ith boundary species
- \ingroup state
-*/
-TCAPIEXPOR double cGetBoundarySpeciesByIndex (copasi_model model, int index);
-
-// -----------------------------------------------------------------------
-/** \} */
-/**
-  * @name Floating Species Group
-  */
-/** \{ */
-
-/*! 
- \brief Get the number of floating species - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return number of species
- \ingroup floating
-*/
-TCAPIEXPOR int cGetNumberFloatingSpecies(copasi_model model);
-
-/*! 
- \brief Get a list the floating species names - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return tc_string array of char * and length n, where n = number of species
- \ingroup state
-*/
-TCAPIEXPOR tc_strings cGetFloatingSpeciesNames(copasi_model model);
-
-
-/*! 
- \brief Set a floating species concentration by index - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param int index ith floating species
- \ingroup state
-*/
-TCAPIEXPOR void cSetFloatingSpeciesByIndex (copasi_model model, int index);
-
-
-/*! 
- \brief Get a floating species concentration by index - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param int index ith floating species
- \return double Concentration of ith floating species
- \ingroup state
-*/
-TCAPIEXPOR double cGetFloatingSpeciesByIndex (copasi_model model, int index);
-
-/*! 
- \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param tc_matric Vector of floating species concentrations
- \ingroup boundary
-*/
-TCAPIEXPOR void cSetFloatingSpeciesConcentrations (copasi_model model, tc_matrix sp);
-
-/*! 
- \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param tc_matrix Vector of floating species concentrations
- \ingroup boundary
-*/
-TCAPIEXPOR tc_matrix cGetFloatingSpeciesConcentrations (copasi_model model);
-
-
-/*! 
- \brief Get the initial floating species concentrations  - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \return tc_matrix Vector of initial floating species concentrations
- \ingroup floating
-*/
-TCAPIEXPOR tc_matrix cGetFloatingSpeciesIntitialConcentrations (copasi_model model);
-
-
-/*! 
- \brief Set the initial floating species concentrations  - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param tc_matrix Vector of initial floating species concentrations
- \ingroup floating
-*/
-TCAPIEXPOR void cSetFloatingSpeciesIntitialConcentrations (copasi_model model; tc_matrix sp);
-
-/*! 
- \brief Set the initial floating species concentration of the ith species  - CURRENTLY NOT IMPLEMENTED
- \param copasi_model model
- \param double value value to set the ith initial floating species concentration
- \ingroup floating
-*/
-TCAPIEXPOR void cSetFloatingSpeciesIntitialConcentrationByIndex (copasi_model model; int index; double sp);
-
-
-// -----------------------------------------------------------------------
-/** \} */
-/**
-  * @name Rates of change group
-  */
-/** \{ */
-
-/*! 
- \brief Compute the current rates of change for all species
- \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
- \ingroup rateOfChange
-*/
-TCAPIEXPORT tc_matrix cGetRatesOfChange(copasi_model);
-
-/*! 
- \brief Compute the current rates of change for the ith species
- \param copasi_model model
- \param ith rate of change to compute
- \return double ith rate of change
- \ingroup rateOfChange
-*/
-TCAPIEXPORT double cGetRateOfChange(copasi_model, int index);
-
-/*! 
- \brief Returns the names used to represent the rates of change
- \param copasi_model model
- \return tc_string List of names used to represent the rate of change
- \ingroup rateOfChange
-*/
-TCAPIEXPORT tc_matrix cGetRatesOfChangeNames(copasi_model);
-
-/*! 
- \brief Returns the rates of change given a vector of floating species concentrations
- \param copasi_model model
- \param tc_matrix vector of floating species concentrations
- \return tc_matrix vector of rates of change
- \ingroup rateOfChange
-*/
-TCAPIEXPORT tc_matrix cGetRatesOfChangeEx(copasi_model model, tc_matrix sp);
-
-
-// -----------------------------------------------------------------------
-/** \} */
-/**
-  * @name Current state of system
-  */
-/** \{ */
-
-/*! 
- \brief Get the current concentrations of all species
- \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
- The names of the species are included in the matrix column labels
- \ingroup state
-*/
-TCAPIEXPORT tc_matrix cGetConcentrations(copasi_model);
-
-/*! 
- \brief Get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume
- \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
- The names of the species are included in the matrix column labels
- \ingroup state
-*/
-TCAPIEXPORT tc_matrix cGetAmounts(copasi_model);
-
-/*! 
- \brief Get a list of all species names, including floating and boundary species
- \param copasi_model model
- \return tc_string array of char * and length n, where n = number of species
- \ingroup state
-*/
-TCAPIEXPOR tc_strings cGetAllSpeciesNames(copasi_model model);
-
-
-/*! 
- \brief Get the current concentration of a species
- \param copasi_model model
- \param string species name
- \return double concentration. -1 indicates that a species by this name was not found
- \ingroup state
-*/
-TCAPIEXPORT double cGetConcentration(copasi_model, const char * name);
-
-/*! 
- \brief Get the current amount of a species. The amounts are calculated from the concentrations and compartment volume
- \param copasi_model model
- \param string species name
- \return double amount. -1 indicates that a species by this name was not found
- \ingroup state
-*/
-TCAPIEXPORT double cGetAmount(copasi_model, const char * name);
-
+TCAPIEXPORT tc_strings cGetReactionNames (copasi_model);
 
 /*! 
  \brief Compute current flux through the given reactions
@@ -750,6 +455,167 @@ TCAPIEXPORT double cGetFlux(copasi_model, const char * name);
 */
 TCAPIEXPORT double cGetParticleFlux(copasi_model, const char * name);
 
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Species group
+  */
+/** \{ */
+
+/*! 
+ \brief Get number of species (all) in the model
+ \param copasi_model model
+ \param int
+ \ingroup create
+*/
+TCAPIEXPORT int cGetNumberOfSpecies(copasi_model);
+
+/*! 
+ \brief Get number of floating species in the model
+ \param copasi_model model
+ \param int
+ \ingroup create
+*/
+TCAPIEXPORT int cGetNumberOfFloatingSpecies(copasi_model);
+
+/*! 
+ \brief Get number of boundary species in the model
+ \param copasi_model model
+ \param int
+ \ingroup create
+*/
+TCAPIEXPORT int cGetNumberOfBoundarySpecies(copasi_model);
+/*! 
+ \brief Add a species to the model. Species must belong inside a compartment.
+ \param copasi_compartment compartment where the species belongs
+ \param char* species name
+ \param double initial value (concentration or count, depending on the model)
+ \ingroup create
+*/
+TCAPIEXPORT void cCreateSpecies(copasi_compartment compartment, const char* name, double initialValue);
+
+
+/*! 
+ \brief Set a species as boundary or floating (will remove any assignment rules)
+ \param copasi_model model
+  \param char * name
+ \param int boundary = 1, floating = 0 (default)
+ \ingroup create
+*/
+TCAPIEXPORT void cSetSpeciesType(copasi_model model, const char * species, int isBoundary);
+
+/*! 
+ \brief Set a species current concentration
+ \param copasi_model model
+ \param char * species name
+ \param double concentration
+ \ingroup create
+*/
+TCAPIEXPORT void cSetConcentration(copasi_model, const char * species, double conc);
+
+/*! 
+ \brief Set a species initial concentration
+ \param copasi_model model
+ \param char * species name
+ \param double concentration
+ \ingroup create
+*/
+TCAPIEXPORT void cSetInitialConcentration(copasi_model, const char * species, double conc);
+
+/*! 
+ \brief Set a species amounts
+ \param copasi_model model
+ \param char * species name
+ \param double amount
+ \ingroup create
+*/
+TCAPIEXPORT void cSetAmount(copasi_model, const char * species, double amount);
+
+/*! 
+ \brief Set multiple boundary or floating species concentration. Order is not important because the names are used to set value.
+ \param copasi_model model
+ \param tc_matric row vector of boundary or floating species concentrations. rows must be named
+ \ingroup boundary
+*/
+TCAPIEXPORT void cSetSpeciesConcentrations (copasi_model model, tc_matrix d);
+
+/*! 
+ \brief Get species names and concentrations
+ \param copasi_model model
+ \param int index ith boundary species
+ \return tc_matrix column vector where row names are the species names and first column has the concentrations
+ \ingroup state
+*/
+TCAPIEXPORT tc_matrix cGetAllSpecies(copasi_model model);
+
+/*! 
+ \brief Get floating species names and concentrations
+ \param copasi_model model
+ \return tc_matrix column vector where row names are the species names and first column has the concentrations
+ \ingroup floating
+*/
+TCAPIEXPORT tc_matrix cGetFloatingSpecies(copasi_model model);
+
+/*! 
+ \brief Get boundary species names and concentrations
+ \param copasi_model model
+ \return tc_matrix column vector where row names are the species names and first column has the concentrations
+ \ingroup state
+*/
+TCAPIEXPORT tc_matrix cGetBoundarySpecies(copasi_model model);
+
+/*! 
+ \brief Get the initial floating species concentrations
+ \param copasi_model model
+ \return tc_matrix row vector of initial floating species concentrations
+ \ingroup floating
+*/
+TCAPIEXPORT tc_matrix cGetFloatingSpeciesIntitialConcentrations (copasi_model model);
+
+/*! 
+ \brief Set the initial floating species concentrations. Order does not matter because row names are used to assign values.
+ \param copasi_model model
+ \param tc_matrix row vector of initial floating species concentrations
+ \ingroup floating
+*/
+TCAPIEXPORT void cSetFloatingSpeciesIntitialConcentrations (copasi_model model, tc_matrix sp);
+
+/*! 
+ \brief Get the current concentrations of all species
+ \param copasi_model model
+ \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ The names of the species are included in the matrix column labels
+ \ingroup state
+*/
+TCAPIEXPORT tc_matrix cGetConcentrations(copasi_model);
+
+/*! 
+ \brief Get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume
+ \param copasi_model model
+ \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ The names of the species are included in the matrix column labels
+ \ingroup state
+*/
+TCAPIEXPORT tc_matrix cGetAmounts(copasi_model);
+
+/*! 
+ \brief Get the current concentration of a species
+ \param copasi_model model
+ \param string species name
+ \return double concentration. -1 indicates that a species by this name was not found
+ \ingroup state
+*/
+TCAPIEXPORT double cGetConcentration(copasi_model, const char * name);
+
+/*! 
+ \brief Get the current amount of a species. The amounts are calculated from the concentrations and compartment volume
+ \param copasi_model model
+ \param string species name
+ \return double amount. -1 indicates that a species by this name was not found
+ \ingroup state
+*/
+TCAPIEXPORT double cGetAmount(copasi_model, const char * name);
+
 
 // -----------------------------------------------------------------------
 /** \} */
@@ -759,43 +625,31 @@ TCAPIEXPORT double cGetParticleFlux(copasi_model, const char * name);
 /** \{ */
 
 /*! 
- \brief Get the number of global parameters
+ \brief Set the concentration of a species, volume of a compartment, or value of a parameter
+      The function will figure out which using the name (fast lookup using hashtables).
+      If the name does not exist in the model, a new global parameter will be created.
  \param copasi_model model
- \return int numberOfGlobalParameters. Returns the number of gloabal parameters in the model
- \ingroup parameter
+ \param char * name
+ \param double value
+ \return 0 if new variable was created. 1 if existing variable was found
+ \ingroup create
 */
-TCAPIEXPORT int cGetNumberOfGlobalParameters (copasi_model);
+TCAPIEXPORT int cSetValue(copasi_model, const char * name, double value);
+
+/*! 
+ \brief Set the value of an existing global parameter or create a new global parameter
+ \param copasi_model model
+ \param char* parameter name
+ \param double value
+  \return int 0=new value created 1=found existing value
+ \ingroup create
+*/
+TCAPIEXPORT int cSetGlobalParameter(copasi_model model, const char * name, double value);
 
 /*! 
  \brief Get the list of global parameter names
  \param copasi_model model 
- \return tc_string array of char * and length n, where n = number of global parameters
- \ingroup parameter
-*/
-TCAPIEXPORT tc_string cGetGlobalParameterNames (copasi_model);
-
-/*! 
- \brief Get the value of a global parameter by index
- \param copasi_model model 
- \param int index ith global parameter
- \return double returned value of parameter
- \ingroup parameter
-*/
-TCAPIEXPORT double cGetGlobalParameterByIndex (copasi_model, int);
-
-/*! 
- \brief Set the value of a global parameter by index
- \param copasi_model model 
- \param int index ith global parameter
- \param double Value to set parameter to
- \ingroup parameter
-*/
-TCAPIEXPORT void cSetGlobalParameterByIndex (copasi_model, int, double);
-
-/*! 
- \brief Get a list of the global parameters
- \param copasi_model model 
- \return tc_matrix A vector containing the values for the global parameters.
+ \return tc_matrix column vector with parameter names are the row names
  \ingroup parameter
 */
 TCAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model);
@@ -803,63 +657,18 @@ TCAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model);
 /*! 
  \brief Set the vector of global parameters
  \param copasi_model model 
- \paramn tc_matrix A vector containing the values for the global parameters.
+ \paramn tc_matrix column vector containing the values for the global parameters.
  \ingroup parameter
 */
 TCAPIEXPORT void cSetGlobalParameterValues (copasi_model, tc_matrix gp);
 
-
-// -----------------------------------------------------------------------
-/** \} */
-/**
-  * @name Compartment group
-  */
-/** \{ */
-
 /*! 
- \brief Get the number of compartments
+ \brief Set values for species, parameters, or compartments
  \param copasi_model model
- \return int numberOfCompartments
- \ingroup compartment
+ \param tc_matrix column vector with names and values of species or parameters or compartments
+ \ingroup floating
 */
-TCAPIEXPORT int cGetNumberOfCompartments (copasi_model);
-
-/*! 
- \brief Get the list of compartment names
- \param copasi_model model
- \return tc_string compartmentNames
- \ingroup compartment
-*/
-TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model);
-
-
-/*! 
- \brief Get the compartment volume by index
- \param copasi_model model
- \param int index ith compartment
- \return double Voluem of compartment 
- \ingroup compartment
-*/
-TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int);
-
-
-/*! 
- \brief Set a compartment volume by index
- \param copasi_model model
- \param int index ith compartment
- \param double volume Volume of ith compartment
- \ingroup compartment
-*/
-TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double);
-
-
-/*! 
- \brief Set a compartment volumes using a vector of compartment values
- \param copasi_model model
- \param double volume Vector of compartment volumes
- \ingroup compartment
-*/
-TCAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v);
+TCAPIEXPORT void cSetValues (copasi_model model, tc_matrix );
 
 
 // -----------------------------------------------------------------------
@@ -869,6 +678,13 @@ TCAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v);
   */
 /** \{ */
 
+/*! 
+ \brief Compute the current rates of change for all species
+ \param copasi_model model
+ \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \ingroup rateOfChange
+*/
+TCAPIEXPORT tc_matrix cGetRatesOfChange(copasi_model);
 
 /*! 
  \brief Simulate using LSODA numerical integrator
@@ -879,7 +695,7 @@ TCAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v);
  \return tc_matrix matrix of concentration or particles
  
  \code
- result = cvSimulateDeterministic (m, 0.0, 10.0, 100);
+ result = cSimulateDeterministic (m, 0.0, 10.0, 100);
  \endcode
  \ingroup simulation
 */
@@ -889,8 +705,8 @@ TCAPIEXPORT tc_matrix cSimulateDeterministic(copasi_model model, double startTim
 /*! 
  \brief Simulate the differential equation model over one time step
  \param copasi_model model
- \param double time Step
- \return double New time, i.e t_o + timeStep
+ \param double time step
+ \return double new time, i.e (current time + timeStep)
  \ingroup simulation
 */
 TCAPIEXPORT double cOneStep(copasi_model model, double timeStep);
