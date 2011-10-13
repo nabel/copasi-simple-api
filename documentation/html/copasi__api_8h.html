@@ -233,6 +233,17 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a list of the global parameters.  <a href="#a3e1f529aa304334311a16b2c7847ca68"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="copasi__api_8h.html#a5b50aeff127c67f5f53333aec7f060fa">cSetGlobalParameterValues</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> gp)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the vector of global parameters.  <a href="#a5b50aeff127c67f5f53333aec7f060fa"></a><br/></td></tr>
+<tr><td colspan="2"><div class="groupHeader">Compartment group</div></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga87ee17633841fa2c07ae78d76d614cce">cGetNumberOfCompartments</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of compartments.  <a href="group__compartment.html#ga87ee17633841fa2c07ae78d76d614cce"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT tc_string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gabcc398576a781fe1e1b42f55cb5a1bfe">cGetCompartmentNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of compartment names.  <a href="group__compartment.html#gabcc398576a781fe1e1b42f55cb5a1bfe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gae8d303cabf4e425ee82042ddcc9468b5">cGetCompartmentByIndex</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, int)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the compartment volume by index.  <a href="group__compartment.html#gae8d303cabf4e425ee82042ddcc9468b5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gadfad233595859c4e9710f3e2c642f8f4">cSetCompartmentByIndex</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, int, double)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volume by index.  <a href="group__compartment.html#gadfad233595859c4e9710f3e2c642f8f4"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gaa66445005b164c1082ce53910aadb3f8">cSetCompartmentVolumes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volumes using a vector of compartment values.  <a href="group__compartment.html#gaa66445005b164c1082ce53910aadb3f8"></a><br/></td></tr>
 <tr><td colspan="2"><div class="groupHeader">Time course simulation</div></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__simulation.html#ga2105addec217217e5443df8d4cac8405">cSimulateDeterministic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using LSODA numerical integrator.  <a href="group__simulation.html#ga2105addec217217e5443df8d4cac8405"></a><br/></td></tr>
@@ -298,16 +309,6 @@ TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6163c62d139b632e8752545f789ea3ee"></a><!-- doxytag: member="copasi_api.h::cEnableAssignmentRuleReordering" ref="ga6163c62d139b632e8752545f789ea3ee" args="()" -->
 TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__optim.html#ga6163c62d139b632e8752545f789ea3ee">cEnableAssignmentRuleReordering</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">modify assignment rules to avoid dependencies between assignment rules (default) <br/></td></tr>
-<tr><td colspan="2"><h2><a name="member-group"></a>
-Compartment group</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a71828b68ff8f7352f2cb9108fa967095"></a><!-- doxytag: member="copasi_api.h::int" ref="a71828b68ff8f7352f2cb9108fa967095" args="" -->
-TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><b>int</b></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gab8e758b7f408e6d7ea78cb8c61304d69">cGetNumberOfCompartments</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>) TCAPIEXPORT tc_string cGetCompartmentNames(<a class="el" href="structcopasi__model.html">copasi_model</a>) TCAPIEXPORT double cGetCompartmentByIndex(<a class="el" href="structcopasi__model.html">copasi_model</a></td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of compartments.  <a href="group__compartment.html#gab8e758b7f408e6d7ea78cb8c61304d69"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gadfad233595859c4e9710f3e2c642f8f4">cSetCompartmentByIndex</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, int, double)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volume by index.  <a href="group__compartment.html#gadfad233595859c4e9710f3e2c642f8f4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gaa66445005b164c1082ce53910aadb3f8">cSetCompartmentVolumes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> v)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volumes using a vector of compartment values.  <a href="group__compartment.html#gaa66445005b164c1082ce53910aadb3f8"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Simple C API for the Copasi C++ library. </p>
@@ -641,7 +642,7 @@ TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><b>int</b></t
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 20:33:37 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 12 2011 20:36:34 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
