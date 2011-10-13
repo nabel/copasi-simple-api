@@ -1170,6 +1170,12 @@ tc_matrix cSimulateDeterministic(copasi_model model, double startTime, double en
 	return simulate(model,startTime,endTime,numSteps,CCopasiMethod::deterministic);
 }
 
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT double cOneStep(copasi_model model, double timeStep)
+{
+	return 0.0;
+}
+
 tc_matrix cSimulateTauLeap(copasi_model model, double startTime, double endTime, int numSteps)
 {
 	return simulate(model,startTime,endTime,numSteps,CCopasiMethod::tauLeap);
@@ -3496,6 +3502,12 @@ TCAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model)
 	return tc_createMatrix(0,0);
 }
 
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT void cSetGlobalParameterValues (copasi_model, tc_matrix gp)
+{
+}
+
+
 // ------------------------------------------------------------------
 // Compartment Group
 // ------------------------------------------------------------------
@@ -3526,6 +3538,6 @@ TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double)
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-TCAPIEXPORT void cSetCompartmentVOlumes (copasi_model, tc_matrix v)
+TCAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v)
 {
 }

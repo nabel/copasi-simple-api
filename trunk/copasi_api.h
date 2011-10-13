@@ -822,7 +822,7 @@ TCAPIEXPORT void cSetGlobalParameterValues (copasi_model, tc_matrix gp);
  \return int numberOfCompartments
  \ingroup compartment
 */
-TCAPIEXPORT int cGetNumberOfCompartments (copasi_model)
+TCAPIEXPORT int cGetNumberOfCompartments (copasi_model);
 
 /*! 
  \brief Get the list of compartment names
@@ -830,7 +830,7 @@ TCAPIEXPORT int cGetNumberOfCompartments (copasi_model)
  \return tc_string compartmentNames
  \ingroup compartment
 */
-TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model)
+TCAPIEXPORT tc_string cGetCompartmentNames (copasi_model);
 
 
 /*! 
@@ -884,6 +884,16 @@ TCAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v);
  \ingroup simulation
 */
 TCAPIEXPORT tc_matrix cSimulateDeterministic(copasi_model model, double startTime, double endTime, int numSteps);
+
+
+/*! 
+ \brief Simulate the differential equation model over one time step
+ \param copasi_model model
+ \param double time Step
+ \return double New time, i.e t_o + timeStep
+ \ingroup simulation
+*/
+TCAPIEXPORT double cOneStep(copasi_model model, double timeStep);
 
 /*! 
  \brief Simulate using exact stochastic algorithm
