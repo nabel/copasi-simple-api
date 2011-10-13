@@ -68,7 +68,10 @@
 
  \defgroup reaction Reaction group
  \brief Get information about reaction rates
-  
+ 
+ \defgroup rateOfChange Rates of change group
+ \brief Get information about rates of change
+
  \defgroup boundary Boundary species group
  \brief Get information about reaction rates
  
@@ -503,16 +506,50 @@ TCAPIEXPORT double[] cGetReactionRatesEx(double[]);
  \return number of species
  \ingroup boundary
 */
-TCAPIEXPOR int cGetNumberBoundarySpecies(copasi_model model);
+TCAPIEXPOR int cGetNumberOfBoundarySpecies(copasi_model model);
 
 
 /*! 
  \brief Get a list of boundary species names - CURRENTLY NOT IMPLEMENTED
  \param copasi_model model
  \return tc_string array of char * and length n, where n = number of species
- \ingroup state
+ \ingroup boundary
 */
 TCAPIEXPOR tc_strings cGetBoundarySpeciesNames(copasi_model model);
+
+/*! 
+ \brief Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param int index ith boundary species
+ \ingroup boundary
+*/
+TCAPIEXPOR void cSetBoundarySpeciesByIndex (copasi_model model, int index);
+
+/*! 
+ \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param tc_matric Vector of boundary species concentrations
+ \ingroup boundary
+*/
+TCAPIEXPOR void cSetBoundarySpeciesConcentrations (copasi_model model, tc_matrix d);
+
+/*! 
+ \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param tc_matrix Vector of boundary species concentrations
+ \ingroup boundary
+*/
+TCAPIEXPOR tc_matrix cGetBoundarySpeciesConcentrations (copasi_model model);
+
+
+/*! 
+ \brief Get a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param int index ith boundary species
+ \return double Concentration of ith boundary species
+ \ingroup state
+*/
+TCAPIEXPOR double cGetBoundarySpeciesByIndex (copasi_model model, int index);
 
 // -----------------------------------------------------------------------
 /** \} */
@@ -536,6 +573,109 @@ TCAPIEXPOR int cGetNumberFloatingSpecies(copasi_model model);
  \ingroup state
 */
 TCAPIEXPOR tc_strings cGetFloatingSpeciesNames(copasi_model model);
+
+
+/*! 
+ \brief Set a floating species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param int index ith floating species
+ \ingroup state
+*/
+TCAPIEXPOR void cSetFloatingSpeciesByIndex (copasi_model model, int index);
+
+
+/*! 
+ \brief Get a floating species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param int index ith floating species
+ \return double Concentration of ith floating species
+ \ingroup state
+*/
+TCAPIEXPOR double cGetFloatingSpeciesByIndex (copasi_model model, int index);
+
+/*! 
+ \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param tc_matric Vector of floating species concentrations
+ \ingroup boundary
+*/
+TCAPIEXPOR void cSetFloatingSpeciesConcentrations (copasi_model model, tc_matrix sp);
+
+/*! 
+ \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param tc_matrix Vector of floating species concentrations
+ \ingroup boundary
+*/
+TCAPIEXPOR tc_matrix cGetFloatingSpeciesConcentrations (copasi_model model);
+
+
+/*! 
+ \brief Get the initial floating species concentrations  - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \return tc_matrix Vector of initial floating species concentrations
+ \ingroup floating
+*/
+TCAPIEXPOR tc_matrix cGetFloatingSpeciesIntitialConcentrations (copasi_model model);
+
+
+/*! 
+ \brief Set the initial floating species concentrations  - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param tc_matrix Vector of initial floating species concentrations
+ \ingroup floating
+*/
+TCAPIEXPOR void cSetFloatingSpeciesIntitialConcentrations (copasi_model model; tc_matrix sp);
+
+/*! 
+ \brief Set the initial floating species concentration of the ith species  - CURRENTLY NOT IMPLEMENTED
+ \param copasi_model model
+ \param double value value to set the ith initial floating species concentration
+ \ingroup floating
+*/
+TCAPIEXPOR void cSetFloatingSpeciesIntitialConcentrationByIndex (copasi_model model; int index; double sp);
+
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Rates of change group
+  */
+/** \{ */
+
+/*! 
+ \brief Compute the current rates of change for all species
+ \param copasi_model model
+ \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \ingroup rateOfChange
+*/
+TCAPIEXPORT tc_matrix cGetRatesOfChange(copasi_model);
+
+/*! 
+ \brief Compute the current rates of change for the ith species
+ \param copasi_model model
+ \param ith rate of change to compute
+ \return double ith rate of change
+ \ingroup rateOfChange
+*/
+TCAPIEXPORT double cGetRateOfChange(copasi_model, int index);
+
+/*! 
+ \brief Returns the names used to represent the rates of change
+ \param copasi_model model
+ \return tc_string List of names used to represent the rate of change
+ \ingroup rateOfChange
+*/
+TCAPIEXPORT tc_matrix cGetRatesOfChangeNames(copasi_model);
+
+/*! 
+ \brief Returns the rates of change given a vector of floating species concentrations
+ \param copasi_model model
+ \param tc_matrix vector of floating species concentrations
+ \return tc_matrix vector of rates of change
+ \ingroup rateOfChange
+*/
+TCAPIEXPORT tc_matrix cGetRatesOfChangeEx(copasi_model model, tc_matrix sp);
 
 
 // -----------------------------------------------------------------------
@@ -590,13 +730,6 @@ TCAPIEXPORT double cGetConcentration(copasi_model, const char * name);
 */
 TCAPIEXPORT double cGetAmount(copasi_model, const char * name);
 
-/*! 
- \brief Compute the current rates of change for all species
- \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
- \ingroup state
-*/
-TCAPIEXPORT tc_matrix cGetRatesOfChange(copasi_model);
 
 /*! 
  \brief Compute current flux through the given reactions
@@ -667,6 +800,14 @@ TCAPIEXPORT void cSetGlobalParameterByIndex (copasi_model, int, double);
 */
 TCAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model);
 
+/*! 
+ \brief Set the vector of global parameters
+ \param copasi_model model 
+ \paramn tc_matrix A vector containing the values for the global parameters.
+ \ingroup parameter
+*/
+TCAPIEXPORT void cSetGlobalParameterValues (copasi_model, tc_matrix gp);
+
 
 // -----------------------------------------------------------------------
 /** \} */
@@ -710,6 +851,15 @@ TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int);
  \ingroup compartment
 */
 TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double);
+
+
+/*! 
+ \brief Set a compartment volumes using a vector of compartment values
+ \param copasi_model model
+ \param double volume Vector of compartment volumes
+ \ingroup compartment
+*/
+TCAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v);
 
 
 // -----------------------------------------------------------------------

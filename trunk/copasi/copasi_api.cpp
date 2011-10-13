@@ -3231,10 +3231,71 @@ TCAPIEXPOR int cGetNumberFloatingSpecies(copasi_model model);
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-TCAPIEXPOR int cGetNumberBoundarySpecies(copasi_model model);
+TCAPIEXPOR int cGetNumberOfBoundarySpecies(copasi_model model);
 {
 	return 0;
 }
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR void cSetFloatingSpeciesByIndex (copasi_model model, int index)
+{
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR double cGetFloatingSpeciesByIndex (copasi_model model, int index)
+{
+	return 0.0;
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR void cSetFloatingSpeciesConcentrations (copasi_model model, tc_matrix sp);
+{
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR tc_matrix cGetFloatingSpeciesConcentrations (copasi_model model)
+{
+	return tc_CreateMatrix (0, 0);
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR tc_matrix cGetFloatingSpeciesIntitialConcentrations (copasi_model model)
+{
+	return tc_CreateMatrix (0, 0);
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR void cSetFloatingSpeciesIntitialConcentrations (copasi_model model; tc_matrix sp)
+{
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR void cSetFloatingSpeciesIntitialConcentrationByIndex (copasi_model model; int index; double sp)
+{
+}
+
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR void cSetBoundarySpeciesByIndex (copasi_model model, int index)
+{
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPOR double cGetBoundarySpeciesByIndex (copasi_model model, int index)
+{
+	return 0.0;
+}
+
+
+TCAPIEXPOR void cSetBoundarySpeciesConcentrations (copasi_model model, tc_matrix d);
+{
+}
+
+TCAPIEXPOR tc_matrix cGetBoundarySpeciesConcentrations (copasi_model model)
+{
+	return tc_CreateMatrix (0, 0);
+}
+
 
 tc_matrix cGetConcentrations(copasi_model model)
 {
@@ -3351,6 +3412,21 @@ tc_matrix cGetRatesOfChange(copasi_model model)
 	return res;
 }
 
+TCAPIEXPORT double cGetRateOfChange(copasi_model, int index)
+{
+	return 0.0;
+}
+
+tc_matrix cGetRatesOfChangeEx(copasi_model model, tc_matrix sp)
+{
+}
+
+
+TCAPIEXPORT tc_matrix cGetRatesOfChangeNames(copasi_model)
+{
+	return tc_createStringsArray(0);
+}
+
 double cGetFlux(copasi_model model, const char * name)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
@@ -3447,4 +3523,9 @@ TCAPIEXPORT double cGetCompartmentByIndex (copasi_model, int)
 TCAPIEXPORT void cSetCompartmentByIndex (copasi_model, int, double)
 {
 	
+}
+
+// STUB: NEEDS TO BE IMPLEMENTED
+TCAPIEXPORT void cSetCompartmentVOlumes (copasi_model, tc_matrix v)
+{
 }
