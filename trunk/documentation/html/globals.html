@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
-<title>COPASI C API: File Members</title>
+<title>CopasiAPI: Globals</title>
 
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
@@ -26,10 +26,10 @@
   
   
   <td style="padding-left: 0.5em;">
-   <div id="projectname">COPASI C API
+   <div id="projectname">CopasiAPI
    &#160;<span id="projectnumber">1.0</span>
    </div>
-   <div id="projectbrief">Simple C API for COPASI simulation package</div>
+   
   </td>
   
   
@@ -47,7 +47,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="modules.html"><span>Modules</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="annotated.html"><span>Data&#160;Structures</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li class="current"><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li class="current"><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
   <div id="navrow3" class="tabs2">
@@ -87,7 +87,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <div class="contents">
-<div class="textblock">Here is a list of all documented file members with links to the documentation:</div>
+<div class="textblock">Here is a list of all documented functions, variables, defines, enums, and typedefs with links to the documentation:</div>
 
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
 <li>cAddProduct()
@@ -132,11 +132,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>cGetAmounts()
 : <a class="el" href="group__state.html#gaf9c47999fbb983801d06eeb99c204014">copasi_api.h</a>
 </li>
-<li>cGetBoundarySpeciesNames()
-: <a class="el" href="group__state.html#ga72c0930583487daada02d81458b434bf">copasi_api.h</a>
+<li>cGetBoundarySpeciesByIndex()
+: <a class="el" href="group__boundary.html#gaf162d7a1a5b647346592ff2c77231794">copasi_api.h</a>
 </li>
-<li>cGetCompartmentNames()
-: <a class="el" href="group__compartment.html#gabcc398576a781fe1e1b42f55cb5a1bfe">copasi_api.h</a>
+<li>cGetBoundarySpeciesConcentrations()
+: <a class="el" href="group__boundary.html#gab2ecf325b40ea05d6392b8549e662b26">copasi_api.h</a>
+</li>
+<li>cGetBoundarySpeciesNames()
+: <a class="el" href="group__boundary.html#ga72c0930583487daada02d81458b434bf">copasi_api.h</a>
 </li>
 <li>cGetConcentration()
 : <a class="el" href="group__state.html#ga3d94fda6ce5bc6e4db425c2172766cf9">copasi_api.h</a>
@@ -150,8 +153,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>cGetElementaryFluxModes()
 : <a class="el" href="group__matrix.html#gadbbf76f9519bdbd9f3bfe58f2ca68cd9">copasi_api.h</a>
 </li>
+<li>cGetFloatingSpeciesByIndex()
+: <a class="el" href="group__floating.html#gaf97e0e53ff25d86d0d38b7c99fc5c565">copasi_api.h</a>
+</li>
+<li>cGetFloatingSpeciesConcentrations()
+: <a class="el" href="group__floating.html#gaaf66dbe1aac9a246cfa65896c095706d">copasi_api.h</a>
+</li>
+<li>cGetFloatingSpeciesIntitialConcentrations()
+: <a class="el" href="group__floating.html#ga81a8183241d25309531b83d53fb501ff">copasi_api.h</a>
+</li>
 <li>cGetFloatingSpeciesNames()
-: <a class="el" href="group__state.html#gae21ed75660f8719c2eff758337557392">copasi_api.h</a>
+: <a class="el" href="group__floating.html#gae21ed75660f8719c2eff758337557392">copasi_api.h</a>
 </li>
 <li>cGetFlux()
 : <a class="el" href="group__state.html#ga7e163f8a5fd4c6cc7a4d63b5a75f82e8">copasi_api.h</a>
@@ -162,8 +174,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>cGetGammaMatrix()
 : <a class="el" href="group__matrix.html#ga0e4d9fdd71cbeece4ab50d4fcf85071a">copasi_api.h</a>
 </li>
+<li>cGetGlobalParameterByIndex()
+: <a class="el" href="copasi__api_8h.html#af078918ade14783152609b7914dfdec2">copasi_api.h</a>
+</li>
 <li>cGetGlobalParameterNames()
 : <a class="el" href="copasi__api_8h.html#a3acfdeadcf5df9e13917278db99049c4">copasi_api.h</a>
+</li>
+<li>cGetGlobalParameters()
+: <a class="el" href="copasi__api_8h.html#a3e1f529aa304334311a16b2c7847ca68">copasi_api.h</a>
 </li>
 <li>cGetJacobian()
 : <a class="el" href="copasi__api_8h.html#a51e1ca71152a647f65e0db1acd61c1ae">copasi_api.h</a>
@@ -180,14 +198,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>cGetLinkMatrix()
 : <a class="el" href="group__matrix.html#ga5fb43c43fb091591e0bd9869131e987f">copasi_api.h</a>
 </li>
-<li>cGetNumberBoundarySpecies()
-: <a class="el" href="group__state.html#ga62a88c6450d600ba08519be40d42a9f8">copasi_api.h</a>
-</li>
 <li>cGetNumberFloatingSpecies()
-: <a class="el" href="group__state.html#ga1d7c1358507e01e542767429ca070b28">copasi_api.h</a>
+: <a class="el" href="group__floating.html#ga1d7c1358507e01e542767429ca070b28">copasi_api.h</a>
+</li>
+<li>cGetNumberOfBoundarySpecies()
+: <a class="el" href="group__boundary.html#ga226f7f1f93a4885f2c0fd1155fa400a7">copasi_api.h</a>
 </li>
 <li>cGetNumberOfCompartments()
-: <a class="el" href="group__compartment.html#ga87ee17633841fa2c07ae78d76d614cce">copasi_api.h</a>
+: <a class="el" href="group__compartment.html#gab8e758b7f408e6d7ea78cb8c61304d69">copasi_api.h</a>
 </li>
 <li>cGetNumberOfGlobalParameters()
 : <a class="el" href="copasi__api_8h.html#a84557d304b5959e348fa9b44d2340d5d">copasi_api.h</a>
@@ -198,8 +216,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>cGetParticleFlux()
 : <a class="el" href="group__state.html#ga660c16a7548b62d3a5073765edc583b8">copasi_api.h</a>
 </li>
+<li>cGetRateOfChange()
+: <a class="el" href="group__rate_of_change.html#ga082f21c0d0ffed40a4be5b1027e583f5">copasi_api.h</a>
+</li>
 <li>cGetRatesOfChange()
-: <a class="el" href="group__state.html#gad8230bc02ff2e1f5d6e25f9833e829f4">copasi_api.h</a>
+: <a class="el" href="group__rate_of_change.html#gad8230bc02ff2e1f5d6e25f9833e829f4">copasi_api.h</a>
+</li>
+<li>cGetRatesOfChangeEx()
+: <a class="el" href="group__rate_of_change.html#gaa756b5a0ca4e41b930b8d9487e57a29c">copasi_api.h</a>
+</li>
+<li>cGetRatesOfChangeNames()
+: <a class="el" href="group__rate_of_change.html#gad9d35dba268f03baf0afbf08bd95d3a9">copasi_api.h</a>
 </li>
 <li>cGetReactionNames()
 : <a class="el" href="group__reaction.html#ga6f2b751655575d86cbd02cfb6009e71c">copasi_api.h</a>
@@ -267,11 +294,41 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>cSetAssignmentRule()
 : <a class="el" href="group__create.html#ga3dfda78229a90f1bb8916a215a594d23">copasi_api.h</a>
 </li>
+<li>cSetBoundarySpeciesByIndex()
+: <a class="el" href="group__boundary.html#ga2dd3d37a138abb7bc4edb3e872566874">copasi_api.h</a>
+</li>
+<li>cSetBoundarySpeciesConcentrations()
+: <a class="el" href="group__boundary.html#ga848a997eafa873397a047869458e25d8">copasi_api.h</a>
+</li>
+<li>cSetCompartmentByIndex()
+: <a class="el" href="group__compartment.html#gadfad233595859c4e9710f3e2c642f8f4">copasi_api.h</a>
+</li>
+<li>cSetCompartmentVolumes()
+: <a class="el" href="group__compartment.html#gaa66445005b164c1082ce53910aadb3f8">copasi_api.h</a>
+</li>
 <li>cSetConcentration()
 : <a class="el" href="group__create.html#gaacba2364a8b2e16b06bd0da8d8cf64a8">copasi_api.h</a>
 </li>
+<li>cSetFloatingSpeciesByIndex()
+: <a class="el" href="group__floating.html#ga785a3e356155b5c6052c32fe486c73f4">copasi_api.h</a>
+</li>
+<li>cSetFloatingSpeciesConcentrations()
+: <a class="el" href="group__floating.html#ga7d9249dc1cf55f117dd05ab83cdce60a">copasi_api.h</a>
+</li>
+<li>cSetFloatingSpeciesIntitialConcentrationByIndex()
+: <a class="el" href="group__floating.html#ga023398bdfda49b66de725d3be20f40bb">copasi_api.h</a>
+</li>
+<li>cSetFloatingSpeciesIntitialConcentrations()
+: <a class="el" href="group__floating.html#gab9093ed72cbc378c70074e7964ade0b7">copasi_api.h</a>
+</li>
 <li>cSetGlobalParameter()
 : <a class="el" href="group__create.html#gacf1a8676b569ae54e95d23f3bd9c9424">copasi_api.h</a>
+</li>
+<li>cSetGlobalParameterByIndex()
+: <a class="el" href="copasi__api_8h.html#a41c4dbeb78c9072c3bfb9d8f45cac3d4">copasi_api.h</a>
+</li>
+<li>cSetGlobalParameterValues()
+: <a class="el" href="copasi__api_8h.html#a5b50aeff127c67f5f53333aec7f060fa">copasi_api.h</a>
 </li>
 <li>cSetOptimizerCrossoverRate()
 : <a class="el" href="group__optim.html#ga461c0a59f0b160c5598918036d036b7b">copasi_api.h</a>
@@ -413,7 +470,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -425,7 +482,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 16:37:49 for COPASI C API by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 12 2011 20:33:38 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
