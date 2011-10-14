@@ -105,7 +105,7 @@ Introduction</h2>
         <a class="code" href="group__loadsave.html#ga44cb74d3541273cfc7e64e7e3e0f2359" title="Save a model as an Antimony file, see antimony.sf.net for details of Antimony syntax.">cWriteAntimonyFile</a>(m1, <span class="stringliteral">&quot;model.txt&quot;</span>);
         
         printf(<span class="stringliteral">&quot;Antimony file written to model.txt\nSimulating...\n&quot;</span>);  
-        output = <a class="code" href="group__simulation.html#ga2105addec217217e5443df8d4cac8405" title="Simulate using LSODA numerical integrator.">cSimulateDeterministic</a>(m1, 0, 100, 1000);  <span class="comment">//model, start, end, num. points</span>
+        output = <a class="code" href="group__rate_of_change.html#ga2105addec217217e5443df8d4cac8405" title="Simulate using LSODA numerical integrator.">cSimulateDeterministic</a>(m1, 0, 100, 1000);  <span class="comment">//model, start, end, num. points</span>
         printf(<span class="stringliteral">&quot;output.tab has %i rows and %i columns\n&quot;</span>,output.<a class="code" href="structtc__matrix.html#a061459acc9e078fa4699e0e349887215">rows</a>, output.<a class="code" href="structtc__matrix.html#a4407a60bc4387adae24cee658711f2d9">cols</a>);
         tc_printMatrixToFile(<span class="stringliteral">&quot;output.tab&quot;</span>, output);
         tc_deleteMatrix(output);
@@ -135,7 +135,7 @@ Installation</h2>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 20:36:34 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

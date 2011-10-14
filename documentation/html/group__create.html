@@ -83,28 +83,28 @@ Create model group</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a model.  <a href="#gae797f3bdea43852219b02deb7c3a83f3"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaf577781bb2cbd0e574b67553bcd1e871">cCompileModel</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is only needed for calling COPASI methods not found in this library. This function compiles the COPASI model; it is called internally by the simulate and other anlysis functions.  <a href="#gaf577781bb2cbd0e574b67553bcd1e871"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Compartment group</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__compartment.html">copasi_compartment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga2256ee7e63c6d4481aa88de4a7197744">cCreateCompartment</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *name, double volume)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create compartment.  <a href="#ga2256ee7e63c6d4481aa88de4a7197744"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga058f2de9af7a432acda12ef753607560">cSetVolume</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *compartment, double volume)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a volume of compartment.  <a href="#ga058f2de9af7a432acda12ef753607560"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gad0116984e87902a9b608a08717570a20">cSetValue</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *name, double value)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the concentration of a species, volume of a compartment, or value of a parameter The function will figure out which using the name (fast lookup using hashtables). If the name does not exist in the model, a new global parameter will be created.  <a href="#gad0116984e87902a9b608a08717570a20"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaa32ab75587401cfc24428e86a0d215b5">cCreateSpecies</a> (<a class="el" href="structcopasi__compartment.html">copasi_compartment</a> compartment, const char *name, double initialValue)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a species to the model.  <a href="#gaa32ab75587401cfc24428e86a0d215b5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga47c4b62f7a401d970fcd5591cd812023">cSetSpeciesType</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *species, int isBoundary)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a species as boundary or floating (will remove any assignment rules)  <a href="#ga47c4b62f7a401d970fcd5591cd812023"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaacba2364a8b2e16b06bd0da8d8cf64a8">cSetConcentration</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *species, double conc)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a species concentration.  <a href="#gaacba2364a8b2e16b06bd0da8d8cf64a8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga89583b7a6246f28b95ed55cfb2ce13ba">cSetAmount</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *species, double amount)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a species amounts.  <a href="#ga89583b7a6246f28b95ed55cfb2ce13ba"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga91d36624344294156bf137bd2a462b8f">cGetCompartments</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the vector of compartment names and volumes.  <a href="#ga91d36624344294156bf137bd2a462b8f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaa66445005b164c1082ce53910aadb3f8">cSetCompartmentVolumes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volumes using a vector of compartment values.  <a href="#gaa66445005b164c1082ce53910aadb3f8"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Assignments (forcing functions)</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga3dfda78229a90f1bb8916a215a594d23">cSetAssignmentRule</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *species, const char *formula)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the assignment rule for a species (automatically assumes boundary species)  <a href="#ga3dfda78229a90f1bb8916a215a594d23"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gacf1a8676b569ae54e95d23f3bd9c9424">cSetGlobalParameter</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *name, double value)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the value of an existing global parameter or create a new global parameter.  <a href="#gacf1a8676b569ae54e95d23f3bd9c9424"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gadab52a6ffc91d247d311c5dcfb66c216">cCreateVariable</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *name, const char *formula)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new variable that is not a constant by a formula.  <a href="#gadab52a6ffc91d247d311c5dcfb66c216"></a><br/></td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new variable that is defined by a formula.  <a href="#gadab52a6ffc91d247d311c5dcfb66c216"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Events</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga94cbbd1a04cf521ec9342ffa61deb1e9">cCreateEvent</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *name, const char *trigger, const char *variable, const char *formula)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a trigger and a response, where the response is defined by a target variable and an assignment formula.  <a href="#ga94cbbd1a04cf521ec9342ffa61deb1e9"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Reaction group</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__reaction.html">copasi_reaction</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga7e704796eebcdb6e138ff7bfa64ff1a4">cCreateReaction</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *name)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new reaction with a given name.  <a href="#ga7e704796eebcdb6e138ff7bfa64ff1a4"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaea1d98a0d70811e2e1387363414b27d8">cAddReactant</a> (<a class="el" href="structcopasi__reaction.html">copasi_reaction</a> reaction, const char *species, double stoichiometry)</td></tr>
@@ -113,6 +113,71 @@ Create model group</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a product to a reaction.  <a href="#gab24bea25b0e39d1c76a060c3b51436e6"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga01316099febb0ab0223aabae0a16d85b">cSetReactionRate</a> (<a class="el" href="structcopasi__reaction.html">copasi_reaction</a> reaction, const char *formula)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set reaction rate equation.  <a href="#ga01316099febb0ab0223aabae0a16d85b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaacddbd9a97c446e3ce0c842852cdbc02">cGetReactionRates</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of reaction names and their current fluxes.  <a href="#gaacddbd9a97c446e3ce0c842852cdbc02"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaa5da18e6b585051a32fef43b4776acab">cGetReactionNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of reaction names.  <a href="#gaa5da18e6b585051a32fef43b4776acab"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga7e163f8a5fd4c6cc7a4d63b5a75f82e8">cGetFlux</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute current flux through the given reactions.  <a href="#ga7e163f8a5fd4c6cc7a4d63b5a75f82e8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga660c16a7548b62d3a5073765edc583b8">cGetParticleFlux</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute current flux through the given reactions in terms of particles.  <a href="#ga660c16a7548b62d3a5073765edc583b8"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Species group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaae43572ccf55c7023402a16607b545dd">cGetNumberOfSpecies</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of species (all) in the model.  <a href="#gaae43572ccf55c7023402a16607b545dd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gace5018df6e0463ae99144f4310387397">cGetNumberOfFloatingSpecies</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of floating species in the model.  <a href="#gace5018df6e0463ae99144f4310387397"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga207b18d5eef744044fc85198ab42c692">cGetNumberOfBoundarySpecies</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of boundary species in the model.  <a href="#ga207b18d5eef744044fc85198ab42c692"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaa32ab75587401cfc24428e86a0d215b5">cCreateSpecies</a> (<a class="el" href="structcopasi__compartment.html">copasi_compartment</a> compartment, const char *name, double initialValue)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a species to the model. Species must belong inside a compartment.  <a href="#gaa32ab75587401cfc24428e86a0d215b5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga47c4b62f7a401d970fcd5591cd812023">cSetSpeciesType</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *species, int isBoundary)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a species as boundary or floating (will remove any assignment rules)  <a href="#ga47c4b62f7a401d970fcd5591cd812023"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaacba2364a8b2e16b06bd0da8d8cf64a8">cSetConcentration</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *species, double conc)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a species current concentration.  <a href="#gaacba2364a8b2e16b06bd0da8d8cf64a8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga608157ea25456229ca48e2ce92d98e54">cSetInitialConcentration</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *species, double conc)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a species initial concentration.  <a href="#ga608157ea25456229ca48e2ce92d98e54"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga89583b7a6246f28b95ed55cfb2ce13ba">cSetAmount</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *species, double amount)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a species amounts.  <a href="#ga89583b7a6246f28b95ed55cfb2ce13ba"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gab35721f7a57dbb39da5bb6ff0f05f105">cSetSpeciesConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> d)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set multiple boundary or floating species concentration. Order is not important because the names are used to set value.  <a href="#gab35721f7a57dbb39da5bb6ff0f05f105"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga2263afe35720250049b95e2b1536a297">cGetAllSpecies</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get species names and concentrations.  <a href="#ga2263afe35720250049b95e2b1536a297"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga53426fe72b1d13ace364e9442bed5ed2">cGetFloatingSpecies</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get floating species names and concentrations.  <a href="#ga53426fe72b1d13ace364e9442bed5ed2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga7d34e8e3d6d87e05830ba61a953917c5">cGetBoundarySpecies</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get boundary species names and concentrations.  <a href="#ga7d34e8e3d6d87e05830ba61a953917c5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaa268976245cd1dfbc7faeca4bb2c6ac7">cGetFloatingSpeciesIntitialConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the initial floating species concentrations.  <a href="#gaa268976245cd1dfbc7faeca4bb2c6ac7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga0ea90521b01994b09be56b004b1cd79b">cSetFloatingSpeciesIntitialConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> sp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the initial floating species concentrations. Order does not matter because row names are used to assign values.  <a href="#ga0ea90521b01994b09be56b004b1cd79b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga60817c141f5392d9c2769967da2c2d06">cGetConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current concentrations of all species.  <a href="#ga60817c141f5392d9c2769967da2c2d06"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaf9c47999fbb983801d06eeb99c204014">cGetAmounts</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume.  <a href="#gaf9c47999fbb983801d06eeb99c204014"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga3d94fda6ce5bc6e4db425c2172766cf9">cGetConcentration</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current concentration of a species.  <a href="#ga3d94fda6ce5bc6e4db425c2172766cf9"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga9541271dacbb4f1cdefc9df1d3119300">cGetAmount</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *name)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the current amount of a species. The amounts are calculated from the concentrations and compartment volume.  <a href="#ga9541271dacbb4f1cdefc9df1d3119300"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Parameter group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gad0116984e87902a9b608a08717570a20">cSetValue</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, const char *name, double value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the concentration of a species, volume of a compartment, or value of a parameter The function will figure out which using the name (fast lookup using hashtables). If the name does not exist in the model, a new global parameter will be created.  <a href="#gad0116984e87902a9b608a08717570a20"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gacf1a8676b569ae54e95d23f3bd9c9424">cSetGlobalParameter</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *name, double value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the value of an existing global parameter or create a new global parameter.  <a href="#gacf1a8676b569ae54e95d23f3bd9c9424"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga3e1f529aa304334311a16b2c7847ca68">cGetGlobalParameters</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of global parameter names.  <a href="#ga3e1f529aa304334311a16b2c7847ca68"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga5b50aeff127c67f5f53333aec7f060fa">cSetGlobalParameterValues</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> gp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the vector of global parameters.  <a href="#ga5b50aeff127c67f5f53333aec7f060fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga9685433ac770546bab36e4a7fa0572f9">cSetValues</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set values for species, parameters, or compartments.  <a href="#ga9685433ac770546bab36e4a7fa0572f9"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Parameter group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><br class="typebreak"/>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_stringscGetGlobalParameterNames(<a class="el" href="structcopasi__model.html">copasi_model</a>);=======TCAPIEXPORTintcSetGlobalParameter(copasi_modelmodel, <br class="typebreak"/>
+constchar *name, doublevalue);&gt;<br class="typebreak"/>
+&gt;&gt;&gt;&gt;&gt; r96 TCAPIEXPORT tc_matri&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga510c591e47691755755ecfddcdba8d97">cGetGlobalParameters</a> )(<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the value of an existing global parameter or create a new global parameter.  <a href="#ga510c591e47691755755ecfddcdba8d97"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Create models and set model components using code. </p>
@@ -432,10 +497,10 @@ Create model group</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Add a species to the model. </p>
+<p>Add a species to the model. Species must belong inside a compartment. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structcopasi__compartment.html" title="This struct is used to contain a pointer to an instance of a COPASI compartment object.">copasi_compartment</a></td><td>compartment where the species belongs </td></tr>
     <tr><td class="paramname">char*</td><td>species name </td></tr>
     <tr><td class="paramname">double</td><td>initial value (concentration or count, depending on the model) </td></tr>
   </table>
@@ -475,7 +540,7 @@ Create model group</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Create a new variable that is not a constant by a formula. </p>
+<p>Create a new variable that is defined by a formula. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
@@ -485,6 +550,512 @@ Create model group</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>int 0=failed 1=success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2263afe35720250049b95e2b1536a297"></a><!-- doxytag: member="copasi_api.h::cGetAllSpecies" ref="ga2263afe35720250049b95e2b1536a297" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetAllSpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get species names and concentrations. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith boundary species </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector where row names are the species names and first column has the concentrations </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga9541271dacbb4f1cdefc9df1d3119300"></a><!-- doxytag: member="copasi_api.h::cGetAmount" ref="ga9541271dacbb4f1cdefc9df1d3119300" args="(copasi_model, const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT double cGetAmount </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the current amount of a species. The amounts are calculated from the concentrations and compartment volume. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">string</td><td>species name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double amount. -1 indicates that a species by this name was not found </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf9c47999fbb983801d06eeb99c204014"></a><!-- doxytag: member="copasi_api.h::cGetAmounts" ref="gaf9c47999fbb983801d06eeb99c204014" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetAmounts </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of with 1 row and n columns, where n = number of species The names of the species are included in the matrix column labels </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7d34e8e3d6d87e05830ba61a953917c5"></a><!-- doxytag: member="copasi_api.h::cGetBoundarySpecies" ref="ga7d34e8e3d6d87e05830ba61a953917c5" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetBoundarySpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get boundary species names and concentrations. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector where row names are the species names and first column has the concentrations </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga91d36624344294156bf137bd2a462b8f"></a><!-- doxytag: member="copasi_api.h::cGetCompartments" ref="ga91d36624344294156bf137bd2a462b8f" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetCompartments </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the vector of compartment names and volumes. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector with compartment names as row names </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3d94fda6ce5bc6e4db425c2172766cf9"></a><!-- doxytag: member="copasi_api.h::cGetConcentration" ref="ga3d94fda6ce5bc6e4db425c2172766cf9" args="(copasi_model, const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT double cGetConcentration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the current concentration of a species. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">string</td><td>species name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double concentration. -1 indicates that a species by this name was not found</dd></dl>
+<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; .r96 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">string</td><td>species name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double concentration. -1 indicates that a species by this name was not found </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga60817c141f5392d9c2769967da2c2d06"></a><!-- doxytag: member="copasi_api.h::cGetConcentrations" ref="ga60817c141f5392d9c2769967da2c2d06" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the current concentrations of all species. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of with 1 row and n columns, where n = number of species The names of the species are included in the matrix column labels</dd></dl>
+<p>======= &gt;&gt;&gt;&gt;&gt;&gt;&gt; .r96 </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of with 1 row and n columns, where n = number of species The names of the species are included in the matrix column labels </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga53426fe72b1d13ace364e9442bed5ed2"></a><!-- doxytag: member="copasi_api.h::cGetFloatingSpecies" ref="ga53426fe72b1d13ace364e9442bed5ed2" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetFloatingSpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get floating species names and concentrations. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector where row names are the species names and first column has the concentrations </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa268976245cd1dfbc7faeca4bb2c6ac7"></a><!-- doxytag: member="copasi_api.h::cGetFloatingSpeciesIntitialConcentrations" ref="gaa268976245cd1dfbc7faeca4bb2c6ac7" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetFloatingSpeciesIntitialConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the initial floating species concentrations. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> row vector of initial floating species concentrations </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7e163f8a5fd4c6cc7a4d63b5a75f82e8"></a><!-- doxytag: member="copasi_api.h::cGetFlux" ref="ga7e163f8a5fd4c6cc7a4d63b5a75f82e8" args="(copasi_model, const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT double cGetFlux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute current flux through the given reactions. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">string</td><td>reaction name, e.g. "J1" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double rate. If reaction by this name does not exist that NaN will be returned The names of the fluxes are included in the matrix column labels </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3e1f529aa304334311a16b2c7847ca68"></a><!-- doxytag: member="copasi_api.h::cGetGlobalParameters" ref="ga3e1f529aa304334311a16b2c7847ca68" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetGlobalParameters </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the list of global parameter names. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector with parameter names are the row names </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga207b18d5eef744044fc85198ab42c692"></a><!-- doxytag: member="copasi_api.h::cGetNumberOfBoundarySpecies" ref="ga207b18d5eef744044fc85198ab42c692" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT int cGetNumberOfBoundarySpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get number of boundary species in the model. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gace5018df6e0463ae99144f4310387397"></a><!-- doxytag: member="copasi_api.h::cGetNumberOfFloatingSpecies" ref="gace5018df6e0463ae99144f4310387397" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT int cGetNumberOfFloatingSpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get number of floating species in the model. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaae43572ccf55c7023402a16607b545dd"></a><!-- doxytag: member="copasi_api.h::cGetNumberOfSpecies" ref="gaae43572ccf55c7023402a16607b545dd" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT int cGetNumberOfSpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get number of species (all) in the model. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga660c16a7548b62d3a5073765edc583b8"></a><!-- doxytag: member="copasi_api.h::cGetParticleFlux" ref="ga660c16a7548b62d3a5073765edc583b8" args="(copasi_model, const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT double cGetParticleFlux </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute current flux through the given reactions in terms of particles. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">string</td><td>reaction name, e.g. "J1" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double rate. If reaction by this name does not exist that NaN will be returned </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa5da18e6b585051a32fef43b4776acab"></a><!-- doxytag: member="copasi_api.h::cGetReactionNames" ref="gaa5da18e6b585051a32fef43b4776acab" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a> cGetReactionNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the list of reaction names. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> array of char * with the given length </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaacddbd9a97c446e3ce0c842852cdbc02"></a><!-- doxytag: member="copasi_api.h::cGetReactionRates" ref="gaacddbd9a97c446e3ce0c842852cdbc02" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetReactionRates </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the list of reaction names and their current fluxes. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> row vector with column names corresponding to reaction names </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
@@ -576,6 +1147,42 @@ Create model group</h2></td></tr>
 </pre></div> 
 </div>
 </div>
+<a class="anchor" id="gaa66445005b164c1082ce53910aadb3f8"></a><!-- doxytag: member="copasi_api.h::cSetCompartmentVolumes" ref="gaa66445005b164c1082ce53910aadb3f8" args="(copasi_model, tc_matrix v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetCompartmentVolumes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a compartment volumes using a vector of compartment values. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">double</td><td>volume Vector of compartment volumes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="gaacba2364a8b2e16b06bd0da8d8cf64a8"></a><!-- doxytag: member="copasi_api.h::cSetConcentration" ref="gaacba2364a8b2e16b06bd0da8d8cf64a8" args="(copasi_model, const char *species, double conc)" -->
 <div class="memitem">
 <div class="memproto">
@@ -607,12 +1214,48 @@ Create model group</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Set a species concentration. </p>
+<p>Set a species current concentration. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
     <tr><td class="paramname">char</td><td>* species name </td></tr>
     <tr><td class="paramname">double</td><td>concentration </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0ea90521b01994b09be56b004b1cd79b"></a><!-- doxytag: member="copasi_api.h::cSetFloatingSpeciesIntitialConcentrations" ref="ga0ea90521b01994b09be56b004b1cd79b" args="(copasi_model model, tc_matrix sp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetFloatingSpeciesIntitialConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>sp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set the initial floating species concentrations. Order does not matter because row names are used to assign values. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>row vector of initial floating species concentrations </td></tr>
   </table>
   </dd>
 </dl>
@@ -663,6 +1306,84 @@ Create model group</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga5b50aeff127c67f5f53333aec7f060fa"></a><!-- doxytag: member="copasi_api.h::cSetGlobalParameterValues" ref="ga5b50aeff127c67f5f53333aec7f060fa" args="(copasi_model, tc_matrix gp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetGlobalParameterValues </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>gp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set the vector of global parameters. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model  <a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector containing the values for the global parameters. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga608157ea25456229ca48e2ce92d98e54"></a><!-- doxytag: member="copasi_api.h::cSetInitialConcentration" ref="ga608157ea25456229ca48e2ce92d98e54" args="(copasi_model, const char *species, double conc)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetInitialConcentration </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>species</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>conc</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a species initial concentration. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">char</td><td>* species name </td></tr>
+    <tr><td class="paramname">double</td><td>concentration </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga01316099febb0ab0223aabae0a16d85b"></a><!-- doxytag: member="copasi_api.h::cSetReactionRate" ref="ga01316099febb0ab0223aabae0a16d85b" args="(copasi_reaction reaction, const char *formula)" -->
 <div class="memitem">
 <div class="memproto">
@@ -700,6 +1421,42 @@ Create model group</h2></td></tr>
 <div class="fragment"><pre class="fragment"> <span class="keywordtype">int</span> result;
  result = <a class="code" href="group__create.html#ga01316099febb0ab0223aabae0a16d85b" title="Set reaction rate equation.">cSetReactionRate</a> (r, <span class="stringliteral">&quot;k1*S1&quot;</span>);
 </pre></div> 
+</div>
+</div>
+<a class="anchor" id="gab35721f7a57dbb39da5bb6ff0f05f105"></a><!-- doxytag: member="copasi_api.h::cSetSpeciesConcentrations" ref="gab35721f7a57dbb39da5bb6ff0f05f105" args="(copasi_model model, tc_matrix d)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetSpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set multiple boundary or floating species concentration. Order is not important because the names are used to set value. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">tc_matric</td><td>row vector of boundary or floating species concentrations. rows must be named </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a class="anchor" id="ga47c4b62f7a401d970fcd5591cd812023"></a><!-- doxytag: member="copasi_api.h::cSetSpeciesType" ref="ga47c4b62f7a401d970fcd5591cd812023" args="(copasi_model model, const char *species, int isBoundary)" -->
@@ -789,6 +1546,42 @@ Create model group</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga9685433ac770546bab36e4a7fa0572f9"></a><!-- doxytag: member="copasi_api.h::cSetValues" ref="ga9685433ac770546bab36e4a7fa0572f9" args="(copasi_model model, tc_matrix)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void cSetValues </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set values for species, parameters, or compartments. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>column vector with names and values of species or parameters or compartments </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="ga058f2de9af7a432acda12ef753607560"></a><!-- doxytag: member="copasi_api.h::cSetVolume" ref="ga058f2de9af7a432acda12ef753607560" args="(copasi_model, const char *compartment, double volume)" -->
 <div class="memitem">
 <div class="memproto">
@@ -832,6 +1625,39 @@ Create model group</h2></td></tr>
 
 </div>
 </div>
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="ga510c591e47691755755ecfddcdba8d97"></a><!-- doxytag: member="copasiSBWApi.h::cGetGlobalParameters" ref="ga510c591e47691755755ecfddcdba8d97" args=")(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_stringscGetGlobalParameterNames(<a class="el" href="structcopasi__model.html">copasi_model</a>);=======TCAPIEXPORTintcSetGlobalParameter(copasi_modelmodel,constchar*name,doublevalue);&gt;&gt;&gt;&gt;&gt;&gt; r96 TCAPIEXPORT tc_matri cGetGlobalParameters)(<a class="el" href="structcopasi__model.html">copasi_model</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set the value of an existing global parameter or create a new global parameter. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">char*</td><td>parameter name </td></tr>
+    <tr><td class="paramname">double</td><td>value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int 0=new value created 1=found existing value</dd></dl>
+<p>Get the list of global parameter names </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector with parameter names are the row names </dd></dl>
+
+</div>
+</div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -850,7 +1676,7 @@ Create model group</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 20:36:34 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
