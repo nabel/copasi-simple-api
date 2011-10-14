@@ -3,16 +3,16 @@
 #include <math.h>
 #include <string.h>
 
-#include "TC_structs.h"
+#include "sb_structs.h"
 
-TCAPIEXPORT tc_matrix tc_createMatrix(int rows, int cols)
+SBAPIEXPORT sb_matrix sb_createMatrix(int rows, int cols)
 {
 	int i;
-	tc_matrix M;
+	sb_matrix M;
 	M.rows = rows;
 	M.cols = cols;
-	M.colnames = tc_createStringsArray(cols);
-	M.rownames = tc_createStringsArray(rows);
+	M.colnames = sb_createStringsArray(cols);
+	M.rownames = sb_createStringsArray(rows);
 	
 	if (rows > 0 && cols > 0)
 	{
@@ -25,15 +25,15 @@ TCAPIEXPORT tc_matrix tc_createMatrix(int rows, int cols)
 	return M;
 }
 
-TCAPIEXPORT tc_table tc_createTable(int rows, int cols)
+SBAPIEXPORT sb_table sb_createTable(int rows, int cols)
 {
 	int i;
-	tc_table M;
+	sb_table M;
 	M.rows = rows;
 	M.cols = cols;
 
-	M.colnames = tc_createStringsArray(cols);
-	M.rownames = tc_createStringsArray(rows);
+	M.colnames = sb_createStringsArray(cols);
+	M.rownames = sb_createStringsArray(rows);
 	if (rows > 0 && cols > 0)
 	{
 		M.strings = (char**)malloc( rows * cols * sizeof(char*) );
@@ -45,10 +45,10 @@ TCAPIEXPORT tc_table tc_createTable(int rows, int cols)
 	return M;
 }
 
-TCAPIEXPORT tc_strings tc_createStringsArray(int len)
+SBAPIEXPORT sb_strings sb_createStringsArray(int len)
 {
 	int i;
-	tc_strings A;
+	sb_strings A;
 	if (len < 1)
 	{
 		A.length = 0;
@@ -64,10 +64,10 @@ TCAPIEXPORT tc_strings tc_createStringsArray(int len)
 	return A;
 }
 
-TCAPIEXPORT tc_items tc_createItemsArray(int len)
+SBAPIEXPORT sb_items sb_createItemsArray(int len)
 {
 	int i;
-	tc_items A;
+	sb_items A;
 	if (len < 1)
 	{
 		A.length = 0;
@@ -83,47 +83,47 @@ TCAPIEXPORT tc_items tc_createItemsArray(int len)
 	return A;
 }
 
-TCAPIEXPORT double tc_getMatrixValue(tc_matrix M, int i, int j)
+SBAPIEXPORT double sb_getMatrixValue(sb_matrix M, int i, int j)
 { 
 	if (M.values && i >= 0 && j >= 0 && i < M.rows && j < M.cols)
 		return M.values[ i*M.cols + j ];
 	return 0.0;
 }
 
-TCAPIEXPORT void tc_setMatrixValue(tc_matrix M, int i, int j, double d)
+SBAPIEXPORT void sb_setMatrixValue(sb_matrix M, int i, int j, double d)
 { 
 	if (M.values && i >= 0 && j >= 0 && i < M.rows && j < M.cols)
 		M.values[ i*M.cols + j ] = d;
 }
 
-TCAPIEXPORT const char * tc_getRowName(tc_matrix M, int i)
+SBAPIEXPORT const char * sb_getRowName(sb_matrix M, int i)
 { 
-	return tc_getString(M.rownames,i);
+	return sb_getString(M.rownames,i);
 }
 
-TCAPIEXPORT void tc_setRowName(tc_matrix M, int i, const char * s)
+SBAPIEXPORT void sb_setRowName(sb_matrix M, int i, const char * s)
 {
-	tc_setString(M.rownames,i,s);
+	sb_setString(M.rownames,i,s);
 }
 
-TCAPIEXPORT const char * tc_getColumnName(tc_matrix M, int i)
+SBAPIEXPORT const char * sb_getColumnName(sb_matrix M, int i)
 { 
-	return tc_getString(M.colnames,i);
+	return sb_getString(M.colnames,i);
 }
 
-TCAPIEXPORT void tc_setColumnName(tc_matrix M, int i, const char * s)
+SBAPIEXPORT void sb_setColumnName(sb_matrix M, int i, const char * s)
 {
-	tc_setString(M.colnames,i,s);
+	sb_setString(M.colnames,i,s);
 }
 
-TCAPIEXPORT const char* tc_getTableValue(tc_table S, int i, int j)
+SBAPIEXPORT const char* sb_getTableValue(sb_table S, int i, int j)
 {
 	if (S.strings && i >= 0 && j >= 0 && i < S.rows && j < S.cols)
 		return S.strings[ i*S.cols + j ];
 	return 0;
 }
 
-TCAPIEXPORT void tc_setTableValue(tc_table S, int i, int j, const char * s)
+SBAPIEXPORT void sb_setTableValue(sb_table S, int i, int j, const char * s)
 {
 	int n=0;
 	char * str;
@@ -137,14 +137,14 @@ TCAPIEXPORT void tc_setTableValue(tc_table S, int i, int j, const char * s)
 	}
 }
 
-TCAPIEXPORT const char* tc_getString(tc_strings S, int i)
+SBAPIEXPORT const char* sb_getString(sb_strings S, int i)
 {
 	if (S.strings && i >= 0 && i < S.length)
 		return S.strings[ i ];
 	return 0;
 }
 
-TCAPIEXPORT void tc_setString(tc_strings S, int i, const char * s)
+SBAPIEXPORT void sb_setString(sb_strings S, int i, const char * s)
 {
 	int n=0;
 	char * str;
@@ -163,40 +163,40 @@ TCAPIEXPORT void tc_setString(tc_strings S, int i, const char * s)
 	}
 }
 
-TCAPIEXPORT long tc_getItem(tc_items A, int i)
+SBAPIEXPORT long sb_getItem(sb_items A, int i)
 {
 	if (i >= 0 && i < A.length)
 		return A.items[ i ];
 	return 0;
 }
 
-TCAPIEXPORT void tc_setItem(tc_items A, int i, long o)
+SBAPIEXPORT void sb_setItem(sb_items A, int i, long o)
 {
 	if (i >= 0 && i < A.length)
 		A.items[ i ] = o;
 }
 
-TCAPIEXPORT void tc_deleteMatrix(tc_matrix M)
+SBAPIEXPORT void sb_deleteMatrix(sb_matrix M)
 {
 	if (M.values)
 		free(M.values);
 	M.rows = M.cols = 0;	
 	M.values = 0;
-	tc_deleteStringsArray(M.rownames);
-	tc_deleteStringsArray(M.colnames);
+	sb_deleteStringsArray(M.rownames);
+	sb_deleteStringsArray(M.colnames);
 }
 
-TCAPIEXPORT void tc_deleteTable(tc_table M)
+SBAPIEXPORT void sb_deleteTable(sb_table M)
 {
 	if (M.strings)
 		free(M.strings);
 	M.rows = M.cols = 0;
 	M.strings = 0;
-	tc_deleteStringsArray(M.rownames);
-	tc_deleteStringsArray(M.colnames);
+	sb_deleteStringsArray(M.rownames);
+	sb_deleteStringsArray(M.colnames);
 }
 
-TCAPIEXPORT void tc_deleteItemsArray(tc_items A)
+SBAPIEXPORT void sb_deleteItemsArray(sb_items A)
 {
 	if (A.items) 
 		free(A.items);
@@ -204,7 +204,7 @@ TCAPIEXPORT void tc_deleteItemsArray(tc_items A)
 	A.items = 0;
 }
 
-TCAPIEXPORT void tc_deleteStringsArray(tc_strings C)
+SBAPIEXPORT void sb_deleteStringsArray(sb_strings C)
 {
 	int i;
 	if (C.strings)
@@ -218,10 +218,10 @@ TCAPIEXPORT void tc_deleteStringsArray(tc_strings C)
 	C.strings = 0;
 }
 
-TCAPIEXPORT tc_matrix tc_appendColumns(tc_matrix A, tc_matrix B)
+SBAPIEXPORT sb_matrix sb_appendColumns(sb_matrix A, sb_matrix B)
 {
 	int i,j,k=0;
-	tc_matrix C;
+	sb_matrix C;
 	int fromA = 0, toA = A.cols, fromB = 0, toB = B.cols;
 
 	C.colnames.length = C.rownames.length = 0;
@@ -296,10 +296,10 @@ TCAPIEXPORT tc_matrix tc_appendColumns(tc_matrix A, tc_matrix B)
 	return C;
 }
 
-TCAPIEXPORT tc_matrix tc_appendRows(tc_matrix A, tc_matrix B)
+SBAPIEXPORT sb_matrix sb_appendRows(sb_matrix A, sb_matrix B)
 {
 	int i,j,k=0;
-	tc_matrix C;
+	sb_matrix C;
 	int fromA = 0, toA = A.rows, fromB = 0, toB = B.rows;
 
 	C.colnames.strings = C.rownames.strings = 0;
@@ -345,7 +345,6 @@ TCAPIEXPORT tc_matrix tc_appendRows(tc_matrix A, tc_matrix B)
 	}
 
 
-
 	if (A.colnames.strings && B.colnames.strings)
 	{
 		C.colnames.length = C.cols;
@@ -378,7 +377,7 @@ TCAPIEXPORT tc_matrix tc_appendRows(tc_matrix A, tc_matrix B)
 	return C;
 }
 
-TCAPIEXPORT void tc_printMatrixToFile(const char* s, tc_matrix output)
+SBAPIEXPORT void sb_printMatrixToFile(const char* s, sb_matrix output)
 {
 	int i,j;
 	FILE * outfile = fopen(s,"w+");
@@ -387,25 +386,25 @@ TCAPIEXPORT void tc_printMatrixToFile(const char* s, tc_matrix output)
 		fprintf(outfile, "#\t");
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				fprintf(outfile, "%s\t", tc_getColumnName(output, j));
+				fprintf(outfile, "%s\t", sb_getColumnName(output, j));
 			else
-				fprintf(outfile, "%s\n", tc_getColumnName(output, j));
+				fprintf(outfile, "%s\n", sb_getColumnName(output, j));
 	}
 	for (i=0; i < output.rows; ++i)
 	{
-		if (tc_getRowName(output,i))
-			fprintf(outfile, "%s\t", tc_getRowName(output, i));
+		if (sb_getRowName(output,i))
+			fprintf(outfile, "%s\t", sb_getRowName(output, i));
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				fprintf(outfile, "%lf\t", tc_getMatrixValue(output, i, j));
+				fprintf(outfile, "%lf\t", sb_getMatrixValue(output, i, j));
 			else
-				fprintf(outfile, "%lf\n", tc_getMatrixValue(output, i, j));
+				fprintf(outfile, "%lf\n", sb_getMatrixValue(output, i, j));
 	}
 	
 	fclose(outfile);
 }
 
-TCAPIEXPORT void tc_printOutMatrix(tc_matrix output)
+SBAPIEXPORT void sb_printOutMatrix(sb_matrix output)
 {
 	int i,j;
 	if (output.colnames.strings)
@@ -413,25 +412,25 @@ TCAPIEXPORT void tc_printOutMatrix(tc_matrix output)
 		printf("\t");
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				printf("%s\t", tc_getColumnName(output, j));
+				printf("%s\t", sb_getColumnName(output, j));
 			else
-				printf("%s\n", tc_getColumnName(output, j));
+				printf("%s\n", sb_getColumnName(output, j));
 	}
 
 	for (i=0; i < output.rows; ++i)
 	{
-		if (tc_getRowName(output,i))
-			printf("%s\t", tc_getRowName(output, i));
+		if (sb_getRowName(output,i))
+			printf("%s\t", sb_getRowName(output, i));
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				printf("%lf\t", tc_getMatrixValue(output, i, j));
+				printf("%lf\t", sb_getMatrixValue(output, i, j));
 			else
-				printf("%lf\n", tc_getMatrixValue(output, i, j));
+				printf("%lf\n", sb_getMatrixValue(output, i, j));
 	}
 }
 
 
-TCAPIEXPORT void tc_printTableToFile(const char* s, tc_table output)
+SBAPIEXPORT void sb_printTableToFile(const char* s, sb_table output)
 {
 	int i,j;
 	FILE * outfile = fopen(s,"w+");
@@ -440,28 +439,28 @@ TCAPIEXPORT void tc_printTableToFile(const char* s, tc_table output)
 		fprintf(outfile, "#\t");
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				fprintf(outfile, "%s\t", tc_getString(output.colnames, j));
+				fprintf(outfile, "%s\t", sb_getString(output.colnames, j));
 			else
-				fprintf(outfile, "%s\n", tc_getString(output.colnames, j));
+				fprintf(outfile, "%s\n", sb_getString(output.colnames, j));
 	}
 
 	if (output.strings)
 	{
 		for (i=0; i < output.rows; ++i)
 		{
-			if (tc_getString(output.rownames,i))
-				fprintf(outfile, "%s\t", tc_getString(output.rownames,i));
+			if (sb_getString(output.rownames,i))
+				fprintf(outfile, "%s\t", sb_getString(output.rownames,i));
 			for (j=0; j < output.cols; ++j)
 				if (j < (output.cols-1))
-					fprintf(outfile, "%s\t", tc_getTableValue(output, i, j));
+					fprintf(outfile, "%s\t", sb_getTableValue(output, i, j));
 				else
-					fprintf(outfile, "%s\n", tc_getTableValue(output, i, j));
+					fprintf(outfile, "%s\n", sb_getTableValue(output, i, j));
 		}
 	}
 	fclose(outfile);
 }
 
-TCAPIEXPORT void tc_printOutTable(tc_table output)
+SBAPIEXPORT void sb_printOutTable(sb_table output)
 {
 	int i,j;
 	if (output.colnames.strings)
@@ -469,47 +468,47 @@ TCAPIEXPORT void tc_printOutTable(tc_table output)
 		printf("\t");
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				printf("%s\t", tc_getString(output.colnames, j));
+				printf("%s\t", sb_getString(output.colnames, j));
 			else
-				printf("%s\n", tc_getString(output.colnames, j));
+				printf("%s\n", sb_getString(output.colnames, j));
 	}
 	
 	if (output.strings)
 	{
 		for (i=0; i < output.rows; ++i)
 		{
-			if (tc_getString(output.rownames,i))
-				printf("%s\t", tc_getString(output.rownames,i));
+			if (sb_getString(output.rownames,i))
+				printf("%s\t", sb_getString(output.rownames,i));
 			for (j=0; j < output.cols; ++j)
 				if (j < (output.cols-1))
-					printf("%s\t", tc_getTableValue(output, i, j));
+					printf("%s\t", sb_getTableValue(output, i, j));
 				else
-					printf("%s\n", tc_getTableValue(output, i, j));
+					printf("%s\n", sb_getTableValue(output, i, j));
 		}
 	}
 }
 
-TCAPIEXPORT 
-int tc_getStringIndex(tc_strings A, const char * s)
+SBAPIEXPORT 
+int sb_getStringIndex(sb_strings A, const char * s)
 {
 	int i=0;
 	if (A.length == 0 || !A.strings) return -1;
 
 	for (i=0; i < A.length; ++i)
-		if (tc_getString(A,i) && strcmp( tc_getString(A,i) , s ) == 0)
+		if (sb_getString(A,i) && strcmp( sb_getString(A,i) , s ) == 0)
 			return i;
 	return -1;
 }
 
-TCAPIEXPORT 
-int tc_getRowIndex(tc_matrix m, const char * s)
+SBAPIEXPORT 
+int sb_getRowIndex(sb_matrix m, const char * s)
 {
-	return tc_getStringIndex( m.rownames, s );
+	return sb_getStringIndex( m.rownames, s );
 }
 
-TCAPIEXPORT 
-int tc_getColumnIndex(tc_matrix m, const char * s)
+SBAPIEXPORT 
+int sb_getColumnIndex(sb_matrix m, const char * s)
 {
-	return tc_getStringIndex( m.colnames, s );
+	return sb_getStringIndex( m.colnames, s );
 }
 
