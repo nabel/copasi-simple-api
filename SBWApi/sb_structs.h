@@ -1,5 +1,5 @@
  /**
-  * @file    SBStructs.h
+  * @file    sb_structs.h
   * @brief   Additional structures and methods used with the SBW C API
 
  */
@@ -80,7 +80,7 @@ typedef struct
 	char ** strings;
 	sb_strings rownames;  /*!< Pointer to list of column labels */
 	sb_strings colnames;  /*!< Pointer to list of column labels */
-} sb_Table;
+} sb_table;
 
 
 /*!\brief Create a matrix with the given number of rows and columns

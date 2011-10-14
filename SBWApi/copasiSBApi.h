@@ -496,7 +496,7 @@ SBAPIEXPORT double[] getReactionRatesEx(double[]);
 // -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name Boundary Species Group
+  * @name Boundary species group
   */
 /** \{ */
 
@@ -554,7 +554,7 @@ TCAPIEXPORT double getBoundarySpeciesByIndex (copasiModel model, int index);
 // -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name Floating Species Group
+  * @name Floating species group
   */
 /** \{ */
 
