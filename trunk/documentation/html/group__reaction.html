@@ -79,52 +79,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="member-group"></a>
 Reaction group</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reaction.html#gac90d323b8395f59e1030b1d7be6ab803">cGetNumberOfReactions</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of reactions in the model.  <a href="#gac90d323b8395f59e1030b1d7be6ab803"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT ts_string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reaction.html#ga6f2b751655575d86cbd02cfb6009e71c">cGetReactionNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of reaction names.  <a href="#ga6f2b751655575d86cbd02cfb6009e71c"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reaction.html#ga1e4639e3657d6f5f9235c8aefe64b6f7">cGetReactionRate</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, int)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the reaction rate for the ith reaction.  <a href="#ga1e4639e3657d6f5f9235c8aefe64b6f7"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reaction.html#gaacddbd9a97c446e3ce0c842852cdbc02">cGetReactionRates</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the vector of current reaction rates.  <a href="#gaacddbd9a97c446e3ce0c842852cdbc02"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double[]&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reaction.html#ga8778368a59ab9d7759858f813ad18ef3">cGetReactionRatesEx</a> (double[])</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the rates of change given an array of new floating species concentrations.  <a href="#ga8778368a59ab9d7759858f813ad18ef3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaacddbd9a97c446e3ce0c842852cdbc02">cGetReactionRates</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of reaction names and their current fluxes.  <a href="#gaacddbd9a97c446e3ce0c842852cdbc02"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaa5da18e6b585051a32fef43b4776acab">cGetReactionNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of reaction names.  <a href="#gaa5da18e6b585051a32fef43b4776acab"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Reaction group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><br class="typebreak"/>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetNumberOfReactions(copasi_modelmodel);=======TCAPIEXPORTtc_matrixcGetReactionRates(<a class="el" href="structcopasi__model.html">copasi_model</a>);&gt;<br class="typebreak"/>
+&gt;&gt;&gt;&gt;&gt; r96<br class="typebreak"/>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_stringscGetReactionNames(copasi_modelmodel);=======TCAPIEXPORTtc_stringscGetReactionNames(<a class="el" href="structcopasi__model.html">copasi_model</a>);&gt;<br class="typebreak"/>
+&gt;&gt;&gt;&gt;&gt; r96<br class="typebreak"/>
+&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTintcGetReactionRate(copasi_modelmodel, <br class="typebreak"/>
+intindex);=======TCAPIEXPORTdoublecGetFlux(<a class="el" href="structcopasi__model.html">copasi_model</a>, <br class="typebreak"/>
+constchar *name);&gt;&gt;&gt;&gt;&gt;&gt; r96 <br class="typebreak"/>
+TCAPIEXPORT tc_matri&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__reaction.html#ga9e01e25076273921fda7042b59462964">cGetReactionRates</a> )(<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the list of reaction names and their current fluxes.  <a href="#ga9e01e25076273921fda7042b59462964"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Get information about reaction rates. </p>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="gac90d323b8395f59e1030b1d7be6ab803"></a><!-- doxytag: member="copasi_api.h::cGetNumberOfReactions" ref="gac90d323b8395f59e1030b1d7be6ab803" args="(copasi_model)" -->
+<a class="anchor" id="gaa5da18e6b585051a32fef43b4776acab"></a><!-- doxytag: member="copasi_api.h::cGetReactionNames" ref="gaa5da18e6b585051a32fef43b4776acab" args="(copasi_model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetNumberOfReactions </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the number of reactions in the model. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>int Returns the number of reactions in the model </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga6f2b751655575d86cbd02cfb6009e71c"></a><!-- doxytag: member="copasi_api.h::cGetReactionNames" ref="ga6f2b751655575d86cbd02cfb6009e71c" args="(copasi_model)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT ts_string cGetReactionNames </td>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a> cGetReactionNames </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -141,44 +121,8 @@ Reaction group</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_string array of char * and length n, where n = number of reactions </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga1e4639e3657d6f5f9235c8aefe64b6f7"></a><!-- doxytag: member="copasi_api.h::cGetReactionRate" ref="ga1e4639e3657d6f5f9235c8aefe64b6f7" args="(copasi_model, int)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT int cGetReactionRate </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Get the reaction rate for the ith reaction. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname">int</td><td>reactionId </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>double reaction rate for ith reaction </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> array of char * with the given length </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> </dd></dl>
 
 </div>
 </div>
@@ -197,37 +141,61 @@ Reaction group</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Returns the vector of current reaction rates. </p>
+<p>Get the list of reaction names and their current fluxes. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
-    <tr><td class="paramname">copasi_modl</td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>double array of reaction rates </dd></dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> row vector with column names corresponding to reaction names </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga8778368a59ab9d7759858f813ad18ef3"></a><!-- doxytag: member="copasi_api.h::cGetReactionRatesEx" ref="ga8778368a59ab9d7759858f813ad18ef3" args="(double[])" -->
+<hr/><h2>Variable Documentation</h2>
+<a class="anchor" id="ga9e01e25076273921fda7042b59462964"></a><!-- doxytag: member="copasiSBWApi.h::cGetReactionRates" ref="ga9e01e25076273921fda7042b59462964" args=")(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT double [] cGetReactionRatesEx </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname">[]</td><td>)</td>
-          <td></td>
+          <td class="memname">&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetNumberOfReactions(copasi_modelmodel);=======TCAPIEXPORTtc_matrixcGetReactionRates(<a class="el" href="structcopasi__model.html">copasi_model</a>);&gt;&gt;&gt;&gt;&gt;&gt; r96&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_stringscGetReactionNames(copasi_modelmodel);=======TCAPIEXPORTtc_stringscGetReactionNames(<a class="el" href="structcopasi__model.html">copasi_model</a>);&gt;&gt;&gt;&gt;&gt;&gt; r96&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTintcGetReactionRate(copasi_modelmodel,intindex);=======TCAPIEXPORTdoublecGetFlux(<a class="el" href="structcopasi__model.html">copasi_model</a>,constchar*name);&gt;&gt;&gt;&gt;&gt;&gt; r96 TCAPIEXPORT tc_matri cGetReactionRates)(<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Returns the rates of change given an array of new floating species concentrations. </p>
+<p>Get the list of reaction names and their current fluxes. </p>
 <dl><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname">double[]</td><td>Array of floating concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> row vector with column names corresponding to reaction names </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></dd></dl>
+<p>Get the list of reaction names </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> array of char * with the given length </dd></dl>
+<dl class="see"><dt><b>See also:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a></dd></dl>
+<p>Compute current flux through the given reactions </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">string</td><td>reaction name, e.g. "J1" </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double rate. If reaction by this name does not exist that NaN will be returned The names of the fluxes are included in the matrix column labels</dd></dl>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine Returns the vector of current reaction rates </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">copasi_modl</td><td>model </td></tr>
   </table>
   </dd>
 </dl>
@@ -253,7 +221,7 @@ Reaction group</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 20:36:34 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

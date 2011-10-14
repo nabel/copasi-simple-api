@@ -91,6 +91,20 @@ Read and write models</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a model as an SBML file.  <a href="#ga8f781345fc19529439bbe6d42c9c3355"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loadsave.html#ga44cb74d3541273cfc7e64e7e3e0f2359">cWriteAntimonyFile</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *filename)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a model as an Antimony file, see antimony.sf.net for details of Antimony syntax.  <a href="#ga44cb74d3541273cfc7e64e7e3e0f2359"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Read and write models</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loadsave.html#ga51b494cf3988a59a0e198039f4c830a1">readAntimonyFile</a> (const char *filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a model from an Antimony, see antimony.sf.net for details of Antimony syntax.  <a href="#ga51b494cf3988a59a0e198039f4c830a1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loadsave.html#gaa44c39b634d1d2c3b879c0fc87b5a397">readAntimonyString</a> (const char *sbml)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a model from an Antimony string.  <a href="#gaa44c39b634d1d2c3b879c0fc87b5a397"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loadsave.html#gae7aff6c57a19c4712a9335e5c17bd86f">readSBMLFile</a> (const char *filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a model from an SBML file.  <a href="#gae7aff6c57a19c4712a9335e5c17bd86f"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loadsave.html#gacb46077347c167d40c60ae3f53875de3">readSBMLString</a> (const char *sbml)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a model from an SBML string.  <a href="#gacb46077347c167d40c60ae3f53875de3"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loadsave.html#ga7c313dcbe9cd6508b0d7c69625c02d51">writeSBMLFile</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a model as an SBML file.  <a href="#ga7c313dcbe9cd6508b0d7c69625c02d51"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__loadsave.html#ga034b9b39ce3c355ef86efab5b29abfda">writeAntimonyFile</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, const char *filename)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a model as an Antimony file, see antimony.sf.net for details of Antimony syntax.  <a href="#ga034b9b39ce3c355ef86efab5b29abfda"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Read and write models to files or strings. Support for SBML and Antimony formats. </p>
@@ -271,6 +285,182 @@ Read and write models</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga51b494cf3988a59a0e198039f4c830a1"></a><!-- doxytag: member="copasiSBWApi.h::readAntimonyFile" ref="ga51b494cf3988a59a0e198039f4c830a1" args="(const char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a> readAntimonyFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Create a model from an Antimony, see antimony.sf.net for details of Antimony syntax. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td>file name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> Copasi model of the Antimony file </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa44c39b634d1d2c3b879c0fc87b5a397"></a><!-- doxytag: member="copasiSBWApi.h::readAntimonyString" ref="gaa44c39b634d1d2c3b879c0fc87b5a397" args="(const char *sbml)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a> readAntimonyString </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sbml</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Create a model from an Antimony string. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td>Antimony string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> Copasi model of the Antimony string </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae7aff6c57a19c4712a9335e5c17bd86f"></a><!-- doxytag: member="copasiSBWApi.h::readSBMLFile" ref="gae7aff6c57a19c4712a9335e5c17bd86f" args="(const char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a> readSBMLFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Create a model from an SBML file. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td>file name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> Copasi model of the SBML file </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gacb46077347c167d40c60ae3f53875de3"></a><!-- doxytag: member="copasiSBWApi.h::readSBMLString" ref="gacb46077347c167d40c60ae3f53875de3" args="(const char *sbml)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT <a class="el" href="structcopasi__model.html">copasi_model</a> readSBMLString </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>sbml</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Create a model from an SBML string. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td>SBML string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a> Copasi model of the SBML string </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga034b9b39ce3c355ef86efab5b29abfda"></a><!-- doxytag: member="copasiSBWApi.h::writeAntimonyFile" ref="ga034b9b39ce3c355ef86efab5b29abfda" args="(copasi_model model, const char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void writeAntimonyFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Save a model as an Antimony file, see antimony.sf.net for details of Antimony syntax. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>copasi model </td></tr>
+    <tr><td class="paramname">char*</td><td>file name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7c313dcbe9cd6508b0d7c69625c02d51"></a><!-- doxytag: member="copasiSBWApi.h::writeSBMLFile" ref="ga7c313dcbe9cd6508b0d7c69625c02d51" args="(copasi_model model, const char *filename)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TCAPIEXPORT void writeSBMLFile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Save a model as an SBML file. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>copasi model </td></tr>
+    <tr><td class="paramname">char*</td><td>file name </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -289,7 +479,7 @@ Read and write models</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 12 2011 20:36:34 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
