@@ -173,14 +173,8 @@ INSTALL(TARGETS copasi
 #----------------------------------
 
 OPTION( TEST_COPASI_API "test copasi api" ON )
-OPTION( TEST_COPASI_SBW_API "test copasi sbw api" ON )
 
 IF (TEST_COPASI_API)
   ADD_EXECUTABLE(copasi_api_test test_copasi.c)
   TARGET_LINK_LIBRARIES( copasi_api_test copasi)
 ENDIF (TEST_COPASI_API)
-
-IF (TEST_COPASI_SBW_API)
-  ADD_EXECUTABLE(copasi_sbw_api_test testSBWApi.c)
-  TARGET_LINK_LIBRARIES( copasi_sbw_api_test copasi)
-ENDIF (TEST_COPASI_SBW_API)

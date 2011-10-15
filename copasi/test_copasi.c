@@ -116,6 +116,9 @@ copasi_model model1() //oscillator
 	cSetReactionRate(R3, "k3*C*A");
 
 	cCreateEvent(model, "event1", "time > 10", "k3", "k3/2.0");
+
+	cCompileModel(model); //must be done after creating a model, before analysis
+
 	return model;
 }
 

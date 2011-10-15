@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "copasi_api.h"
+#include "copasi_sbw_api.h"
 
 copasi_model model1(); //oscillation
 copasi_model model2(); //positive feebdack gene regulation
