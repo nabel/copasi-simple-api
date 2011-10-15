@@ -65,4 +65,4 @@ ADD_SUBDIRECTORY( boost )      #regular expressions
 ADD_SUBDIRECTORY( copasi )     #simulation and analysis package
 ADD_SUBDIRECTORY( libstructural )   #network structural analysis based on stoichiometry matrix
 ADD_SUBDIRECTORY( galib )   #genetic algorithms library
-
+ADD_SUBDIRECTORY( SBWApi )  #a different version of copasi_api that conforms with the SBW API
