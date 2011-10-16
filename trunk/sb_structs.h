@@ -4,8 +4,8 @@
 
  */
 
-#ifndef SB_CSTRUCTS_H
-#define SB_CSTRUCTS_H
+#ifndef SBW_CSTRUCTS_H
+#define SBW_CSTRUCTS_H
 
 #ifndef BEGIN_C_DECLS
 #ifdef __cplusplus
@@ -17,29 +17,29 @@
 #endif
 #endif
 
-# ifndef SBAPIEXPORT
+# ifndef SBWAPIEXPORT
 #  if defined(_WIN32) || defined(__WIN32__) || defined(__CYGWIN__)
 #    if defined(STATIC_LINKED)
-#          define SBAPIEXPORT
+#          define SBWAPIEXPORT
 #    else
-#   if defined(SB_EXPORTS) || defined(sbapi_EXPORTS)
+#   if defined(SBW_EXPORTS) || defined(sbwapi_EXPORTS)
 #              if defined(USE_STDCALL)
-#                   define SBAPIEXPORT __stdcall __declspec(dllexport)
+#                   define SBWAPIEXPORT __stdcall __declspec(dllexport)
 #              else
-#                   define SBAPIEXPORT __declspec(dllexport)
+#                   define SBWAPIEXPORT __declspec(dllexport)
 #              endif
 #          else
-#              define SBAPIEXPORT
+#              define SBWAPIEXPORT
 #          endif
 #     endif
 #  else
 #    if defined(__GNUC__) && defined(GCC_HASCLASSVISIBILITY)
-#      define SBAPIEXPORT __attribute__ ((visibility("default")))
+#      define SBWAPIEXPORT __attribute__ ((visibility("default")))
 #    else
-#      define SBAPIEXPORT
+#      define SBWAPIEXPORT
 #    endif
 #  endif
-# endif // SBAPIEXPORT
+# endif // SBWAPIEXPORT
 
 BEGIN_C_DECLS
 
@@ -89,7 +89,7 @@ typedef struct
  \return sb_matrix
  \ingroup Basic
 */
-SBAPIEXPORT sb_matrix sb_createMatrix(int rows, int cols);
+SBWAPIEXPORT sb_matrix sb_createMatrix(int rows, int cols);
 
 
 /*!\brief Create a strings table with the given number of rows and columns
@@ -98,7 +98,7 @@ SBAPIEXPORT sb_matrix sb_createMatrix(int rows, int cols);
  \return sb_table
  \ingroup Basic
 */
-SBAPIEXPORT sb_table sb_createTable(int rows, int cols);
+SBWAPIEXPORT sb_table sb_createTable(int rows, int cols);
 
 
 /*!\brief Create an array of strings
@@ -106,7 +106,7 @@ SBAPIEXPORT sb_table sb_createTable(int rows, int cols);
  \return sb_strings
  \ingroup Basic
 */
-SBAPIEXPORT sb_strings sb_createStringsArray(int len);
+SBWAPIEXPORT sb_strings sb_createStringsArray(int len);
 
 
 /*!\brief Create an array of items
@@ -114,7 +114,7 @@ SBAPIEXPORT sb_strings sb_createStringsArray(int len);
  \return sb_items
  \ingroup Basic
 */
-SBAPIEXPORT sb_items sb_createItemsArray(int len);
+SBWAPIEXPORT sb_items sb_createItemsArray(int len);
 
 /*!\brief Get i,jth value from a sb_matrix
  \param sb_matriix matrix
@@ -126,7 +126,7 @@ SBAPIEXPORT sb_items sb_createItemsArray(int len);
 
  \ingroup Basic
 */
-SBAPIEXPORT double sb_getMatrixValue(sb_matrix M, int i, int j);
+SBWAPIEXPORT double sb_getMatrixValue(sb_matrix M, int i, int j);
 
 
 /*!\brief Set i,jth value of a sb_matrix
@@ -136,7 +136,7 @@ SBAPIEXPORT double sb_getMatrixValue(sb_matrix M, int i, int j);
  \param double value at the given row, column
  \ingroup Basic
 */
-SBAPIEXPORT void sb_setMatrixValue(sb_matrix M, int i, int j, double d);
+SBWAPIEXPORT void sb_setMatrixValue(sb_matrix M, int i, int j, double d);
 
 
 /*!\brief Get ith row name from a sb_matrix
@@ -145,7 +145,7 @@ SBAPIEXPORT void sb_setMatrixValue(sb_matrix M, int i, int j, double d);
  \return string row name
  \ingroup Basic
 */
-SBAPIEXPORT const char * sb_getRowName(sb_matrix M, int i);
+SBWAPIEXPORT const char * sb_getRowName(sb_matrix M, int i);
 
 
 /*!\brief Set ith row name for a sb_matrix
@@ -154,7 +154,7 @@ SBAPIEXPORT const char * sb_getRowName(sb_matrix M, int i);
  \param string row name
  \ingroup Basic
 */
-SBAPIEXPORT void sb_setRowName(sb_matrix M, int i, const char * s);
+SBWAPIEXPORT void sb_setRowName(sb_matrix M, int i, const char * s);
 
 
 /*!\brief Get jth column name of a sb_matrix
@@ -163,7 +163,7 @@ SBAPIEXPORT void sb_setRowName(sb_matrix M, int i, const char * s);
  \return string column name
  \ingroup Basic
 */
-SBAPIEXPORT const char * sb_getColumnName(sb_matrix M, int j);
+SBWAPIEXPORT const char * sb_getColumnName(sb_matrix M, int j);
 
 
 /*!\brief Set jth column name of a sb_matrix
@@ -172,7 +172,7 @@ SBAPIEXPORT const char * sb_getColumnName(sb_matrix M, int j);
  \param string column name
  \ingroup Basic
 */
-SBAPIEXPORT void sb_setColumnName(sb_matrix M, int j, const char * s);
+SBWAPIEXPORT void sb_setColumnName(sb_matrix M, int j, const char * s);
 
 
 /*!\brief Get i,j-th string in a table
@@ -182,7 +182,7 @@ SBAPIEXPORT void sb_setColumnName(sb_matrix M, int j, const char * s);
  \return string value at row,column
  \ingroup Basic
 */
-SBAPIEXPORT const char* sb_getTableValue(sb_table S, int i, int j);
+SBWAPIEXPORT const char* sb_getTableValue(sb_table S, int i, int j);
 
 
 /*!\brief Set i,jth string in a table
@@ -192,7 +192,7 @@ SBAPIEXPORT const char* sb_getTableValue(sb_table S, int i, int j);
  \param string value at row,column
  \ingroup Basic
 */
-SBAPIEXPORT void sb_setTableValue(sb_table S, int i, int j, const char * s);
+SBWAPIEXPORT void sb_setTableValue(sb_table S, int i, int j, const char * s);
 
 
 /*!\brief Get ith string in array of strings
@@ -201,7 +201,7 @@ SBAPIEXPORT void sb_setTableValue(sb_table S, int i, int j, const char * s);
  \return string value
  \ingroup Basic
 */
-SBAPIEXPORT const char* sb_getString(sb_strings S, int i);
+SBWAPIEXPORT const char* sb_getString(sb_strings S, int i);
 
 
 /*!\brief Set ith string in array of strings
@@ -210,7 +210,7 @@ SBAPIEXPORT const char* sb_getString(sb_strings S, int i);
  \param string value
  \ingroup Basic
 */
-SBAPIEXPORT void sb_setString(sb_strings S, int i, const char * c);
+SBWAPIEXPORT void sb_setString(sb_strings S, int i, const char * c);
 
 
 /*!\brief Get ith long item in array of items
@@ -219,7 +219,7 @@ SBAPIEXPORT void sb_setString(sb_strings S, int i, const char * c);
  \return long value
  \ingroup Basic
 */
-SBAPIEXPORT long sb_getItem(sb_items A, int i);
+SBWAPIEXPORT long sb_getItem(sb_items A, int i);
 
 
 /*!\brief Set ith long item in array of items
@@ -228,7 +228,7 @@ SBAPIEXPORT long sb_getItem(sb_items A, int i);
  \param long value
  \ingroup Basic
 */
-SBAPIEXPORT void sb_setItem(sb_items A, int i, long o);
+SBWAPIEXPORT void sb_setItem(sb_items A, int i, long o);
 
 
 /*!\brief Get the index of a string in the array
@@ -237,7 +237,7 @@ SBAPIEXPORT void sb_setItem(sb_items A, int i, long o);
  \return int index of that string
  \ingroup Basic
 */
-SBAPIEXPORT int sb_getStringIndex(sb_strings A, const char * s);
+SBWAPIEXPORT int sb_getStringIndex(sb_strings A, const char * s);
 
 
 /*!\brief get the row number of a row name
@@ -246,7 +246,7 @@ SBAPIEXPORT int sb_getStringIndex(sb_strings A, const char * s);
  \return int index of that string
  \ingroup Basic
 */
-SBAPIEXPORT int sb_getRowIndex(sb_matrix, const char * s);
+SBWAPIEXPORT int sb_getRowIndex(sb_matrix, const char * s);
 
 
 /*!\brief Get the column number of a column name
@@ -255,35 +255,35 @@ SBAPIEXPORT int sb_getRowIndex(sb_matrix, const char * s);
  \return int index of that string
  \ingroup Basic
 */
-SBAPIEXPORT int sb_getColumnIndex(sb_matrix, const char * s);
+SBWAPIEXPORT int sb_getColumnIndex(sb_matrix, const char * s);
 
 
 /*!\brief Delete a matrix
  \param &sb_matrix pointer to matrix
  \ingroup Basic
 */
-SBAPIEXPORT void sb_deleteMatrix (sb_matrix M);
+SBWAPIEXPORT void sb_deleteMatrix (sb_matrix M);
 
 
 /*!\brief Delete a strings table
  \param &sb_table pointer to table
  \ingroup Basic
 */
-SBAPIEXPORT void sb_deleteTable(sb_table M);
+SBWAPIEXPORT void sb_deleteTable(sb_table M);
 
 
 /*!\brief Delete an array of items
  \param &sb_items pointer to array
  \ingroup Basic
 */
-SBAPIEXPORT void sb_deleteItemsArray(sb_items A);
+SBWAPIEXPORT void sb_deleteItemsArray(sb_items A);
 
 
 /*!\brief Delete an array of strings
  \param &sb_strings pointer to array
  \ingroup Basic
 */
-SBAPIEXPORT void sb_deleteStringsArray(sb_strings C);
+SBWAPIEXPORT void sb_deleteStringsArray(sb_strings C);
 
 
 /*!\brief Combine two matrices by appending their columns. Row size must be equal for both matrices
@@ -292,7 +292,7 @@ SBAPIEXPORT void sb_deleteStringsArray(sb_strings C);
  \return sb_matrix new combined matrix
  \ingroup Basic
 */
-SBAPIEXPORT sb_matrix sb_appendColumns(sb_matrix A, sb_matrix B);
+SBWAPIEXPORT sb_matrix sb_appendColumns(sb_matrix A, sb_matrix B);
 
 
 /*!\brief Combine two matrices by appending their rows. Column sizes must be equal for both matrices
@@ -301,7 +301,7 @@ SBAPIEXPORT sb_matrix sb_appendColumns(sb_matrix A, sb_matrix B);
  \return sb_matrix new combined matrix
  \ingroup Basic
 */
-SBAPIEXPORT sb_matrix sb_appendRows(sb_matrix A, sb_matrix B);
+SBWAPIEXPORT sb_matrix sb_appendRows(sb_matrix A, sb_matrix B);
 
 
 /*!\brief Print a matrix to file
@@ -309,7 +309,7 @@ SBAPIEXPORT sb_matrix sb_appendRows(sb_matrix A, sb_matrix B);
  \param sb_matrix
  \ingroup Basic
 */
-SBAPIEXPORT void sb_printMatrixToFile(const char* file, sb_matrix M);
+SBWAPIEXPORT void sb_printMatrixToFile(const char* file, sb_matrix M);
 
 
 /*!\brief Print a matrix to stdout
@@ -317,7 +317,7 @@ SBAPIEXPORT void sb_printMatrixToFile(const char* file, sb_matrix M);
  \param sb_matrix
  \ingroup Basic
 */
-SBAPIEXPORT void sb_printOutMatrix(sb_matrix M);
+SBWAPIEXPORT void sb_printOutMatrix(sb_matrix M);
 
 
 /*!\brief Print a table to file
@@ -325,14 +325,14 @@ SBAPIEXPORT void sb_printOutMatrix(sb_matrix M);
  \param sb_table
  \ingroup Basic
 */
-SBAPIEXPORT void sb_printTableToFile(const char* file, sb_table M);
+SBWAPIEXPORT void sb_printTableToFile(const char* file, sb_table M);
 
 
 /*!\brief Print a table to stdout
  \param sb_table
  \ingroup Basic
 */
-SBAPIEXPORT void sb_printOutTable(sb_table M);
+SBWAPIEXPORT void sb_printOutTable(sb_table M);
 
 END_C_DECLS
 #endif

@@ -10,8 +10,8 @@
 
 //copasi
 #include "copasiSBWApi.h"
-//#include "copasi_api.h"
-//#define COPASI_MAIN 1
+#include "copasi_api.h"
+#define COPASI_MAIN 1
 #include "copasi/copasi.h"
 #include "copasi/report/CCopasiRootContainer.h"
 #include "copasi/CopasiDataModel/CCopasiDataModel.h"
@@ -1209,7 +1209,7 @@ sb_matrix sSimulate (copasiModel model, double startTime, double endTime, int nu
 		{
 			k = sb_indexOf(colnames,timeSeries.getTitle(j));
 			for (i=0; i < rows; ++i)
-				sb_setMatrixValue( output, i, k, timeSeries.getConcentrationData(i,j) );
+				   sb_setMatrixValue( output, i, k, timeSeries.getConcentrationData(i,j) );
 		}
 		return output;
 	}
@@ -1222,7 +1222,7 @@ sb_matrix sSimulateDeterministic(copasiModel model, double startTime, double end
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT double cOneStep(copasiModel model, double timeStep)
+SBWAPIEXPORT double cOneStep(copasiModel model, double timeStep)
 {
 	return 0.0;
 }
@@ -1245,17 +1245,26 @@ sb_matrix sSimulateHybrid(copasiModel model, double startTime, double endTime, i
 void sWriteSBMLFile(copasiModel model, const char * filename)
 {
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	if (pDataModel)
-		pDataModel->exportSBML(filename, true, 2, 3);
+	printf ("Stage A1\n");
+	if (pDataModel) {
+	   printf ("Stage B\n");
+		 pDataModel->exportSBML(filename, true, 2, 3);
+		 printf ("Stage C\n");
+ }
 }
 
 void sWriteAntimonyFile(copasiModel model, const char * filename)
 {
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
+  printf ("Stage 1\n"); 
+
 	if (pDataModel)
 	{
+    printf ("Stage 2\n"); 
 		pDataModel->exportSBML(filename, true, 2, 3);
+		printf ("Stage 2\n"); 
 		loadSBMLFile(filename);
+    printf ("Stage 3\n"); 
 		writeAntimonyFile(filename,NULL);
 	}
 }
@@ -2599,31 +2608,31 @@ int replaceSubstring(std::string& s,const std::string& from, const std::string& 
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_matrix sGetNumberOfReactions (copasiModel model)
+SBWAPIEXPORT sb_matrix sGetNumberOfReactions (copasiModel model)
 {
 	  return sb_createMatrix (0, 0);
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_strings sGetReactionNames (copasiModel model)
+SBWAPIEXPORT sb_strings sGetReactionNames (copasiModel model)
 {
 	return sb_createStringsArray(0);
 }
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT int sGetReactionRate(copasiModel model, int index)
+SBWAPIEXPORT int sGetReactionRate(copasiModel model, int index)
 {
 	return 0;
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_matrix sGetReactionRatesEx(sb_matrix values)
+SBWAPIEXPORT sb_matrix sGetReactionRatesEx(sb_matrix values)
 {
   return sb_createMatrix (0, 0);	
 }
 
-SBAPIEXPORT sb_matrix sGetReactionRates(copasiModel model)
+SBWAPIEXPORT sb_matrix sGetReactionRates(copasiModel model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	
@@ -2672,31 +2681,31 @@ sb_matrix sGetFloatingSpecies(copasiModel model)
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_strings sGetFloatingSpeciesNames(copasiModel model)
+SBWAPIEXPORT sb_strings sGetFloatingSpeciesNames(copasiModel model)
 {
 	return sb_createStringsArray(0);
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_strings sGetBoundarySpeciesNames(copasiModel model)
+SBWAPIEXPORT sb_strings sGetBoundarySpeciesNames(copasiModel model)
 {
 	return sb_createStringsArray(0);
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT int sGetNumberFloatingSpecies(copasiModel model)
+SBWAPIEXPORT int sGetNumberFloatingSpecies(copasiModel model)
 {
 	return 0;
 }
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT int sGetNumberOfBoundarySpecies(copasiModel model)
+SBWAPIEXPORT int sGetNumberOfBoundarySpecies(copasiModel model)
 {
 }
 
 
-SBAPIEXPORT sb_matrix sGetBoundarySpecies(copasiModel model)
+SBWAPIEXPORT sb_matrix sGetBoundarySpecies(copasiModel model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
@@ -2706,13 +2715,13 @@ SBAPIEXPORT sb_matrix sGetBoundarySpecies(copasiModel model)
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT void sSetFloatingSpeciesByIndex (copasiModel model, int index)
+SBWAPIEXPORT void sSetFloatingSpeciesByIndex (copasiModel model, int index)
 {
 }
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT double sGetFloatingSpeciesByIndex (copasiModel model, int index)
+SBWAPIEXPORT double sGetFloatingSpeciesByIndex (copasiModel model, int index)
 {
 	/*int n = 0;
 	for (int i=0; i < species.size(); ++i)
@@ -2736,7 +2745,7 @@ SBAPIEXPORT double sGetFloatingSpeciesByIndex (copasiModel model, int index)
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT int sGetNumberOfSpecies(copasiModel model)
+SBWAPIEXPORT int sGetNumberOfSpecies(copasiModel model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
@@ -2745,13 +2754,13 @@ SBAPIEXPORT int sGetNumberOfSpecies(copasiModel model)
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_matrix sGetFloatingSpeciesConcentrations (copasiModel model)
+SBWAPIEXPORT sb_matrix sGetFloatingSpeciesConcentrations (copasiModel model)
 {
 	return sb_createMatrix (0, 0);
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_matrix sGetFloatingSpeciesIntitialConcentrations (copasiModel model)
+SBWAPIEXPORT sb_matrix sGetFloatingSpeciesIntitialConcentrations (copasiModel model)
 {
   CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
@@ -2760,19 +2769,19 @@ SBAPIEXPORT sb_matrix sGetFloatingSpeciesIntitialConcentrations (copasiModel mod
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT void sSetBoundarySpeciesByIndex (copasiModel model, int index)
+SBWAPIEXPORT void sSetBoundarySpeciesByIndex (copasiModel model, int index)
 {
 }
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT double sGetBoundarySpeciesByIndex (copasiModel model, int index)
+SBWAPIEXPORT double sGetBoundarySpeciesByIndex (copasiModel model, int index)
 {
 	return 0.0;
 }
 
 
-SBAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasiModel model, sb_matrix sp)
+SBWAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasiModel model, sb_matrix sp)
 {
 	if (sp.rows > sp.cols)  //row vector or column vector (lets allow both)
 	{
@@ -2786,7 +2795,7 @@ SBAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasiModel model, s
 	} 
 }
 
-SBAPIEXPORT sb_matrix sGetBoundarySpeciesConcentrations (copasiModel model)
+SBWAPIEXPORT sb_matrix sGetBoundarySpeciesConcentrations (copasiModel model)
 {
 	return sb_createMatrix (0, 0);
 }
@@ -2914,7 +2923,7 @@ sb_matrix sGetRatesOfChange(copasiModel model)
 	return res;
 }
 
-SBAPIEXPORT double sGetRateOfChange(copasiModel, int index)
+SBWAPIEXPORT double sGetRateOfChange(copasiModel, int index)
 {
 	return 0.0;
 }
@@ -2925,7 +2934,7 @@ sb_matrix sGetRatesOfChangeEx(copasiModel model, sb_matrix sp)
 }
 
 
-SBAPIEXPORT sb_strings sGetRatesOfChangeNames(copasiModel model)
+SBWAPIEXPORT sb_strings sGetRatesOfChangeNames(copasiModel model)
 {
 	return sb_createStringsArray(0);
 }
@@ -2979,17 +2988,17 @@ double sGetParticleFlux(copasiModel model, const char * name)
 // ------------------------------------------------------------------
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT int sGetNumberOfGlobalParameters (copasiModel model)
+SBWAPIEXPORT int sGetNumberOfGlobalParameters (copasiModel model)
 {
   return 0;
 }
 
-SBAPIEXPORT sb_strings sGetGlobalParameterNames (copasiModel model)
+SBWAPIEXPORT sb_strings sGetGlobalParameterNames (copasiModel model)
 {
 	return sb_createStringsArray(0);
 }
 
-SBAPIEXPORT sb_matrix sGetGlobalParameters (copasiModel model)
+SBWAPIEXPORT sb_matrix sGetGlobalParameters (copasiModel model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
@@ -3019,7 +3028,7 @@ SBAPIEXPORT sb_matrix sGetGlobalParameters (copasiModel model)
 }
 
 
-SBAPIEXPORT void sSetValues (copasiModel model, sb_matrix gp)
+SBWAPIEXPORT void sSetValues (copasiModel model, sb_matrix gp)
 {
 	if (gp.rows > gp.cols)  //row vector or column vector (lets allow both)
 	{
@@ -3033,7 +3042,7 @@ SBAPIEXPORT void sSetValues (copasiModel model, sb_matrix gp)
 	}
 }
 
-SBAPIEXPORT void sSetGlobalParameterValues (copasiModel model, sb_matrix gp)
+SBWAPIEXPORT void sSetGlobalParameterValues (copasiModel model, sb_matrix gp)
 {
 	sSetValues(model, gp);
 }
@@ -3043,7 +3052,7 @@ SBAPIEXPORT void sSetGlobalParameterValues (copasiModel model, sb_matrix gp)
 // Compartment Group
 // ------------------------------------------------------------------
 
-SBAPIEXPORT int sSetNumberOfCompartments (copasiModel model)
+SBWAPIEXPORT int sSetNumberOfCompartments (copasiModel model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	
@@ -3055,25 +3064,25 @@ SBAPIEXPORT int sSetNumberOfCompartments (copasiModel model)
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT sb_strings sGetCompartmentNames (copasiModel model)
+SBWAPIEXPORT sb_strings sGetCompartmentNames (copasiModel model)
 {
   return sb_createStringsArray(0);
 }
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT double sGetCompartmentByIndex (copasiModel model, int index)
+SBWAPIEXPORT double sGetCompartmentByIndex (copasiModel model, int index)
 {
 	 return 0.0;
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-SBAPIEXPORT void sSetCompartmentByIndex (copasiModel model, int index, double value)
+SBWAPIEXPORT void sSetCompartmentByIndex (copasiModel model, int index, double value)
 {
 	
 }
 
-SBAPIEXPORT void sSetCompartmentVolumes (copasiModel model, sb_matrix v)
+SBWAPIEXPORT void sSetCompartmentVolumes (copasiModel model, sb_matrix v)
 {
 	sSetValues(model, v);
 }

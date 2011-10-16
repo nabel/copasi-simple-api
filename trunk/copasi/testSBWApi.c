@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "copasiSBApi.h"
+#include "copasiSBWApi.h"
 
 copasiModel model1(); //oscillation
 //copasi_model model2(); //positive feebdack gene regulation
@@ -14,22 +14,31 @@ int main()
 	
 	printf("creating model...\n");
 	m = model1();
-  //m = cReadSBMLFile("model1.sbml");
-    
+  
+  printf ("Read Model1\n");  
+  //m = sReadSBMLFile("feedback.xml");
+  if (m.CopasiModelPtr == NULL) {
+      printf ("m error = %s\n", m.errorMessage); 
+      printf ("m warning = %s\n", m.warningMessage); 
+      getchar();
+      exit;
+  }
+  sWriteSBMLFile (m, "model1.ant");
+   
 	printf("simulating...\n");	
-	results = simulateDeterministic(m, 0, 20, 100);  //model, start, end, num. points
+	results = sSimulateDeterministic(m, 0, 20, 100);  // model, start, end, num. points
 
 	printf("results.tab has simulation data\n\n");
-	tc_printMatrixToFile("results.tab", results);
+	tc_printMatrixToFile("resultSBW.tab", results);
 	tc_deleteMatrix(results);
 
-	results = getReactionRates(m);
+	results = sGetReactionRates(m);
 
 	printf("fluxes:\n");
 	tc_printOutMatrix(results);
 	tc_deleteMatrix(results);
 
-	results = getRatesOfChange(m);
+	results = sGetRatesOfChange(m);
 
 	printf("\n\nderivatives:\n");
 	tc_printOutMatrix(results);
@@ -73,49 +82,61 @@ int main()
 	*/
 
 	//cleanup	
-	removeModel(m);
-	copasiEnd();
+	sRemoveModel(m);
+	sCopasiEnd();
 	return 0;
 }
 
 copasiModel model1() //oscillator
 {
+  printf ("sCreateModel\n");  
+
 	//model named M
-	copasiModel model = createModel("M");
-	copasiReaction R1, R2, R3;
-	copasiCompartment cell;
+	copasiModel model = sCreateModel("M");
+	//copasiReaction R1, R2, R3;
+	//copasiCompartment cell;
 	
+  /*printf ("sCreateCompartment\n");  
 	//species
-	cell = createCompartment(model, "cell", 1.0);
-	createSpecies(cell, "A", 4);
-	createSpecies(cell, "B", 3);
-	createSpecies(cell, "C", 2);
+	cell = sCreateCompartment(model, "cell", 1.0);
+	sCreateSpecies(cell, "A", 4);
+	sCreateSpecies(cell, "B", 3);
+	sCreateSpecies(cell, "C", 2);
 	
+  printf ("sCreateParmaeters\n");  
 	//parameters
-	setValue(model, "k1", 0.2);   //k1
-	setValue(model, "k2", 0.5);   //k2
-	setValue(model, "k3", 1);   //k3
+	sSetValue(model, "k1", 0.2);   //k1
+  sSetValue(model, "k2", 0.5);   //k2
+	sSetValue(model, "k3", 1);   //k3
 	
+  printf ("sCreateReaction 1\n");  
+
 	//reactions -- make sure all parameters or species are defined BEFORE this step
-	R1 = createReaction(model, "R1");  // A+B -> 2B
-	addReactant(R1, "A", 1.0);
-	addReactant(R1, "B", 1.0);
-	addProduct(R1, "B", 2.0);
-	setReactionRate(R1, "k1*A*B");
+	R1 = sCreateReaction(model, "R1");  // A+B -> 2B
+	sAddReactant(R1, "A", 1.0);
+	sAddReactant(R1, "B", 1.0);
+	sAddProduct(R1, "B", 2.0);
+	sSetReactionRate(R1, "k1*A*B");
 
-	R2 = createReaction(model, "R2");  //B+C -> 2C
-	addReactant(R2, "B", 1.0);
-	addReactant(R2, "C", 1.0);
-	addProduct(R2, "C", 2.0);
-	cSetReactionRate(R2, "k2*B*C");
+  printf ("sCreateReaction 2\n");  
 
-	R3 = createReaction(model, "R3"); //C+A -> 2A
-	addReactant(R3, "C", 1.0);
-	addReactant(R3, "A", 1.0);
-	addProduct(R3, "A", 2.0);
-	aetReactionRate(R3, "k3*C*A");
+	R2 = sCreateReaction(model, "R2");  //B+C -> 2C
+	sAddReactant(R2, "B", 1.0);
+	sAddReactant(R2, "C", 1.0);
+	sAddProduct(R2, "C", 2.0);
+	sSetReactionRate(R2, "k2*B*C");
 
-	createEvent(model, "event1", "time > 10", "k3", "k3/2.0");
+  printf ("sCreateReaction 3\n");  
+
+	R3 = sCreateReaction(model, "R3"); //C+A -> 2A
+	sAddReactant(R3, "C", 1.0);
+	sAddReactant(R3, "A", 1.0);
+	sAddProduct(R3, "A", 2.0);
+	sSetReactionRate(R3, "k3*C*A");
+
+  //printf ("sCreateEvent\n");  
+
+	//sCreateEvent(model, "event1", "time > 10", "k3", "k3/2.0");*/
 	return model;
 }
 

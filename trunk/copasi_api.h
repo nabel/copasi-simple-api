@@ -150,6 +150,8 @@ typedef struct
 
 BEGIN_C_DECLS
 
+void copasi_init();
+
 // -----------------------------------------------------------------------
 /**
   * @name Memory management

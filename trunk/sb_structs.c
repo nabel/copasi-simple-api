@@ -5,7 +5,7 @@
 
 #include "sb_structs.h"
 
-SBAPIEXPORT sb_matrix sb_createMatrix(int rows, int cols)
+SBWAPIEXPORT sb_matrix sb_createMatrix(int rows, int cols)
 {
 	int i;
 	sb_matrix M;
@@ -25,7 +25,7 @@ SBAPIEXPORT sb_matrix sb_createMatrix(int rows, int cols)
 	return M;
 }
 
-SBAPIEXPORT sb_table sb_createTable(int rows, int cols)
+SBWAPIEXPORT sb_table sb_createTable(int rows, int cols)
 {
 	int i;
 	sb_table M;
@@ -45,7 +45,7 @@ SBAPIEXPORT sb_table sb_createTable(int rows, int cols)
 	return M;
 }
 
-SBAPIEXPORT sb_strings sb_createStringsArray(int len)
+SBWAPIEXPORT sb_strings sb_createStringsArray(int len)
 {
 	int i;
 	sb_strings A;
@@ -64,7 +64,7 @@ SBAPIEXPORT sb_strings sb_createStringsArray(int len)
 	return A;
 }
 
-SBAPIEXPORT sb_items sb_createItemsArray(int len)
+SBWAPIEXPORT sb_items sb_createItemsArray(int len)
 {
 	int i;
 	sb_items A;
@@ -83,47 +83,47 @@ SBAPIEXPORT sb_items sb_createItemsArray(int len)
 	return A;
 }
 
-SBAPIEXPORT double sb_getMatrixValue(sb_matrix M, int i, int j)
+SBWAPIEXPORT double sb_getMatrixValue(sb_matrix M, int i, int j)
 { 
 	if (M.values && i >= 0 && j >= 0 && i < M.rows && j < M.cols)
 		return M.values[ i*M.cols + j ];
 	return 0.0;
 }
 
-SBAPIEXPORT void sb_setMatrixValue(sb_matrix M, int i, int j, double d)
+SBWAPIEXPORT void sb_setMatrixValue(sb_matrix M, int i, int j, double d)
 { 
 	if (M.values && i >= 0 && j >= 0 && i < M.rows && j < M.cols)
 		M.values[ i*M.cols + j ] = d;
 }
 
-SBAPIEXPORT const char * sb_getRowName(sb_matrix M, int i)
+SBWAPIEXPORT const char * sb_getRowName(sb_matrix M, int i)
 { 
 	return sb_getString(M.rownames,i);
 }
 
-SBAPIEXPORT void sb_setRowName(sb_matrix M, int i, const char * s)
+SBWAPIEXPORT void sb_setRowName(sb_matrix M, int i, const char * s)
 {
 	sb_setString(M.rownames,i,s);
 }
 
-SBAPIEXPORT const char * sb_getColumnName(sb_matrix M, int i)
+SBWAPIEXPORT const char * sb_getColumnName(sb_matrix M, int i)
 { 
 	return sb_getString(M.colnames,i);
 }
 
-SBAPIEXPORT void sb_setColumnName(sb_matrix M, int i, const char * s)
+SBWAPIEXPORT void sb_setColumnName(sb_matrix M, int i, const char * s)
 {
 	sb_setString(M.colnames,i,s);
 }
 
-SBAPIEXPORT const char* sb_getTableValue(sb_table S, int i, int j)
+SBWAPIEXPORT const char* sb_getTableValue(sb_table S, int i, int j)
 {
 	if (S.strings && i >= 0 && j >= 0 && i < S.rows && j < S.cols)
 		return S.strings[ i*S.cols + j ];
 	return 0;
 }
 
-SBAPIEXPORT void sb_setTableValue(sb_table S, int i, int j, const char * s)
+SBWAPIEXPORT void sb_setTableValue(sb_table S, int i, int j, const char * s)
 {
 	int n=0;
 	char * str;
@@ -137,14 +137,14 @@ SBAPIEXPORT void sb_setTableValue(sb_table S, int i, int j, const char * s)
 	}
 }
 
-SBAPIEXPORT const char* sb_getString(sb_strings S, int i)
+SBWAPIEXPORT const char* sb_getString(sb_strings S, int i)
 {
 	if (S.strings && i >= 0 && i < S.length)
 		return S.strings[ i ];
 	return 0;
 }
 
-SBAPIEXPORT void sb_setString(sb_strings S, int i, const char * s)
+SBWAPIEXPORT void sb_setString(sb_strings S, int i, const char * s)
 {
 	int n=0;
 	char * str;
@@ -163,20 +163,20 @@ SBAPIEXPORT void sb_setString(sb_strings S, int i, const char * s)
 	}
 }
 
-SBAPIEXPORT long sb_getItem(sb_items A, int i)
+SBWAPIEXPORT long sb_getItem(sb_items A, int i)
 {
 	if (i >= 0 && i < A.length)
 		return A.items[ i ];
 	return 0;
 }
 
-SBAPIEXPORT void sb_setItem(sb_items A, int i, long o)
+SBWAPIEXPORT void sb_setItem(sb_items A, int i, long o)
 {
 	if (i >= 0 && i < A.length)
 		A.items[ i ] = o;
 }
 
-SBAPIEXPORT void sb_deleteMatrix(sb_matrix M)
+SBWAPIEXPORT void sb_deleteMatrix(sb_matrix M)
 {
 	if (M.values)
 		free(M.values);
@@ -186,7 +186,7 @@ SBAPIEXPORT void sb_deleteMatrix(sb_matrix M)
 	sb_deleteStringsArray(M.colnames);
 }
 
-SBAPIEXPORT void sb_deleteTable(sb_table M)
+SBWAPIEXPORT void sb_deleteTable(sb_table M)
 {
 	if (M.strings)
 		free(M.strings);
@@ -196,7 +196,7 @@ SBAPIEXPORT void sb_deleteTable(sb_table M)
 	sb_deleteStringsArray(M.colnames);
 }
 
-SBAPIEXPORT void sb_deleteItemsArray(sb_items A)
+SBWAPIEXPORT void sb_deleteItemsArray(sb_items A)
 {
 	if (A.items) 
 		free(A.items);
@@ -204,7 +204,7 @@ SBAPIEXPORT void sb_deleteItemsArray(sb_items A)
 	A.items = 0;
 }
 
-SBAPIEXPORT void sb_deleteStringsArray(sb_strings C)
+SBWAPIEXPORT void sb_deleteStringsArray(sb_strings C)
 {
 	int i;
 	if (C.strings)
@@ -218,7 +218,7 @@ SBAPIEXPORT void sb_deleteStringsArray(sb_strings C)
 	C.strings = 0;
 }
 
-SBAPIEXPORT sb_matrix sb_appendColumns(sb_matrix A, sb_matrix B)
+SBWAPIEXPORT sb_matrix sb_appendColumns(sb_matrix A, sb_matrix B)
 {
 	int i,j,k=0;
 	sb_matrix C;
@@ -296,7 +296,7 @@ SBAPIEXPORT sb_matrix sb_appendColumns(sb_matrix A, sb_matrix B)
 	return C;
 }
 
-SBAPIEXPORT sb_matrix sb_appendRows(sb_matrix A, sb_matrix B)
+SBWAPIEXPORT sb_matrix sb_appendRows(sb_matrix A, sb_matrix B)
 {
 	int i,j,k=0;
 	sb_matrix C;
@@ -377,7 +377,7 @@ SBAPIEXPORT sb_matrix sb_appendRows(sb_matrix A, sb_matrix B)
 	return C;
 }
 
-SBAPIEXPORT void sb_printMatrixToFile(const char* s, sb_matrix output)
+SBWAPIEXPORT void sb_printMatrixToFile(const char* s, sb_matrix output)
 {
 	int i,j;
 	FILE * outfile = fopen(s,"w+");
@@ -404,7 +404,7 @@ SBAPIEXPORT void sb_printMatrixToFile(const char* s, sb_matrix output)
 	fclose(outfile);
 }
 
-SBAPIEXPORT void sb_printOutMatrix(sb_matrix output)
+SBWAPIEXPORT void sb_printOutMatrix(sb_matrix output)
 {
 	int i,j;
 	if (output.colnames.strings)
@@ -430,7 +430,7 @@ SBAPIEXPORT void sb_printOutMatrix(sb_matrix output)
 }
 
 
-SBAPIEXPORT void sb_printTableToFile(const char* s, sb_table output)
+SBWAPIEXPORT void sb_printTableToFile(const char* s, sb_table output)
 {
 	int i,j;
 	FILE * outfile = fopen(s,"w+");
@@ -460,7 +460,7 @@ SBAPIEXPORT void sb_printTableToFile(const char* s, sb_table output)
 	fclose(outfile);
 }
 
-SBAPIEXPORT void sb_printOutTable(sb_table output)
+SBWAPIEXPORT void sb_printOutTable(sb_table output)
 {
 	int i,j;
 	if (output.colnames.strings)
@@ -488,7 +488,7 @@ SBAPIEXPORT void sb_printOutTable(sb_table output)
 	}
 }
 
-SBAPIEXPORT 
+SBWAPIEXPORT 
 int sb_getStringIndex(sb_strings A, const char * s)
 {
 	int i=0;
@@ -500,13 +500,13 @@ int sb_getStringIndex(sb_strings A, const char * s)
 	return -1;
 }
 
-SBAPIEXPORT 
+SBWAPIEXPORT 
 int sb_getRowIndex(sb_matrix m, const char * s)
 {
 	return sb_getStringIndex( m.rownames, s );
 }
 
-SBAPIEXPORT 
+SBWAPIEXPORT 
 int sb_getColumnIndex(sb_matrix m, const char * s)
 {
 	return sb_getStringIndex( m.colnames, s );
