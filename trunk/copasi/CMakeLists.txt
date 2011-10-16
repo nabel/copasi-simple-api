@@ -1,25 +1,6 @@
-#---------------------
-#    OS STUFF
-#---------------------
-IF (WIN32)
-
-   SET(BUILD_OS WIN32)
-
-ELSE(WIN32)	
-	
-	IF (UNIX)
-		IF (APPLE)
-			SET(BUILD_OS MAC)
-		ELSEIF(APPLE)
-			SET(BUILD_OS LINUX)
-		ENDIF(APPLE)
-	ENDIF(UNIX)
-
-ENDIF(WIN32)
-
-#-----------------------------------
-#    INCLUDE DIRECTORIES
-#-----------------------------------
+#------------------------------------------------------------------------------
+#    INCLUDE DIRECTORIES (in addition to those listed in ../CMakeLists.txt)
+#------------------------------------------------------------------------------
 
 INCLUDE_DIRECTORIES( 
 	BEFORE
@@ -36,9 +17,9 @@ INCLUDE_DIRECTORIES(
 	${CMAKE_CURRENT_SOURCE_DIR}/../libstructural/include/
 )
 
-#---------------------
-#    DEFINITIONS
-#---------------------
+#------------------------------------------------------------------------------
+#    DEFINITIONS FOR COPASI 
+#------------------------------------------------------------------------------
 
 #ADD_DEFINITIONS(-DCOPASI_MAIN)
 ADD_DEFINITIONS(-DWITH_CSPMETHOD)
@@ -54,9 +35,9 @@ IF (DISABLE_ASSIGNMENT_REORDERING)
 	ADD_DEFINITIONS(-DCOPASI_NO_ASSIGNMENT_REORDERING)
 ENDIF(DISABLE_ASSIGNMENT_REORDERING)
 
-#------------------------------------------
+#------------------------------------------------------------------------------
 #  DEFINITIONS FOR WINDOWS
-#------------------------------------------
+#------------------------------------------------------------------------------
 
 IF (WIN32)
 	ADD_DEFINITIONS(-DWIN32)
@@ -64,7 +45,7 @@ IF (WIN32)
 	ADD_DEFINITIONS(-D_WINDOWS)
 	ADD_DEFINITIONS(-D_USRDLL)
 	ADD_DEFINITIONS(-D_EXPORTS)
-	IF (MINGW)
+	IF (MINGW)       #these definitions appear to be missing in the new MinGW
 		ADD_DEFINITIONS(-DCYGWIN)
 		ADD_DEFINITIONS(-D__CYGWIN__)
 		ADD_DEFINITIONS(-DDBL_EPSILON=2.22045e-16)
@@ -72,7 +53,7 @@ IF (WIN32)
 		ADD_DEFINITIONS(-DDBL_MIN_EXP=-999)
 		ADD_DEFINITIONS(-DDBL_MAX=1.79769e+308)
 		IF (USE_STDCALL)
-			ADD_DEFINITIONS(-DUSE_STDCALL)
+			ADD_DEFINITIONS(-DUSE_STDCALL)      #std instead of cdecl
 		 ENDIF(USE_STDCALL)
 	ELSE(MINGW)
 		ADD_DEFINITIONS(-Dstrcasecmp=_stricmp)
@@ -82,9 +63,10 @@ ENDIF (WIN32)
  IF (APPLE)
   	 ADD_DEFINITIONS(-D_APPLE)
 ENDIF(APPLE)
-#--------------------------
+
+#------------------------------------------------------------------------------
 #  COPASI SOURCE FILES
-#--------------------------
+#------------------------------------------------------------------------------
 
 FILE( GLOB copasi_SRC_FILES
 	${CMAKE_CURRENT_SOURCE_DIR}/model/*.cpp
