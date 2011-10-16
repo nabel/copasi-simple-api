@@ -30,7 +30,6 @@ int main()
 	tc_deleteMatrix(results);
 
 	results = cGetRatesOfChange(m);
-
 	printf("\n\nderivatives:\n");
 	tc_printOutMatrix(results);
 	tc_deleteMatrix(results);
