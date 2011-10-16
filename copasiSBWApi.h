@@ -97,8 +97,8 @@
  \brief Optimization of parameters to match given data
 */
 
-#ifndef COPASI_SB_C_API
-#define COPASI_SB_C_API
+#ifndef COPASI_SBW_C_API
+#define COPASI_SBS_C_API
  /**
   * @file    copasiSBApi.h
   * @brief   SBW C API for the Copasi C++ library
@@ -158,13 +158,13 @@ BEGIN_C_DECLS
  \brief destroy copasi -- MUST BE CALLED at the end of program
  \ingroup memory
 */
-SBAPIEXPORT void sCopasiEnd();
+SBWAPIEXPORT void sCopasiEnd();
 
 /*! 
  \brief remove a model
  \ingroup memory
 */
-SBAPIEXPORT void sRemoveModel (copasiModel);
+SBWAPIEXPORT void sRemoveModel (copasiModel);
 
 
 // -----------------------------------------------------------------------
@@ -180,7 +180,7 @@ SBAPIEXPORT void sRemoveModel (copasiModel);
  \return copasiModel Copasi model of the Antimony file
  \ingroup loadsave
 */
-SBAPIEXPORT copasiModel sReadAntimonyFile(const char * filename);
+SBWAPIEXPORT copasiModel sReadAntimonyFile(const char * filename);
 
 
 /*! 
@@ -189,7 +189,7 @@ SBAPIEXPORT copasiModel sReadAntimonyFile(const char * filename);
  \return copasiModel Copasi model of the Antimony string
  \ingroup loadsave
 */
-SBAPIEXPORT copasiModel sReadAntimonyString(const char * sbml);
+SBWAPIEXPORT copasiModel sReadAntimonyString(const char * sbml);
 
 
 /*! 
@@ -198,7 +198,7 @@ SBAPIEXPORT copasiModel sReadAntimonyString(const char * sbml);
  \return copasiModel Copasi model of the SBML file
  \ingroup loadsave
 */
-SBAPIEXPORT copasiModel sReadSBMLFile(const char * filename);
+SBWAPIEXPORT copasiModel sReadSBMLFile(const char * filename);
 
 
 /*! 
@@ -207,7 +207,7 @@ SBAPIEXPORT copasiModel sReadSBMLFile(const char * filename);
  \return copasiModel Copasi model of the SBML string
  \ingroup loadsave
 */
-SBAPIEXPORT copasiModel sReadSBMLString(const char * sbml);
+SBWAPIEXPORT copasiModel sReadSBMLString(const char * sbml);
 
 
 /*! 
@@ -216,7 +216,7 @@ SBAPIEXPORT copasiModel sReadSBMLString(const char * sbml);
  \param char* file name
  \ingroup loadsave
 */
-SBAPIEXPORT void sWriteSBMLFile(copasiModel model, const char * filename);
+SBWAPIEXPORT void sWriteSBMLFile(copasiModel model, const char * filename);
 
 
 /*! 
@@ -225,7 +225,7 @@ SBAPIEXPORT void sWriteSBMLFile(copasiModel model, const char * filename);
  \param char* file name
  \ingroup loadsave
 */
-SBAPIEXPORT void sWriteAntimonyFile(copasiModel model, const char * filename);
+SBWAPIEXPORT void sWriteAntimonyFile(copasiModel model, const char * filename);
 
 
 // -----------------------------------------------------------------------
@@ -241,7 +241,7 @@ SBAPIEXPORT void sWriteAntimonyFile(copasiModel model, const char * filename);
  \return copasiModel a new copasi model
  \ingroup create
 */
-SBAPIEXPORT copasiModel sCreateModel(const char * name);
+SBWAPIEXPORT copasiModel sCreateModel(const char * name);
 
 
 /*! 
@@ -249,7 +249,7 @@ SBAPIEXPORT copasiModel sCreateModel(const char * name);
  \param copasiModel model
  \ingroup create
 */
-SBAPIEXPORT void sCompileModel(copasiModel model);
+SBWAPIEXPORT void sCompileModel(copasiModel model);
 
 
 /*! 
@@ -259,7 +259,7 @@ SBAPIEXPORT void sCompileModel(copasiModel model);
  \return copasiCompartment a new compartment
  \ingroup create
 */
-SBAPIEXPORT copasiCompartment sCreateCompartment(copasiModel model, const char* name, double volume);
+SBWAPIEXPORT copasiCompartment sCreateCompartment(copasiModel model, const char* name, double volume);
 
 
 /*! 
@@ -269,7 +269,7 @@ SBAPIEXPORT copasiCompartment sCreateCompartment(copasiModel model, const char* 
  \param double volume
  \ingroup create
 */
-SBAPIEXPORT void sSetVolume(copasiModel, const char * compartment, double volume);
+SBWAPIEXPORT void sSetVolume(copasiModel, const char * compartment, double volume);
 
 
 /*! 
@@ -282,7 +282,7 @@ SBAPIEXPORT void sSetVolume(copasiModel, const char * compartment, double volume
  \return 0 if new variable was created. 1 if existing variable was found
  \ingroup create
 */
-SBAPIEXPORT int sSetValue(copasiModel, const char * name, double value);
+SBWAPIEXPORT int sSetValue(copasiModel, const char * name, double value);
 
 
 /*! 
@@ -292,7 +292,7 @@ SBAPIEXPORT int sSetValue(copasiModel, const char * name, double value);
  \param double initial value (concentration or count, depending on the model)
  \ingroup create
 */
-SBAPIEXPORT void sCreateSpecies(copasiCompartment compartment, const char* name, double initialValue);
+SBWAPIEXPORT void sCreateSpecies(copasiCompartment compartment, const char* name, double initialValue);
 
 
 /*! 
@@ -302,7 +302,7 @@ SBAPIEXPORT void sCreateSpecies(copasiCompartment compartment, const char* name,
  \param int boundary = 1, floating = 0 (default)
  \ingroup create
 */
-SBAPIEXPORT void sSetSpeciesType(copasiModel model, const char * species, int isBoundary);
+SBWAPIEXPORT void sSetSpeciesType(copasiModel model, const char * species, int isBoundary);
 
 
 /*! 
@@ -312,7 +312,7 @@ SBAPIEXPORT void sSetSpeciesType(copasiModel model, const char * species, int is
  \param double concentration
  \ingroup create
 */
-SBAPIEXPORT void sSetConcentration(copasiModel, const char * species, double conc);
+SBWAPIEXPORT void sSetConcentration(copasiModel, const char * species, double conc);
 
 /*! 
  \brief Set a species amounts
@@ -321,7 +321,7 @@ SBAPIEXPORT void sSetConcentration(copasiModel, const char * species, double con
  \param double amount
  \ingroup create
 */
-SBAPIEXPORT void sSetAmount(copasiModel, const char * species, double amount);
+SBWAPIEXPORT void sSetAmount(copasiModel, const char * species, double amount);
 
 
 /*! 
@@ -336,7 +336,7 @@ SBAPIEXPORT void sSetAmount(copasiModel, const char * species, double amount);
  \endcode
  \ingroup create
 */
-SBAPIEXPORT int sSetAssignmentRule(copasiModel model, const char * species, const char * formula);
+SBWAPIEXPORT int sSetAssignmentRule(copasiModel model, const char * species, const char * formula);
 
 
 /*! 
@@ -347,7 +347,7 @@ SBAPIEXPORT int sSetAssignmentRule(copasiModel model, const char * species, cons
   \return int 0=new value created 1=found existing value
  \ingroup create
 */
-SBAPIEXPORT int sSetGlobalParameter(copasiModel model, const char * name, double value);
+SBWAPIEXPORT int sSetGlobalParameter(copasiModel model, const char * name, double value);
 
 
 /*! 
@@ -358,7 +358,7 @@ SBAPIEXPORT int sSetGlobalParameter(copasiModel model, const char * name, double
  \return int 0=failed 1=success
  \ingroup create
 */
-SBAPIEXPORT int sCreateVariable(copasiModel model, const char * name, const char * formula);
+SBWAPIEXPORT int sCreateVariable(copasiModel model, const char * name, const char * formula);
 
 
 /*! 
@@ -376,7 +376,7 @@ SBAPIEXPORT int sCreateVariable(copasiModel model, const char * name, const char
  \endcode
  \ingroup create
 */
-SBAPIEXPORT int sCreateEvent(copasiModel model, const char * name, const char * trigger, const char * variable, const char * formula);
+SBWAPIEXPORT int sCreateEvent(copasiModel model, const char * name, const char * trigger, const char * variable, const char * formula);
 
 
 /*!
@@ -390,7 +390,7 @@ SBAPIEXPORT int sCreateEvent(copasiModel model, const char * name, const char * 
  \endcode
  \ingroup create
 */
-SBAPIEXPORT copasiReaction sCreateReaction(copasiModel model, const char* name);
+SBWAPIEXPORT copasiReaction sCreateReaction(copasiModel model, const char* name);
 
 
 /*! 
@@ -404,7 +404,7 @@ SBAPIEXPORT copasiReaction sCreateReaction(copasiModel model, const char* name);
  \endcode
  \ingroup create
 */
-SBAPIEXPORT void sAddReactant(copasiReaction reaction, const char * species, double stoichiometry);
+SBWAPIEXPORT void sAddReactant(copasiReaction reaction, const char * species, double stoichiometry);
 
 /*! 
  \brief Add a product to a reaction
@@ -422,7 +422,7 @@ SBAPIEXPORT void sAddReactant(copasiReaction reaction, const char * species, dou
 
  \ingroup create
 */
-SBAPIEXPORT void sAddProduct(copasiReaction reaction, const char * species, double stoichiometry);
+SBWAPIEXPORT void sAddProduct(copasiReaction reaction, const char * species, double stoichiometry);
 
 /*! 
  \brief Set reaction rate equation
@@ -437,7 +437,7 @@ SBAPIEXPORT void sAddProduct(copasiReaction reaction, const char * species, doub
  
  \ingroup create
 */
-SBAPIEXPORT int sSetReactionRate(copasiReaction reaction, const char * formula);
+SBWAPIEXPORT int sSetReactionRate(copasiReaction reaction, const char * formula);
 
 
 // -----------------------------------------------------------------------
@@ -453,7 +453,7 @@ SBAPIEXPORT int sSetReactionRate(copasiReaction reaction, const char * formula);
  \return int Returns the number of reactions in the model
  \ingroup reaction
 */
-SBAPIEXPORT sb_matrix sGetNumberOfReactions (copasiModel);
+SBWAPIEXPORT sb_matrix sGetNumberOfReactions (copasiModel);
 
 
 /*! 
@@ -462,7 +462,7 @@ SBAPIEXPORT sb_matrix sGetNumberOfReactions (copasiModel);
  \return sb_strings array of char * and length n, where n = number of reactions
  \ingroup reaction
 */
-SBAPIEXPORT sb_strings sGetReactionNames (copasiModel);
+SBWAPIEXPORT sb_strings sGetReactionNames (copasiModel);
 
 
 /*! 
@@ -472,7 +472,7 @@ SBAPIEXPORT sb_strings sGetReactionNames (copasiModel);
  \return double reaction rate for ith reaction
  \ingroup reaction
 */
-SBAPIEXPORT int sGetReactionRate(copasiModel, int);
+SBWAPIEXPORT int sGetReactionRate(copasiModel, int);
 
 
 /*! 
@@ -481,7 +481,7 @@ SBAPIEXPORT int sGetReactionRate(copasiModel, int);
  \return double array of reaction rates
  \ingroup reaction
 */
-SBAPIEXPORT sb_matrix sGetReactionRates(copasiModel);
+SBWAPIEXPORT sb_matrix sGetReactionRates(copasiModel);
 
 
 /*! 
@@ -491,7 +491,7 @@ SBAPIEXPORT sb_matrix sGetReactionRates(copasiModel);
  \return sb_matrix Vector of reaction rates
  \ingroup reaction
 */
-SBAPIEXPORT sb_matrix sGetReactionRatesEx(sb_matrix values);
+SBWAPIEXPORT sb_matrix sGetReactionRatesEx(sb_matrix values);
 
 // -----------------------------------------------------------------------
 /** \} */
@@ -506,7 +506,7 @@ SBAPIEXPORT sb_matrix sGetReactionRatesEx(sb_matrix values);
  \return number of species
  \ingroup boundary
 */
-SBAPIEXPORT int sGetNumberOfBoundarySpecies(copasiModel model);
+SBWAPIEXPORT int sGetNumberOfBoundarySpecies(copasiModel model);
 
 
 /*! 
@@ -515,7 +515,7 @@ SBAPIEXPORT int sGetNumberOfBoundarySpecies(copasiModel model);
  \return sb_strings array of char * and length n, where n = number of species
  \ingroup boundary
 */
-SBAPIEXPORT sb_strings sGetBoundarySpeciesNames(copasiModel model);
+SBWAPIEXPORT sb_strings sGetBoundarySpeciesNames(copasiModel model);
 
 /*! 
  \brief Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED
@@ -523,7 +523,7 @@ SBAPIEXPORT sb_strings sGetBoundarySpeciesNames(copasiModel model);
  \param int index ith boundary species
  \ingroup boundary
 */
-SBAPIEXPORT void sSetBoundarySpeciesByIndex (copasiModel model, int index);
+SBWAPIEXPORT void sSetBoundarySpeciesByIndex (copasiModel model, int index);
 
 /*! 
  \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
@@ -531,7 +531,7 @@ SBAPIEXPORT void sSetBoundarySpeciesByIndex (copasiModel model, int index);
  \param sb_matric Vector of boundary species concentrations
  \ingroup boundary
 */
-SBAPIEXPORT void sSetBoundarySpeciesConcentrations (copasiModel model, sb_matrix d);
+SBWAPIEXPORT void sSetBoundarySpeciesConcentrations (copasiModel model, sb_matrix d);
 
 /*! 
  \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
@@ -539,7 +539,7 @@ SBAPIEXPORT void sSetBoundarySpeciesConcentrations (copasiModel model, sb_matrix
  \param sb_matrix Vector of boundary species concentrations
  \ingroup boundary
 */
-SBAPIEXPORT sb_matrix sGetBoundarySpeciesConcentrations (copasiModel model);
+SBWAPIEXPORT sb_matrix sGetBoundarySpeciesConcentrations (copasiModel model);
 
 
 /*! 
@@ -549,7 +549,7 @@ SBAPIEXPORT sb_matrix sGetBoundarySpeciesConcentrations (copasiModel model);
  \return double Concentration of ith boundary species
  \ingroup state
 */
-SBAPIEXPORT double sGetBoundarySpeciesByIndex (copasiModel model, int index);
+SBWAPIEXPORT double sGetBoundarySpeciesByIndex (copasiModel model, int index);
 
 // -----------------------------------------------------------------------
 /** \} */
@@ -564,7 +564,7 @@ SBAPIEXPORT double sGetBoundarySpeciesByIndex (copasiModel model, int index);
  \return number of species
  \ingroup floating
 */
-SBAPIEXPORT int sGetNumberFloatingSpecies(copasiModel model);
+SBWAPIEXPORT int sGetNumberFloatingSpecies(copasiModel model);
 
 /*! 
  \brief sGet a list the floating species names - CURRENTLY NOT IMPLEMENTED
@@ -572,7 +572,7 @@ SBAPIEXPORT int sGetNumberFloatingSpecies(copasiModel model);
  \return sb_strings array of char * and length n, where n = number of species
  \ingroup state
 */
-SBAPIEXPORT sb_strings sGetFloatingSpeciesNames(copasiModel model);
+SBWAPIEXPORT sb_strings sGetFloatingSpeciesNames(copasiModel model);
 
 
 /*! 
@@ -581,7 +581,7 @@ SBAPIEXPORT sb_strings sGetFloatingSpeciesNames(copasiModel model);
  \param int index ith floating species
  \ingroup state
 */
-SBAPIEXPORT void sSetFloatingSpeciesByIndex (copasiModel model, int index);
+SBWAPIEXPORT void sSetFloatingSpeciesByIndex (copasiModel model, int index);
 
 
 /*! 
@@ -591,7 +591,7 @@ SBAPIEXPORT void sSetFloatingSpeciesByIndex (copasiModel model, int index);
  \return double Concentration of ith floating species
  \ingroup state
 */
-SBAPIEXPORT double sGetFloatingSpeciesByIndex (copasiModel model, int index);
+SBWAPIEXPORT double sGetFloatingSpeciesByIndex (copasiModel model, int index);
 
 /*! 
  \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
@@ -599,7 +599,7 @@ SBAPIEXPORT double sGetFloatingSpeciesByIndex (copasiModel model, int index);
  \param sb_matric Vector of floating species concentrations
  \ingroup boundary
 */
-SBAPIEXPORT void sSetFloatingSpeciesConcentrations (copasiModel model, sb_matrix sp);
+SBWAPIEXPORT void sSetFloatingSpeciesConcentrations (copasiModel model, sb_matrix sp);
 
 /*! 
  \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
@@ -607,7 +607,7 @@ SBAPIEXPORT void sSetFloatingSpeciesConcentrations (copasiModel model, sb_matrix
  \param sb_matrix Vector of floating species concentrations
  \ingroup boundary
 */
-SBAPIEXPORT sb_matrix sGetFloatingSpeciesConcentrations (copasiModel model);
+SBWAPIEXPORT sb_matrix sGetFloatingSpeciesConcentrations (copasiModel model);
 
 
 /*! 
@@ -616,7 +616,7 @@ SBAPIEXPORT sb_matrix sGetFloatingSpeciesConcentrations (copasiModel model);
  \return sb_matrix Vector of initial floating species concentrations
  \ingroup floating
 */
-SBAPIEXPORT sb_matrix sGetFloatingSpeciesIntitialConcentrations (copasiModel model);
+SBWAPIEXPORT sb_matrix sGetFloatingSpeciesIntitialConcentrations (copasiModel model);
 
 
 /*! 
@@ -625,7 +625,7 @@ SBAPIEXPORT sb_matrix sGetFloatingSpeciesIntitialConcentrations (copasiModel mod
  \param sb_matrix Vector of initial floating species concentrations
  \ingroup floating
 */
-SBAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasiModel model, sb_matrix sp);
+SBWAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasiModel model, sb_matrix sp);
 
 /*! 
  \brief Set the initial floating species concentration of the ith species  - CURRENTLY NOT IMPLEMENTED
@@ -633,7 +633,7 @@ SBAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasiModel model, s
  \param double value value to set the ith initial floating species concentration
  \ingroup floating
 */
-SBAPIEXPORT void sSetFloatingSpeciesIntitialConcentrationByIndex (copasiModel model, int index, double sp);
+SBWAPIEXPORT void sSetFloatingSpeciesIntitialConcentrationByIndex (copasiModel model, int index, double sp);
 
 
 // -----------------------------------------------------------------------
@@ -649,7 +649,7 @@ SBAPIEXPORT void sSetFloatingSpeciesIntitialConcentrationByIndex (copasiModel mo
  \return sb_matrix matrix of with 1 row and n columns, where n = number of species
  \ingroup rateOfChange
 */
-SBAPIEXPORT sb_matrix sGetRatesOfChange(copasiModel);
+SBWAPIEXPORT sb_matrix sGetRatesOfChange(copasiModel);
 
 /*! 
  \brief Compute the current rates of change for the ith species
@@ -658,7 +658,7 @@ SBAPIEXPORT sb_matrix sGetRatesOfChange(copasiModel);
  \return double ith rate of change
  \ingroup rateOfChange
 */
-SBAPIEXPORT double sGetRateOfChange(copasiModel, int index);
+SBWAPIEXPORT double sGetRateOfChange(copasiModel, int index);
 
 /*! 
  \brief Returns the names used to represent the rates of change
@@ -666,7 +666,7 @@ SBAPIEXPORT double sGetRateOfChange(copasiModel, int index);
  \return sb_strings List of names used to represent the rate of change
  \ingroup rateOfChange
 */
-SBAPIEXPORT sb_strings sGetRatesOfChangeNames(copasiModel);
+SBWAPIEXPORT sb_strings sGetRatesOfChangeNames(copasiModel);
 
 /*! 
  \brief Returns the rates of change given a vector of floating species concentrations
@@ -675,7 +675,7 @@ SBAPIEXPORT sb_strings sGetRatesOfChangeNames(copasiModel);
  \return sb_matrix vector of rates of change
  \ingroup rateOfChange
 */
-SBAPIEXPORT sb_matrix sGetRatesOfChangeEx(copasiModel model, sb_matrix sp);
+SBWAPIEXPORT sb_matrix sGetRatesOfChangeEx(copasiModel model, sb_matrix sp);
 
 
 // -----------------------------------------------------------------------
@@ -692,7 +692,7 @@ SBAPIEXPORT sb_matrix sGetRatesOfChangeEx(copasiModel model, sb_matrix sp);
  The names of the species are included in the matrix column labels
  \ingroup state
 */
-SBAPIEXPORT sb_matrix sGetConcentrations(copasiModel);
+SBWAPIEXPORT sb_matrix sGetConcentrations(copasiModel);
 
 /*! 
  \brief sGet the current amounts of all species. The amounts are calculated from the concentrations and compartment volume
@@ -701,7 +701,7 @@ SBAPIEXPORT sb_matrix sGetConcentrations(copasiModel);
  The names of the species are included in the matrix column labels
  \ingroup state
 */
-SBAPIEXPORT sb_matrix sGetAmounts(copasiModel);
+SBWAPIEXPORT sb_matrix sGetAmounts(copasiModel);
 
 /*! 
  \brief sGet a list of all species names, including floating and boundary species
@@ -709,7 +709,7 @@ SBAPIEXPORT sb_matrix sGetAmounts(copasiModel);
  \return sb_strings array of char * and length n, where n = number of species
  \ingroup state
 */
-SBAPIEXPORT sb_strings sGetAllSpeciesNames(copasiModel model);
+SBWAPIEXPORT sb_strings sGetAllSpeciesNames(copasiModel model);
 
 
 /*! 
@@ -719,7 +719,7 @@ SBAPIEXPORT sb_strings sGetAllSpeciesNames(copasiModel model);
  \return double concentration. -1 indicates that a species by this name was not found
  \ingroup state
 */
-SBAPIEXPORT double sGetConcentration(copasiModel, const char * name);
+SBWAPIEXPORT double sGetConcentration(copasiModel, const char * name);
 
 /*! 
  \brief sGet the current amount of a species. The amounts are calculated from the concentrations and compartment volume
@@ -728,7 +728,7 @@ SBAPIEXPORT double sGetConcentration(copasiModel, const char * name);
  \return double amount. -1 indicates that a species by this name was not found
  \ingroup state
 */
-SBAPIEXPORT double sGgetAmount(copasiModel, const char * name);
+SBWAPIEXPORT double sGgetAmount(copasiModel, const char * name);
 
 
 /*! 
@@ -739,7 +739,7 @@ SBAPIEXPORT double sGgetAmount(copasiModel, const char * name);
   The names of the fluxes are included in the matrix column labels
  \ingroup state
 */
-SBAPIEXPORT double sGgetFlux(copasiModel, const char * name);
+SBWAPIEXPORT double sGgetFlux(copasiModel, const char * name);
 
 /*! 
  \brief Compute current flux through the given reactions in terms of particles
@@ -748,7 +748,7 @@ SBAPIEXPORT double sGgetFlux(copasiModel, const char * name);
  \return double rate. If reaction by this name does not exist that NaN will be returned
  \ingroup state
 */
-SBAPIEXPORT double sGgetParticleFlux(copasiModel, const char * name);
+SBWAPIEXPORT double sGgetParticleFlux(copasiModel, const char * name);
 
 
 // -----------------------------------------------------------------------
@@ -764,7 +764,7 @@ SBAPIEXPORT double sGgetParticleFlux(copasiModel, const char * name);
  \return int numberOfGlobalParameters. Returns the number of gloabal parameters in the model
  \ingroup parameter
 */
-SBAPIEXPORT int sGetNumberOfGlobalParameters (copasiModel);
+SBWAPIEXPORT int sGetNumberOfGlobalParameters (copasiModel);
 
 /*! 
  \brief sGet the list of global parameter names
@@ -772,7 +772,7 @@ SBAPIEXPORT int sGetNumberOfGlobalParameters (copasiModel);
  \return sb_strings array of char * and length n, where n = number of global parameters
  \ingroup parameter
 */
-SBAPIEXPORT sb_strings sGetGlobalParameterNames (copasiModel);
+SBWAPIEXPORT sb_strings sGetGlobalParameterNames (copasiModel);
 
 /*! 
  \brief sGet the value of a global parameter by index
@@ -781,7 +781,7 @@ SBAPIEXPORT sb_strings sGetGlobalParameterNames (copasiModel);
  \return double returned value of parameter
  \ingroup parameter
 */
-SBAPIEXPORT double sGetGlobalParameterByIndex (copasiModel, int);
+SBWAPIEXPORT double sGetGlobalParameterByIndex (copasiModel, int);
 
 /*! 
  \brief Set the value of a global parameter by index
@@ -790,7 +790,7 @@ SBAPIEXPORT double sGetGlobalParameterByIndex (copasiModel, int);
  \param double Value to set parameter to
  \ingroup parameter
 */
-SBAPIEXPORT void setGlobalParameterByIndex (copasiModel, int, double);
+SBWAPIEXPORT void setGlobalParameterByIndex (copasiModel, int, double);
 
 /*! 
  \brief sGet a list of the global parameters
@@ -798,7 +798,7 @@ SBAPIEXPORT void setGlobalParameterByIndex (copasiModel, int, double);
  \return sb_matrix A vector containing the values for the global parameters.
  \ingroup parameter
 */
-SBAPIEXPORT sb_matrix sGetGlobalParameters (copasiModel);
+SBWAPIEXPORT sb_matrix sGetGlobalParameters (copasiModel);
 
 /*! 
  \brief Set the vector of global parameters
@@ -806,7 +806,7 @@ SBAPIEXPORT sb_matrix sGetGlobalParameters (copasiModel);
  \paramn sb_matrix A vector containing the values for the global parameters.
  \ingroup parameter
 */
-SBAPIEXPORT void sSetGlobalParameterValues (copasiModel, sb_matrix gp);
+SBWAPIEXPORT void sSetGlobalParameterValues (copasiModel, sb_matrix gp);
 
 
 // -----------------------------------------------------------------------
@@ -822,7 +822,7 @@ SBAPIEXPORT void sSetGlobalParameterValues (copasiModel, sb_matrix gp);
  \return int numberOfCompartments
  \ingroup compartment
 */
-SBAPIEXPORT int sGetNumberOfCompartments (copasiModel);
+SBWAPIEXPORT int sGetNumberOfCompartments (copasiModel);
 
 /*! 
  \brief sGet the list of compartment names
@@ -830,7 +830,7 @@ SBAPIEXPORT int sGetNumberOfCompartments (copasiModel);
  \return sb_strings compartmentNames
  \ingroup compartment
 */
-SBAPIEXPORT sb_strings sGetCompartmentNames (copasiModel);
+SBWAPIEXPORT sb_strings sGetCompartmentNames (copasiModel);
 
 
 /*! 
@@ -840,7 +840,7 @@ SBAPIEXPORT sb_strings sGetCompartmentNames (copasiModel);
  \return double Voluem of compartment 
  \ingroup compartment
 */
-SBAPIEXPORT double sGetCompartmentByIndex (copasiModel, int);
+SBWAPIEXPORT double sGetCompartmentByIndex (copasiModel, int);
 
 
 /*! 
@@ -850,7 +850,7 @@ SBAPIEXPORT double sGetCompartmentByIndex (copasiModel, int);
  \param double volume Volume of ith compartment
  \ingroup compartment
 */
-SBAPIEXPORT void sSetCompartmentByIndex (copasiModel, int, double);
+SBWAPIEXPORT void sSetCompartmentByIndex (copasiModel, int, double);
 
 
 /*! 
@@ -859,7 +859,7 @@ SBAPIEXPORT void sSetCompartmentByIndex (copasiModel, int, double);
  \param double volume Vector of compartment volumes
  \ingroup compartment
 */
-SBAPIEXPORT void sSetCompartmentVolumes (copasiModel, sb_matrix v);
+SBWAPIEXPORT void sSetCompartmentVolumes (copasiModel, sb_matrix v);
 
 
 // -----------------------------------------------------------------------
@@ -883,7 +883,7 @@ SBAPIEXPORT void sSetCompartmentVolumes (copasiModel, sb_matrix v);
  \endcode
  \ingroup simulation
 */
-SBAPIEXPORT sb_matrix sSimulateDeterministic (copasiModel model, double startTime, double endTime, int numSteps);
+SBWAPIEXPORT sb_matrix sSimulateDeterministic (copasiModel model, double startTime, double endTime, int numSteps);
 
 
 /*! 
@@ -893,7 +893,7 @@ SBAPIEXPORT sb_matrix sSimulateDeterministic (copasiModel model, double startTim
  \return double New time, i.e t_o + timeStep
  \ingroup simulation
 */
-SBAPIEXPORT double sOneStep(copasiModel model, double timeStep);
+SBWAPIEXPORT double sOneStep(copasiModel model, double timeStep);
 
 /*! 
  \brief Simulate using exact stochastic algorithm
@@ -904,7 +904,7 @@ SBAPIEXPORT double sOneStep(copasiModel model, double timeStep);
  \return sb_matrix matrix of concentration or particles
  \ingroup simulation
 */
-SBAPIEXPORT sb_matrix sSimulateStochastic(copasiModel model, double startTime, double endTime, int numSteps);
+SBWAPIEXPORT sb_matrix sSimulateStochastic(copasiModel model, double startTime, double endTime, int numSteps);
 
 /*! 
  \brief Simulate using Hybrid algorithm/deterministic algorithm
@@ -915,7 +915,7 @@ SBAPIEXPORT sb_matrix sSimulateStochastic(copasiModel model, double startTime, d
  \return sb_matrix matrix of concentration or particles
  \ingroup simulation
 */
-SBAPIEXPORT sb_matrix sSimulateHybrid(copasiModel model, double startTime, double endTime, int numSteps);
+SBWAPIEXPORT sb_matrix sSimulateHybrid(copasiModel model, double startTime, double endTime, int numSteps);
 
 /*! 
  \brief Simulate using Tau Leap stochastic algorithm
@@ -926,7 +926,7 @@ SBAPIEXPORT sb_matrix sSimulateHybrid(copasiModel model, double startTime, doubl
  \return sb_matrix matrix of concentration or particles
  \ingroup simulation
 */
-SBAPIEXPORT sb_matrix sSimulateTauLeap(copasiModel model, double startTime, double endTime, int numSteps);
+SBWAPIEXPORT sb_matrix sSimulateTauLeap(copasiModel model, double startTime, double endTime, int numSteps);
 
 
 // -----------------------------------------------------------------------
@@ -944,7 +944,7 @@ SBAPIEXPORT sb_matrix sSimulateTauLeap(copasiModel model, double startTime, doub
  \return sb_matrix matrix with 1 row and n columns, where n = number of species
  \ingroup steadystate
 */
-SBAPIEXPORT sb_matrix sGetSteadyState(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetSteadyState(copasiModel model);
 
 /*! 
  \brief Bring the system to steady state by doing repeated simulations.
@@ -954,7 +954,7 @@ SBAPIEXPORT sb_matrix sGetSteadyState(copasiModel model);
  \return sb_matrix matrix with 1 row and n columns, where n = number of species
  \ingroup steadystate
 */
-SBAPIEXPORT sb_matrix sGetSteadyStateUsingSimulation(copasiModel model, int iter);
+SBWAPIEXPORT sb_matrix sGetSteadyStateUsingSimulation(copasiModel model, int iter);
 
 /*! 
  \brief sGet the full Jacobian at the current state
@@ -962,14 +962,14 @@ SBAPIEXPORT sb_matrix sGetSteadyStateUsingSimulation(copasiModel model, int iter
  \return sb_matrix matrix with n rows and n columns, where n = number of species
  \ingroup steadystate
 */
-SBAPIEXPORT sb_matrix sGetJacobian(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetJacobian(copasiModel model);
 /*! 
  \brief sGet the eigenvalues of the Jacobian at the current state
  \param copasiModel model
  \return sb_matrix matrix with 1 row and n columns, each containing an eigenvalue
  \ingroup steadystate
 */
-SBAPIEXPORT sb_matrix sGetEigenvalues(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetEigenvalues(copasiModel model);
 
 
 // -----------------------------------------------------------------------
@@ -987,7 +987,7 @@ SBAPIEXPORT sb_matrix sGetEigenvalues(copasiModel model);
                              of the fluxes that are affected
  \ingroup mca
 */
-SBAPIEXPORT sb_matrix sGetUnscaledFluxControlCoeffs(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetUnscaledFluxControlCoeffs(copasiModel model);
 
 
 /*! 
@@ -997,7 +997,7 @@ SBAPIEXPORT sb_matrix sGetUnscaledFluxControlCoeffs(copasiModel model);
                              of the fluxes that are affected
  \ingroup mca
 */
-SBAPIEXPORT sb_matrix sGetScaledFluxControlCoeffs(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetScaledFluxControlCoeffs(copasiModel model);
 
 
 /*!
@@ -1007,7 +1007,7 @@ SBAPIEXPORT sb_matrix sGetScaledFluxControlCoeffs(copasiModel model);
                              of the concentrations that are affected
  \ingroup mca
 */
-SBAPIEXPORT sb_matrix sGetUnscaledConcentrationControlCoeffs(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetUnscaledConcentrationControlCoeffs(copasiModel model);
 
 
 /*! 
@@ -1017,7 +1017,7 @@ SBAPIEXPORT sb_matrix sGetUnscaledConcentrationControlCoeffs(copasiModel model);
                              of the concentrations that are affected
  \ingroup mca
 */
-SBAPIEXPORT sb_matrix sGetScaledConcentrationConcentrationCoeffs(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetScaledConcentrationConcentrationCoeffs(copasiModel model);
 
 
 /*! 
@@ -1027,7 +1027,7 @@ SBAPIEXPORT sb_matrix sGetScaledConcentrationConcentrationCoeffs(copasiModel mod
                              of the reactions that are affected
  \ingroup mca
 */
-SBAPIEXPORT sb_matrix sGetUnscaledElasticities(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetUnscaledElasticities(copasiModel model);
 
 
 /*! 
@@ -1037,7 +1037,7 @@ SBAPIEXPORT sb_matrix sGetUnscaledElasticities(copasiModel model);
                              of the reactions that are affected
  \ingroup mca
 */
-SBAPIEXPORT sb_matrix sGetScaledElasticities(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetScaledElasticities(copasiModel model);
 
 
 // -----------------------------------------------------------------------
@@ -1054,7 +1054,7 @@ SBAPIEXPORT sb_matrix sGetScaledElasticities(copasiModel model);
  \return sb_matrix rows consist of the species and columns are the reactions
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetFullStoichiometryMatrix(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetFullStoichiometryMatrix(copasiModel model);
 
 
 /*! 
@@ -1063,7 +1063,7 @@ SBAPIEXPORT sb_matrix sGetFullStoichiometryMatrix(copasiModel model);
  \return sb_matrix rows consist of the species and columns are the reactions
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetReducedStoichiometryMatrix(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetReducedStoichiometryMatrix(copasiModel model);
 
 
 /*! 
@@ -1072,7 +1072,7 @@ SBAPIEXPORT sb_matrix sGetReducedStoichiometryMatrix(copasiModel model);
  \return sb_matrix matrix with reactions as rows and flux modes as columns (no column names)
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetElementaryFluxModes(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetElementaryFluxModes(copasiModel model);
 
 
 /*! 
@@ -1081,7 +1081,7 @@ SBAPIEXPORT sb_matrix sGetElementaryFluxModes(copasiModel model);
  \return sb_matrix 
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetGammaMatrix(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetGammaMatrix(copasiModel model);
 
 
 /*! 
@@ -1090,7 +1090,7 @@ SBAPIEXPORT sb_matrix sGetGammaMatrix(copasiModel model);
  \return sb_matrix 
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetKMatrix(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetKMatrix(copasiModel model);
 
 
 /*! 
@@ -1099,7 +1099,7 @@ SBAPIEXPORT sb_matrix sGetKMatrix(copasiModel model);
  \return sb_matrix 
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetK0Matrix(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetK0Matrix(copasiModel model);
 
 
 /*! 
@@ -1108,7 +1108,7 @@ SBAPIEXPORT sb_matrix sGetK0Matrix(copasiModel model);
  \return sb_matrix 
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetLinkMatrix(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetLinkMatrix(copasiModel model);
 
 
 /*! 
@@ -1117,7 +1117,7 @@ SBAPIEXPORT sb_matrix sGetLinkMatrix(copasiModel model);
  \return sb_matrix 
  \ingroup matrix
 */
-SBAPIEXPORT sb_matrix sGetL0Matrix(copasiModel model);
+SBWAPIEXPORT sb_matrix sGetL0Matrix(copasiModel model);
 
 
 // -----------------------------------------------------------------------
@@ -1133,13 +1133,13 @@ SBAPIEXPORT sb_matrix sGetL0Matrix(copasiModel model);
              warning: disabling this may cause numerical errors in time-course simulations
  \ingroup cleanup
 */
-SBAPIEXPORT void sDisableAssignmentRuleReordering();
+SBWAPIEXPORT void sDisableAssignmentRuleReordering();
 
 /*! 
  \brief modify assignment rules to avoid dependencies between assignment rules (default)
  \ingroup cleanup
 */
-SBAPIEXPORT void sEnableAssignmentRuleReordering();
+SBWAPIEXPORT void sEnableAssignmentRuleReordering();
 
 END_C_DECLS
 #endif
