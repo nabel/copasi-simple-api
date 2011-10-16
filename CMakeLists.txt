@@ -17,7 +17,6 @@ SET (LIBRARY_OUTPUT_PATH ${LIBCOPASI_BINARY_DIR})
 SET (EXECUTABLE_OUTPUT_PATH ${LIBCOPASI_BINARY_DIR})
 
 # CMake not supporting Win32 MinGW?
-
 IF( WIN32 AND MINGW)
   ADD_DEFINITIONS(-DMINGW)
   SET(CMAKE_RC_COMPILER_INIT windres)
@@ -35,9 +34,30 @@ ELSE(USE_DEBUG_MODE)
 	SET(CMAKE_BUILD_TYPE "Debug" CACHE STRING "Build type")
 	SET(CMAKE_RC_COMPILE_OBJECT Release)
 ENDIF(USE_DEBUG_MODE)
-#--------------------------------------------------------------------------
 
-#include folders
+#------------------------------------------------------------------------------
+#  cmake definitions for curl, sbml, and some other packages
+#------------------------------------------------------------------------------
+IF (WIN32)
+
+   SET(BUILD_OS WIN32)
+
+ELSE(WIN32)	
+	
+	IF (UNIX)
+		IF (APPLE)
+			SET(BUILD_OS MAC)
+		ELSEIF(APPLE)
+			SET(BUILD_OS LINUX)
+		ENDIF(APPLE)
+	ENDIF(UNIX)
+
+ENDIF(WIN32)
+
+
+#--------------------------------------------------------------------------
+# include folders
+#--------------------------------------------------------------------------
 INCLUDE_DIRECTORIES( BEFORE
     ${LIBCOPASI_SOURCE_DIR}
     ${LIBCOPASI_SOURCE_DIR}/curl/include
@@ -48,7 +68,9 @@ INCLUDE_DIRECTORIES( BEFORE
 	${LIBCOPASI_SOURCE_DIR}/libstructural/include
 )
 
+#------------------------------------------------------------------------------
 #build individual subdirectories using CMakeLists.txt in each directory
+#------------------------------------------------------------------------------
 
 #if the system already has lapack, then don't build it
 OPTION( BUILD_LAPACK "check this if your system does not have lapack library" ON ) #use cmake gui to set this
@@ -66,3 +88,4 @@ ADD_SUBDIRECTORY( copasi )     #simulation and analysis package
 ADD_SUBDIRECTORY( libstructural )   #network structural analysis based on stoichiometry matrix
 ADD_SUBDIRECTORY( galib )   #genetic algorithms library
 ADD_SUBDIRECTORY( SBWApi )  #a different version of copasi_api that conforms with the SBW API
+
