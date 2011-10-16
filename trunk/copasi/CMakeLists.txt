@@ -125,7 +125,7 @@ ADD_DEFINITIONS(-DHAVE_EXPAT_CONFIG_H)
 FILE( GLOB  EXPAT_SRC_FILES   ${CMAKE_CURRENT_SOURCE_DIR}/../expat/lib/*.c)
 
 #--------------------------
-#  MAKE libcopasi
+#  MAKE LIBRARY libcopasi
 #--------------------------
 
 ADD_LIBRARY( copasi
@@ -135,6 +135,9 @@ ADD_LIBRARY( copasi
   ${EXPAT_SRC_FILES}
 )
 
+#-----------------------------------------------------
+# This section is due to a complication in MSVC
+#-----------------------------------------------------
 IF (WIN32 AND NOT MINGW)
 	SET( boost_library_name libboost_regex-vc100-mt-1_48)
 	IF(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -143,6 +146,7 @@ IF (WIN32 AND NOT MINGW)
 ELSE (WIN32 AND NOT MINGW)
 	SET( boost_library_name boost_regex)
 ENDIF (WIN32 AND NOT MINGW)
+#-----------------------------------------------------
 
 TARGET_LINK_LIBRARIES( copasi
   copasi
@@ -169,7 +173,7 @@ INSTALL(TARGETS copasi
 )
 
 #----------------------------------
-#  COPASI api
+#  TEST the api
 #----------------------------------
 
 OPTION( TEST_COPASI_API "test copasi api" ON )
