@@ -3355,7 +3355,7 @@ COPASIAPIEXPORT int cGetNumberOfSpecies(copasi_model model)
 
 COPASIAPIEXPORT int cGetNumberOfFloatingSpecies(copasi_model model)
 {
-		CModel* pModel = (CModel*)(model.copasi_modelPtr);
+	CModel* pModel = (CModel*)(model.copasi_modelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
 	
 	if (!pModel) return 0;
@@ -3728,87 +3728,60 @@ COPASIAPIEXPORT int cGetNumberOfReactions (copasi_model model)
 // **************************************************************************
 
 
-
-// ------------------------------------------------------------------
-// Create model group
-// ------------------------------------------------------------------
-
+// -----------------------------------------------------------------------
+// SBW reaction group
+// -----------------------------------------------------------------------
 
 
-COPASIAPIEXPORT int sbw_GetNumberOfReactions (copasi_model model)
+COPASIAPIEXPORT int sGetNumberOfReactions (copasi_model model)
 {
 	  return cGetNumberOfReactions (model);
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-COPASIAPIEXPORT tc_strings sbw_GetReactionNames (copasi_model model)
+COPASIAPIEXPORT tc_strings sGetReactionNames (copasi_model model)
 {
 	return tc_createStringsArray(0);
 }
 
 
-// STUB: NEEDS TO BE IMPLEMENTED
-COPASIAPIEXPORT int sbw_GetReactionRate(copasi_model model, int index)
+COPASIAPIEXPORT double sGetReactionRate(copasi_model model, int index)
 {
-	return 0;
+	CModel* pModel = (CModel*)(model.copasi_modelPtr);
+	
+	if (!pModel) return 0;
+
+	const CCopasiVectorNS < CReaction > & reactions = pModel->getReactions();
+
+	return reactions[index]->calculateFlux();
+
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-COPASIAPIEXPORT tc_matrix sbw_GetReactionRatesEx(tc_matrix values)
+COPASIAPIEXPORT tc_matrix sGetReactionRatesEx(tc_matrix values)
 {
   return tc_createMatrix (0, 0);	
 }
 
-COPASIAPIEXPORT tc_matrix sbw_GetReactionRates(copasi_model model)
+
+COPASIAPIEXPORT tc_matrix sGetReactionRates(copasi_model model)
 {
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	
-	if (!pModel) return tc_createMatrix(0,0);
-
-	const CCopasiVectorNS < CReaction > & reactions = pModel->getReactions();
-
-	tc_matrix res  = tc_createMatrix(1, reactions.size());
-
-	for (int i=0; i < reactions.size(); ++i)
-		if (reactions[i])
-		{
-			tc_setColumnName(res, i, reactions[i]->getObjectName().c_str());
-			tc_setMatrixValue(res, 0, i, reactions[i]->calculateFlux());
-		}
-	
-	return res;
+  return cGetReactionRates (model);
 }
 
-tc_matrix sbw_GetFloatingSpecies(copasi_model model)
+
+// -----------------------------------------------------------------------
+// SBW floating species group
+// -----------------------------------------------------------------------
+
+
+tc_matrix sGetFloatingSpecies(copasi_model model)
 {
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	CCMap * hash = (CCMap*)(model.qHash);
-	
-	if (!pModel) return tc_createMatrix(0,0);
-
-	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
-
-	int n = 0;
-	for (int i=0; i < species.size(); ++i)
-		if (species[i] && 
-			(species[i]->getStatus() == CModelEntity::ODE || species[i]->getStatus() == CModelEntity::REACTIONS))
-			++n;
-
-	tc_matrix res  = tc_createMatrix(n,1);
-	for (int i=0, j=0; i < species.size(); ++i)
-		if (species[i] && 
-			(species[i]->getStatus() == CModelEntity::ODE || species[i]->getStatus() == CModelEntity::REACTIONS))
-		{
-			tc_setMatrixValue(res, j, 0, species[i]->getConcentration());
-			tc_setRowName(res, j, species[i]->getObjectName().c_str());
-			++j;
-		}
-
-	return res;
+  return cGetFloatingSpecies(model);
 }
 
 // STUB: NEEDS TO BE IMPLEMENTED
-COPASIAPIEXPORT tc_strings sbw_GetFloatingSpeciesNames(copasi_model model)
+COPASIAPIEXPORT tc_strings sGetFloatingSpeciesNames(copasi_model model)
 {
 	return tc_createStringsArray(0);
 }
@@ -3819,26 +3792,54 @@ COPASIAPIEXPORT tc_strings sGetBoundarySpeciesNames(copasi_model model)
 	return tc_createStringsArray(0);
 }
 
-// STUB: NEEDS TO BE IMPLEMENTED
+
 COPASIAPIEXPORT int sGetNumberFloatingSpecies(copasi_model model)
 {
-	return 0;
+   return cGetNumberOfFloatingSpecies(model);
 }
+
+COPASIAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasi_model model, tc_matrix sp)
+{
+	if (sp.rows > sp.cols)  //row vector or column vector (lets allow both)
+	{
+		for (int i=0; i < sp.rows; ++i)
+			cSetInitialConcentration(model, tc_getRowName(sp,i), tc_getMatrixValue(sp, i, 0));
+	}
+	else
+	{
+		for (int i=0; i < sp.cols; ++i)
+			cSetInitialConcentration(model, tc_getColumnName(sp,i), tc_getMatrixValue(sp, 0, i));
+	} 
+}
+
+
+// -----------------------------------------------------------------------
+// SBW boundary species group
+// -----------------------------------------------------------------------
 
 
 // STUB: NEEDS TO BE IMPLEMENTED
 COPASIAPIEXPORT int sGetNumberOfBoundarySpecies(copasi_model model)
 {
-  return 0;
+	CModel* pModel = (CModel*)(model.copasi_modelPtr);
+	CCMap * hash = (CCMap*)(model.qHash);
+	
+	if (!pModel) return 0;
+
+	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
+
+	int n = 0;
+	for (int i=0; i < species.size(); ++i)
+		if (species[i] && 
+			(species[i]->getStatus() == CModelEntity::FIXED))
+			++n;
+    return n;
 }
 
 
 COPASIAPIEXPORT tc_matrix sGetBoundarySpecies(copasi_model model)
 {
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	CCMap * hash = (CCMap*)(model.qHash);
-	
-	if (!pModel) return tc_createMatrix(0,0);
+  return cGetBoundarySpecies(model);
 }
 
 
@@ -3851,35 +3852,9 @@ COPASIAPIEXPORT void sSetFloatingSpeciesByIndex (copasi_model model, int index)
 // STUB: NEEDS TO BE IMPLEMENTED
 COPASIAPIEXPORT double sGetFloatingSpeciesByIndex (copasi_model model, int index)
 {
-	/*int n = 0;
-	for (int i=0; i < species.size(); ++i)
-		if (species[i] && 
-			(species[i]->getStatus() == CModelEntity::FIXED))
-			++n;
-
-	tc_matrix res  = tc_createMatrix(n,1);
-
-	for (int i=0, j=0; i < species.size(); ++i)
-		if (species[i] && 
-			(species[i]->getStatus() == CModelEntity::FIXED))
-		{
-			tc_setMatrixValue(res, j, 0, species[i]->getConcentration());
-			tc_setRowName(res, j, species[i]->getObjectName().c_str());
-			++j;
-		}
-
-  return res;*/
   return 0.0;
 }
 
-// STUB: NEEDS TO BE IMPLEMENTED
-COPASIAPIEXPORT int sGetNumberOfSpecies(copasi_model model)
-{
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	CCMap * hash = (CCMap*)(model.qHash);
-	
-	if (!pModel) return 0;
-}
 
 // STUB: NEEDS TO BE IMPLEMENTED
 COPASIAPIEXPORT tc_matrix sGetFloatingSpeciesConcentrations (copasi_model model)
@@ -3908,20 +3883,6 @@ COPASIAPIEXPORT double sGetBoundarySpeciesByIndex (copasi_model model, int index
 	return 0.0;
 }
 
-
-COPASIAPIEXPORT void sSetFloatingSpeciesIntitialConcentrations (copasi_model model, tc_matrix sp)
-{
-	if (sp.rows > sp.cols)  //row vector or column vector (lets allow both)
-	{
-		for (int i=0; i < sp.rows; ++i)
-			cSetInitialConcentration(model, tc_getRowName(sp,i), tc_getMatrixValue(sp, i, 0));
-	}
-	else
-	{
-		for (int i=0; i < sp.cols; ++i)
-			cSetInitialConcentration(model, tc_getColumnName(sp,i), tc_getMatrixValue(sp, 0, i));
-	} 
-}
 
 COPASIAPIEXPORT tc_matrix sGetBoundarySpeciesConcentrations (copasi_model model)
 {
@@ -4028,27 +3989,14 @@ double sGetAmount(copasi_model model, const char * name)
 }
 
 
+// -----------------------------------------------------------------------
+// SBW rates of change group
+// -----------------------------------------------------------------------
+
+
 tc_matrix sGetRatesOfChange(copasi_model model)
 {
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	
-	if (!pModel) return tc_createMatrix(0,0);
-
-	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
-	int n = pModel->getState().getNumVariable();
-
-	if (n != species.size()) return tc_createMatrix(0,0);
-
-	tc_matrix res  = tc_createMatrix(1, n);
-
-	for (int i=0; i < species.size(); ++i)
-		if (species[i] && species[i]->getCompartment())
-		{
-			tc_setColumnName(res, i, species[i]->getObjectName().c_str());
-		}
-	
-	pModel->calculateDerivatives(res.values);
-	return res;
+  return cGetRatesOfChange(model);
 }
 
 COPASIAPIEXPORT double sGetRateOfChange(copasi_model, int index)
@@ -4067,52 +4015,8 @@ COPASIAPIEXPORT tc_strings sGetRatesOfChangeNames(copasi_model model)
 	return tc_createStringsArray(0);
 }
 
-double sGetFlux(copasi_model model, const char * name)
-{
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	CCMap * hash = (CCMap*)(model.qHash);
-	string s (name);	
-
-#ifdef _WIN32
-    double NaN = std::numeric_limits<double>::quiet_NaN(); 
-#else
-	double NaN = 0.0/0.0;
-
-#endif
-
-	if (!pModel || !contains(hash, s)) return NaN;
-
-	CopasiPtr p = getHashValue(hash, s);
-
-	if (!p.reaction) return NaN;
-
-	return p.reaction->calculateFlux();
-}
-
-double sGetParticleFlux(copasi_model model, const char * name)
-{
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	CCMap * hash = (CCMap*)(model.qHash);
-	string s (name);	
-
-#ifdef _WIN32
-    double NaN = std::numeric_limits<double>::quiet_NaN(); 
-#else
-	double NaN = 0.0/0.0;
-#endif
-
-	if (!pModel || !contains(hash, s)) return NaN;
-
-	CopasiPtr p = getHashValue(hash, s);
-
-	if (!p.reaction) return NaN;
-
-	return p.reaction->calculateParticleFlux();
-}
-
-
 // ------------------------------------------------------------------
-// Parameter Group
+// SBW Parameter Group
 // ------------------------------------------------------------------
 
 // STUB: NEEDS TO BE IMPLEMENTED
@@ -4121,6 +4025,7 @@ COPASIAPIEXPORT int sGetNumberOfGlobalParameters (copasi_model model)
   return 0;
 }
 
+// STUB: NEEDS TO BE IMPLEMENTED
 COPASIAPIEXPORT tc_strings sGetGlobalParameterNames (copasi_model model)
 {
 	return tc_createStringsArray(0);
@@ -4128,31 +4033,7 @@ COPASIAPIEXPORT tc_strings sGetGlobalParameterNames (copasi_model model)
 
 COPASIAPIEXPORT tc_matrix sGetGlobalParameters (copasi_model model)
 {
-	CModel* pModel = (CModel*)(model.copasi_modelPtr);
-	CCMap * hash = (CCMap*)(model.qHash);
-
-	if (!pModel || !hash) return tc_createMatrix(0,0);
-
-	list<string> names;
-	list<double> values;
-
-	for (CCMap::iterator i = hash->begin(); i != hash->end(); i++)
-		if ((*i).second.param)
-		{
-			names.push_back((*i).first);
-			values.push_back((*i).second.param->getValue());
-		}
-	tc_matrix params = tc_createMatrix(names.size(),1);
-
-	int j=0;
-	list<string>::iterator i1 = names.begin();
-	list<double>::iterator i2 = values.begin();
-	for (; i1 != names.end() && i2 != values.end(); i1++, i2++, ++j)
-	{
-		tc_setRowName(params, j, (*i1).c_str());
-		tc_setMatrixValue(params, j, 0, (*i2));
-	}
-	return params;
+  return cGetGlobalParameters (model);
 }
 
 
@@ -4177,7 +4058,7 @@ COPASIAPIEXPORT void sSetGlobalParameterValues (copasi_model model, tc_matrix gp
 
 
 // ------------------------------------------------------------------
-// Compartment Group
+// SBW Compartment Group
 // ------------------------------------------------------------------
 
 COPASIAPIEXPORT int sSetNumberOfCompartments (copasi_model model)
@@ -4216,3 +4097,11 @@ COPASIAPIEXPORT void sSetCompartmentVolumes (copasi_model model, tc_matrix v)
 }
 
 
+// ------------------------------------------------------------------
+// SBW Simulation Group
+// ------------------------------------------------------------------
+
+COPASIAPIEXPORT tc_matrix sSimulate(copasi_model model, double timeStart, double timeEnd, int numOfPoints)
+{
+  return cSimulateDeterministic(model, timeStart, timeEnd, numOfPoints);
+}

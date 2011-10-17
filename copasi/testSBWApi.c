@@ -26,19 +26,19 @@ int main()
     //sWriteSBMLFile (m, "model1.xml");
    
 	printf("simulating...\n");	
-	results = cSimulateDeterministic(m, 0, 20, 100);  // model, start, end, num. points
+	results = sSimulate(m, 0, 20, 100);  // model, start, end, num. points
 
 	printf("results.tab has simulation data\n\n");
 	tc_printMatrixToFile("resultSBW.tab", results);
 	tc_deleteMatrix(results);
 
-	results = cGetReactionRates(m);
+	results = sGetReactionRates(m);
 
 	printf("fluxes:\n");
 	tc_printOutMatrix(results);
 	tc_deleteMatrix(results);
 
-	results = cGetRatesOfChange(m);
+	results = sGetRatesOfChange(m);
 
 	printf("\n\nderivatives:\n");
 	tc_printOutMatrix(results);
