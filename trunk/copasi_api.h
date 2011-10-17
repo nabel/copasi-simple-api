@@ -1052,7 +1052,7 @@ COPASIAPIEXPORT tc_strings sGetReactionNames (copasi_model);
  \return double reaction rate for ith reaction
  \ingroup reaction
 */
-COPASIAPIEXPORT int sGetReactionRate(copasi_model, int);
+COPASIAPIEXPORT double sGetReactionRate(copasi_model, int);
 
 
 /*! 
@@ -1076,7 +1076,7 @@ COPASIAPIEXPORT tc_matrix sGetReactionRatesEx(tc_matrix values);
 // -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name SBW Boundary species group
+  * @name SBW boundary species group
   */
 /** \{ */
 
@@ -1134,7 +1134,7 @@ COPASIAPIEXPORT double sGetBoundarySpeciesByIndex (copasi_model model, int index
 // -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name SBW Floating species group
+  * @name SBW floating species group
   */
 /** \{ */
 
@@ -1270,7 +1270,7 @@ COPASIAPIEXPORT void sSetGlobalParameterValues (copasi_model, tc_matrix gp);
 // -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name SBW Compartment group
+  * @name SBW compartment group
   */
 /** \{ */
 
@@ -1323,7 +1323,7 @@ COPASIAPIEXPORT void sSetCompartmentVolumes (copasi_model, tc_matrix v);
 // -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name SBW Rates of change group
+  * @name SBW rates of change group
   */
 /** \{ */
 
@@ -1357,16 +1357,28 @@ COPASIAPIEXPORT tc_strings sGetRatesOfChangeNames(copasi_model);
  \param copasi_model model
  \param tc_matrix vector of floating species concentrations
  \return tc_matrix vector of rates of change
- \ingroup rateOfChange
+ \ingroup sbw_rateOfChange
 */
 COPASIAPIEXPORT tc_matrix sGetRatesOfChangeEx(copasi_model model, tc_matrix sp);
 
 // -----------------------------------------------------------------------
 /** \} */
 /**
-  * @name SBW Time course simulation
+  * @name SBW time course simulation
   */
 /** \{ */
+
+
+/*! 
+ \brief Carry out a simulation using the Copasi LSODA method
+ \param copasiModel model
+ \param double start time
+ \param double end time
+ \param int number of steps in the output
+ \return tc_matrix matrix of concentration or particles
+ \ingroup sbw_rateOfChange
+*/
+COPASIAPIEXPORT tc_matrix sSimulate(copasi_model model, double timeStart, double timeEnd, int numOfPoints);
 
 
 END_C_DECLS
