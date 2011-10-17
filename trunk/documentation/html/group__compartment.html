@@ -79,20 +79,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="member-group"></a>
 Compartment group</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga91d36624344294156bf137bd2a462b8f">cGetCompartments</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the vector of compartment names and volumes.  <a href="#ga91d36624344294156bf137bd2a462b8f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaa66445005b164c1082ce53910aadb3f8">cSetCompartmentVolumes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> v)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volumes using a vector of compartment values.  <a href="#gaa66445005b164c1082ce53910aadb3f8"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaffbb85e6385607e0ebcb4f5335a0fcdd">cGetCompartments</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the vector of compartment names and volumes.  <a href="#gaffbb85e6385607e0ebcb4f5335a0fcdd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga6e17457fca98ea9c665f729dc6e6ed0d">cSetCompartmentVolumes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all compartment volumes using a vector of compartment values with row names. Row names MUST be provided. Order is not important because the row names are used to assign the values, not the index.  <a href="#ga6e17457fca98ea9c665f729dc6e6ed0d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gaf00d66068f022bd71897ced21c26d5ca">cGetNumberOfCompartments</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of compartments. This is same as cGetCompartments(model).cols.  <a href="#gaf00d66068f022bd71897ced21c26d5ca"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Reaction group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#ga7c8347b47630d948c350b8e8d060d6f1">cGetNumberOfReactions</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get number of reactions. This is same as cGetAllFluxes(model).rows.  <a href="#ga7c8347b47630d948c350b8e8d060d6f1"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+SBW compartment group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga5d70ba69381cf71e9819d748b3bc3428">sGetNumberOfCompartments</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">sGet the number of compartments  <a href="#ga5d70ba69381cf71e9819d748b3bc3428"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gaf65afadc6ed938b9f4798bf5e03d0034">sGetCompartmentNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">sGet the list of compartment names  <a href="#gaf65afadc6ed938b9f4798bf5e03d0034"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga1565792fc8aa05615e09fa06ac9792ea">sGetCompartmentByIndex</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, int)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">sGet the compartment volume by index  <a href="#ga1565792fc8aa05615e09fa06ac9792ea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga4369855f0130f2be6be0ccf5efa44696">sSetCompartmentByIndex</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, int, double)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volume by index.  <a href="#ga4369855f0130f2be6be0ccf5efa44696"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga2f7423abf1361360f89ace3f0c15b92b">sSetCompartmentVolumes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, <a class="el" href="structtc__matrix.html">tc_matrix</a> v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volumes using a vector of compartment values.  <a href="#ga2f7423abf1361360f89ace3f0c15b92b"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Compartment group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#gafeb062051cbb88cfd47ca5ca8650567a">ssGetNumberOfCompartments</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">ssGet the number of compartments  <a href="#gafeb062051cbb88cfd47ca5ca8650567a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__strings.html">sb_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga7e1ea6e47efffeb663601fbd4ad77469">ssGetCompartmentNames</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">ssGet the list of compartment names  <a href="#ga7e1ea6e47efffeb663601fbd4ad77469"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga16d9dc95e874075754057efdea91c214">ssGetCompartmentByIndex</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>, int)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">ssGet the compartment volume by index  <a href="#ga16d9dc95e874075754057efdea91c214"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga66ad2e3f55c4edfd812f4d76bcd8bfd1">ssSetCompartmentByIndex</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>, int, double)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volume by index.  <a href="#ga66ad2e3f55c4edfd812f4d76bcd8bfd1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__compartment.html#ga4a977a7b2bb38f53ddec3312c0f8faaa">ssSetCompartmentVolumes</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>, <a class="el" href="structsb__matrix.html">sb_matrix</a> v)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a compartment volumes using a vector of compartment values.  <a href="#ga4a977a7b2bb38f53ddec3312c0f8faaa"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>set and get information on compartments </p>
+<p>set and ssGet information on compartments </p>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ga91d36624344294156bf137bd2a462b8f"></a><!-- doxytag: member="copasi_api.h::cGetCompartments" ref="ga91d36624344294156bf137bd2a462b8f" args="(copasi_model)" -->
+<a class="anchor" id="gaffbb85e6385607e0ebcb4f5335a0fcdd"></a><!-- doxytag: member="copasi_api.h::cGetCompartments" ref="gaffbb85e6385607e0ebcb4f5335a0fcdd" args="(copasi_model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetCompartments </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetCompartments </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -113,12 +144,232 @@ Compartment group</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaa66445005b164c1082ce53910aadb3f8"></a><!-- doxytag: member="copasi_api.h::cSetCompartmentVolumes" ref="gaa66445005b164c1082ce53910aadb3f8" args="(copasi_model, tc_matrix v)" -->
+<a class="anchor" id="gaf00d66068f022bd71897ced21c26d5ca"></a><!-- doxytag: member="copasi_api.h::cGetNumberOfCompartments" ref="gaf00d66068f022bd71897ced21c26d5ca" args="(copasi_model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT void cSetCompartmentVolumes </td>
+          <td class="memname">COPASIAPIEXPORT int cGetNumberOfCompartments </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get number of compartments. This is same as cGetCompartments(model).cols. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7c8347b47630d948c350b8e8d060d6f1"></a><!-- doxytag: member="copasi_api.h::cGetNumberOfReactions" ref="ga7c8347b47630d948c350b8e8d060d6f1" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT int cGetNumberOfReactions </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get number of reactions. This is same as cGetAllFluxes(model).rows. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga6e17457fca98ea9c665f729dc6e6ed0d"></a><!-- doxytag: member="copasi_api.h::cSetCompartmentVolumes" ref="ga6e17457fca98ea9c665f729dc6e6ed0d" args="(copasi_model, tc_matrix v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT void cSetCompartmentVolumes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all compartment volumes using a vector of compartment values with row names. Row names MUST be provided. Order is not important because the row names are used to assign the values, not the index. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">double</td><td>row vector with row names corresponding to the compartment names. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga1565792fc8aa05615e09fa06ac9792ea"></a><!-- doxytag: member="copasi_api.h::sGetCompartmentByIndex" ref="ga1565792fc8aa05615e09fa06ac9792ea" args="(copasi_model, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT double sGetCompartmentByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>sGet the compartment volume by index </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith compartment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double Voluem of compartment </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf65afadc6ed938b9f4798bf5e03d0034"></a><!-- doxytag: member="copasi_api.h::sGetCompartmentNames" ref="gaf65afadc6ed938b9f4798bf5e03d0034" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a> sGetCompartmentNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>sGet the list of compartment names </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> compartmentNames </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5d70ba69381cf71e9819d748b3bc3428"></a><!-- doxytag: member="copasi_api.h::sGetNumberOfCompartments" ref="ga5d70ba69381cf71e9819d748b3bc3428" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT int sGetNumberOfCompartments </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>sGet the number of compartments </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int numberOfCompartments </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4369855f0130f2be6be0ccf5efa44696"></a><!-- doxytag: member="copasi_api.h::sSetCompartmentByIndex" ref="ga4369855f0130f2be6be0ccf5efa44696" args="(copasi_model, int, double)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT void sSetCompartmentByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a compartment volume by index. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith compartment </td></tr>
+    <tr><td class="paramname">double</td><td>volume Volume of ith compartment </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga2f7423abf1361360f89ace3f0c15b92b"></a><!-- doxytag: member="copasi_api.h::sSetCompartmentVolumes" ref="ga2f7423abf1361360f89ace3f0c15b92b" args="(copasi_model, tc_matrix v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT void sSetCompartmentVolumes </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname">, </td>
@@ -149,6 +400,174 @@ Compartment group</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ga16d9dc95e874075754057efdea91c214"></a><!-- doxytag: member="copasiSBWApi.h::ssGetCompartmentByIndex" ref="ga16d9dc95e874075754057efdea91c214" args="(copasiModel, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT double ssGetCompartmentByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ssGet the compartment volume by index </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith compartment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double Voluem of compartment </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7e1ea6e47efffeb663601fbd4ad77469"></a><!-- doxytag: member="copasiSBWApi.h::ssGetCompartmentNames" ref="ga7e1ea6e47efffeb663601fbd4ad77469" args="(copasiModel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__strings.html">sb_strings</a> ssGetCompartmentNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ssGet the list of compartment names </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__strings.html" title="An array of strings with length information. Use sb_getString(M,i) to get the i-th string...">sb_strings</a> compartmentNames </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gafeb062051cbb88cfd47ca5ca8650567a"></a><!-- doxytag: member="copasiSBWApi.h::ssGetNumberOfCompartments" ref="gafeb062051cbb88cfd47ca5ca8650567a" args="(copasiModel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT int ssGetNumberOfCompartments </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ssGet the number of compartments </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>int numberOfCompartments </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga66ad2e3f55c4edfd812f4d76bcd8bfd1"></a><!-- doxytag: member="copasiSBWApi.h::ssSetCompartmentByIndex" ref="ga66ad2e3f55c4edfd812f4d76bcd8bfd1" args="(copasiModel, int, double)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT void ssSetCompartmentByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a compartment volume by index. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith compartment </td></tr>
+    <tr><td class="paramname">double</td><td>volume Volume of ith compartment </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga4a977a7b2bb38f53ddec3312c0f8faaa"></a><!-- doxytag: member="copasiSBWApi.h::ssSetCompartmentVolumes" ref="ga4a977a7b2bb38f53ddec3312c0f8faaa" args="(copasiModel, sb_matrix v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT void ssSetCompartmentVolumes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td>
+          <td class="paramname"><em>v</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a compartment volumes using a vector of compartment values. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">double</td><td>volume Vector of compartment volumes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -167,7 +586,7 @@ Compartment group</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 17 2011 11:38:41 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

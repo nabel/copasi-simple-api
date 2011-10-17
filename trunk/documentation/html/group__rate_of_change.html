@@ -79,150 +79,49 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="member-group"></a>
 Time course simulation</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#gad8230bc02ff2e1f5d6e25f9833e829f4">cGetRatesOfChange</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the current rates of change for all species.  <a href="#gad8230bc02ff2e1f5d6e25f9833e829f4"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga2105addec217217e5443df8d4cac8405">cSimulateDeterministic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using LSODA numerical integrator.  <a href="#ga2105addec217217e5443df8d4cac8405"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#gad4470fecfec669a13c0d2baf96797ceb">cOneStep</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double timeStep)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate the differential equation model over one time step.  <a href="#gad4470fecfec669a13c0d2baf96797ceb"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#gab016ea8bc8fd0b0ef8b8772df7f4ce6f">cSimulateStochastic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using exact stochastic algorithm.  <a href="#gab016ea8bc8fd0b0ef8b8772df7f4ce6f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga020fee137ecf7d4afac06cc28fb93593">cSimulateHybrid</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using Hybrid algorithm/deterministic algorithm.  <a href="#ga020fee137ecf7d4afac06cc28fb93593"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga1f5e5f87546b2f0bf7cb35adf8f27269">cSimulateTauLeap</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using Tau Leap stochastic algorithm.  <a href="#ga1f5e5f87546b2f0bf7cb35adf8f27269"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga5423d30f8e08e2e07c78707676e541d2">cGetRatesOfChange</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the current rates of change for all species.  <a href="#ga5423d30f8e08e2e07c78707676e541d2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga64afec44ae159bf1d6191cc0c4d97186">cSimulateDeterministic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using LSODA numerical integrator.  <a href="#ga64afec44ae159bf1d6191cc0c4d97186"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga479f041a2693826b2253b55f493559ea">cOneStep</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double timeStep)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate the differential equation model over one time step.  <a href="#ga479f041a2693826b2253b55f493559ea"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga0c8b0c178fc16cccc74f4bb486c2ce56">cSimulateStochastic</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using exact stochastic algorithm.  <a href="#ga0c8b0c178fc16cccc74f4bb486c2ce56"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga840f677910e2ac2d9f523f22f9db26cf">cSimulateHybrid</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using Hybrid algorithm/deterministic algorithm.  <a href="#ga840f677910e2ac2d9f523f22f9db26cf"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga2422410fef3c93d5ccc22f260ebbe0c9">cSimulateTauLeap</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, double startTime, double endTime, int numSteps)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Simulate using Tau Leap stochastic algorithm.  <a href="#ga2422410fef3c93d5ccc22f260ebbe0c9"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="member-group"></a>
-Species group</h2></td></tr>
-<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpe007aa40947c16e7e96c4c0015444244"></a>Returns the rates of change given an array of new floating species concentrations =======</p>
-<p>Compute current flux through the given reactions in terms of particles &gt;&gt;&gt;&gt;&gt;&gt;&gt; .r96 </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname">string</td><td>reaction name, e.g. "J1" </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>double rate. If reaction by this name does not exist that NaN will be returned </dd></dl>
-</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><br class="typebreak"/>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTvoidcSetFloatingSpeciesConcentrations(copasi_modelmodel, <br class="typebreak"/>
-tc_matrixsp);=======TCAPIEXPORTvoidcSetSpeciesConcentrations(copasi_modelmodel, <br class="typebreak"/>
-tc_matrixd);&gt;&gt;&gt;&gt;&gt;&gt; r96<br class="typebreak"/>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetFloatingSpeciesConcentrations(copasi_modelmodel);=======TCAPIEXPORTtc_matrixcGetAllSpecies(copasi_modelmodel);&gt;<br class="typebreak"/>
-&gt;&gt;&gt;&gt;&gt; r96<br class="typebreak"/>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetFloatingSpeciesIntitialConcentrations(copasi_modelmodel);=======TCAPIEXPORTtc_matrixcGetFloatingSpecies(copasi_modelmodel);&gt;<br class="typebreak"/>
-&gt;&gt;&gt;&gt;&gt; r96<br class="typebreak"/>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTvoidcSetFloatingSpeciesIntitialConcentrations(copasi_modelmodel, <br class="typebreak"/>
-tc_matrixsp);=======TCAPIEXPORTtc_matrixcGetBoundarySpecies(copasi_modelmodel);&gt;<br class="typebreak"/>
-&gt;&gt;&gt;&gt;&gt; r96<br class="typebreak"/>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTvoidcSetFloatingSpeciesIntitialConcentrationByIndex(copasi_modelmodel, <br class="typebreak"/>
-intindex, doublesp);=======TCAPIEXPORTtc_matrixcGetFloatingSpeciesIntitialConcentrations(copasi_modelmodel);&gt;<br class="typebreak"/>
-&gt;&gt;&gt;&gt;&gt; r96<br class="typebreak"/>
-&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetRatesOfChange(copasi_modelmodel);=======TCAPIEXPORTvoidcSetFloatingSpeciesIntitialConcentrations(copasi_modelmodel, <br class="typebreak"/>
-tc_matrixsp);&gt;&gt;&gt;&gt;&gt;&gt; r96 <br class="typebreak"/>
-TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__state.html#ga8582eef682677f94d93dbb4021dd7e84">cGetRateOfChange</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int index)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#ga8582eef682677f94d93dbb4021dd7e84"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__state.html#ga7ae600bee29a666f69762caa853f0213">cGetRatesOfChangeNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the names used to represent the rates of change.  <a href="#ga7ae600bee29a666f69762caa853f0213"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__state.html#gaa756b5a0ca4e41b930b8d9487e57a29c">cGetRatesOfChangeEx</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> sp)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the rates of change given a vector of floating species concentrations.  <a href="#gaa756b5a0ca4e41b930b8d9487e57a29c"></a><br/></td></tr>
+SBW rates of change group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#gacdd411e0f09ae102258facfd792dfe0b">sGetRatesOfChange</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the current rates of change for all species.  <a href="#gacdd411e0f09ae102258facfd792dfe0b"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#gac947eea19211b4b892f01e80dbcdf7fa">sGetRateOfChange</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>, int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the current rates of change for the ith species.  <a href="#gac947eea19211b4b892f01e80dbcdf7fa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#gaef6d5e6ec3841e6a51545d91d20f35df">sGetRatesOfChangeNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the names used to represent the rates of change.  <a href="#gaef6d5e6ec3841e6a51545d91d20f35df"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga5d6c56403215ae5f3ea4d79203f1cbb9">sGetRatesOfChangeEx</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> sp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the rates of change given a vector of floating species concentrations.  <a href="#ga5d6c56403215ae5f3ea4d79203f1cbb9"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Rates of change group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga78df1fb3c0d6854c6692df3c96360b00">ssGetRatesOfChange</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the current rates of change for all species.  <a href="#ga78df1fb3c0d6854c6692df3c96360b00"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#gac450aaab34ecc2a81c578baf4989564e">ssGetRateOfChange</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>, int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the current rates of change for the ith species.  <a href="#gac450aaab34ecc2a81c578baf4989564e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__strings.html">sb_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga42f5abbf3b31a40338f68907ef013ace">ssGetRatesOfChangeNames</a> (<a class="el" href="structcopasi_model.html">copasiModel</a>)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the names used to represent the rates of change.  <a href="#ga42f5abbf3b31a40338f68907ef013ace"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__rate_of_change.html#ga8fc42754d35964df5a0f3f298d86ffeb">ssGetRatesOfChangeEx</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model, <a class="el" href="structsb__matrix.html">sb_matrix</a> sp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the rates of change given a vector of floating species concentrations.  <a href="#ga8fc42754d35964df5a0f3f298d86ffeb"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Get information about rates of change. </p>
+<p>ssGet information about rates of change </p>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ga8582eef682677f94d93dbb4021dd7e84"></a><!-- doxytag: member="copasiSBWApi.h::cGetRateOfChange" ref="ga8582eef682677f94d93dbb4021dd7e84" args="(copasi_model model, int index)" -->
+<a class="anchor" id="ga5423d30f8e08e2e07c78707676e541d2"></a><!-- doxytag: member="copasi_api.h::cGetRatesOfChange" ref="ga5423d30f8e08e2e07c78707676e541d2" args="(copasi_model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTvoidcSetFloatingSpeciesConcentrations(copasi_modelmodel,tc_matrixsp);=======TCAPIEXPORTvoidcSetSpeciesConcentrations(copasi_modelmodel,tc_matrixd);&gt;&gt;&gt;&gt;&gt;&gt; r96&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetFloatingSpeciesConcentrations(copasi_modelmodel);=======TCAPIEXPORTtc_matrixcGetAllSpecies(copasi_modelmodel);&gt;&gt;&gt;&gt;&gt;&gt; r96&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetFloatingSpeciesIntitialConcentrations(copasi_modelmodel);=======TCAPIEXPORTtc_matrixcGetFloatingSpecies(copasi_modelmodel);&gt;&gt;&gt;&gt;&gt;&gt; r96&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTvoidcSetFloatingSpeciesIntitialConcentrations(copasi_modelmodel,tc_matrixsp);=======TCAPIEXPORTtc_matrixcGetBoundarySpecies(copasi_modelmodel);&gt;&gt;&gt;&gt;&gt;&gt; r96&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTvoidcSetFloatingSpeciesIntitialConcentrationByIndex(copasi_modelmodel,intindex,doublesp);=======TCAPIEXPORTtc_matrixcGetFloatingSpeciesIntitialConcentrations(copasi_modelmodel);&gt;&gt;&gt;&gt;&gt;&gt; r96&lt;&lt;&lt;&lt;&lt;&lt;&lt;.mineTCAPIEXPORTtc_matrixcGetRatesOfChange(copasi_modelmodel);=======TCAPIEXPORTvoidcSetFloatingSpeciesIntitialConcentrations(copasi_modelmodel,tc_matrixsp);&gt;&gt;&gt;&gt;&gt;&gt; r96 TCAPIEXPORT double cGetRateOfChange </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
-          <td class="paramname"><em>model</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>index</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname">tc_matric</td><td>Vector of floating species concentrations ======= </td></tr>
-    <tr><td class="paramname">tc_matric</td><td>row vector of boundary or floating species concentrations. rows must be named &gt;&gt;&gt;&gt;&gt;&gt;&gt; .r96</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Get species names and concentrations </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname">int</td><td>index ith boundary species </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector where row names are the species names and first column has the concentrations</dd></dl>
-<p>Get floating species names and concentrations </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector where row names are the species names and first column has the concentrations</dd></dl>
-<p>Get boundary species names and concentrations </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> column vector where row names are the species names and first column has the concentrations</dd></dl>
-<p>Get the initial floating species concentrations </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> row vector of initial floating species concentrations</dd></dl>
-<p>Set the initial floating species concentrations. Order does not matter because row names are used to assign values. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>row vector of initial floating species concentrations</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; .mine Compute the current rates of change for the ith species </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname">ith</td><td>rate of change to compute </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>double ith rate of change </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gad8230bc02ff2e1f5d6e25f9833e829f4"></a><!-- doxytag: member="copasi_api.h::cGetRatesOfChange" ref="gad8230bc02ff2e1f5d6e25f9833e829f4" args="(copasi_model)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetRatesOfChange </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetRatesOfChange </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -243,75 +142,12 @@ TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 </div>
 </div>
-<a class="anchor" id="gaa756b5a0ca4e41b930b8d9487e57a29c"></a><!-- doxytag: member="copasiSBWApi.h::cGetRatesOfChangeEx" ref="gaa756b5a0ca4e41b930b8d9487e57a29c" args="(copasi_model model, tc_matrix sp)" -->
+<a class="anchor" id="ga479f041a2693826b2253b55f493559ea"></a><!-- doxytag: member="copasi_api.h::cOneStep" ref="ga479f041a2693826b2253b55f493559ea" args="(copasi_model model, double timeStep)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetRatesOfChangeEx </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
-          <td class="paramname"><em>model</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
-          <td class="paramname"><em>sp</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Returns the rates of change given a vector of floating species concentrations. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>vector of floating species concentrations </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> vector of rates of change </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ga7ae600bee29a666f69762caa853f0213"></a><!-- doxytag: member="copasiSBWApi.h::cGetRatesOfChangeNames" ref="ga7ae600bee29a666f69762caa853f0213" args="(copasi_model model)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a> cGetRatesOfChangeNames </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
-          <td class="paramname"><em>model</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Returns the names used to represent the rates of change. </p>
-<dl><dt><b>Parameters:</b></dt><dd>
-  <table class="params">
-    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="return"><dt><b>Returns:</b></dt><dd>tc_string List of names used to represent the rate of change </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="gad4470fecfec669a13c0d2baf96797ceb"></a><!-- doxytag: member="copasi_api.h::cOneStep" ref="gad4470fecfec669a13c0d2baf96797ceb" args="(copasi_model model, double timeStep)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TCAPIEXPORT double cOneStep </td>
+          <td class="memname">COPASIAPIEXPORT double cOneStep </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -343,12 +179,12 @@ TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 </div>
 </div>
-<a class="anchor" id="ga2105addec217217e5443df8d4cac8405"></a><!-- doxytag: member="copasi_api.h::cSimulateDeterministic" ref="ga2105addec217217e5443df8d4cac8405" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
+<a class="anchor" id="ga64afec44ae159bf1d6191cc0c4d97186"></a><!-- doxytag: member="copasi_api.h::cSimulateDeterministic" ref="ga64afec44ae159bf1d6191cc0c4d97186" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateDeterministic </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateDeterministic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -391,16 +227,16 @@ TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of concentration or particles</dd></dl>
-<div class="fragment"><pre class="fragment"> result = <a class="code" href="group__rate_of_change.html#ga2105addec217217e5443df8d4cac8405" title="Simulate using LSODA numerical integrator.">cSimulateDeterministic</a> (m, 0.0, 10.0, 100);
+<div class="fragment"><pre class="fragment"> result = <a class="code" href="group__rate_of_change.html#ga64afec44ae159bf1d6191cc0c4d97186" title="Simulate using LSODA numerical integrator.">cSimulateDeterministic</a> (m, 0.0, 10.0, 100);
 </pre></div> 
 </div>
 </div>
-<a class="anchor" id="ga020fee137ecf7d4afac06cc28fb93593"></a><!-- doxytag: member="copasi_api.h::cSimulateHybrid" ref="ga020fee137ecf7d4afac06cc28fb93593" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
+<a class="anchor" id="ga840f677910e2ac2d9f523f22f9db26cf"></a><!-- doxytag: member="copasi_api.h::cSimulateHybrid" ref="ga840f677910e2ac2d9f523f22f9db26cf" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateHybrid </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateHybrid </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -446,12 +282,12 @@ TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 </div>
 </div>
-<a class="anchor" id="gab016ea8bc8fd0b0ef8b8772df7f4ce6f"></a><!-- doxytag: member="copasi_api.h::cSimulateStochastic" ref="gab016ea8bc8fd0b0ef8b8772df7f4ce6f" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
+<a class="anchor" id="ga0c8b0c178fc16cccc74f4bb486c2ce56"></a><!-- doxytag: member="copasi_api.h::cSimulateStochastic" ref="ga0c8b0c178fc16cccc74f4bb486c2ce56" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateStochastic </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateStochastic </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -497,12 +333,12 @@ TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 </div>
 </div>
-<a class="anchor" id="ga1f5e5f87546b2f0bf7cb35adf8f27269"></a><!-- doxytag: member="copasi_api.h::cSimulateTauLeap" ref="ga1f5e5f87546b2f0bf7cb35adf8f27269" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
+<a class="anchor" id="ga2422410fef3c93d5ccc22f260ebbe0c9"></a><!-- doxytag: member="copasi_api.h::cSimulateTauLeap" ref="ga2422410fef3c93d5ccc22f260ebbe0c9" args="(copasi_model model, double startTime, double endTime, int numSteps)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateTauLeap </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cSimulateTauLeap </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -548,6 +384,258 @@ TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 </div>
 </div>
+<a class="anchor" id="gac947eea19211b4b892f01e80dbcdf7fa"></a><!-- doxytag: member="copasi_api.h::sGetRateOfChange" ref="gac947eea19211b4b892f01e80dbcdf7fa" args="(copasi_model, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT double sGetRateOfChange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the current rates of change for the ith species. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">ith</td><td>rate of change to compute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double ith rate of change </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gacdd411e0f09ae102258facfd792dfe0b"></a><!-- doxytag: member="copasi_api.h::sGetRatesOfChange" ref="gacdd411e0f09ae102258facfd792dfe0b" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> sGetRatesOfChange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the current rates of change for all species. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> matrix of with 1 row and n columns, where n = number of species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5d6c56403215ae5f3ea4d79203f1cbb9"></a><!-- doxytag: member="copasi_api.h::sGetRatesOfChangeEx" ref="ga5d6c56403215ae5f3ea4d79203f1cbb9" args="(copasi_model model, tc_matrix sp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> sGetRatesOfChangeEx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>sp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the rates of change given a vector of floating species concentrations. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>vector of floating species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> vector of rates of change </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaef6d5e6ec3841e6a51545d91d20f35df"></a><!-- doxytag: member="copasi_api.h::sGetRatesOfChangeNames" ref="gaef6d5e6ec3841e6a51545d91d20f35df" args="(copasi_model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a> sGetRatesOfChangeNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the names used to represent the rates of change. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> List of names used to represent the rate of change </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gac450aaab34ecc2a81c578baf4989564e"></a><!-- doxytag: member="copasiSBWApi.h::ssGetRateOfChange" ref="gac450aaab34ecc2a81c578baf4989564e" args="(copasiModel, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT double ssGetRateOfChange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the current rates of change for the ith species. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">ith</td><td>rate of change to compute </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double ith rate of change </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga78df1fb3c0d6854c6692df3c96360b00"></a><!-- doxytag: member="copasiSBWApi.h::ssGetRatesOfChange" ref="ga78df1fb3c0d6854c6692df3c96360b00" args="(copasiModel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetRatesOfChange </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the current rates of change for all species. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> matrix of with 1 row and n columns, where n = number of species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8fc42754d35964df5a0f3f298d86ffeb"></a><!-- doxytag: member="copasiSBWApi.h::ssGetRatesOfChangeEx" ref="ga8fc42754d35964df5a0f3f298d86ffeb" args="(copasiModel model, sb_matrix sp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetRatesOfChangeEx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td>
+          <td class="paramname"><em>sp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the rates of change given a vector of floating species concentrations. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a></td><td>vector of floating species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> vector of rates of change </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga42f5abbf3b31a40338f68907ef013ace"></a><!-- doxytag: member="copasiSBWApi.h::ssGetRatesOfChangeNames" ref="ga42f5abbf3b31a40338f68907ef013ace" args="(copasiModel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__strings.html">sb_strings</a> ssGetRatesOfChangeNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the names used to represent the rates of change. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__strings.html" title="An array of strings with length information. Use sb_getString(M,i) to get the i-th string...">sb_strings</a> List of names used to represent the rate of change </dd></dl>
+
+</div>
+</div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -566,7 +654,7 @@ TCAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 17 2011 11:38:41 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>

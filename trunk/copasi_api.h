@@ -583,7 +583,7 @@ COPASIAPIEXPORT tc_matrix cGetAllSpecies(copasi_model model);
  The names of the species are included in the matrix column labels
  \ingroup state
 */
-COPASIAPIEXPORT tc_matrix cGetFloatingSpecies(copasi_model);
+COPASIAPIEXPORT tc_matrix cGetFloatingSpeciesConcentrations(copasi_model);
 
 /*! 
  \brief Get the current concentrations of all boundary species
@@ -1103,7 +1103,7 @@ COPASIAPIEXPORT tc_strings sGetBoundarySpeciesNames(copasi_model model);
  \param int index ith boundary species
  \ingroup boundary
 */
-COPASIAPIEXPORT void sSetBoundarySpeciesByIndex (copasi_model model, int index);
+COPASIAPIEXPORT void sSetBoundarySpeciesByIndex (copasi_model model, int index, double value);
 
 /*! 
  \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
@@ -1161,7 +1161,7 @@ COPASIAPIEXPORT tc_strings sGetFloatingSpeciesNames(copasi_model model);
  \param int index ith floating species
  \ingroup state
 */
-COPASIAPIEXPORT void sSetFloatingSpeciesByIndex (copasi_model model, int index);
+COPASIAPIEXPORT void sSetFloatingSpeciesByIndex (copasi_model model, int index, double value);
 
 
 /*! 

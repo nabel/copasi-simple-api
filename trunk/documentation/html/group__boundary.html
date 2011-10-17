@@ -79,18 +79,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="member-group"></a>
 Species group</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gab35721f7a57dbb39da5bb6ff0f05f105">cSetSpeciesConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> d)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set multiple boundary or floating species concentration. Order is not important because the names are used to set value.  <a href="#gab35721f7a57dbb39da5bb6ff0f05f105"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__create.html#gac326ef294f4ef5fcc0e2f5d22eb60a61">cSetSpeciesConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> d)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set multiple boundary or floating species concentration. Order is not important because the names are used to set value.  <a href="#gac326ef294f4ef5fcc0e2f5d22eb60a61"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+SBW boundary species group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#gaffffd3d4dce8d35b7cdab6b3ea813cf6">sGetNumberOfBoundarySpecies</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">sGet the number of boundary species - CURRENTLY NOT IMPLEMENTED  <a href="#gaffffd3d4dce8d35b7cdab6b3ea813cf6"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#ga0fa38c80ed0ff439357d6de4fb84b7a1">sGetBoundarySpeciesNames</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">sGet a list of boundary species names - CURRENTLY NOT IMPLEMENTED  <a href="#ga0fa38c80ed0ff439357d6de4fb84b7a1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#gafc9872aa9faa106a246e2a8cc534a014">sSetBoundarySpeciesByIndex</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int index, double value)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED.  <a href="#gafc9872aa9faa106a246e2a8cc534a014"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#ga5a58df100c0165d5a143427904cc01da">sSetBoundarySpeciesConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> d)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#ga5a58df100c0165d5a143427904cc01da"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#gaac5bcfc193d6c061bd005af73fcdec59">sGetBoundarySpeciesConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#gaac5bcfc193d6c061bd005af73fcdec59"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#gaa6653df6ee01a048c79d15be1ace57ad">sGetBoundarySpeciesByIndex</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">sGet a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED  <a href="#gaa6653df6ee01a048c79d15be1ace57ad"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+SBW floating species group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__floating.html#gae286e180b310d3cd0632989f05168009">sSetFloatingSpeciesConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model, <a class="el" href="structtc__matrix.html">tc_matrix</a> sp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#gae286e180b310d3cd0632989f05168009"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__floating.html#gae293b44fef5c0d7ea9114c63ce4ab5a6">sGetFloatingSpeciesConcentrations</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#gae293b44fef5c0d7ea9114c63ce4ab5a6"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Boundary species group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#gaf65f6c4d7f3e658e3a3933c114173ffe">ssGetNumberOfBoundarySpecies</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">ssGet the number of boundary species - CURRENTLY NOT IMPLEMENTED  <a href="#gaf65f6c4d7f3e658e3a3933c114173ffe"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__strings.html">sb_strings</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#gaa3c5078617d2d30698b80203f06fc49d">ssGetBoundarySpeciesNames</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">ssGet a list of boundary species names - CURRENTLY NOT IMPLEMENTED  <a href="#gaa3c5078617d2d30698b80203f06fc49d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#ga7b163a2bf703b6d2296f9bcdb2e5d5aa">ssSetBoundarySpeciesByIndex</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model, int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED.  <a href="#ga7b163a2bf703b6d2296f9bcdb2e5d5aa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#gae86c3a304b9664612f09c35a805e4c58">ssSetBoundarySpeciesConcentrations</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model, <a class="el" href="structsb__matrix.html">sb_matrix</a> d)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#gae86c3a304b9664612f09c35a805e4c58"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#ga3148460d35a6c16dbfeee0b3213aa1b0">ssGetBoundarySpeciesConcentrations</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#ga3148460d35a6c16dbfeee0b3213aa1b0"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__boundary.html#ga59fbc2346a34084824f6cd466d40d7aa">ssGetBoundarySpeciesByIndex</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model, int index)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">ssGet a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED  <a href="#ga59fbc2346a34084824f6cd466d40d7aa"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Floating species group</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__floating.html#gac89cf0e026e05b0becdf2ee0fc56d201">ssSetFloatingSpeciesConcentrations</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model, <a class="el" href="structsb__matrix.html">sb_matrix</a> sp)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#gac89cf0e026e05b0becdf2ee0fc56d201"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__floating.html#ga5f8bb6bba7af12295cbd8fe8a5edde99">ssGetFloatingSpeciesConcentrations</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED.  <a href="#ga5f8bb6bba7af12295cbd8fe8a5edde99"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Get information about reaction rates. </p>
+<p>ssGet information about reaction rates </p>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="gab35721f7a57dbb39da5bb6ff0f05f105"></a><!-- doxytag: member="copasi_api.h::cSetSpeciesConcentrations" ref="gab35721f7a57dbb39da5bb6ff0f05f105" args="(copasi_model model, tc_matrix d)" -->
+<a class="anchor" id="gac326ef294f4ef5fcc0e2f5d22eb60a61"></a><!-- doxytag: member="copasi_api.h::cSetSpeciesConcentrations" ref="gac326ef294f4ef5fcc0e2f5d22eb60a61" args="(copasi_model model, tc_matrix d)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT void cSetSpeciesConcentrations </td>
+          <td class="memname">COPASIAPIEXPORT void cSetSpeciesConcentrations </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em>, </td>
@@ -121,6 +162,510 @@ Species group</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="gaa6653df6ee01a048c79d15be1ace57ad"></a><!-- doxytag: member="copasi_api.h::sGetBoundarySpeciesByIndex" ref="gaa6653df6ee01a048c79d15be1ace57ad" args="(copasi_model model, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT double sGetBoundarySpeciesByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>sGet a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith boundary species </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double Concentration of ith boundary species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaac5bcfc193d6c061bd005af73fcdec59"></a><!-- doxytag: member="copasi_api.h::sGetBoundarySpeciesConcentrations" ref="gaac5bcfc193d6c061bd005af73fcdec59" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> sGetBoundarySpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>Vector of boundary species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0fa38c80ed0ff439357d6de4fb84b7a1"></a><!-- doxytag: member="copasi_api.h::sGetBoundarySpeciesNames" ref="ga0fa38c80ed0ff439357d6de4fb84b7a1" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__strings.html">tc_strings</a> sGetBoundarySpeciesNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>sGet a list of boundary species names - CURRENTLY NOT IMPLEMENTED </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__strings.html" title="An array of strings with length information. Use tc_getString(M,i) to get the i-th string...">tc_strings</a> array of char * and length n, where n = number of species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae293b44fef5c0d7ea9114c63ce4ab5a6"></a><!-- doxytag: member="copasi_api.h::sGetFloatingSpeciesConcentrations" ref="gae293b44fef5c0d7ea9114c63ce4ab5a6" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> sGetFloatingSpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a></td><td>Vector of floating species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaffffd3d4dce8d35b7cdab6b3ea813cf6"></a><!-- doxytag: member="copasi_api.h::sGetNumberOfBoundarySpecies" ref="gaffffd3d4dce8d35b7cdab6b3ea813cf6" args="(copasi_model model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT int sGetNumberOfBoundarySpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>sGet the number of boundary species - CURRENTLY NOT IMPLEMENTED </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>number of species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gafc9872aa9faa106a246e2a8cc534a014"></a><!-- doxytag: member="copasi_api.h::sSetBoundarySpeciesByIndex" ref="gafc9872aa9faa106a246e2a8cc534a014" args="(copasi_model model, int index, double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT void sSetBoundarySpeciesByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith boundary species </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5a58df100c0165d5a143427904cc01da"></a><!-- doxytag: member="copasi_api.h::sSetBoundarySpeciesConcentrations" ref="ga5a58df100c0165d5a143427904cc01da" args="(copasi_model model, tc_matrix d)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT void sSetBoundarySpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">sb_matric</td><td>Vector of boundary species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae286e180b310d3cd0632989f05168009"></a><!-- doxytag: member="copasi_api.h::sSetFloatingSpeciesConcentrations" ref="gae286e180b310d3cd0632989f05168009" args="(copasi_model model, tc_matrix sp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">COPASIAPIEXPORT void sSetFloatingSpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td>
+          <td class="paramname"><em>sp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi__model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasi_model</a></td><td>model </td></tr>
+    <tr><td class="paramname">sb_matric</td><td>Vector of floating species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ga59fbc2346a34084824f6cd466d40d7aa"></a><!-- doxytag: member="copasiSBWApi.h::ssGetBoundarySpeciesByIndex" ref="ga59fbc2346a34084824f6cd466d40d7aa" args="(copasiModel model, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT double ssGetBoundarySpeciesByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ssGet a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith boundary species </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>double Concentration of ith boundary species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga3148460d35a6c16dbfeee0b3213aa1b0"></a><!-- doxytag: member="copasiSBWApi.h::ssGetBoundarySpeciesConcentrations" ref="ga3148460d35a6c16dbfeee0b3213aa1b0" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetBoundarySpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a></td><td>Vector of boundary species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaa3c5078617d2d30698b80203f06fc49d"></a><!-- doxytag: member="copasiSBWApi.h::ssGetBoundarySpeciesNames" ref="gaa3c5078617d2d30698b80203f06fc49d" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__strings.html">sb_strings</a> ssGetBoundarySpeciesNames </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ssGet a list of boundary species names - CURRENTLY NOT IMPLEMENTED </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__strings.html" title="An array of strings with length information. Use sb_getString(M,i) to get the i-th string...">sb_strings</a> array of char * and length n, where n = number of species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga5f8bb6bba7af12295cbd8fe8a5edde99"></a><!-- doxytag: member="copasiSBWApi.h::ssGetFloatingSpeciesConcentrations" ref="ga5f8bb6bba7af12295cbd8fe8a5edde99" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetFloatingSpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname"><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a></td><td>Vector of floating species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gaf65f6c4d7f3e658e3a3933c114173ffe"></a><!-- doxytag: member="copasiSBWApi.h::ssGetNumberOfBoundarySpecies" ref="gaf65f6c4d7f3e658e3a3933c114173ffe" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT int ssGetNumberOfBoundarySpecies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>ssGet the number of boundary species - CURRENTLY NOT IMPLEMENTED </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>number of species </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga7b163a2bf703b6d2296f9bcdb2e5d5aa"></a><!-- doxytag: member="copasiSBWApi.h::ssSetBoundarySpeciesByIndex" ref="ga7b163a2bf703b6d2296f9bcdb2e5d5aa" args="(copasiModel model, int index)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT void ssSetBoundarySpeciesByIndex </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">int</td><td>index ith boundary species </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gae86c3a304b9664612f09c35a805e4c58"></a><!-- doxytag: member="copasiSBWApi.h::ssSetBoundarySpeciesConcentrations" ref="gae86c3a304b9664612f09c35a805e4c58" args="(copasiModel model, sb_matrix d)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT void ssSetBoundarySpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td>
+          <td class="paramname"><em>d</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the boundary species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">sb_matric</td><td>Vector of boundary species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="gac89cf0e026e05b0becdf2ee0fc56d201"></a><!-- doxytag: member="copasiSBWApi.h::ssSetFloatingSpeciesConcentrations" ref="gac89cf0e026e05b0becdf2ee0fc56d201" args="(copasiModel model, sb_matrix sp)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT void ssSetFloatingSpeciesConcentrations </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td>
+          <td class="paramname"><em>sp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Set all the floating species concentration - CURRENTLY NOT IMPLEMENTED. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+    <tr><td class="paramname">sb_matric</td><td>Vector of floating species concentrations </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 </div>
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -139,7 +684,7 @@ Species group</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 17 2011 11:38:41 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
