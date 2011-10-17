@@ -79,32 +79,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="member-group"></a>
 Stoichiometry matrix and matrix analysis</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga20ebd712913a16482e937b148bf56500">cGetFullStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the full stoichiometry matrix, N.  <a href="#ga20ebd712913a16482e937b148bf56500"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga1f2af4fd2e7fc76bbe1cf6d1b511af52">cGetReducedStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the reduced stoichiometry matrix, Nr.  <a href="#ga1f2af4fd2e7fc76bbe1cf6d1b511af52"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gadbbf76f9519bdbd9f3bfe58f2ca68cd9">cGetElementaryFluxModes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the elementary flux modes.  <a href="#gadbbf76f9519bdbd9f3bfe58f2ca68cd9"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga0e4d9fdd71cbeece4ab50d4fcf85071a">cGetGammaMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the Gamma matrix (i.e. conservation laws)  <a href="#ga0e4d9fdd71cbeece4ab50d4fcf85071a"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga13a703198cee0880660d4f5d623107c8">cGetKMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the K matrix (right nullspace)  <a href="#ga13a703198cee0880660d4f5d623107c8"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gab5cc0b31cd6b3b198452b2386f1a5720">cGetK0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the K0 matrix.  <a href="#gab5cc0b31cd6b3b198452b2386f1a5720"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga5fb43c43fb091591e0bd9869131e987f">cGetLinkMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the L matrix (link matrix, left nullspace)  <a href="#ga5fb43c43fb091591e0bd9869131e987f"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gaeeb23919f7cc7a8a82c7a385212cc20c">cGetL0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the L0 matrix.  <a href="#gaeeb23919f7cc7a8a82c7a385212cc20c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gae54674c5050707c47d5c94407a9d9b95">cGetFullStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the full stoichiometry matrix, N.  <a href="#gae54674c5050707c47d5c94407a9d9b95"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga83cfb1797831b894e6de72846c0d43a1">cGetReducedStoichiometryMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the reduced stoichiometry matrix, Nr.  <a href="#ga83cfb1797831b894e6de72846c0d43a1"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gaefc298f4b8a83b65c9a1f28c023260fb">cGetElementaryFluxModes</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the elementary flux modes.  <a href="#gaefc298f4b8a83b65c9a1f28c023260fb"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gad30e8b15007ff68f8b60e54f87e7563d">cGetGammaMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the Gamma matrix (i.e. conservation laws)  <a href="#gad30e8b15007ff68f8b60e54f87e7563d"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga2e8b3a444be11916835c6626bb424a8c">cGetKMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the K matrix (right nullspace)  <a href="#ga2e8b3a444be11916835c6626bb424a8c"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga814e1eb3e53ed7e52ac17c6a08f81377">cGetK0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the K0 matrix.  <a href="#ga814e1eb3e53ed7e52ac17c6a08f81377"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gaa9b81aa41e93ec63a6626627834b3e42">cGetLinkMatrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the L matrix (link matrix, left nullspace)  <a href="#gaa9b81aa41e93ec63a6626627834b3e42"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga6e9d49ae7f3b6edf05d21ef8634f2f99">cGetL0Matrix</a> (<a class="el" href="structcopasi__model.html">copasi_model</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the L0 matrix.  <a href="#ga6e9d49ae7f3b6edf05d21ef8634f2f99"></a><br/></td></tr>
+<tr><td colspan="2"><h2><a name="member-group"></a>
+Stoichiometry matrix and matrix analysis</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gaad97ae5448838228645afe02c3f86113">ssGetFullStoichiometryMatrix</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the full stoichiometry matrix, N.  <a href="#gaad97ae5448838228645afe02c3f86113"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#gae90f71f5464f8ac61a91b74b7ffeb993">ssGetReducedStoichiometryMatrix</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the reduced stoichiometry matrix, Nr.  <a href="#gae90f71f5464f8ac61a91b74b7ffeb993"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga318d5b75533c2265a27e9b32a5db7a9e">ssGetElementaryFluxModes</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the elementary flux modes.  <a href="#ga318d5b75533c2265a27e9b32a5db7a9e"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga22bee2a723c8ce75e29e324a9ffa9301">ssGetGammaMatrix</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the Gamma matrix (i.e. conservation laws)  <a href="#ga22bee2a723c8ce75e29e324a9ffa9301"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga85a3ab1c3b144f28c033ec1d1c0a8ea2">ssGetKMatrix</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the K matrix (right nullspace)  <a href="#ga85a3ab1c3b144f28c033ec1d1c0a8ea2"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga0a499386e227c01d72634737106982fd">ssGetK0Matrix</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the K0 matrix.  <a href="#ga0a499386e227c01d72634737106982fd"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga8b07c595eb90eb8973fd583dc7e65ee5">ssGetLinkMatrix</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the L matrix (link matrix, left nullspace)  <a href="#ga8b07c595eb90eb8973fd583dc7e65ee5"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__matrix.html#ga550ee60ad409fa0b801ae8a9901ad53d">ssGetL0Matrix</a> (<a class="el" href="structcopasi_model.html">copasiModel</a> model)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the L0 matrix.  <a href="#ga550ee60ad409fa0b801ae8a9901ad53d"></a><br/></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>Linear algebra based methods for analyzing a reaction network. </p>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="gadbbf76f9519bdbd9f3bfe58f2ca68cd9"></a><!-- doxytag: member="copasi_api.h::cGetElementaryFluxModes" ref="gadbbf76f9519bdbd9f3bfe58f2ca68cd9" args="(copasi_model model)" -->
+<a class="anchor" id="gaefc298f4b8a83b65c9a1f28c023260fb"></a><!-- doxytag: member="copasi_api.h::cGetElementaryFluxModes" ref="gaefc298f4b8a83b65c9a1f28c023260fb" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetElementaryFluxModes </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetElementaryFluxModes </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -125,12 +143,12 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga20ebd712913a16482e937b148bf56500"></a><!-- doxytag: member="copasi_api.h::cGetFullStoichiometryMatrix" ref="ga20ebd712913a16482e937b148bf56500" args="(copasi_model model)" -->
+<a class="anchor" id="gae54674c5050707c47d5c94407a9d9b95"></a><!-- doxytag: member="copasi_api.h::cGetFullStoichiometryMatrix" ref="gae54674c5050707c47d5c94407a9d9b95" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetFullStoichiometryMatrix </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetFullStoichiometryMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -151,12 +169,12 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga0e4d9fdd71cbeece4ab50d4fcf85071a"></a><!-- doxytag: member="copasi_api.h::cGetGammaMatrix" ref="ga0e4d9fdd71cbeece4ab50d4fcf85071a" args="(copasi_model model)" -->
+<a class="anchor" id="gad30e8b15007ff68f8b60e54f87e7563d"></a><!-- doxytag: member="copasi_api.h::cGetGammaMatrix" ref="gad30e8b15007ff68f8b60e54f87e7563d" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetGammaMatrix </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetGammaMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -177,12 +195,12 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gab5cc0b31cd6b3b198452b2386f1a5720"></a><!-- doxytag: member="copasi_api.h::cGetK0Matrix" ref="gab5cc0b31cd6b3b198452b2386f1a5720" args="(copasi_model model)" -->
+<a class="anchor" id="ga814e1eb3e53ed7e52ac17c6a08f81377"></a><!-- doxytag: member="copasi_api.h::cGetK0Matrix" ref="ga814e1eb3e53ed7e52ac17c6a08f81377" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetK0Matrix </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetK0Matrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -203,12 +221,12 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga13a703198cee0880660d4f5d623107c8"></a><!-- doxytag: member="copasi_api.h::cGetKMatrix" ref="ga13a703198cee0880660d4f5d623107c8" args="(copasi_model model)" -->
+<a class="anchor" id="ga2e8b3a444be11916835c6626bb424a8c"></a><!-- doxytag: member="copasi_api.h::cGetKMatrix" ref="ga2e8b3a444be11916835c6626bb424a8c" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetKMatrix </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetKMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -229,12 +247,12 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaeeb23919f7cc7a8a82c7a385212cc20c"></a><!-- doxytag: member="copasi_api.h::cGetL0Matrix" ref="gaeeb23919f7cc7a8a82c7a385212cc20c" args="(copasi_model model)" -->
+<a class="anchor" id="ga6e9d49ae7f3b6edf05d21ef8634f2f99"></a><!-- doxytag: member="copasi_api.h::cGetL0Matrix" ref="ga6e9d49ae7f3b6edf05d21ef8634f2f99" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetL0Matrix </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetL0Matrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -255,12 +273,12 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga5fb43c43fb091591e0bd9869131e987f"></a><!-- doxytag: member="copasi_api.h::cGetLinkMatrix" ref="ga5fb43c43fb091591e0bd9869131e987f" args="(copasi_model model)" -->
+<a class="anchor" id="gaa9b81aa41e93ec63a6626627834b3e42"></a><!-- doxytag: member="copasi_api.h::cGetLinkMatrix" ref="gaa9b81aa41e93ec63a6626627834b3e42" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetLinkMatrix </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetLinkMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -281,12 +299,12 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga1f2af4fd2e7fc76bbe1cf6d1b511af52"></a><!-- doxytag: member="copasi_api.h::cGetReducedStoichiometryMatrix" ref="ga1f2af4fd2e7fc76bbe1cf6d1b511af52" args="(copasi_model model)" -->
+<a class="anchor" id="ga83cfb1797831b894e6de72846c0d43a1"></a><!-- doxytag: member="copasi_api.h::cGetReducedStoichiometryMatrix" ref="ga83cfb1797831b894e6de72846c0d43a1" args="(copasi_model model)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">TCAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetReducedStoichiometryMatrix </td>
+          <td class="memname">COPASIAPIEXPORT <a class="el" href="structtc__matrix.html">tc_matrix</a> cGetReducedStoichiometryMatrix </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structcopasi__model.html">copasi_model</a>&#160;</td>
           <td class="paramname"><em>model</em></td><td>)</td>
@@ -304,6 +322,214 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structtc__matrix.html" title="A 2D table of doubles with row and column names. Use tc_getMatrixValue(M,i,j) to get the i...">tc_matrix</a> rows consist of the species and columns are the reactions </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga318d5b75533c2265a27e9b32a5db7a9e"></a><!-- doxytag: member="copasiSBWApi.h::ssGetElementaryFluxModes" ref="ga318d5b75533c2265a27e9b32a5db7a9e" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetElementaryFluxModes </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the elementary flux modes. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> matrix with reactions as rows and flux modes as columns (no column names) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gaad97ae5448838228645afe02c3f86113"></a><!-- doxytag: member="copasiSBWApi.h::ssGetFullStoichiometryMatrix" ref="gaad97ae5448838228645afe02c3f86113" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetFullStoichiometryMatrix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the full stoichiometry matrix, N. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> rows consist of the species and columns are the reactions </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga22bee2a723c8ce75e29e324a9ffa9301"></a><!-- doxytag: member="copasiSBWApi.h::ssGetGammaMatrix" ref="ga22bee2a723c8ce75e29e324a9ffa9301" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetGammaMatrix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the Gamma matrix (i.e. conservation laws) </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga0a499386e227c01d72634737106982fd"></a><!-- doxytag: member="copasiSBWApi.h::ssGetK0Matrix" ref="ga0a499386e227c01d72634737106982fd" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetK0Matrix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the K0 matrix. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga85a3ab1c3b144f28c033ec1d1c0a8ea2"></a><!-- doxytag: member="copasiSBWApi.h::ssGetKMatrix" ref="ga85a3ab1c3b144f28c033ec1d1c0a8ea2" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetKMatrix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the K matrix (right nullspace) </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga550ee60ad409fa0b801ae8a9901ad53d"></a><!-- doxytag: member="copasiSBWApi.h::ssGetL0Matrix" ref="ga550ee60ad409fa0b801ae8a9901ad53d" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetL0Matrix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the L0 matrix. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ga8b07c595eb90eb8973fd583dc7e65ee5"></a><!-- doxytag: member="copasiSBWApi.h::ssGetLinkMatrix" ref="ga8b07c595eb90eb8973fd583dc7e65ee5" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetLinkMatrix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Compute the L matrix (link matrix, left nullspace) </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="gae90f71f5464f8ac61a91b74b7ffeb993"></a><!-- doxytag: member="copasiSBWApi.h::ssGetReducedStoichiometryMatrix" ref="gae90f71f5464f8ac61a91b74b7ffeb993" args="(copasiModel model)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SBWAPIEXPORT <a class="el" href="structsb__matrix.html">sb_matrix</a> ssGetReducedStoichiometryMatrix </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcopasi_model.html">copasiModel</a>&#160;</td>
+          <td class="paramname"><em>model</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Return the reduced stoichiometry matrix, Nr. </p>
+<dl><dt><b>Parameters:</b></dt><dd>
+  <table class="params">
+    <tr><td class="paramname"><a class="el" href="structcopasi_model.html" title="This struct is used to contain a pointer to an instance of a COPASI object.">copasiModel</a></td><td>model </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="structsb__matrix.html" title="A 2D table of doubles with row and column names. Use sb_getMatrixValue(M,i,j) to get the i...">sb_matrix</a> rows consist of the species and columns are the reactions </dd></dl>
 
 </div>
 </div>
@@ -325,7 +551,7 @@ Stoichiometry matrix and matrix analysis</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 13 2011 17:57:53 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Oct 17 2011 11:38:41 for CopasiAPI by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.7.5.1
 </small></address>
