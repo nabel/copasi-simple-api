@@ -14,6 +14,8 @@ int main()
 	
 	printf("creating model...\n");
 	m = model1();
+    //sWriteSBMLFile (m, "model1.xml");
+
     //m = cReadSBMLFile("model1.sbml");
     
 	printf("simulating...\n");	
@@ -164,12 +166,13 @@ copasi_model model2() //gene regulation
 // eigenvalues
 void eigen(copasi_model model, const char* param)
 {
-	int i, j,k;
+	int i, j, k;
 	double p;
 	FILE * outfile;
 	tc_matrix ss;
 	tc_matrix output;
 	
+	i = 0; j = 0; k = 0;
 	//steady states
 	
 	for (i=0; i < 100; ++i)
