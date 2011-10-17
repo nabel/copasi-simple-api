@@ -103,8 +103,6 @@ FILE( GLOB copasi_SRC_FILES
 	${CMAKE_CURRENT_SOURCE_DIR}/MIRIAM/WebServicesIssues/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/copasi_api.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../TC_structs.c
-	${CMAKE_CURRENT_SOURCE_DIR}/copasiSBWApi.cpp
-	${CMAKE_CURRENT_SOURCE_DIR}/../sb_structs.c
 	${CMAKE_CURRENT_SOURCE_DIR}/mtrand.c
 )
 
