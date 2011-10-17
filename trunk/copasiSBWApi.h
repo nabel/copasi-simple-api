@@ -1,3 +1,9 @@
+
+// ------------------------------------------------------
+// THIS IS BEING DEPRECATED: REPLACED BY COPASI_API.CPP
+// ------------------------------------------------------
+
+
 /*! \mainpage SBW API for the COPASI Library
  *
  * \section intro_sec Introduction
