@@ -76,6 +76,8 @@ int main()
 	//cleanup	
 	cRemoveModel(m);
 	copasi_end();
+	printf ("Hit the return key to continue\n");
+	getchar();
 	return 0;
 }
 
