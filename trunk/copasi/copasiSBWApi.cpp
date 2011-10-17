@@ -401,6 +401,47 @@ copasiCompartment sCreateCompartment(copasiModel model, const char* name, double
 	return c;
 }
 
+
+int sSetGlobalParameter(copasiModel model, const char * name, double value)
+{
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	CCMap * hash = (CCMap*)(model.qHash);
+	string s(name);
+	CModelValue * pValue = NULL;
+	
+	if (!hash || !pModel) return 0;
+	
+	if (sb_contains(hash,s) && 
+		(pValue = sb_getHashValue(hash,s).param))
+	{
+		pValue->setInitialValue(value);
+		pValue->setValue(value);
+		return 1;
+	}
+
+	//parameter not found, so create it
+	if (!pValue)
+	{
+		pValue = pModel->createModelValue(string(name),value);
+		pValue->setInitialValue(value);
+	
+		sb_CopasiPtr copasiPtr = {
+				pValue->getCN(),
+				pValue->getKey(),
+				0,
+				0,
+				0,
+				pValue,
+				"",
+				true};
+
+		sb_hashInsert(hash, s, copasiPtr); //for speedy lookup
+	}
+	
+	return 0;
+}
+
+
 int sSetValue(copasiModel model, const char * name, double value)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
@@ -503,45 +544,6 @@ void sSetAmount(copasiModel model, const char * name, double amnt)
 		pSpecies->setValue(amnt);
 		pSpecies->setInitialValue(amnt);
 	}
-}
-
-int sSetGlobalParameter(copasiModel model, const char * name, double value)
-{
-	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	CCMap * hash = (CCMap*)(model.qHash);
-	string s(name);
-	CModelValue * pValue = NULL;
-	
-	if (!hash || !pModel) return 0;
-	
-	if (sb_contains(hash,s) && 
-		(pValue = sb_getHashValue(hash,s).param))
-	{
-		pValue->setInitialValue(value);
-		pValue->setValue(value);
-		return 1;
-	}
-
-	//parameter not found, so create it
-	if (!pValue)
-	{
-		pValue = pModel->createModelValue(string(name),value);
-		pValue->setInitialValue(value);
-	
-		sb_CopasiPtr copasiPtr = {
-				pValue->getCN(),
-				pValue->getKey(),
-				0,
-				0,
-				0,
-				pValue,
-				"",
-				true};
-
-		sb_hashInsert(hash, s, copasiPtr); //for speedy lookup
-	}
-	
-	return 0;
 }
 
 void sSetSpeciesType(copasiModel model, const char * name, int isBoundary)
@@ -1133,8 +1135,8 @@ sb_matrix sSimulate (copasiModel model, double startTime, double endTime, int nu
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 
 	if (!pModel || !pDataModel) return sb_createMatrix(0,0);
-	sCompileModel(model);
-	
+	//sCompileModel(model);
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the trajectory task object
@@ -2702,6 +2704,7 @@ SBWAPIEXPORT int sGetNumberFloatingSpecies(copasiModel model)
 // STUB: NEEDS TO BE IMPLEMENTED
 SBWAPIEXPORT int sGetNumberOfBoundarySpecies(copasiModel model)
 {
+  return 0;
 }
 
 
