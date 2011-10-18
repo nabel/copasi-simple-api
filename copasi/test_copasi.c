@@ -13,11 +13,17 @@ int main()
 	copasi_model m;
 	
 	printf("creating model...\n");
-	m = model1();
-    //sWriteSBMLFile (m, "model1.xml");
+	//m = model1();
+    ////sWriteSBMLFile (m, "model1.xml");
 
-    //m = cReadSBMLFile("model1.sbml");
+    m = cReadSBMLFile("feedback.xml");
     
+	if (m.errorMessage != NULL) {
+		printf ("Errors while reading model:\n");
+		printf (m.errorMessage);
+		getchar();
+		return;
+	}
 	printf("simulating...\n");	
 	results = cSimulateDeterministic(m, 0, 20, 100);  //model, start, end, num. points
 
