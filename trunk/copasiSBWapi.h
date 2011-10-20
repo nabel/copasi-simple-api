@@ -97,8 +97,8 @@
  \brief Optimization of parameters to match given data
 */
 
-#ifndef COPASI_SIMPLE_C_API
-#define COPASI_SIMPLE_C_API
+#ifndef COPASI_SBW_LIKE_C_API
+#define COPASI_SBW_LIKE_C_API
 
  /**
   * @file    copasi_api.h
