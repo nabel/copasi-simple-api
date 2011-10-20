@@ -87,3 +87,9 @@ ADD_SUBDIRECTORY( boost )      #regular expressions
 ADD_SUBDIRECTORY( copasi )     #simulation and analysis package
 ADD_SUBDIRECTORY( libstructural )   #network structural analysis based on stoichiometry matrix
 ADD_SUBDIRECTORY( galib )   #genetic algorithms library
+
+OPTION( TEST_COPASI_API "test copasi api" ON )
+
+IF (TEST_COPASI_API)
+	ADD_SUBDIRECTORY( testSuite )     #linear algebra
+ENDIF(TEST_COPASI_API)

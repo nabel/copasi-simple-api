@@ -2,7 +2,7 @@
 #include <string.h>
 #include "arith.h"
 
-#define __alpha
+//#define __alpha
 
 #define TYSHORT 2
 #define TYLONG 3
