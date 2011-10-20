@@ -13,10 +13,10 @@ int main()
 	copasi_model m;
 	
 	printf("creating model...\n");
-	//m = model1();
-    ////sWriteSBMLFile (m, "model1.xml");
+	m = model1();
+    //cWriteSBMLFile (m, "model1.xml");
 
-    m = cReadSBMLFile("feedback.xml");
+    //m = cReadSBMLFile("feedback.xml");
     
 	if (m.errorMessage != NULL) {
 		printf ("Errors while reading model:\n");

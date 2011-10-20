@@ -33,11 +33,6 @@ ADD_DEFINITIONS(-DSBW_EXPORTS)
 ADD_DEFINITIONS(-DLIBSBML_EXPORTS)
 ADD_DEFINITIONS(-DENABLE_LAYOUT)
 
-
-IF (DISABLE_ASSIGNMENT_REORDERING)
-	ADD_DEFINITIONS(-DCOPASI_NO_ASSIGNMENT_REORDERING)
-ENDIF(DISABLE_ASSIGNMENT_REORDERING)
-
 #------------------------------------------------------------------------------
 #  DEFINITIONS FOR WINDOWS
 #------------------------------------------------------------------------------
@@ -156,21 +151,3 @@ INSTALL(TARGETS copasi
 	LIBRARY DESTINATION bin/../
 	ARCHIVE DESTINATION bin/../
 )
-
-#----------------------------------
-#  TEST the api
-#----------------------------------
-
-OPTION( TEST_COPASI_API "test copasi api" ON )
-OPTION( TEST_SBW_COPASI_API "test sbw copasi api" ON )
-
-
-IF (TEST_COPASI_API)
-  ADD_EXECUTABLE (copasi_api_test test_copasi.c)
-  TARGET_LINK_LIBRARIES (copasi_api_test copasi)
-ENDIF (TEST_COPASI_API)
-
-IF (TEST_SBW_COPASI_API)
-  ADD_EXECUTABLE (copasi_sbw_test testSBWApi.c)
-  TARGET_LINK_LIBRARIES (copasi_sbw_test copasi)
-ENDIF (TEST_SBW_COPASI_API)
