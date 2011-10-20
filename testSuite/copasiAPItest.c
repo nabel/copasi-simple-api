@@ -15,7 +15,7 @@ int main()
 	printf("creating model...\n");
 	m = model1();
 
-    //cWriteSBMLFile (m, "model1.xml");
+    cWriteSBMLFile (m, "model1.xml");
     //m = cReadSBMLFile("feedback.xml");
     
 	if (m.errorMessage != NULL) {
