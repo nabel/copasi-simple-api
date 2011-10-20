@@ -99,7 +99,6 @@
 
 #ifndef COPASI_SIMPLE_C_API
 #define COPASI_SIMPLE_C_API
-#define COPASIAPIEXPORT TCAPIEXPORT
 
  /**
   * @file    copasi_api.h
@@ -119,9 +118,6 @@ C structs.
 std::map is used for performing the hashing (it is not a real hash-table, but close enough).
 boost::regex is used for string substitutions.
 */
-
-#ifndef COPASI_SIMPLE_C_API
-#define COPASI_SIMPLE_C_API
 
 #include "TC_structs.h"
 #define COPASIAPIEXPORT TCAPIEXPORT
@@ -782,7 +778,7 @@ COPASIAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime,
  \return tc_matrix matrix of concentration or particles
  \ingroup simulation
 */
-COPASIAPIEXPORT void cAddFilter(copasi_model model, const char *);
+COPASIAPIEXPORT void cIncludeInResults(copasi_model model, const char * id);
 
 /*! 
  \brief remove a return value from simulation results. 
@@ -794,7 +790,7 @@ COPASIAPIEXPORT void cAddFilter(copasi_model model, const char *);
  \return tc_matrix matrix of concentration or particles
  \ingroup simulation
 */
-COPASIAPIEXPORT void cRemoveFilter(copasi_model model, const char *);
+COPASIAPIEXPORT void cExcludeFromResults(copasi_model model, const char * id);
 
 // -----------------------------------------------------------------------
 /** \} */

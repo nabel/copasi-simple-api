@@ -23,7 +23,7 @@
 
 using namespace std;
 
-void sSetInitialConcentration(copasiModel model, const char * name, double conc)
+void setInitialConcentration(copasiModel model, const char * name, double conc)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
@@ -2477,12 +2477,6 @@ double sGetParticleFlux(copasiModel model, const char * name)
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s (name);	
-
-#ifdef _WIN32
-    double NaN = std::numeric_limits<double>::quiet_NaN(); 
-#else
-	double NaN = 0.0/0.0;
-#endif
 
 	if (!pModel || !sb_contains(hash, s)) return NaN;
 
