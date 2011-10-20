@@ -1,11 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "copasi_api.h"
+#include "copasiSBWapi.h"
 
 copasi_model model1(); //oscillation
-//copasi_model model2(); //positive feebdack gene regulation
-//copasi_model model3();
-//void eigen(copasi_model, const char*); //compute eigenvalues by changing parameters (similar to root-locus)
 
 int main()
 {
@@ -17,7 +14,7 @@ int main()
   
     printf ("Read Model1\n");  
     //m = sReadSBMLFile("feedback.xml");
-	if (m.copasi_modelPtr == NULL) {
+	if (m.CopasiModelPtr == NULL) {
         printf ("m error = %s\n", m.errorMessage); 
         printf ("m warning = %s\n", m.warningMessage); 
         getchar();
@@ -26,19 +23,19 @@ int main()
     //sWriteSBMLFile (m, "model1.xml");
    
 	printf("simulating...\n");	
-	results = sSimulate(m, 0, 20, 100);  // model, start, end, num. points
+	results = simulate(m, 0, 20, 100);  // model, start, end, num. points
 
 	printf("results.tab has simulation data\n\n");
 	tc_printMatrixToFile("resultSBW.tab", results);
 	tc_deleteMatrix(results);
 
-	results = sGetReactionRates(m);
+	results = cGetReactionRates(m);
 
 	printf("fluxes:\n");
 	tc_printOutMatrix(results);
 	tc_deleteMatrix(results);
 
-	results = sGetRatesOfChange(m);
+	results = cGetRatesOfChange(m);
 
 	printf("\n\nderivatives:\n");
 	tc_printOutMatrix(results);

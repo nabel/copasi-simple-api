@@ -125,7 +125,7 @@ boost::regex is used for string substitutions.
 /*!\brief This struct is used to contain a pointer to an instance of a COPASI object*/
 typedef struct  
 { 
-	void * copasi_modelPtr;
+	void * CopasiModelPtr;
 	void * CopasiDataModelPtr;
 	void * qHash;
 	char * errorMessage;
@@ -136,7 +136,7 @@ typedef struct
 typedef struct  
 {
 	void * CopasiReactionPtr;
-	void * copasi_modelPtr;
+	void * CopasiModelPtr;
 	void * qHash; 
 } copasi_reaction;
 
@@ -144,7 +144,7 @@ typedef struct
 typedef struct  
 {
 	void * CopasiCompartmentPtr;
-	void * copasi_modelPtr; 
+	void * CopasiModelPtr; 
 	void * qHash; 
 } copasi_compartment;
 
@@ -768,29 +768,57 @@ COPASIAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, 
 */
 COPASIAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, double endTime, int numSteps);
 
-/*! 
- \brief add a new return value from simulation results. 
-           Use species or reaction names to add a species of reaction
-		   Use species' for derivatives, e.g. A' for derivative of A
-		   Use cc_X_Y for the control coefficient of x on steady state of y
- \param copasi_model model
-  \param char * name
- \return tc_matrix matrix of concentration or particles
- \ingroup simulation
-*/
-COPASIAPIEXPORT void cIncludeInResults(copasi_model model, const char * id);
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
+  * @name Create filters for time-course data
+  */
+/** \{ */
 
 /*! 
- \brief remove a return value from simulation results. 
-           Use species or reaction names to add a species of reaction
-		   Use species' for derivatives, e.g. A' for derivative of A
-		   Use cc_X_Y for the control coefficient of x on steady state of y
+ \brief Compute all the reaction rates, or flux, for each row of a time course data
  \param copasi_model model
-  \param char * name
- \return tc_matrix matrix of concentration or particles
+  \param tc_matrix original results with species as column names
+ \return tc_matrix 
  \ingroup simulation
 */
-COPASIAPIEXPORT void cExcludeFromResults(copasi_model model, const char * id);
+COPASIAPIEXPORT tc_matrix cGetReactionRatesFromTimeCourse(copasi_model model, tc_matrix results);
+
+/*! 
+ \brief Compute the given formula for each row of a time course data. 
+ 		    The formula must only contain the following as variable names: species, parameters, compartments, reaction 
+ \param copasi_model model
+  \param tc_matrix original results with species as column names
+  \param string formula
+ \return tc_matrix 
+ \ingroup simulation
+*/
+COPASIAPIEXPORT tc_matrix cGetCustomFormulaFromTimeCourse(copasi_model model, tc_matrix results, const char * formula);
+
+/*! 
+ \brief Get all the control coefficients for each row of a time course data
+ \param copasi_model model
+  \param tc_matrix original results with species as column names
+ \return tc_matrix 
+ \ingroup simulation
+*/
+COPASIAPIEXPORT tc_matrix cGetCCFromTimeCourse(copasi_model model, tc_matrix results);
+
+/*! 
+ \brief Filter the results of a time-course simulation based on the list of names provided. -- NOT IMPLEMENTED
+ 		   The list of names can consist of species names, reaction names, control coefficients, or derivatives.
+           Use species or reaction names to add a species of reaction
+		   Use species' for derivatives, e.g. A' for derivative of A
+		   Use cc_x_y for the control coefficient of x on y
+ \param copasi_model model
+  \param tc_matrix original results with species as column names
+  \param tc_strings array of names to return 
+ \return tc_matrix 
+ \ingroup simulation
+*/
+COPASIAPIEXPORT tc_matrix cFilterTimeCourseResults(copasi_model model, tc_matrix results, tc_strings names);
+
 
 // -----------------------------------------------------------------------
 /** \} */
