@@ -1101,7 +1101,7 @@ CModel* SBMLImporter::createCModelFromSBMLDocument(SBMLDocument* sbmlDocument, s
   setInitialValues(this->mpCopasiModel, copasi2sbmlmap);
   // evaluate and apply the initial expressions
   this->applyStoichiometricExpressions(copasi2sbmlmap, sbmlModel);
-#if LIBSBML_LEVEL >= 40100
+#if LIBSBML_VERSION >= 40100
 
   // now we apply the conversion factors
   if (this->mLevel > 2)

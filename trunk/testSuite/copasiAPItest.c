@@ -13,10 +13,11 @@ int main()
 	copasi_model m;
 	
 	printf("creating model...\n");
-	m = model1();
+	//m = model1();
+	m = cReadSBMLFile("/home/deepak/Desktop/model1.sbml");
 
 	cSetSBMLLevelAndVersion(2,3);
-    cWriteSBMLFile (m, "model1.xml");
+    //cWriteSBMLFile (m, "model1.xml");
     //m = cReadSBMLFile("feedback.xml");
     
 	if (m.errorMessage != NULL) {
