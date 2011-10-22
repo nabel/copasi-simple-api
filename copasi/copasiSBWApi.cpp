@@ -10,7 +10,7 @@
 #include <limits> //get max and min for double
 
 //copasi
-#define COPASI_MAIN 1
+//#define COPASI_MAIN 1
 #include "copasi/copasi.h"
 #include "copasi/report/CCopasiRootContainer.h"
 #include "copasi/CopasiDataModel/CCopasiDataModel.h"
