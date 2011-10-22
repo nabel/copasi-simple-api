@@ -1415,7 +1415,7 @@ tc_matrix cSimulateHybrid(copasi_model model, double startTime, double endTime, 
 }
 
 static int _SBML_LEVEL = 2;
-static int _SBML_VERSION = 2;
+static int _SBML_VERSION = 4;
 void cSetSBMLLevelAndVersion(int level, int version)
 {
 	_SBML_LEVEL = level;
