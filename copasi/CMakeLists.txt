@@ -21,14 +21,16 @@ INCLUDE_DIRECTORIES(
 #    DEFINITIONS FOR COPASI 
 #------------------------------------------------------------------------------
 
-#ADD_DEFINITIONS(-DCOPASI_MAIN)
-ADD_DEFINITIONS(-DWITH_CSPMETHOD)
-#ADD_DEFINITIONS(-D__cplusplus)
+#clapack seems to be work better for cross-platform compilation
+#ADD_DEFINITIONS(-DUSE_LAPACK)  
 ADD_DEFINITIONS(-DUSE_CLAPACK)
-#ADD_DEFINITIONS(-DUSE_LAPACK)
+
+#Use the following two definitions to debug copasi
 #ADD_DEFINITIONS(-DCOPASI_DEBUG)
 #ADD_DEFINITIONS(-DDEBUG_MATRIX)
-ADD_DEFINITIONS(-DTC_EXPORTS)
+
+ADD_DEFINITIONS(-DWITH_CSPMETHOD)
+ADD_DEFINITIONS(-DTC_EXPORTS) #export tc_matrix and related tc_* functions
 ADD_DEFINITIONS(-DSBW_EXPORTS)
 ADD_DEFINITIONS(-DLIBSBML_EXPORTS)
 ADD_DEFINITIONS(-DENABLE_LAYOUT)
@@ -104,20 +106,28 @@ FILE( GLOB copasi_SRC_FILES
 ADD_DEFINITIONS(-DHAVE_EXPAT_CONFIG_H)
 FILE( GLOB  EXPAT_SRC_FILES   ${CMAKE_CURRENT_SOURCE_DIR}/../expat/lib/*.c)
 
-#--------------------------
+#--------------------------------
 #  MAKE LIBRARY libcopasi
-#--------------------------
+#-------------------------------
 
 ADD_LIBRARY( copasi
-#  STATIC
   SHARED
   ${copasi_SRC_FILES}
   ${EXPAT_SRC_FILES}
 )
 
-#-----------------------------------------------------
-# This section is due to a complication in MSVC
-#-----------------------------------------------------
+ADD_LIBRARY( copasiSBW  #just a variant of the copasi API
+  SHARED
+  copasiSBWApi.cpp
+  ${copasi_SRC_FILES}
+  ${EXPAT_SRC_FILES}
+)
+
+#---------------------------------------------------------------------
+# This section is for resolving complications in Viisual Studio
+#  Visual Studio automatically renames the boost library 
+#  when linking
+#---------------------------------------------------------------------
 IF (WIN32 AND NOT MINGW)
 	SET( boost_library_name libboost_regex-vc100-mt-1_48)
 	IF(${CMAKE_BUILD_TYPE} STREQUAL "Debug")
@@ -126,10 +136,24 @@ IF (WIN32 AND NOT MINGW)
 ELSE (WIN32 AND NOT MINGW)
 	SET( boost_library_name boost_regex)
 ENDIF (WIN32 AND NOT MINGW)
-#-----------------------------------------------------
+#----------------------------------------------------------------------
 
 TARGET_LINK_LIBRARIES( copasi
   copasi
+  sbml
+  raptor
+  lapack
+  blas
+  f2c
+  antimony
+  galib
+  structural
+  muparser
+  ${boost_library_name}
+)
+
+TARGET_LINK_LIBRARIES( copasiSBW
+  copasiSBW
   sbml
   raptor
   lapack
@@ -151,3 +175,4 @@ INSTALL(TARGETS copasi
 	LIBRARY DESTINATION bin/../
 	ARCHIVE DESTINATION bin/../
 )
+
