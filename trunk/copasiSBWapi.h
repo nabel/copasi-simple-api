@@ -164,7 +164,7 @@ COPASIAPIEXPORT double getReactionRate(copasi_model, int);
  \return double array of reaction rates
  \ingroup reaction
 */
-COPASIAPIEXPORT tc_matrix getReactionRates(copasi_model);
+COPASIAPIEXPORT double* getReactionRates(copasi_model);
 
 
 /*! 
@@ -174,7 +174,7 @@ COPASIAPIEXPORT tc_matrix getReactionRates(copasi_model);
  \return double vector of reaction rates
  \ingroup reaction
 */
-COPASIAPIEXPORT double* getReactionRatesEx(double * values);
+COPASIAPIEXPORT double* getReactionRatesEx(copasi_model, double * values);
 
 // -----------------------------------------------------------------------
 /** \} */
@@ -184,7 +184,7 @@ COPASIAPIEXPORT double* getReactionRatesEx(double * values);
 /** \{ */
 
 /*! 
- \brief sGet the number of boundary species - CURRENTLY NOT IMPLEMENTED
+ \brief sGet the number of boundary species
  \param copasi_model model
  \return number of species
  \ingroup boundary
@@ -193,7 +193,7 @@ COPASIAPIEXPORT int getNumberOfBoundarySpecies(copasi_model model);
 
 
 /*! 
- \brief sGet a list of boundary species names - CURRENTLY NOT IMPLEMENTED
+ \brief sGet a list of boundary species names
  \param copasi_model model
  \return char** array of char * and length n, where n = number of species
  \ingroup boundary
@@ -201,7 +201,7 @@ COPASIAPIEXPORT int getNumberOfBoundarySpecies(copasi_model model);
 COPASIAPIEXPORT char** getBoundarySpeciesNames(copasi_model model);
 
 /*! 
- \brief Set a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \brief Set a boundary species concentration by index
  \param copasi_model model
  \param int index ith boundary species
  \ingroup boundary
@@ -209,15 +209,15 @@ COPASIAPIEXPORT char** getBoundarySpeciesNames(copasi_model model);
 COPASIAPIEXPORT void setBoundarySpeciesByIndex (copasi_model model, int index, double value);
 
 /*! 
- \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
+ \brief Set all the boundary species concentration
  \param copasi_model model
  \param sb_matric Vector of boundary species concentrations
  \ingroup boundary
 */
-COPASIAPIEXPORT void setBoundarySpeciesConcentrations (copasi_model model, tc_matrix d);
+COPASIAPIEXPORT void setBoundarySpeciesConcentrations (copasi_model model, double * d);
 
 /*! 
- \brief Set all the boundary species concentration  - CURRENTLY NOT IMPLEMENTED
+ \brief Set all the boundary species concentration
  \param copasi_model model
  \param double * boundary species concentrations
  \ingroup boundary
@@ -226,7 +226,7 @@ COPASIAPIEXPORT double * getBoundarySpeciesConcentrations (copasi_model model);
 
 
 /*! 
- \brief sGet a boundary species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \brief sGet a boundary species concentration by index
  \param copasi_model model
  \param int index ith boundary species
  \return double concentration of ith boundary species
@@ -242,7 +242,7 @@ COPASIAPIEXPORT double getBoundarySpeciesByIndex (copasi_model model, int index)
 /** \{ */
 
 /*! 
- \brief sGet the number of floating species - CURRENTLY NOT IMPLEMENTED
+ \brief Get the number of floating species
  \param copasi_model model
  \return number of species
  \ingroup floating
@@ -250,7 +250,7 @@ COPASIAPIEXPORT double getBoundarySpeciesByIndex (copasi_model model, int index)
 COPASIAPIEXPORT int getNumberFloatingSpecies(copasi_model model);
 
 /*! 
- \brief sGet a list the floating species names - CURRENTLY NOT IMPLEMENTED
+ \brief Get a list the floating species names
  \param copasi_model model
  \return tc_strings array of char * and length n, where n = number of species
  \ingroup state
@@ -259,7 +259,7 @@ COPASIAPIEXPORT char** getFloatingSpeciesNames(copasi_model model);
 
 
 /*! 
- \brief Set a floating species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \brief Set a floating species concentration by index
  \param copasi_model model
  \param int index ith floating species
  \ingroup state
@@ -268,7 +268,7 @@ COPASIAPIEXPORT void setFloatingSpeciesByIndex (copasi_model model, int index, d
 
 
 /*! 
- \brief sGet a floating species concentration by index - CURRENTLY NOT IMPLEMENTED
+ \brief sGet a floating species concentration by index
  \param copasi_model model
  \param int index ith floating species
  \return double Concentration of ith floating species
@@ -277,7 +277,7 @@ COPASIAPIEXPORT void setFloatingSpeciesByIndex (copasi_model model, int index, d
 COPASIAPIEXPORT double getFloatingSpeciesByIndex (copasi_model model, int index);
 
 /*! 
- \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
+ \brief Set all the floating species concentration
  \param copasi_model model
  \param sb_matric Vector of floating species concentrations
  \ingroup boundary
@@ -294,7 +294,7 @@ COPASIAPIEXPORT double * getFloatingSpeciesConcentrations (copasi_model model);
 
 
 /*! 
- \brief sGet the initial floating species concentrations  - CURRENTLY NOT IMPLEMENTED
+ \brief Get the initial floating species concentrations
  \param copasi_model model
  \return double * vector of initial floating species concentrations
  \ingroup floating
@@ -303,7 +303,7 @@ COPASIAPIEXPORT double* getFloatingSpeciesIntitialConcentrations (copasi_model m
 
 
 /*! 
- \brief Set the initial floating species concentrations  - CURRENTLY NOT IMPLEMENTED
+ \brief Set the initial floating species concentrations 
  \param copasi_model model
  \param tc_matrix Vector of initial floating species concentrations
  \ingroup floating
@@ -311,7 +311,7 @@ COPASIAPIEXPORT double* getFloatingSpeciesIntitialConcentrations (copasi_model m
 COPASIAPIEXPORT void setFloatingSpeciesIntitialConcentrations (copasi_model model, double *);
 
 /*! 
- \brief Set the initial floating species concentration of the ith species  - CURRENTLY NOT IMPLEMENTED
+ \brief Set the initial floating species concentration of the ith species 
  \param copasi_model model
  \param double value value to set the ith initial floating species concentration
  \ingroup floating
@@ -356,10 +356,10 @@ COPASIAPIEXPORT void setGlobalParameterByIndex (copasi_model, int, double);
 /*! 
  \brief set the vector of global parameters
  \param copasi_model model 
- \paramn tc_matrix a vector containing names and values for the global parameters. names must be present
+ \paramn double* a vector containing values for the global parameters in same order as names
  \ingroup parameter
 */
-COPASIAPIEXPORT void setGlobalParameterValues (copasi_model, tc_matrix gp);
+COPASIAPIEXPORT void setGlobalParameterValues (copasi_model, double*);
 
 // -----------------------------------------------------------------------
 /** \} */
