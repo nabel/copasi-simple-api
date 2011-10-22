@@ -119,6 +119,8 @@ ADD_LIBRARY( copasi
 ADD_LIBRARY( copasiSBW  #just a variant of the copasi API
   SHARED
   copasiSBWApi.cpp
+  ${copasi_SRC_FILES}
+  ${EXPAT_SRC_FILES}
 )
 
 #---------------------------------------------------------------------
@@ -152,16 +154,15 @@ TARGET_LINK_LIBRARIES( copasi
 
 TARGET_LINK_LIBRARIES( copasiSBW
   copasiSBW
-  copasi
-)
-
-#----------------------------------
-#  INSTALL libcopasi in . (CPack)
-#----------------------------------
-
-INSTALL(TARGETS copasi
-	RUNTIME DESTINATION bin/../
-	LIBRARY DESTINATION bin/../
-	ARCHIVE DESTINATION bin/../
+  sbml
+  raptor
+  lapack
+  blas
+  f2c
+  antimony
+  galib
+  structural
+  muparser
+  ${boost_library_name}
 )
 
