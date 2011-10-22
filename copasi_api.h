@@ -179,6 +179,15 @@ COPASIAPIEXPORT void cRemoveModel(copasi_model);
 /** \{ */
 
 /*! 
+ \brief Set the expected version and level of SBML files and strings; default is 2.4
+ \param int level
+ \param in version
+ \ingroup loadsave
+*/
+COPASIAPIEXPORT void cSetSBMLLevelAndVersion(int level, int version);
+
+
+/*! 
  \brief Create a model from an Antimony, see antimony.sf.net for details of Antimony syntax
  \param char* file name
  \return copasi_model Copasi model of the Antimony file
@@ -671,7 +680,15 @@ COPASIAPIEXPORT int cSetValue(copasi_model, const char * name, double value);
 COPASIAPIEXPORT int cSetGlobalParameter(copasi_model model, const char * name, double value);
 
 /*! 
- \brief Get the list of global parameter names
+ \brief Get the number of of global parameter names
+ \param copasi_model model 
+ \return int
+ \ingroup parameter
+*/
+COPASIAPIEXPORT int cGetNumberOfGlobalParameters (copasi_model);
+
+/*! 
+ \brief Get the list of global parameter names and values
  \param copasi_model model 
  \return tc_matrix column vector with parameter names are the row names
  \ingroup parameter
@@ -684,7 +701,7 @@ COPASIAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model);
  \paramn tc_matrix column vector containing the values for the global parameters.
  \ingroup parameter
 */
-COPASIAPIEXPORT void cSetGlobalParameterValues (copasi_model, tc_matrix gp);
+COPASIAPIEXPORT void cSetGlobalParameterValues(copasi_model, tc_matrix gp);
 
 /*! 
  \brief Set values for species, parameters, or compartments
@@ -692,7 +709,7 @@ COPASIAPIEXPORT void cSetGlobalParameterValues (copasi_model, tc_matrix gp);
  \param tc_matrix column vector with names and values of species or parameters or compartments
  \ingroup floating
 */
-COPASIAPIEXPORT void cSetValues (copasi_model model, tc_matrix );
+COPASIAPIEXPORT void cSetValues(copasi_model model, tc_matrix );
 
 
 // -----------------------------------------------------------------------
@@ -709,6 +726,15 @@ COPASIAPIEXPORT void cSetValues (copasi_model model, tc_matrix );
  \ingroup rateOfChange
 */
 COPASIAPIEXPORT tc_matrix cGetRatesOfChange(copasi_model);
+
+/*! 
+ \brief Compute the rates of change for all species after updating species concentrations
+ \param copasi_model model
+ \param tc_matrix new species concentrations
+ \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \ingroup rateOfChange
+*/
+COPASIAPIEXPORT tc_matrix cGetRatesOfChangeEx(copasi_model, tc_matrix);
 
 /*! 
  \brief Simulate using LSODA numerical integrator

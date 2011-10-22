@@ -15,6 +15,7 @@ int main()
 	printf("creating model...\n");
 	m = model1();
 
+	cSetSBMLLevelAndVersion(2,3);
     cWriteSBMLFile (m, "model1.xml");
     //m = cReadSBMLFile("feedback.xml");
     
