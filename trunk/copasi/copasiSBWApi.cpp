@@ -52,6 +52,20 @@ double* returnValuesOnly(tc_matrix m)
 	return values;
 }
 
+
+/*! 
+ \brief Read a model from an SBML file
+ \param char* file name
+ \return copasi_model Copasi model of the SBML file
+ \ingroup loadsave
+*/
+copasi_model readSBMLFile(const char * filename)
+{
+	return cReadSBMLFile (filename);
+}
+
+
+
 /*! 
  \brief sGet the number of reactions in the model
  \param copasi_model model

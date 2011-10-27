@@ -126,6 +126,22 @@ BEGIN_C_DECLS
 // -----------------------------------------------------------------------
 /** \} */
 /**
+  * @name Read SBML group
+  */
+/** \{ */
+
+/*! 
+ \brief Read a model from an SBML file
+ \param char* file name
+ \return copasi_model Copasi model of the SBML file
+ \ingroup loadsave
+*/
+COPASIAPIEXPORT copasi_model readSBMLFile(const char * filename);
+
+
+// -----------------------------------------------------------------------
+/** \} */
+/**
   * @name SBW Reaction group
   */
 /** \{ */

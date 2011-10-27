@@ -13,12 +13,12 @@ int main()
 	//m = model1();
   
     printf ("Read Model1\n");  
-    m = sReadSBMLFile("feedback.xml");
+    m = readSBMLFile("feedback.xml");
 	if (m.CopasiModelPtr == NULL) {
         printf ("m error = %s\n", m.errorMessage); 
         printf ("m warning = %s\n", m.warningMessage); 
         getchar();
-        exit;
+        exit (0);
     }
     //sWriteSBMLFile (m, "model1.xml");
    
