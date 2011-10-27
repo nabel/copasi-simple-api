@@ -1315,7 +1315,7 @@ tc_matrix simulate(copasi_model model, double startTime, double endTime, int num
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
 	
 	if (startTime >= endTime)
@@ -1331,6 +1331,7 @@ tc_matrix simulate(copasi_model model, double startTime, double endTime, int num
 		pProblem->setDuration(endTime-startTime);
 		pDataModel->getModel()->setInitialTime(startTime);
 		pProblem->setTimeSeriesRequested(true);
+		//pTask->setUpdateModel(true);
 		try
 		{
 			pTask->initialize(CCopasiTask::ONLY_TIME_SERIES, pDataModel, NULL);
