@@ -10,10 +10,10 @@ int main()
 	copasi_model m;
 	
 	printf("creating model...\n");
-	m = model1();
+	//m = model1();
   
     printf ("Read Model1\n");  
-    //m = sReadSBMLFile("feedback.xml");
+    m = sReadSBMLFile("feedback.xml");
 	if (m.CopasiModelPtr == NULL) {
         printf ("m error = %s\n", m.errorMessage); 
         printf ("m warning = %s\n", m.warningMessage); 
@@ -81,6 +81,8 @@ int main()
 	//cleanup	
 	cRemoveModel(m);
 	copasi_end();
+	printf ("Hit the return key to continue\n");
+	getchar();
 	return 0;
 }
 
