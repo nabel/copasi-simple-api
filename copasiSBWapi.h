@@ -489,6 +489,14 @@ COPASIAPIEXPORT double* getRatesOfChangeEx(copasi_model model, double* sp);
 */
 COPASIAPIEXPORT tc_matrix simulate(copasi_model model, double timeStart, double timeEnd, int numOfPoints);
 
+/*! 
+ \brief Simulate the differential equation model over one time step
+ \param copasi_model model
+ \param double time step
+ \return double new time, i.e (current time + timeStep)
+ \ingroup simulation
+*/
+COPASIAPIEXPORT double oneStep(copasi_model model, double timeStep);
 
 END_C_DECLS
 #endif

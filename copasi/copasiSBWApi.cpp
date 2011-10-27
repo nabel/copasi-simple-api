@@ -677,3 +677,15 @@ tc_matrix simulate(copasi_model model, double timeStart, double timeEnd, int num
 }
 
 
+/*! 
+ \brief Simulate the differential equation model over one time step
+ \param copasi_model model
+ \param double time step
+ \return double new time, i.e (current time + timeStep)
+ \ingroup simulation
+*/
+double oneStep(copasi_model model, double timeStep)
+{
+   return cOneStep (model, timeStep);
+}
+
