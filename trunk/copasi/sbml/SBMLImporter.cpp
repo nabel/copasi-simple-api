@@ -5087,6 +5087,8 @@ bool SBMLImporter::removeUnusedFunctions(CFunctionDB* pTmpFunctionDB, std::map<C
       unsigned C_INT32 step, totalSteps, hStep;
       unsigned C_INT32 i, iMax = this->mpCopasiModel->getReactions().size();
 
+	  step = 0;
+
       if (mpImportHandler)
         {
           step = 0;
