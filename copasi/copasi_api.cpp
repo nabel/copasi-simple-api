@@ -83,11 +83,11 @@ using namespace std;
 
 //using macro instead of this variable (as in original copasi code) causes some issues in visual studio
 unsigned C_INT32 C_INVALID_INDEX = std::numeric_limits< unsigned C_INT32 >::max();
-#ifdef _WIN32
+//#ifdef _WIN32
     static double NaN = std::numeric_limits<double>::quiet_NaN(); 
-#else
-	static double NaN = 0.0/0.0;
-#endif
+//#else
+	//static double NaN = 0.0/0.0;
+//#endif
 
 //this "wrapper" struct is used to store pointer to 
 //either a compartment, species, reaction, or parameter
@@ -3631,10 +3631,25 @@ tc_matrix cGetRatesOfChange(copasi_model model)
 		if (species[i] && species[i]->getCompartment())
 		{
 			tc_setColumnName(res, i, species[i]->getObjectName().c_str());
+			species[i]->refreshRate();
+			tc_setMatrixValue(res, 0, i, species[i]->getRate());
 		}
-	
-	pModel->calculateDerivatives(res.values);
 	return res;
+}
+
+double cGetRateOfChange(copasi_model model, const char * name)
+{
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	CCMap * hash = (CCMap*)(model.qHash);
+	string s(name);
+	
+	if (!pModel || !contains(hash, s)) return 0.0;
+	CopasiPtr & p = getHashValue(hash, s);
+
+	if (!p.species || !p.species->getCompartment()) return 0.0;
+
+	p.species->refreshRate();
+	return p.species->getRate();
 }
 
 double cGetFlux(copasi_model model, const char * name)

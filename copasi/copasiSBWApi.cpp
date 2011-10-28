@@ -624,10 +624,18 @@ double* getRatesOfChange(copasi_model model)
 */
 double getRateOfChange(copasi_model model, int index)
 {
-	tc_matrix m = cGetRatesOfChange(model);
-	double v = tc_getMatrixValue(m, 0, index);
-	tc_deleteMatrix(m);
-	return v;
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	
+	if (!pModel)
+		return 0.0;
+
+	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
+
+	if (species.size() <= index)
+		return 0.0;
+
+	species[index]->refreshRate();
+	return species[index]->getRate();
 }
 
 /*! 
