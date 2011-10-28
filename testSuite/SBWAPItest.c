@@ -6,13 +6,16 @@ copasi_model model1(); //oscillation
 
 int main()
 {
+	int i;
+	int nSpecies, nReactions;
 	tc_matrix results;
+	double *data;
 	copasi_model m;
 	
 	printf("creating model...\n");
 	//m = model1();
   
-    printf ("Read Model1\n");  
+    printf ("Read Model\n");  
     m = readSBMLFile("feedback.xml");
 	if (m.CopasiModelPtr == NULL) {
         printf ("m error = %s\n", m.errorMessage); 
@@ -21,7 +24,8 @@ int main()
         exit (0);
     }
     //sWriteSBMLFile (m, "model1.xml");
-   
+	nSpecies = getNumberFloatingSpecies (m);
+
 	printf("simulating...\n");	
 	results = simulate(m, 0, 20, 100);  // model, start, end, num. points
 
@@ -29,17 +33,21 @@ int main()
 	tc_printMatrixToFile("resultSBW.tab", results);
 	tc_deleteMatrix(results);
 
-	results = cGetReactionRates(m);
-
 	printf("fluxes:\n");
-	tc_printOutMatrix(results);
-	tc_deleteMatrix(results);
+	nReactions = getNumberOfReactions (m);
+	data = getReactionRates(m);
+    for (i=0; i<nReactions; i++)
+ 		printf ("%f ", data[i]);
+    printf ("\n");
+	free (data);
 
-	results = cGetRatesOfChange(m);
+	data = getRatesOfChange(m);
 
-	printf("\n\nderivatives:\n");
-	tc_printOutMatrix(results);
-	tc_deleteMatrix(results);
+    printf("\n\nderivatives:\n");
+    for (i=0; i<nSpecies; i++)
+ 		printf ("%f ", data[i]);
+    printf ("\n");
+	free (data);
 	
 	
 	//printf("%s\n",m1.errorMessage);
