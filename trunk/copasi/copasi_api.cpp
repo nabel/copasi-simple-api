@@ -242,7 +242,7 @@ void populate_hash(copasi_model model)
 				0,
 				0,
 				"",
-				true};
+				false};
 
 			hashInsert(hash,   compartments[i]->getObjectName(),		copasiPtr );
 		}
@@ -258,7 +258,7 @@ void populate_hash(copasi_model model)
 				0,
 				0,
 				"",
-				true};
+				false};
 
 			hashInsert(hash,  species[i]->getObjectName(),	  copasiPtr );
 
@@ -278,7 +278,7 @@ void populate_hash(copasi_model model)
 				reacs[i],
 				0,
 				"",
-				true};
+				false};
 
 			hashInsert(hash,   reacs[i]->getObjectName(),		copasiPtr );
 		}
@@ -294,7 +294,7 @@ void populate_hash(copasi_model model)
 				0,
 				params[i],
 				"",
-				true};
+				false};
 
 			hashInsert(hash,   params[i]->getObjectName(),	 copasiPtr );
 		}
