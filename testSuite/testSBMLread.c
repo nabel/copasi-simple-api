@@ -7,14 +7,15 @@ int main(int narg, char** argv)
 	tc_matrix results;
 	copasi_model m;
 	
-	if (narg < 1)
+	if (narg < 2)
 	{
-		printf("Please specify the SBML file in the command line argument");
+		printf("Please specify the SBML file\n");
 		return 0;
 	}
 
 	//cSetSBMLLevelAndVersion(2,3);
 	m = cReadSBMLFile(argv[1]);
+	cCompileModel(m);
 
 	if (m.errorMessage != NULL) 
 	{

@@ -1292,6 +1292,16 @@ void cCompileModel(copasi_model model)
 	}
 }
 
+void cResetState(copasi_model model)
+{
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
+
+	if (!pModel || !pDataModel) return;
+
+	pModel->setState( pModel->getInitialState() );
+}
+
 tc_matrix simulate(copasi_model model, double startTime, double endTime, int numSteps, CCopasiMethod::SubType method)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
@@ -1331,7 +1341,7 @@ tc_matrix simulate(copasi_model model, double startTime, double endTime, int num
 		pProblem->setDuration(endTime-startTime);
 		pDataModel->getModel()->setInitialTime(startTime);
 		pProblem->setTimeSeriesRequested(true);
-		//pTask->setUpdateModel(true);
+		pTask->setUpdateModel(true);
 		try
 		{
 			pTask->initialize(CCopasiTask::ONLY_TIME_SERIES, pDataModel, NULL);
