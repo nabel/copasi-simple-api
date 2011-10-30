@@ -803,13 +803,6 @@ COPASIAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, 
 */
 COPASIAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, double endTime, int numSteps);
 
-/*! 
- \brief Reset the current state to the initial state
- \param copasi_model model
- \ingroup simulation
-*/
-COPASIAPIEXPORT void cResetState(copasi_model model);
-
 
 // -----------------------------------------------------------------------
 /** \} */

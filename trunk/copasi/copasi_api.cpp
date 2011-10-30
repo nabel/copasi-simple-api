@@ -1292,16 +1292,6 @@ void cCompileModel(copasi_model model)
 	}
 }
 
-void cResetState(copasi_model model)
-{
-	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-
-	if (!pModel || !pDataModel) return;
-
-	pModel->setState( pModel->getInitialState() );
-}
-
 tc_matrix simulate(copasi_model model, double startTime, double endTime, int numSteps, CCopasiMethod::SubType method)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
@@ -1341,7 +1331,7 @@ tc_matrix simulate(copasi_model model, double startTime, double endTime, int num
 		pProblem->setDuration(endTime-startTime);
 		pDataModel->getModel()->setInitialTime(startTime);
 		pProblem->setTimeSeriesRequested(true);
-		pTask->setUpdateModel(true);
+		//pTask->setUpdateModel(true);
 		try
 		{
 			pTask->initialize(CCopasiTask::ONLY_TIME_SERIES, pDataModel, NULL);
@@ -1625,6 +1615,8 @@ tc_matrix cGetSteadyStateUsingSimulation(copasi_model model, int maxiter)
 		TaskList.add(pTask, true);
 	}
 
+	CState state = pModel->getState();
+
 	if (pTask)
 		pTask->setUpdateModel(true);
 
@@ -1691,6 +1683,7 @@ tc_matrix cGetSteadyStateUsingSimulation(copasi_model model, int maxiter)
             		tc_setRowName( output, i, (*it).c_str() );
                     tc_setMatrixValue( output, k, 0, timeSeries.getConcentrationData(j,i+1) );
                 }
+				pModel->setInitialState(state);
                 return output;
             }
         }
@@ -1724,6 +1717,7 @@ tc_matrix cGetSteadyState(copasi_model model)
 	}
 	
 	CCopasiMessage::clearDeque();
+	CState state = pModel->getState();
 	
 	if (pTrajTask && pTrajTask->setMethodType(CCopasiMethod::deterministic))
 	{
@@ -1735,6 +1729,7 @@ tc_matrix cGetSteadyState(copasi_model model)
 		pProblem->setDuration(100.0);
 		pDataModel->getModel()->setInitialTime(0.0);
 		pProblem->setTimeSeriesRequested(true);
+		pTrajTask->setUpdateModel(true);
 		try
 		{
 			pTrajTask->initialize(CCopasiTask::ONLY_TIME_SERIES, pDataModel, NULL);
@@ -1772,7 +1767,10 @@ tc_matrix cGetSteadyState(copasi_model model)
 
 	CCopasiMessage::clearDeque();
 	
-	return cGetFloatingSpeciesConcentrations(model);
+	tc_matrix m = cGetFloatingSpeciesConcentrations(model);
+	pModel->setInitialState(state);
+	
+	return m;
 }
 
 tc_matrix cGetEigenvalues(copasi_model model)
