@@ -50,15 +50,6 @@ typedef struct
 	char ** strings;
 } tc_strings;
 
-
-/*!\brief An array of int objects with length information. Use tc_getItem(M,i) to get the i-th item.*/
-typedef struct
-{
-	int length;
-	long* items;
-} tc_items;
-
-
 /*!\brief A 2D table of doubles with row and column names. 
 Use tc_getMatrixValue(M,i,j) to get the i,j-th value in tc_matrix M
 
@@ -73,16 +64,6 @@ typedef struct
 } tc_matrix;
 
 
-/*!\brief A 2D table of strings with row and column names. Use tc_getTableValue(M,i,j) to get the i,j-th value in tc_matrix M.*/
-typedef struct
-{
-	int rows, cols;
-	char ** strings;
-	tc_strings rownames;  /*!< Pointer to list of column labels */
-	tc_strings colnames;  /*!< Pointer to list of column labels */
-} tc_table;
-
-
 /*!\brief Create a matrix with the given number of rows and columns
  \param int number of rows
  \param int number of columns
@@ -92,29 +73,12 @@ typedef struct
 TCAPIEXPORT tc_matrix tc_createMatrix(int rows, int cols);
 
 
-/*!\brief Create a strings table with the given number of rows and columns
- \param int number of rows
- \param int number of columns
- \return tc_table
- \ingroup Basic
-*/
-TCAPIEXPORT tc_table tc_createTable(int rows, int cols);
-
-
 /*!\brief Create an array of strings
  \param int length
  \return tc_strings
  \ingroup Basic
 */
 TCAPIEXPORT tc_strings tc_createStringsArray(int len);
-
-
-/*!\brief Create an array of items
- \param int number of items
- \return tc_items
- \ingroup Basic
-*/
-TCAPIEXPORT tc_items tc_createItemsArray(int len);
 
 
 /*!\brief Get i,jth value from a tc_matrix
@@ -175,27 +139,6 @@ TCAPIEXPORT const char * tc_getColumnName(tc_matrix M, int j);
 */
 TCAPIEXPORT void tc_setColumnName(tc_matrix M, int j, const char * s);
 
-
-/*!\brief Get i,j-th string in a table
- \param tc_table table
- \param int row
- \param int column
- \return string value at row,column
- \ingroup Basic
-*/
-TCAPIEXPORT const char* tc_getTableValue(tc_table S, int i, int j);
-
-
-/*!\brief Set i,jth string in a table
- \param tc_table table
- \param int row
- \param int column
- \param string value at row,column
- \ingroup Basic
-*/
-TCAPIEXPORT void tc_setTableValue(tc_table S, int i, int j, const char * s);
-
-
 /*!\brief Get ith string in array of strings
  \param tc_strings array
  \param int index
@@ -212,25 +155,6 @@ TCAPIEXPORT const char* tc_getString(tc_strings S, int i);
  \ingroup Basic
 */
 TCAPIEXPORT void tc_setString(tc_strings S, int i, const char * c);
-
-
-/*!\brief Get ith long item in array of items
-\param tc_items array
- \param int index
- \return long value
- \ingroup Basic
-*/
-TCAPIEXPORT long tc_getItem(tc_items A, int i);
-
-
-/*!\brief Set ith long item in array of items
- \param tc_items array
- \param int index
- \param long value
- \ingroup Basic
-*/
-TCAPIEXPORT void tc_setItem(tc_items A, int i, long o);
-
 
 /*!\brief Get the index of a string in the array
  \param tc_strings array
@@ -264,20 +188,6 @@ TCAPIEXPORT int tc_getColumnIndex(tc_matrix, const char * s);
  \ingroup Basic
 */
 TCAPIEXPORT void tc_deleteMatrix(tc_matrix M);
-
-
-/*!\brief Delete a strings table
- \param &tc_table pointer to table
- \ingroup Basic
-*/
-TCAPIEXPORT void tc_deleteTable(tc_table M);
-
-
-/*!\brief Delete an array of items
- \param &tc_items pointer to array
- \ingroup Basic
-*/
-TCAPIEXPORT void tc_deleteItemsArray(tc_items A);
 
 
 /*!\brief Delete an array of strings
@@ -320,20 +230,6 @@ TCAPIEXPORT void tc_printMatrixToFile(const char* file, tc_matrix M);
 */
 TCAPIEXPORT void tc_printOutMatrix(tc_matrix M);
 
-
-/*!\brief Print a table to file
- \param char* file name
- \param tc_table
- \ingroup Basic
-*/
-TCAPIEXPORT void tc_printTableToFile(const char* file, tc_table M);
-
-
-/*!\brief Print a table to stdout
- \param tc_table
- \ingroup Basic
-*/
-TCAPIEXPORT void tc_printOutTable(tc_table M);
 
 END_C_DECLS
 #endif

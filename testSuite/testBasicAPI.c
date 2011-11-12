@@ -1,121 +1,93 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "copasiSBWapi.h"
+#include "copasi_api.h"
 
 copasi_model model1(); //oscillation
+copasi_model model2(); //positive feebdack gene regulation
+copasi_model model3();
+void eigen(copasi_model, const char*); //compute eigenvalues by changing parameters (similar to root-locus)
 
 int main()
 {
-	int i;
-	int nSpecies, nReactions;
-	tc_matrix results;
-	double *data;
+	tc_matrix results, results2;
 	copasi_model m;
 	
 	printf("creating model...\n");
-	//m = model1();
-  
-    printf ("Read Model\n");  
-    m = readSBMLFile("feedback.xml");
-	if (m.CopasiModelPtr == NULL) {
-        printf ("m error = %s\n", m.errorMessage); 
-        printf ("m warning = %s\n", m.warningMessage); 
-        getchar();
-        exit (0);
-    }
-    //sWriteSBMLFile (m, "model1.xml");
-	nSpecies = getNumberFloatingSpecies (m);
+	m = model1();
 
+    cWriteSBMLFile (m, "model1.xml");
+    
+	if (m.errorMessage != NULL) {
+		printf ("Errors while reading model:\n");
+		printf ("%s\n", m.errorMessage);
+		getchar();
+		return;
+	}
+	
+	cWriteAntimonyFile (m, "antimony.txt");
+	printf ("Antimony script written to antimony.txt\n");
+
+	//simulate
 	printf("simulating...\n");	
-	results = simulate(m, 0, 20, 100);  // model, start, end, num. points
+	results = cSimulateDeterministic(m, 0, 20, 100);  //model, start, end, num. points
 
-	printf("results.tab has simulation data\n\n");
-	tc_printMatrixToFile("resultSBW.tab", results);
-	tc_deleteMatrix(results);
-
-	printf("fluxes:\n");
-	nReactions = getNumberOfReactions (m);
-	data = getReactionRates(m);
-    for (i=0; i<nReactions; i++)
- 		printf ("%f ", data[i]);
-    printf ("\n");
-	free (data);
-
-	data = getRatesOfChange(m);
-
-    printf("\n\nderivatives:\n");
-    for (i=0; i<nSpecies; i++)
- 		printf ("%f ", data[i]);
-    printf ("\n");
-	free (data);
+	//print results to file
+	printf("results.tab has simulation data\n");
+	tc_printMatrixToFile("results.tab", results);
 	
+	/** perform additional calculations from the simulated data **/
 	
-	//printf("%s\n",m1.errorMessage);
-	/*
-	//the optmization code below works but 
-	//has been tested only a couple of times
+	//get derivative from the simulated results
+	results2 = cGetDerivativesFromTimeCourse(m,results);
+	printf("derivatives.tab has derivatives computed from the simulation data\n");
+	tc_printMatrixToFile("derivatives.tab", results2); //print to file
+	tc_deleteMatrix(results2); //delete matrix
 
-	//setup for optimization using GA
-	params = tc_createMatrix(3,3);
-	tc_setRowName(params,0,"k1");
-	tc_setRowName(params,1,"k2");
-	tc_setRowName(params,2,"k3");
+	//get reaction rates from the simulated results
+	results2 = cGetReactionRatesFromTimeCourse(m,results);
+	printf("rates.tab has reaction rates computed from the simulation data\n");
+	tc_printMatrixToFile("rates.tab", results2); //print to file
+	tc_deleteMatrix(results2);  //delete matrix
 
-	//intial values
-	tc_setMatrixValue(params, 0, 0, 1);
-	tc_setMatrixValue(params, 0, 1, 0.0);
-	tc_setMatrixValue(params, 0, 2, 5.0);
+	//get control coeff. from the simulated results
+	results2 = cGetCCFromTimeCourse(m,results);
+	printf("controlcoeffs.tab has control coefficients computed from the simulation data\n");
+	tc_printMatrixToFile("controlcoeffs.tab", results2); //print to file
+	tc_deleteMatrix(results2); //delete matrix
 
- 	//min values
-	tc_setMatrixValue(params, 1, 0, 1);
-	tc_setMatrixValue(params, 1, 1, 0.0);
-	tc_setMatrixValue(params, 1, 2, 5.0);
-
-	//max values
-	tc_setMatrixValue(params, 2, 0, 1);
-	tc_setMatrixValue(params, 2, 1, 0.0);
-	tc_setMatrixValue(params, 2, 2, 5.0);
+	//get elasticities for reaction rates from the simulated results
+	results2 = cGetElasticitiesFromTimeCourse(m,results);
+	printf("elasticities.tab has elasticities computed from the simulation data\n");
+	tc_printMatrixToFile("elasticities.tab", results2); //print to file
+	tc_deleteMatrix(results2); //delete matrix
 	
-	cSetValue(m1,"k1",2.0);
-	cSetValue(m1,"k2",1.0);
-	cSetValue(m1,"k3",1.0);
-	
-	cSetOptimizerIterations(10);  //set num interations
-	results = cOptimize(m1, "output.tab", params); //optimize
-	tc_printMatrixToFile("params.out", results);  //optimized parameters
-	tc_deleteMatrix(results);
-	*/
-
-	//cleanup	
+	/**  cleanup  **/
+	tc_deleteMatrix(results); //delete simulation results
 	cRemoveModel(m);
 	copasi_end();
-	printf ("Hit the return key to continue\n");
+	printf ("\nHit the return key to continue\n");
 	getchar();
 	return 0;
 }
 
 copasi_model model1() //oscillator
 {
-    //model named M
+	//model named M
 	copasi_model model = cCreateModel("M");
 	copasi_reaction R1, R2, R3;
 	copasi_compartment cell;
 	
-    printf ("sCreateCompartment\n");  
 	//species
 	cell = cCreateCompartment(model, "cell", 1.0);
 	cCreateSpecies(cell, "A", 4);
 	cCreateSpecies(cell, "B", 3);
 	cCreateSpecies(cell, "C", 2);
 	
-    printf ("sCreateParmaeters\n");  
 	//parameters
-	cSetValue(model, "k1", 0.2);   // k1
-    cSetValue(model, "k2", 0.5);   // k2
-	cSetValue(model, "k3", 1);     // k3
+	cSetValue(model, "k1", 0.2);   //k1
+	cSetValue(model, "k2", 0.5);   //k2
+	cSetValue(model, "k3", 1);   //k3
 	
-    printf ("sCreateReaction 1\n");  
-
 	//reactions -- make sure all parameters or species are defined BEFORE this step
 	R1 = cCreateReaction(model, "R1");  // A+B -> 2B
 	cAddReactant(R1, "A", 1.0);
@@ -123,23 +95,17 @@ copasi_model model1() //oscillator
 	cAddProduct(R1, "B", 2.0);
 	cSetReactionRate(R1, "k1*A*B");
 
-    printf ("sCreateReaction 2\n");  
-
 	R2 = cCreateReaction(model, "R2");  //B+C -> 2C
 	cAddReactant(R2, "B", 1.0);
 	cAddReactant(R2, "C", 1.0);
 	cAddProduct(R2, "C", 2.0);
 	cSetReactionRate(R2, "k2*B*C");
 
-    printf ("sCreateReaction 3\n");  
-
 	R3 = cCreateReaction(model, "R3"); //C+A -> 2A
 	cAddReactant(R3, "C", 1.0);
 	cAddReactant(R3, "A", 1.0);
 	cAddProduct(R3, "A", 2.0);
 	cSetReactionRate(R3, "k3*C*A");
-
-     printf ("sCreateEvent\n");  
 
 	cCreateEvent(model, "event1", "time > 10", "k3", "k3/2.0");
 
@@ -148,7 +114,7 @@ copasi_model model1() //oscillator
 	return model;
 }
 
-/*copasi_model model2() //gene regulation
+copasi_model model2() //gene regulation
 {
 	//model named M
 	copasi_model model = cCreateModel("M");
@@ -191,12 +157,13 @@ copasi_model model1() //oscillator
 // eigenvalues
 void eigen(copasi_model model, const char* param)
 {
-	int i, j,k;
+	int i, j, k;
 	double p;
 	FILE * outfile;
 	tc_matrix ss;
 	tc_matrix output;
 	
+	i = 0; j = 0; k = 0;
 	//steady states
 	
 	for (i=0; i < 100; ++i)
@@ -282,7 +249,7 @@ copasi_model model3() //big genetic model
 	cSetReactionRate(r3,"OUTPUT_degradation_rate*OUTPUT");
 	cAddReactant(r3,"OUTPUT",1);
 	return model;
-}*/
+}
 
 
 
