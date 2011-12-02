@@ -93,3 +93,5 @@ OPTION( TEST_COPASI_API "test copasi api" ON )
 IF (TEST_COPASI_API)
 	ADD_SUBDIRECTORY( testSuite )     #linear algebra
 ENDIF(TEST_COPASI_API)
+
+ADD_SUBDIRECTORY(python)  #python wrapper
