@@ -606,7 +606,7 @@ void cSetVolume(copasi_model model, const char * name, double vol)
 	}
 }
 
-void cSetConcentration(copasi_model model, const char * name, double conc)
+void cSetSpeciesConcentration(copasi_model model, const char * name, double conc)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
@@ -636,7 +636,7 @@ void cSetInitialConcentration(copasi_model model, const char * name, double conc
 	}
 }
 
-void cSetAmount(copasi_model model, const char * name, double amnt)
+void cSetSpeciesAmount(copasi_model model, const char * name, double amnt)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
@@ -3797,6 +3797,16 @@ void cSetGlobalParameterValues (copasi_model model, tc_matrix gp)
 }
 
 void cSetCompartmentVolumes (copasi_model model, tc_matrix v)
+{
+	cSetValues(model, v);
+}
+
+void cSetSpeciesConcentrations (copasi_model model, tc_matrix v)
+{
+	cSetValues(model, v);
+}
+
+void cSetSpeciesAmounts (copasi_model model, tc_matrix v)
 {
 	cSetValues(model, v);
 }
