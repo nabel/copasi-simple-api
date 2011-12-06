@@ -68,7 +68,7 @@ ENDIF(APPLE)
 #  COPASI SOURCE FILES
 #------------------------------------------------------------------------------
 
-FILE( GLOB copasi_SRC_FILES
+FILE( GLOB COPASI_SRC_FILES
 	${CMAKE_CURRENT_SOURCE_DIR}/model/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/compareExpressions/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/CopasiDataModel/*.cpp
@@ -98,6 +98,9 @@ FILE( GLOB copasi_SRC_FILES
 	${CMAKE_CURRENT_SOURCE_DIR}/commandline/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/MIRIAM/*.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/MIRIAM/WebServicesIssues/*.cpp
+)
+
+FILE( GLOB COPASI_WRAPPER_SRC_FILES
 	${CMAKE_CURRENT_SOURCE_DIR}/copasi_api.cpp
 	${CMAKE_CURRENT_SOURCE_DIR}/../TC_structs.c
 	${CMAKE_CURRENT_SOURCE_DIR}/mtrand.c
@@ -106,20 +109,30 @@ FILE( GLOB copasi_SRC_FILES
 ADD_DEFINITIONS(-DHAVE_EXPAT_CONFIG_H)
 FILE( GLOB  EXPAT_SRC_FILES   ${CMAKE_CURRENT_SOURCE_DIR}/../expat/lib/*.c)
 
+#---------------------------------------------------------------------------------------
+#  These commands will display files in categories inside an IDE such as visual studio
+#---------------------------------------------------------------------------------------
+
+SOURCE_GROUP("COPASI Code" FILES ${COPASI_SRC_FILES})
+SOURCE_GROUP("C Wrapper Code" FILES ${COPASI_WRAPPER_SRC_FILES})
+SOURCE_GROUP("XML Parser" FILES ${EXPAT_SRC_FILES})
+
 #--------------------------------
 #  MAKE LIBRARY libcopasi
 #-------------------------------
 
 ADD_LIBRARY( copasi
   SHARED
-  ${copasi_SRC_FILES}
+  ${COPASI_SRC_FILES}
+  ${COPASI_WRAPPER_SRC_FILES}
   ${EXPAT_SRC_FILES}
 )
 
 ADD_LIBRARY( copasiSBW  #just a variant of the copasi API
   SHARED
   copasiSBWApi.cpp
-  ${copasi_SRC_FILES}
+  ${COPASI_SRC_FILES}
+  ${COPASI_WRAPPER_SRC_FILES}
   ${EXPAT_SRC_FILES}
 )
 

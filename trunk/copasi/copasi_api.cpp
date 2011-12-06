@@ -3897,6 +3897,9 @@ tc_matrix cGetXFromTimeCourse(copasi_model model, tc_matrix results, int type)
 			if (m.rows > 1)
 				colnames.push_back( rowname + string("_") + colname ); //
 			else
+			if (type == GET_DERIV)
+				colnames.push_back( colname + string("'") ); //same
+			else
 				colnames.push_back( colname); //same
 		}
 	}
@@ -3971,8 +3974,280 @@ tc_matrix cGetDerivativesFromTimeCourse(copasi_model model, tc_matrix results)
 }
 
 tc_matrix cFilterTimeCourseResults(copasi_model model, tc_matrix results, tc_strings names)
-{
-	
-	return results;
+{	
+	tc_matrix rates = cGetReactionRatesFromTimeCourse(model, results);
+	tc_matrix derivs = cGetDerivativesFromTimeCourse(model, results);
+	tc_matrix ccs = cGetCCFromTimeCourse(model, results);
+	tc_matrix elas = cGetCCFromTimeCourse(model, results);
+
+	int numcols = 0;
+	//these vectors will be used to identify which columns to include in the final output
+	vector<bool> resultCols, ratesCols, derivCols, ccCols, elasCols;
+	vector<string> snames;
+	snames.resize(names.length);
+	for (int i=0; i < names.length; ++i)
+		snames[i] = string( tc_getString(names, i) );  //convert C strings to std::string for comparison purpose
+
+	if (names.length == 0) //include everything
+	{
+		resultCols.resize(results.cols,true);
+		ratesCols.resize(rates.cols,true);
+		derivCols.resize(derivs.cols,true);
+		ccCols.resize(ccs.cols,true);
+		elasCols.resize(elas.cols,true);
+		numcols = results.cols + rates.cols + derivs.cols + ccs.cols + elas.cols;
+	}
+	else
+	{
+		numcols = 1; //independent variable (e.g time)
+		ratesCols.resize(rates.cols,false);
+		for (int i=0; i < rates.cols; ++i)
+			for (int j=0; j < names.length; ++j) //go through all the desired names
+				if (snames[j].compare( tc_getColumnName(rates, i) ) == 0) //names match?
+				{
+					ratesCols[i] = true;
+					++numcols;
+					break;
+				}
+
+		derivCols.resize(results.cols,false);
+		for (int i=0; i < derivs.cols; ++i)
+			for (int j=0; j < names.length; ++j) //go through all the desired names
+				if (snames[j].compare( tc_getColumnName(derivs, i) ) == 0) //names match?
+				{
+					derivCols[i] = true;
+					++numcols;
+					break;
+				}
+
+		ccCols.resize(results.cols,false);
+		for (int i=0; i < ccs.cols; ++i)
+			for (int j=0; j < names.length; ++j) //go through all the desired names
+				if (snames[j].compare( tc_getColumnName(ccs, i) ) == 0) //names match?
+				{
+					ccCols[i] = true;
+					++numcols;
+					break;
+				}
+
+		elasCols.resize(results.cols,false);
+		for (int i=0; i < elas.cols; ++i)
+			for (int j=0; j < names.length; ++j) //go through all the desired names
+				if (snames[j].compare( tc_getColumnName(elas, i) ) == 0) //names match?
+				{
+					elasCols[i] = true;
+					++numcols;
+					break;
+				}
+
+		resultCols.resize(results.cols,false);
+		if (results.cols > 0)
+			resultCols[0] = true;
+
+		for (int i=1; i < results.cols; ++i)
+			for (int j=0; j < names.length; ++j) //go through all the desired names
+				if (snames[j].compare( tc_getColumnName(results, i) ) == 0) //names match?
+				{
+					resultCols[i] = true;
+					++numcols;
+					break;
+				}
+	}
+
+	tc_matrix output = tc_createMatrix(results.rows, numcols);
+	numcols = 0;
+	for (int j=0; j < results.cols; ++j)
+		if (resultCols[j])
+		{
+			tc_setColumnName(output, numcols, tc_getColumnName(results, j));
+			for  (int i=0; i < output.rows; ++i)
+				tc_setMatrixValue(output, i, numcols, tc_getMatrixValue(results,i,j));
+			++numcols;
+		}
+
+	for (int j=0; j < rates.cols; ++j)
+		if (ratesCols[j])
+		{
+			tc_setColumnName(output, numcols, tc_getColumnName(rates, j));
+			for  (int i=0; i < output.rows; ++i)
+				tc_setMatrixValue(output, i, numcols, tc_getMatrixValue(rates,i,j));
+			++numcols;
+		}
+
+	for (int j=0; j < derivs.cols; ++j)
+		if (derivCols[j])
+		{
+			tc_setColumnName(output, numcols, tc_getColumnName(derivs, j));
+			for  (int i=0; i < output.rows; ++i)
+				tc_setMatrixValue(output, i, numcols, tc_getMatrixValue(derivs,i,j));
+			++numcols;
+		}
+
+	for (int j=0; j < ccs.cols; ++j)
+		if (ccCols[j])
+		{
+			tc_setColumnName(output, numcols, tc_getColumnName(ccs, j));
+			for  (int i=0; i < output.rows; ++i)
+				tc_setMatrixValue(output, i, numcols, tc_getMatrixValue(ccs,i,j));
+			++numcols;
+		}
+
+	for (int j=0; j < elas.cols; ++j)
+		if (elasCols[j])
+		{
+			tc_setColumnName(output, numcols, tc_getColumnName(elas, j));
+			for  (int i=0; i < output.rows; ++i)
+				tc_setMatrixValue(output, i, numcols, tc_getMatrixValue(elas,i,j));
+			++numcols;
+		}
+
+	return output;
 }
 
+tc_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int nsteps)
+{
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
+	CCMap * hash = (CCMap*)(model.qHash);
+
+	CReportDefinitionVector* pReports = pDataModel->getReportDefinitionList();
+	// create a new report definition object
+	CReportDefinition* pReport = pReports->createReportDefinition("Report", "Output for timecourse");
+	// set the task type for the report definition to timecourse
+	pReport->setTaskType(CCopasiTask::timeCourse);
+	// we don’t want a table
+	pReport->setIsTable(false);
+	//pReport->setIsTable(true);
+	// the entries in the output should be seperated by a ", "
+	//pReport->setSeparator(CCopasiReportSeparator("\t"));
+	// we need a handle to the header and the body
+	// the header will display the ids of the metabolites and "time" for
+	// the first column
+	// the body will contain the actual timecourse data
+	std::vector<CRegisteredObjectName>* pHeader = pReport->getHeaderAddr();
+	std::vector<CRegisteredObjectName>* pBody = pReport->getBodyAddr();
+	pBody->push_back(CCopasiObjectName(pDataModel->getModel()->getCN() + ",Reference=Time"));
+	pBody->push_back(CRegisteredObjectName(pReport->getSeparator().getCN()));
+	pHeader->push_back(CCopasiStaticString("time").getCN());
+	pHeader->push_back(pReport->getSeparator().getCN());
+	unsigned int i, iMax = pModel->getMetabolites().size();
+	for (i = 0;i < iMax;++i)
+	{
+		CMetab* pMetab = pModel->getMetabolites()[i];
+		// we don’t want output for FIXED metabolites right now
+		if (pMetab->getStatus() != CModelEntity::FIXED)
+		{
+			// we want the concentration oin the output
+			// alternatively, we could use "Reference=Amount" to get the
+			// particle number
+			pBody->push_back(pMetab->getObject(CCopasiObjectName("Reference=Concentration"))->getCN());
+			// after each entry, we need a seperator
+			pBody->push_back(pReport->getSeparator().getCN());
+			// add the corresponding id to the header
+			pHeader->push_back(CCopasiStaticString(pMetab->getSBMLId()).getCN());
+			// and a seperator
+			pHeader->push_back(pReport->getSeparator().getCN());
+		}
+	}
+	if (iMax > 0)
+	{
+		// delete the last separator
+		// since we don’t need one after the last element on each line
+		if ((*pBody->rbegin()) == pReport->getSeparator().getCN())
+		{
+			pBody->erase(--pBody->end());
+		}
+		if ((*pHeader->rbegin()) == pReport->getSeparator().getCN())
+		{
+			pHeader->erase(--pHeader->end());
+		}
+	}
+	// get the task list
+	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
+	// get the trajectory task object
+	CTrajectoryTask* pTrajectoryTask = dynamic_cast<CTrajectoryTask*>(TaskList["Time-Course"]);
+	// if there isn’t one
+	if (pTrajectoryTask == NULL)
+	{
+		// create a new one
+		pTrajectoryTask = new CTrajectoryTask();
+		// remove any existing trajectory task just to be sure since in
+		// theory only the cast might have failed above
+		TaskList.remove("Time-Course");
+		// add the new time course task to the task list
+		TaskList.add(pTrajectoryTask, true);
+	}
+	// run a stochastic time course
+	pTrajectoryTask->setMethodType(CCopasiMethod::stochastic);
+	// pass a pointer of the model to the problem
+	pTrajectoryTask->getProblem()->setModel(pDataModel->getModel());
+	// we don’t want the trajectory task to run by itself, but we want to
+	// run it from a scan, so we deactivate the standalone trajectory task
+	pTrajectoryTask->setScheduled(false);
+	// get the problem for the task to set some parameters
+	CTrajectoryProblem* pProblem = dynamic_cast<CTrajectoryProblem*>(pTrajectoryTask->getProblem());
+	// simulate 100 steps
+	pProblem->setStepNumber(nstep);
+	// start at time 0
+	pDataModel->getModel()->setInitialTime(0.0);
+	// simulate a duration of 10 time units
+	pProblem->setDuration(10);
+	// tell the problem to actually generate time series data
+	pProblem->setTimeSeriesRequested(true);
+	// now we set up the scan
+	CScanTask* pScanTask = dynamic_cast<CScanTask*>(TaskList["Scan"]);
+	if (pScanTask == NULL)
+	{
+		// create a new scan task
+		pScanTask = new CScanTask();
+		// just to be on the save side, delete any existing scan task
+		TaskList.remove("Scan");
+		// add the new scan task
+		TaskList.add(pScanTask, true);
+	}
+	// get the problem
+	CScanProblem* pScanProblem = dynamic_cast<CScanProblem*>(pScanTask->getProblem());
+	assert(pScanProblem != NULL);
+	// set the model for the problem
+	pScanProblem->setModel(pDataModel->getModel());
+	// actiavate the task so that is is run
+	// if the model is saved and passed to CopasiSE
+	pScanTask->setScheduled(true);
+	// set the report for the task
+	pScanTask->getReport().setReportDefinition(pReport);
+	// set the output file for the report
+	pScanTask->getReport().setTarget("example4.txt");
+	// don’t append to an existing file, but overwrite
+	pScanTask->getReport().setAppend(false);
+	// tell the scan that we want to make a scan over a trajectory task
+	pScanProblem->setSubtask(CCopasiTask::timeCourse);
+	// we just want to run the timecourse task a number of times, so we
+	// create a repeat item with 100 repeats
+	pScanProblem->createScanItem(CScanProblem::SCAN_REPEAT, 100);
+	// we want the output from the trajectory task
+	pScanProblem->setOutputInSubtask(true);
+	// we don’t want to set the initial conditions of the model to the end
+	// state of the last run
+	pScanProblem->setAdjustInitialConditions(false);
+	try
+	{
+		// initialize the trajectory task
+		// we want complete output (HEADER, BODY and FOOTER)
+		pScanTask->initialize(CCopasiTask::OUTPUT_COMPLETE, pDataModel, NULL);
+		// now we run the actual trajectory
+		pScanTask->process(true);
+	}
+	catch (...)
+	{
+		std::cerr << "Error. Running the scan failed." << std::endl;
+		// check if there are additional error messages
+		if (CCopasiMessage::size() > 0)
+		{
+		// print the messages in chronological order
+		std::cerr << CCopasiMessage::getAllMessageText(true);
+		}
+		return;
+	}
+	// restore the state of the trajectory
+	pScanTask->restore();
+}

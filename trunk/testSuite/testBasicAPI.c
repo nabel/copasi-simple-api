@@ -60,6 +60,8 @@ int main()
 	printf("elasticities.tab has elasticities computed from the simulation data\n");
 	tc_printMatrixToFile("elasticities.tab", results2); //print to file
 	tc_deleteMatrix(results2); //delete matrix
+
+	cRepeatedStochasticSimulation(m);
 	
 	/**  cleanup  **/
 	tc_deleteMatrix(results); //delete simulation results
