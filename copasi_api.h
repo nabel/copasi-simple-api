@@ -1128,6 +1128,32 @@ COPASIAPIEXPORT void cDisableAssignmentRuleReordering();
 */
 COPASIAPIEXPORT void cEnableAssignmentRuleReordering();
 
+/*! 
+ \brief repeat deterministic simulation multiple times, where a paramater is incremented during each repeated iteration
+ \param const char * name of parameter to change
+ \param double start value for the parameter
+ \param double final value for the parameter
+ \param int number of steps in-between start and end
+ \param double start time for the simulation
+ \param double end time for the simulation
+ \param int number of steps in-between start and end
+ \return tc_matrix matrix with 
+ \ingroup optim
+*/
+COPASIAPIEXPORT tc_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int numTimeSteps);
+
+/*! 
+ \brief repeat steady state calculation multiple times, where a paramater is incremented during each repeated iteration
+ \param const char * name of parameter to change
+ \param double start value for the parameter
+ \param double final value for the parameter
+ \param int number of steps in-between start and end
+ \return tc_matrix first column will be the changed parameter values 
+              and the rest of the columns will contain the steady state values for that parameter value
+ \ingroup optim
+*/
+COPASIAPIEXPORT tc_matrix cSteadyStateParameterScan(copasi_model model, const char * param, double start, double end, int numsteps);
+
 END_C_DECLS
 #endif
 
