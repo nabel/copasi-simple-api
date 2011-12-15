@@ -95,3 +95,5 @@ IF (TEST_COPASI_API)
 ENDIF(TEST_COPASI_API)
 
 ADD_SUBDIRECTORY(python)  #python wrapper
+ADD_SUBDIRECTORY(octave)  #octave wrapper
+

@@ -4103,8 +4103,8 @@ tc_matrix cFilterTimeCourseResults(copasi_model model, tc_matrix results, tc_str
 
 	return output;
 }
-
-tc_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int nsteps)
+/*
+tc_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int nstep)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
@@ -4251,3 +4251,4 @@ tc_matrix cSimulationParameterScan(copasi_model model, const char * param, doubl
 	// restore the state of the trajectory
 	pScanTask->restore();
 }
+*/

@@ -121,7 +121,7 @@ SOURCE_GROUP("XML Parser" FILES ${EXPAT_SRC_FILES})
 #  MAKE LIBRARY libcopasi
 #-------------------------------
 
-ADD_LIBRARY( copasi
+ADD_LIBRARY( copasi_api
   SHARED
   ${COPASI_SRC_FILES}
   ${COPASI_WRAPPER_SRC_FILES}
@@ -151,8 +151,8 @@ ELSE (WIN32 AND NOT MINGW)
 ENDIF (WIN32 AND NOT MINGW)
 #----------------------------------------------------------------------
 
-TARGET_LINK_LIBRARIES( copasi
-  copasi
+TARGET_LINK_LIBRARIES( copasi_api
+  copasi_api
   sbml
   raptor
   lapack

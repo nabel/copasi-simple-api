@@ -65,7 +65,7 @@ ADD_LIBRARY( _copasi
 
 TARGET_LINK_LIBRARIES( _copasi
   _copasi
-  copasi
+  copasi_api
   ${PYTHON_LIBRARY}
 )
 
