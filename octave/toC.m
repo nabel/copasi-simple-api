@@ -1,0 +1,31 @@
+function A = toC(arg)
+	try  %items array
+	    n = length(arg);
+    	A = tinkercell.tc_createItemsArray(n);
+    	for i =1:n
+    	    tinkercell.tc_setItem(A, i-1, arg(i));
+    	endfor
+    catch
+	    try %strings array
+		    n = length(arg);
+		    A = tinkercell.tc_createStringsArray(n);
+		    for i=1:n
+		        tinkercell.tc_setString(A, i-1, arg(i));
+    		endfor
+		catch
+			try %matrix
+				m = size(arg,1);
+			    n = size(arg,2);
+			    A = tinkercell.tc_createMatrix(m,n);
+			    for i=1:m
+			        for j=1:n
+            			tinkercell.tc_setMatrixValue(matrix,i-1,j-1,arg(i,j));
+			        endfor
+			    endfor
+			catch
+				A = arg;
+			end_try_catch %matrix
+		end_try_catch %strings array
+	end_try_catch %items array
+endfunction
+
