@@ -1,3 +1,5 @@
+import copasi
+
 def toItems(array):
     n = len(array);
     A = copasi.tc_createItemsArray(n);
