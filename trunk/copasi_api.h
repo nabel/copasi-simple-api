@@ -150,7 +150,7 @@ typedef struct
 
 BEGIN_C_DECLS
 
-void copasi_init();
+COPASIAPIEXPORT void copasi_init();
 
 // -----------------------------------------------------------------------
 /**
