@@ -1,8 +1,8 @@
 def toItems(array):
     n = len(array);
-    A = tc_createItemsArray(n);
+    A = copasi.tc_createItemsArray(n);
     for i in range(0, n):
-        tc_setItem(A, i, array[i]);
+        copasi.tc_setItem(A, i, array[i]);
 
     return A;
 
@@ -10,16 +10,16 @@ def fromItems(array):
     n = array.length;
     A = range(0,n);
     for i in range(0, n):
-        A[i] = tc_getItem(array,i);
+        A[i] = copasi.tc_getItem(array,i);
 
-    #tc_deleteItemsArray(array);
+    #copasi.tc_deleteItemsArray(array);
     return A;
 
 def toStrings(array):
     n = len(array);
-    A = tc_createStringsArray(n);
+    A = copasi.tc_createStringsArray(n);
     for i in range(0, n):
-        tc_setString(A, i, array[i]);
+        copasi.tc_setString(A, i, array[i]);
 
     return A;
 
@@ -27,9 +27,9 @@ def fromStrings(array):
     n = array.length;
     A = range(0,n);
     for i in range(0, n):
-        A[i] = tc_getString(array,i);
+        A[i] = copasi.tc_getString(array,i);
 
-    #tc_deleteStringsArray(array);
+    #copasi.tc_deleteStringsArray(array);
     return A;
 
 def fromMatrix(matrix, row_wise = False):
@@ -42,39 +42,39 @@ def fromMatrix(matrix, row_wise = False):
         for i in range(0, n):
             A[i] = range(0,m);
             for j in range(0,m):
-                A[i][j] = tc_getMatrixValue(matrix,i,j);
+                A[i][j] = copasi.tc_getMatrixValue(matrix,i,j);
     else:
         A = range(0,m);
         for i in range(0, m):
             A[i] = range(0,n);
             for j in range(0,n):
-                A[i][j] = tc_getMatrixValue(matrix,j,i);
+                A[i][j] = copasi.tc_getMatrixValue(matrix,j,i);
 
-    #tc_deleteMatrix(matrix);
+    #copasi.tc_deleteMatrix(matrix);
     return [rows, cols, A];
 
 def toMatrix(lists, row_wise = False , rows = [], cols = []):
     n = len(lists);
     m = len(lists[0]);
-    A = tc_createMatrix(0,0);
+    A = copasi.tc_createMatrix(0,0);
     if row_wise:
-        A = tc_createMatrix(n,m);
+        A = copasi.tc_createMatrix(n,m);
     else:
-        A = tc_createMatrix(m,n);
+        A = copasi.tc_createMatrix(m,n);
     for i in range(0, n):
         for j in range(0,m):
             if row_wise:
-                tc_setMatrixValue(A,i,j,lists[i][j]);
+                copasi.tc_setMatrixValue(A,i,j,lists[i][j]);
             else:
-                tc_setMatrixValue(A,j,i,lists[i][j]);
+                copasi.tc_setMatrixValue(A,j,i,lists[i][j]);
     n = len(rows);
     m = len(cols);
 
     for i in range(0,n):
-        tc_setRowName(A,i,rows[i]);
+        copasi.tc_setRowName(A,i,rows[i]);
 
     for i in range(0,m):
-        tc_setColumnName(A,i,cols[i]);
+        copasi.tc_setColumnName(A,i,cols[i]);
 
     return A;
 
@@ -88,13 +88,13 @@ def fromTable(table, row_wise = False):
         for i in range(0, n):
             A[i] = range(0,m);
             for j in range(0,m):
-                A[i][j] = tc_getTableValue(table,i,j);
+                A[i][j] = copasi.tc_getTableValue(table,i,j);
     else:
         A = range(0,m);
         for i in range(0, m):
             A[i] = range(0,n);
             for j in range(0,n):
-                A[i][j] = tc_getTableValue(table,j,i);
+                A[i][j] = copasi.tc_getTableValue(table,j,i);
 
     return [rows, cols, A];
 
@@ -102,26 +102,26 @@ def toTable(lists, row_wise = False , rows = [], cols = []):
     n = len(lists);
     m = len(lists[0]);
     
-    A = tc_createTable(0,0);
+    A = copasi.tc_createTable(0,0);
     if row_wise:
-        A = tc_createTable(n,m);
+        A = copasi.tc_createTable(n,m);
     else:
-        A = tc_createTable(m,n);
+        A = copasi.tc_createTable(m,n);
 
     for i in range(0, n):
         for j in range(0,m):
             if row_wise:
-                tc_setTableValue(A,i,j,lists[i][j]);
+                copasi.tc_setTableValue(A,i,j,lists[i][j]);
             else:
-                tc_setTableValue(A,j,i,lists[i][j]);
+                copasi.tc_setTableValue(A,j,i,lists[i][j]);
     n = len(rows);
     m = len(cols);
 
     for i in range(0,n):
-        tc_setString(A.rownames,i,rows[i]);
+        copasi.tc_setString(A.rownames,i,rows[i]);
 
     for i in range(0,m):
-        tc_setString(A.colnames,i,cols[i]);
+        copasi.tc_setString(A.colnames,i,cols[i]);
 
     return A;
 
@@ -130,10 +130,10 @@ def toHex(r,g,b):
     return "#" + hexchars[r / 16] + hexchars[r % 16] + hexchars[g / 16] + hexchars[g % 16] + hexchars[b / 16] + hexchars[b % 16];
 
 def fromC(x):
-    if type(x) == type(tc_createMatrix(0,0)): return fromMatrix(x)
-    if type(x) == type(tc_createStringsArray(0)): return fromStrings(x)
-    if type(x) == type(tc_createItemsArray(0)): return fromItems(x)
-    if type(x) == type(tc_createTable(0,0)): return fromTable(x)
+    if type(x) == type(copasi.tc_createMatrix(0,0)): return fromMatrix(x)
+    if type(x) == type(copasi.tc_createStringsArray(0)): return fromStrings(x)
+    if type(x) == type(copasi.tc_createItemsArray(0)): return fromItems(x)
+    if type(x) == type(copasi.tc_createTable(0,0)): return fromTable(x)
     return x
 
 def toC(x, rows = [], cols = []):
