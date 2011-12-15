@@ -1,5 +1,3 @@
-from tinkercell import  *
-
 def toItems(array):
     n = len(array);
     A = tc_createItemsArray(n);
