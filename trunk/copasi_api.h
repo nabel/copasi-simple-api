@@ -1140,7 +1140,7 @@ COPASIAPIEXPORT void cEnableAssignmentRuleReordering();
  \return tc_matrix matrix with 
  \ingroup optim
 */
-COPASIAPIEXPORT tc_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int numTimeSteps);
+//COPASIAPIEXPORT tc_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int numTimeSteps);
 
 /*! 
  \brief repeat steady state calculation multiple times, where a paramater is incremented during each repeated iteration
@@ -1152,7 +1152,7 @@ COPASIAPIEXPORT tc_matrix cSimulationParameterScan(copasi_model model, const cha
               and the rest of the columns will contain the steady state values for that parameter value
  \ingroup optim
 */
-COPASIAPIEXPORT tc_matrix cSteadyStateParameterScan(copasi_model model, const char * param, double start, double end, int numsteps);
+//COPASIAPIEXPORT tc_matrix cSteadyStateParameterScan(copasi_model model, const char * param, double start, double end, int numsteps);
 
 END_C_DECLS
 #endif
