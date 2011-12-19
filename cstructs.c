@@ -3,16 +3,16 @@
 #include <math.h>
 #include <string.h>
 
-#include "TC_structs.h"
+#include "cstructs.h"
 
-TCAPIEXPORT tc_matrix tc_createMatrix(int rows, int cols)
+CAPIEXPORT c_matrix c_createMatrix(int rows, int cols)
 {
 	int i;
-	tc_matrix M;
+	c_matrix M;
 	M.rows = rows;
 	M.cols = cols;
-	M.colnames = tc_createStringsArray(cols);
-	M.rownames = tc_createStringsArray(rows);
+	M.colnames = c_createStringsArray(cols);
+	M.rownames = c_createStringsArray(rows);
 	
 	if (rows > 0 && cols > 0)
 	{
@@ -25,10 +25,10 @@ TCAPIEXPORT tc_matrix tc_createMatrix(int rows, int cols)
 	return M;
 }
 
-TCAPIEXPORT tc_strings tc_createStringsArray(int len)
+CAPIEXPORT c_strings c_createStringsArray(int len)
 {
 	int i;
-	tc_strings A;
+	c_strings A;
 	if (len < 1)
 	{
 		A.length = 0;
@@ -44,47 +44,47 @@ TCAPIEXPORT tc_strings tc_createStringsArray(int len)
 	return A;
 }
 
-TCAPIEXPORT double tc_getMatrixValue(tc_matrix M, int i, int j)
+CAPIEXPORT double c_getMatrixValue(c_matrix M, int i, int j)
 { 
 	if (M.values && i >= 0 && j >= 0 && i < M.rows && j < M.cols)
 		return M.values[ i*M.cols + j ];
 	return 0.0;
 }
 
-TCAPIEXPORT void tc_setMatrixValue(tc_matrix M, int i, int j, double d)
+CAPIEXPORT void c_setMatrixValue(c_matrix M, int i, int j, double d)
 { 
 	if (M.values && i >= 0 && j >= 0 && i < M.rows && j < M.cols)
 		M.values[ i*M.cols + j ] = d;
 }
 
-TCAPIEXPORT const char * tc_getRowName(tc_matrix M, int i)
+CAPIEXPORT const char * c_getRowName(c_matrix M, int i)
 { 
-	return tc_getString(M.rownames,i);
+	return c_getString(M.rownames,i);
 }
 
-TCAPIEXPORT void tc_setRowName(tc_matrix M, int i, const char * s)
+CAPIEXPORT void c_setRowName(c_matrix M, int i, const char * s)
 {
-	tc_setString(M.rownames,i,s);
+	c_setString(M.rownames,i,s);
 }
 
-TCAPIEXPORT const char * tc_getColumnName(tc_matrix M, int i)
+CAPIEXPORT const char * c_getColumnName(c_matrix M, int i)
 { 
-	return tc_getString(M.colnames,i);
+	return c_getString(M.colnames,i);
 }
 
-TCAPIEXPORT void tc_setColumnName(tc_matrix M, int i, const char * s)
+CAPIEXPORT void c_setColumnName(c_matrix M, int i, const char * s)
 {
-	tc_setString(M.colnames,i,s);
+	c_setString(M.colnames,i,s);
 }
 
-TCAPIEXPORT const char* tc_getString(tc_strings S, int i)
+CAPIEXPORT const char* c_getString(c_strings S, int i)
 {
 	if (S.strings && i >= 0 && i < S.length)
 		return S.strings[ i ];
 	return 0;
 }
 
-TCAPIEXPORT void tc_setString(tc_strings S, int i, const char * s)
+CAPIEXPORT void c_setString(c_strings S, int i, const char * s)
 {
 	int n=0;
 	char * str;
@@ -103,17 +103,17 @@ TCAPIEXPORT void tc_setString(tc_strings S, int i, const char * s)
 	}
 }
 
-TCAPIEXPORT void tc_deleteMatrix(tc_matrix M)
+CAPIEXPORT void c_deleteMatrix(c_matrix M)
 {
 	if (M.values)
 		free(M.values);
 	M.rows = M.cols = 0;	
 	M.values = 0;
-	tc_deleteStringsArray(M.rownames);
-	tc_deleteStringsArray(M.colnames);
+	c_deleteStringsArray(M.rownames);
+	c_deleteStringsArray(M.colnames);
 }
 
-TCAPIEXPORT void tc_deleteStringsArray(tc_strings C)
+CAPIEXPORT void c_deleteStringsArray(c_strings C)
 {
 	int i;
 	if (C.strings)
@@ -127,10 +127,10 @@ TCAPIEXPORT void tc_deleteStringsArray(tc_strings C)
 	C.strings = 0;
 }
 
-TCAPIEXPORT tc_matrix tc_appendColumns(tc_matrix A, tc_matrix B)
+CAPIEXPORT c_matrix c_appendColumns(c_matrix A, c_matrix B)
 {
 	int i,j,k=0;
-	tc_matrix C;
+	c_matrix C;
 	int fromA = 0, toA = A.cols, fromB = 0, toB = B.cols;
 
 	C.colnames.length = C.rownames.length = 0;
@@ -205,10 +205,10 @@ TCAPIEXPORT tc_matrix tc_appendColumns(tc_matrix A, tc_matrix B)
 	return C;
 }
 
-TCAPIEXPORT tc_matrix tc_appendRows(tc_matrix A, tc_matrix B)
+CAPIEXPORT c_matrix c_appendRows(c_matrix A, c_matrix B)
 {
 	int i,j,k=0;
-	tc_matrix C;
+	c_matrix C;
 	int fromA = 0, toA = A.rows, fromB = 0, toB = B.rows;
 
 	C.colnames.strings = C.rownames.strings = 0;
@@ -287,7 +287,7 @@ TCAPIEXPORT tc_matrix tc_appendRows(tc_matrix A, tc_matrix B)
 	return C;
 }
 
-TCAPIEXPORT void tc_printMatrixToFile(const char* s, tc_matrix output)
+CAPIEXPORT void c_printMatrixToFile(const char* s, c_matrix output)
 {
 	int i,j;
 	FILE * outfile = fopen(s,"w+");
@@ -296,25 +296,25 @@ TCAPIEXPORT void tc_printMatrixToFile(const char* s, tc_matrix output)
 		//fprintf(outfile, "#");
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				fprintf(outfile, "%s\t", tc_getColumnName(output, j));
+				fprintf(outfile, "%s\t", c_getColumnName(output, j));
 			else
-				fprintf(outfile, "%s\n", tc_getColumnName(output, j));
+				fprintf(outfile, "%s\n", c_getColumnName(output, j));
 	}
 	for (i=0; i < output.rows; ++i)
 	{
-		if (tc_getRowName(output,i))
-			fprintf(outfile, "%s\t", tc_getRowName(output, i));
+		if (c_getRowName(output,i))
+			fprintf(outfile, "%s\t", c_getRowName(output, i));
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				fprintf(outfile, "%lf\t", tc_getMatrixValue(output, i, j));
+				fprintf(outfile, "%lf\t", c_getMatrixValue(output, i, j));
 			else
-				fprintf(outfile, "%lf\n", tc_getMatrixValue(output, i, j));
+				fprintf(outfile, "%lf\n", c_getMatrixValue(output, i, j));
 	}
 	
 	fclose(outfile);
 }
 
-TCAPIEXPORT void tc_printOutMatrix(tc_matrix output)
+CAPIEXPORT void c_printOutMatrix(c_matrix output)
 {
 	int i,j;
 	if (output.colnames.strings)
@@ -322,44 +322,50 @@ TCAPIEXPORT void tc_printOutMatrix(tc_matrix output)
 		printf("\t");
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				printf("%s\t", tc_getColumnName(output, j));
+				if (c_getColumnName(output, j))
+					printf("%s\t", c_getColumnName(output, j));
+				else
+					printf("\t");
 			else
-				printf("%s\n", tc_getColumnName(output, j));
+				if (c_getColumnName(output, j))
+					printf("%s\n", c_getColumnName(output, j));
+				else
+					printf("\n");
 	}
 
 	for (i=0; i < output.rows; ++i)
 	{
-		if (tc_getRowName(output,i))
-			printf("%s\t", tc_getRowName(output, i));
+		if (c_getRowName(output,i))
+			printf("%s\t", c_getRowName(output, i));
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
-				printf("%lf\t", tc_getMatrixValue(output, i, j));
+				printf("%lf\t", c_getMatrixValue(output, i, j));
 			else
-				printf("%lf\n", tc_getMatrixValue(output, i, j));
+				printf("%lf\n", c_getMatrixValue(output, i, j));
 	}
 }
 
-TCAPIEXPORT 
-int tc_getStringIndex(tc_strings A, const char * s)
+CAPIEXPORT 
+int c_getStringIndex(c_strings A, const char * s)
 {
 	int i=0;
 	if (A.length == 0 || !A.strings) return -1;
 
 	for (i=0; i < A.length; ++i)
-		if (tc_getString(A,i) && strcmp( tc_getString(A,i) , s ) == 0)
+		if (c_getString(A,i) && strcmp( c_getString(A,i) , s ) == 0)
 			return i;
 	return -1;
 }
 
-TCAPIEXPORT 
-int tc_getRowIndex(tc_matrix m, const char * s)
+CAPIEXPORT 
+int c_getRowIndex(c_matrix m, const char * s)
 {
-	return tc_getStringIndex( m.rownames, s );
+	return c_getStringIndex( m.rownames, s );
 }
 
-TCAPIEXPORT 
-int tc_getColumnIndex(tc_matrix m, const char * s)
+CAPIEXPORT 
+int c_getColumnIndex(c_matrix m, const char * s)
 {
-	return tc_getStringIndex( m.colnames, s );
+	return c_getStringIndex( m.colnames, s );
 }
 

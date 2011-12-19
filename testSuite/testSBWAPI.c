@@ -8,7 +8,7 @@ int main()
 {
 	int i;
 	int nSpecies, nReactions;
-	tc_matrix results;
+	c_matrix results;
 	double *data;
 	copasi_model m;
 	
@@ -30,8 +30,8 @@ int main()
 	results = simulate(m, 0, 20, 100);  // model, start, end, num. points
 
 	printf("results.tab has simulation data\n\n");
-	tc_printMatrixToFile("resultSBW.tab", results);
-	tc_deleteMatrix(results);
+	c_printMatrixToFile("resultSBW.tab", results);
+	c_deleteMatrix(results);
 
 	printf("fluxes:\n");
 	nReactions = getNumberOfReactions (m);
@@ -157,8 +157,8 @@ void eigen(copasi_model model, const char* param)
 	int i, j,k;
 	double p;
 	FILE * outfile;
-	tc_matrix ss;
-	tc_matrix output;
+	c_matrix ss;
+	c_matrix output;
 	
 	//steady states
 	
@@ -175,25 +175,25 @@ void eigen(copasi_model model, const char* param)
 
 		if (i == 0)
 		{
-			output = tc_createMatrix(100, ss.rows+1);
-			tc_setColumnName(output, 0, param);
+			output = c_createMatrix(100, ss.rows+1);
+			c_setColumnName(output, 0, param);
 			for (j=0; j < output.cols; ++j)
-				tc_setColumnName(output, j+1, tc_getRowName(ss, j));
+				c_setColumnName(output, j+1, c_getRowName(ss, j));
 		}
 		
-		tc_setMatrixValue(output, i, 0, p);
+		c_setMatrixValue(output, i, 0, p);
 		for (j=0; j < output.cols; ++j)
-			tc_setMatrixValue(output, i, j+1, tc_getMatrixValue(ss, j, 0));
+			c_setMatrixValue(output, i, j+1, c_getMatrixValue(ss, j, 0));
 		
-		tc_deleteMatrix(ss);
+		c_deleteMatrix(ss);
 	}
 	
 	//output
-	tc_printMatrixToFile("output.tab", output);
+	c_printMatrixToFile("output.tab", output);
 	
 	printf("\noutput.tab contains the final output\n\n");
 
-	tc_deleteMatrix(output);
+	c_deleteMatrix(output);
 }
 
 copasi_model model3() //big genetic model

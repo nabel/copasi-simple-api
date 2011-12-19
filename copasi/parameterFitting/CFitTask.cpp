@@ -75,6 +75,7 @@ bool CFitTask::initialize(const OutputFlag & of,
                           COutputHandler * pOutputHandler,
                           std::ostream * pOstream)
 {
+	std::cout << "CFitTask initialize\n";
   return COptTask::initialize(of, pOutputHandler, pOstream);
 }
 

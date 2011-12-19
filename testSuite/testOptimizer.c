@@ -4,18 +4,23 @@
 
 int main(int narg, char** argv)
 {
-	tc_matrix results;
+
+	return main1();
+
+	int i;
+	double d;
+	c_matrix results, params, params2;
+	const char * filename = "results.tab";
 	copasi_model m;
 	
 	if (narg < 2)
 	{
-		printf("Please specify the SBML file\n");
+		printf("Please specify the Antimony file\n");
 		return 0;
 	}
 
 	//cSetSBMLLevelAndVersion(2,3);
-	m = cReadSBMLFile(argv[1]);
-	cCompileModel(m);
+	m = cReadAntimonyFile(argv[1]);
 
 	if (m.errorMessage != NULL)
 	{
@@ -25,52 +30,59 @@ int main(int narg, char** argv)
 		return 0;
 	}
 
-	cWriteAntimonyFile (m, "antimony.txt");
-	printf ("Antimony script written to antimony.txt\n");
-
 	printf("simulating...\n");	
-	results = cSimulateDeterministic(m, 0, 20, 100);  //model, start, end, num. points
+	results = cSimulateDeterministic(m, 0, 10, 1000);  //model, start, end, num. points
 
-	printf("results.tab has simulation data\n\n");
-	tc_printMatrixToFile("results.tab", results);
-	tc_deleteMatrix(results);
+	printf("%s has original simulation data\n\n",filename);
+	c_printMatrixToFile(filename, results);
+	c_deleteMatrix(results);
 
-	results = cGetReactionRates(m);
+	//jumble the parameters
+	params = cGetGlobalParameters(m);
+	/*for (i=0; i < params.rows; ++i)
+	{
+		d = runif(0,10);
+		cSetValue(m, c_getRowName(params,i), d);
+		c_setMatrixValue(params, i, 0, d);
+	}*/
 
-	printf("fluxes:\n");
-	tc_printOutMatrix(results);
-	tc_deleteMatrix(results);
+	results = cSimulateDeterministic(m, 0, 10, 1000);  //model, start, end, num. points
 
-	results = cGetRatesOfChange(m);
-	printf("\n\nderivatives:\n");
-	tc_printOutMatrix(results);
-	tc_deleteMatrix(results);
+	printf("results2.tab has original simulation data\n\n","results2.tab");
+	c_printMatrixToFile("results2.tab", results);
+	c_deleteMatrix(results);
+	c_printOutMatrix(params);
 	
+	cFitModelToData(m, filename, params, "levenbergmarquardt");
+	c_deleteMatrix(params);
+	params = cGetGlobalParameters(m);
+	c_printOutMatrix(params);
+	c_deleteMatrix(params);
 	//printf("%s\n",m1.errorMessage);
 	/*
 	//the optmization code below works but 
 	//has been tested only a couple of times
 
 	//setup for optimization using GA
-	params = tc_createMatrix(3,3);
-	tc_setRowName(params,0,"k1");
-	tc_setRowName(params,1,"k2");
-	tc_setRowName(params,2,"k3");
+	params = c_createMatrix(3,3);
+	c_setRowName(params,0,"k1");
+	c_setRowName(params,1,"k2");
+	c_setRowName(params,2,"k3");
 
 	//intial values
-	tc_setMatrixValue(params, 0, 0, 1);
-	tc_setMatrixValue(params, 0, 1, 0.0);
-	tc_setMatrixValue(params, 0, 2, 5.0);
+	c_setMatrixValue(params, 0, 0, 1);
+	c_setMatrixValue(params, 0, 1, 0.0);
+	c_setMatrixValue(params, 0, 2, 5.0);
 
  	//min values
-	tc_setMatrixValue(params, 1, 0, 1);
-	tc_setMatrixValue(params, 1, 1, 0.0);
-	tc_setMatrixValue(params, 1, 2, 5.0);
+	c_setMatrixValue(params, 1, 0, 1);
+	c_setMatrixValue(params, 1, 1, 0.0);
+	c_setMatrixValue(params, 1, 2, 5.0);
 
 	//max values
-	tc_setMatrixValue(params, 2, 0, 1);
-	tc_setMatrixValue(params, 2, 1, 0.0);
-	tc_setMatrixValue(params, 2, 2, 5.0);
+	c_setMatrixValue(params, 2, 0, 1);
+	c_setMatrixValue(params, 2, 1, 0.0);
+	c_setMatrixValue(params, 2, 2, 5.0);
 	
 	cSetValue(m1,"k1",2.0);
 	cSetValue(m1,"k2",1.0);
@@ -78,8 +90,8 @@ int main(int narg, char** argv)
 	
 	cSetOptimizerIterations(10);  //set num interations
 	results = cOptimize(m1, "output.tab", params); //optimize
-	tc_printMatrixToFile("params.out", results);  //optimized parameters
-	tc_deleteMatrix(results);
+	c_printMatrixToFile("params.out", results);  //optimized parameters
+	c_deleteMatrix(results);
 	*/
 	
 	//cleanup	

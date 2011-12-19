@@ -4,7 +4,7 @@
 
 int main(int narg, char** argv)
 {
-	tc_matrix results;
+	c_matrix results;
 	copasi_model m;
 	
 	if (narg < 2)
@@ -32,19 +32,19 @@ int main(int narg, char** argv)
 	results = cSimulateDeterministic(m, 0, 20, 100);  //model, start, end, num. points
 
 	printf("results.tab has simulation data\n\n");
-	tc_printMatrixToFile("results.tab", results);
-	tc_deleteMatrix(results);
+	c_printMatrixToFile("results.tab", results);
+	c_deleteMatrix(results);
 
 	results = cGetReactionRates(m);
 
 	printf("fluxes:\n");
-	tc_printOutMatrix(results);
-	tc_deleteMatrix(results);
+	c_printOutMatrix(results);
+	c_deleteMatrix(results);
 
 	results = cGetRatesOfChange(m);
 	printf("\n\nderivatives:\n");
-	tc_printOutMatrix(results);
-	tc_deleteMatrix(results);
+	c_printOutMatrix(results);
+	c_deleteMatrix(results);
 	
 	//cleanup	
 	cRemoveModel(m);

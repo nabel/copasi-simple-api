@@ -39,9 +39,7 @@ ENDIF(USE_DEBUG_MODE)
 #  cmake definitions for curl, sbml, and some other packages
 #------------------------------------------------------------------------------
 IF (WIN32)
-
    SET(BUILD_OS WIN32)
-
 ELSE(WIN32)	
 	
 	IF (UNIX)

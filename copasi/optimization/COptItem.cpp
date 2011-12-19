@@ -374,6 +374,7 @@ bool COptItem::compile(const std::vector< CCopasiContainer * > listOfContainer)
     }
   else
     {
+		std::cout << "here A\n";
       CCopasiMessage(CCopasiMessage::ERROR, MCOptimization + 2, mpParmUpperBound->c_str());
       return false;
     }
@@ -473,6 +474,8 @@ bool COptItem::compileUpperBound(const std::vector< CCopasiContainer * > & listO
 
   mpUpperObject = NULL;
   mpUpperBound = NULL;
+
+		std::cout << "mpParmUpperBound = " << *mpParmUpperBound << "\n";
 
   if (*mpParmUpperBound == "inf")
     {

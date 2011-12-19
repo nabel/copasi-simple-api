@@ -6,7 +6,6 @@
 # This file is compatible with both classic and new-style classes.
 
 from sys import version_info
-from ctopy import *
 if version_info >= (2,6,0):
     def swig_import_helper():
         from os.path import dirname
@@ -67,133 +66,133 @@ except AttributeError:
     _newclass = 0
 
 
-class tc_strings(_object):
+class c_strings(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, tc_strings, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, c_strings, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, tc_strings, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, c_strings, name)
     __repr__ = _swig_repr
-    __swig_setmethods__["length"] = _copasi.tc_strings_length_set
-    __swig_getmethods__["length"] = _copasi.tc_strings_length_get
-    if _newclass:length = _swig_property(_copasi.tc_strings_length_get, _copasi.tc_strings_length_set)
-    __swig_setmethods__["strings"] = _copasi.tc_strings_strings_set
-    __swig_getmethods__["strings"] = _copasi.tc_strings_strings_get
-    if _newclass:strings = _swig_property(_copasi.tc_strings_strings_get, _copasi.tc_strings_strings_set)
+    __swig_setmethods__["length"] = _copasi.c_strings_length_set
+    __swig_getmethods__["length"] = _copasi.c_strings_length_get
+    if _newclass:length = _swig_property(_copasi.c_strings_length_get, _copasi.c_strings_length_set)
+    __swig_setmethods__["strings"] = _copasi.c_strings_strings_set
+    __swig_getmethods__["strings"] = _copasi.c_strings_strings_get
+    if _newclass:strings = _swig_property(_copasi.c_strings_strings_get, _copasi.c_strings_strings_set)
     def __init__(self): 
-        this = _copasi.new_tc_strings()
+        this = _copasi.new_c_strings()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _copasi.delete_tc_strings
+    __swig_destroy__ = _copasi.delete_c_strings
     __del__ = lambda self : None;
-tc_strings_swigregister = _copasi.tc_strings_swigregister
-tc_strings_swigregister(tc_strings)
+c_strings_swigregister = _copasi.c_strings_swigregister
+c_strings_swigregister(c_strings)
 
-class tc_matrix(_object):
+class c_matrix(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, tc_matrix, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, c_matrix, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, tc_matrix, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, c_matrix, name)
     __repr__ = _swig_repr
-    __swig_setmethods__["rows"] = _copasi.tc_matrix_rows_set
-    __swig_getmethods__["rows"] = _copasi.tc_matrix_rows_get
-    if _newclass:rows = _swig_property(_copasi.tc_matrix_rows_get, _copasi.tc_matrix_rows_set)
-    __swig_setmethods__["cols"] = _copasi.tc_matrix_cols_set
-    __swig_getmethods__["cols"] = _copasi.tc_matrix_cols_get
-    if _newclass:cols = _swig_property(_copasi.tc_matrix_cols_get, _copasi.tc_matrix_cols_set)
-    __swig_setmethods__["values"] = _copasi.tc_matrix_values_set
-    __swig_getmethods__["values"] = _copasi.tc_matrix_values_get
-    if _newclass:values = _swig_property(_copasi.tc_matrix_values_get, _copasi.tc_matrix_values_set)
-    __swig_setmethods__["rownames"] = _copasi.tc_matrix_rownames_set
-    __swig_getmethods__["rownames"] = _copasi.tc_matrix_rownames_get
-    if _newclass:rownames = _swig_property(_copasi.tc_matrix_rownames_get, _copasi.tc_matrix_rownames_set)
-    __swig_setmethods__["colnames"] = _copasi.tc_matrix_colnames_set
-    __swig_getmethods__["colnames"] = _copasi.tc_matrix_colnames_get
-    if _newclass:colnames = _swig_property(_copasi.tc_matrix_colnames_get, _copasi.tc_matrix_colnames_set)
+    __swig_setmethods__["rows"] = _copasi.c_matrix_rows_set
+    __swig_getmethods__["rows"] = _copasi.c_matrix_rows_get
+    if _newclass:rows = _swig_property(_copasi.c_matrix_rows_get, _copasi.c_matrix_rows_set)
+    __swig_setmethods__["cols"] = _copasi.c_matrix_cols_set
+    __swig_getmethods__["cols"] = _copasi.c_matrix_cols_get
+    if _newclass:cols = _swig_property(_copasi.c_matrix_cols_get, _copasi.c_matrix_cols_set)
+    __swig_setmethods__["values"] = _copasi.c_matrix_values_set
+    __swig_getmethods__["values"] = _copasi.c_matrix_values_get
+    if _newclass:values = _swig_property(_copasi.c_matrix_values_get, _copasi.c_matrix_values_set)
+    __swig_setmethods__["rownames"] = _copasi.c_matrix_rownames_set
+    __swig_getmethods__["rownames"] = _copasi.c_matrix_rownames_get
+    if _newclass:rownames = _swig_property(_copasi.c_matrix_rownames_get, _copasi.c_matrix_rownames_set)
+    __swig_setmethods__["colnames"] = _copasi.c_matrix_colnames_set
+    __swig_getmethods__["colnames"] = _copasi.c_matrix_colnames_get
+    if _newclass:colnames = _swig_property(_copasi.c_matrix_colnames_get, _copasi.c_matrix_colnames_set)
     def __init__(self): 
-        this = _copasi.new_tc_matrix()
+        this = _copasi.new_c_matrix()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _copasi.delete_tc_matrix
+    __swig_destroy__ = _copasi.delete_c_matrix
     __del__ = lambda self : None;
-tc_matrix_swigregister = _copasi.tc_matrix_swigregister
-tc_matrix_swigregister(tc_matrix)
+c_matrix_swigregister = _copasi.c_matrix_swigregister
+c_matrix_swigregister(c_matrix)
 
 
-def tc_createMatrix(*args):
-  return _copasi.tc_createMatrix(*args)
-tc_createMatrix = _copasi.tc_createMatrix
+def c_createMatrix(*args):
+  return _copasi.c_createMatrix(*args)
+c_createMatrix = _copasi.c_createMatrix
 
-def tc_createStringsArray(*args):
-  return _copasi.tc_createStringsArray(*args)
-tc_createStringsArray = _copasi.tc_createStringsArray
+def c_createStringsArray(*args):
+  return _copasi.c_createStringsArray(*args)
+c_createStringsArray = _copasi.c_createStringsArray
 
-def tc_getMatrixValue(*args):
-  return _copasi.tc_getMatrixValue(*args)
-tc_getMatrixValue = _copasi.tc_getMatrixValue
+def c_getMatrixValue(*args):
+  return _copasi.c_getMatrixValue(*args)
+c_getMatrixValue = _copasi.c_getMatrixValue
 
-def tc_setMatrixValue(*args):
-  return _copasi.tc_setMatrixValue(*args)
-tc_setMatrixValue = _copasi.tc_setMatrixValue
+def c_setMatrixValue(*args):
+  return _copasi.c_setMatrixValue(*args)
+c_setMatrixValue = _copasi.c_setMatrixValue
 
-def tc_getRowName(*args):
-  return _copasi.tc_getRowName(*args)
-tc_getRowName = _copasi.tc_getRowName
+def c_getRowName(*args):
+  return _copasi.c_getRowName(*args)
+c_getRowName = _copasi.c_getRowName
 
-def tc_setRowName(*args):
-  return _copasi.tc_setRowName(*args)
-tc_setRowName = _copasi.tc_setRowName
+def c_setRowName(*args):
+  return _copasi.c_setRowName(*args)
+c_setRowName = _copasi.c_setRowName
 
-def tc_getColumnName(*args):
-  return _copasi.tc_getColumnName(*args)
-tc_getColumnName = _copasi.tc_getColumnName
+def c_getColumnName(*args):
+  return _copasi.c_getColumnName(*args)
+c_getColumnName = _copasi.c_getColumnName
 
-def tc_setColumnName(*args):
-  return _copasi.tc_setColumnName(*args)
-tc_setColumnName = _copasi.tc_setColumnName
+def c_setColumnName(*args):
+  return _copasi.c_setColumnName(*args)
+c_setColumnName = _copasi.c_setColumnName
 
-def tc_getString(*args):
-  return _copasi.tc_getString(*args)
-tc_getString = _copasi.tc_getString
+def c_getString(*args):
+  return _copasi.c_getString(*args)
+c_getString = _copasi.c_getString
 
-def tc_setString(*args):
-  return _copasi.tc_setString(*args)
-tc_setString = _copasi.tc_setString
+def c_setString(*args):
+  return _copasi.c_setString(*args)
+c_setString = _copasi.c_setString
 
-def tc_getStringIndex(*args):
-  return _copasi.tc_getStringIndex(*args)
-tc_getStringIndex = _copasi.tc_getStringIndex
+def c_getStringIndex(*args):
+  return _copasi.c_getStringIndex(*args)
+c_getStringIndex = _copasi.c_getStringIndex
 
-def tc_getRowIndex(*args):
-  return _copasi.tc_getRowIndex(*args)
-tc_getRowIndex = _copasi.tc_getRowIndex
+def c_getRowIndex(*args):
+  return _copasi.c_getRowIndex(*args)
+c_getRowIndex = _copasi.c_getRowIndex
 
-def tc_getColumnIndex(*args):
-  return _copasi.tc_getColumnIndex(*args)
-tc_getColumnIndex = _copasi.tc_getColumnIndex
+def c_getColumnIndex(*args):
+  return _copasi.c_getColumnIndex(*args)
+c_getColumnIndex = _copasi.c_getColumnIndex
 
-def tc_deleteMatrix(*args):
-  return _copasi.tc_deleteMatrix(*args)
-tc_deleteMatrix = _copasi.tc_deleteMatrix
+def c_deleteMatrix(*args):
+  return _copasi.c_deleteMatrix(*args)
+c_deleteMatrix = _copasi.c_deleteMatrix
 
-def tc_deleteStringsArray(*args):
-  return _copasi.tc_deleteStringsArray(*args)
-tc_deleteStringsArray = _copasi.tc_deleteStringsArray
+def c_deleteStringsArray(*args):
+  return _copasi.c_deleteStringsArray(*args)
+c_deleteStringsArray = _copasi.c_deleteStringsArray
 
-def tc_appendColumns(*args):
-  return _copasi.tc_appendColumns(*args)
-tc_appendColumns = _copasi.tc_appendColumns
+def c_appendColumns(*args):
+  return _copasi.c_appendColumns(*args)
+c_appendColumns = _copasi.c_appendColumns
 
-def tc_appendRows(*args):
-  return _copasi.tc_appendRows(*args)
-tc_appendRows = _copasi.tc_appendRows
+def c_appendRows(*args):
+  return _copasi.c_appendRows(*args)
+c_appendRows = _copasi.c_appendRows
 
-def tc_printMatrixToFile(*args):
-  return _copasi.tc_printMatrixToFile(*args)
-tc_printMatrixToFile = _copasi.tc_printMatrixToFile
+def c_printMatrixToFile(*args):
+  return _copasi.c_printMatrixToFile(*args)
+c_printMatrixToFile = _copasi.c_printMatrixToFile
 
-def tc_printOutMatrix(*args):
-  return _copasi.tc_printOutMatrix(*args)
-tc_printOutMatrix = _copasi.tc_printOutMatrix
+def c_printOutMatrix(*args):
+  return _copasi.c_printOutMatrix(*args)
+c_printOutMatrix = _copasi.c_printOutMatrix
 class copasi_model(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, copasi_model, name, value)
@@ -641,4 +640,130 @@ def cEnableAssignmentRuleReordering():
   return _copasi.cEnableAssignmentRuleReordering()
 cEnableAssignmentRuleReordering = _copasi.cEnableAssignmentRuleReordering
 
+def toItems(array):
+    n = len(array);
+    A = c_createItemsArray(n);
+    for i in range(0, n):
+        c_setItem(A, i, array[i]);
+
+    return A;
+
+def fromItems(array):
+    n = array.length;
+    A = range(0,n);
+    for i in range(0, n):
+        A[i] = c_getItem(array,i);
+
+    #c_deleteItemsArray(array);
+    return A;
+
+def toStrings(array):
+    n = len(array);
+    A = c_createStringsArray(n);
+    for i in range(0, n):
+        c_setString(A, i, array[i]);
+
+    return A;
+
+def fromStrings(array):
+    n = array.length;
+    A = range(0,n);
+    for i in range(0, n):
+        A[i] = c_getString(array,i);
+
+    #c_deleteStringsArray(array);
+    return A;
+
+def fromMatrix(matrix, row_wise = False):
+    n = matrix.rows;
+    m = matrix.cols;
+    cols = fromStrings(matrix.colnames);
+    rows = fromStrings(matrix.rownames);
+    if row_wise:
+        A = range(0,n);
+        for i in range(0, n):
+            A[i] = range(0,m);
+            for j in range(0,m):
+                A[i][j] = c_getMatrixValue(matrix,i,j);
+    else:
+        A = range(0,m);
+        for i in range(0, m):
+            A[i] = range(0,n);
+            for j in range(0,n):
+                A[i][j] = c_getMatrixValue(matrix,j,i);
+
+    #c_deleteMatrix(matrix);
+    return [rows, cols, A];
+
+def toMatrix(lists, row_wise = False , rows = [], cols = []):
+    n = len(lists);
+    m = len(lists[0]);
+    A = c_createMatrix(0,0);
+    if row_wise:
+        A = c_createMatrix(n,m);
+    else:
+        A = c_createMatrix(m,n);
+    for i in range(0, n):
+        for j in range(0,m):
+            if row_wise:
+                c_setMatrixValue(A,i,j,lists[i][j]);
+            else:
+                c_setMatrixValue(A,j,i,lists[i][j]);
+    n = len(rows);
+    m = len(cols);
+
+    for i in range(0,n):
+        c_setRowName(A,i,rows[i]);
+
+    for i in range(0,m):
+        c_setColumnName(A,i,cols[i]);
+
+    return A;
+
+def fromTable(table, row_wise = False):
+    n = table.rows;
+    m = table.cols;
+    cols = fromStrings(table.colnames);
+    rows = fromStrings(table.rownames);
+    if row_wise:
+        A = range(0,n);
+        for i in range(0, n):
+            A[i] = range(0,m);
+            for j in range(0,m):
+                A[i][j] = c_getTableValue(table,i,j);
+    else:
+        A = range(0,m);
+        for i in range(0, m):
+            A[i] = range(0,n);
+            for j in range(0,n):
+                A[i][j] = c_getTableValue(table,j,i);
+
+    return [rows, cols, A];
+
+def toTable(lists, row_wise = False , rows = [], cols = []):
+    n = len(lists);
+    m = len(lists[0]);
+    
+    A = c_createTable(0,0);
+    if row_wise:
+        A = c_createTable(n,m);
+    else:
+        A = c_createTable(m,n);
+
+    for i in range(0, n):
+        for j in range(0,m):
+            if row_wise:
+                c_setTableValue(A,i,j,lists[i][j]);
+            else:
+                c_setTableValue(A,j,i,lists[i][j]);
+    n = len(rows);
+    m = len(cols);
+
+    for i in range(0,n):
+        c_setString(A.rownames,i,rows[i]);
+
+    for i in range(0,m):
+        c_setString(A.colnames,i,cols[i]);
+
+    return A;
 

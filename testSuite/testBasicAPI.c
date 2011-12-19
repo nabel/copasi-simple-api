@@ -9,7 +9,7 @@ void eigen(copasi_model, const char*); //compute eigenvalues by changing paramet
 
 int main()
 {
-	tc_matrix results, results2;
+	c_matrix results, results2;
 	copasi_model m;
 	
 	printf("creating model...\n");
@@ -33,36 +33,36 @@ int main()
 
 	//print results to file
 	printf("results.tab has simulation data\n");
-	tc_printMatrixToFile("results.tab", results);
+	c_printMatrixToFile("results.tab", results);
 	
 	/** perform additional calculations from the simulated data **/
 	
 	//get derivative from the simulated results
 	results2 = cGetDerivativesFromTimeCourse(m,results);
 	printf("derivatives.tab has derivatives computed from the simulation data\n");
-	tc_printMatrixToFile("derivatives.tab", results2); //print to file
-	tc_deleteMatrix(results2); //delete matrix
+	c_printMatrixToFile("derivatives.tab", results2); //print to file
+	c_deleteMatrix(results2); //delete matrix
 
 	//get reaction rates from the simulated results
 	results2 = cGetReactionRatesFromTimeCourse(m,results);
 	printf("rates.tab has reaction rates computed from the simulation data\n");
-	tc_printMatrixToFile("rates.tab", results2); //print to file
-	tc_deleteMatrix(results2);  //delete matrix
+	c_printMatrixToFile("rates.tab", results2); //print to file
+	c_deleteMatrix(results2);  //delete matrix
 
 	//get control coeff. from the simulated results
 	results2 = cGetCCFromTimeCourse(m,results);
 	printf("controlcoeffs.tab has control coefficients computed from the simulation data\n");
-	tc_printMatrixToFile("controlcoeffs.tab", results2); //print to file
-	tc_deleteMatrix(results2); //delete matrix
+	c_printMatrixToFile("controlcoeffs.tab", results2); //print to file
+	c_deleteMatrix(results2); //delete matrix
 
 	//get elasticities for reaction rates from the simulated results
 	results2 = cGetElasticitiesFromTimeCourse(m,results);
 	printf("elasticities.tab has elasticities computed from the simulation data\n");
-	tc_printMatrixToFile("elasticities.tab", results2); //print to file
-	tc_deleteMatrix(results2); //delete matrix
+	c_printMatrixToFile("elasticities.tab", results2); //print to file
+	c_deleteMatrix(results2); //delete matrix
 	
 	/**  cleanup  **/
-	tc_deleteMatrix(results); //delete simulation results
+	c_deleteMatrix(results); //delete simulation results
 	cRemoveModel(m);
 	copasi_end();
 	printf ("\nHit the return key to continue\n");
@@ -160,8 +160,8 @@ void eigen(copasi_model model, const char* param)
 	int i, j, k;
 	double p;
 	FILE * outfile;
-	tc_matrix ss;
-	tc_matrix output;
+	c_matrix ss;
+	c_matrix output;
 	
 	i = 0; j = 0; k = 0;
 	//steady states
@@ -179,25 +179,25 @@ void eigen(copasi_model model, const char* param)
 
 		if (i == 0)
 		{
-			output = tc_createMatrix(100, ss.rows+1);
-			tc_setColumnName(output, 0, param);
+			output = c_createMatrix(100, ss.rows+1);
+			c_setColumnName(output, 0, param);
 			for (j=0; j < output.cols; ++j)
-				tc_setColumnName(output, j+1, tc_getRowName(ss, j));
+				c_setColumnName(output, j+1, c_getRowName(ss, j));
 		}
 		
-		tc_setMatrixValue(output, i, 0, p);
+		c_setMatrixValue(output, i, 0, p);
 		for (j=0; j < output.cols; ++j)
-			tc_setMatrixValue(output, i, j+1, tc_getMatrixValue(ss, j, 0));
+			c_setMatrixValue(output, i, j+1, c_getMatrixValue(ss, j, 0));
 		
-		tc_deleteMatrix(ss);
+		c_deleteMatrix(ss);
 	}
 	
 	//output
-	tc_printMatrixToFile("output.tab", output);
+	c_printMatrixToFile("output.tab", output);
 	
 	printf("\noutput.tab contains the final output\n\n");
 
-	tc_deleteMatrix(output);
+	c_deleteMatrix(output);
 }
 
 copasi_model model3() //big genetic model
