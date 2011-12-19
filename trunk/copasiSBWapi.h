@@ -11,7 +11,7 @@
  *  
  \code
  copasi_model m;
- tc_matrix output;
+ c_matrix output;
   
  m = cReadSBMLFile ("mymodel.xml");
   
@@ -27,7 +27,7 @@
 
  int main(int nargs, char** argv)
  {
-        tc_matrix efm, output, params;
+        c_matrix efm, output, params;
         copasi_model m1, m2;
         
         if (nargs < 2)
@@ -45,8 +45,8 @@
         printf("Antimony file written to model.txt\nSimulating...\n");  
         output = cSimulateDeterministic(m1, 0, 100, 1000);  //model, start, end, num. points
         printf("output.tab has %i rows and %i columns\n",output.rows, output.cols);
-        tc_printMatrixToFile("output.tab", output);
-        tc_deleteMatrix(output);
+        c_printMatrixToFile("output.tab", output);
+        c_deleteMatrix(output);
                  
         cRemoveModel(m1);
         copasi_end();
@@ -268,7 +268,7 @@ COPASIAPIEXPORT int getNumberFloatingSpecies(copasi_model model);
 /*! 
  \brief Get a list the floating species names
  \param copasi_model model
- \return tc_strings array of char * and length n, where n = number of species
+ \return c_strings array of char * and length n, where n = number of species
  \ingroup state
 */
 COPASIAPIEXPORT char** getFloatingSpeciesNames(copasi_model model);
@@ -303,7 +303,7 @@ COPASIAPIEXPORT void setFloatingSpeciesConcentrations (copasi_model model, doubl
 /*! 
  \brief Set all the floating species concentration  - CURRENTLY NOT IMPLEMENTED
  \param copasi_model model
- \param tc_matrix Vector of floating species concentrations
+ \param c_matrix Vector of floating species concentrations
  \ingroup boundary
 */
 COPASIAPIEXPORT double * getFloatingSpeciesConcentrations (copasi_model model);
@@ -321,7 +321,7 @@ COPASIAPIEXPORT double* getFloatingSpeciesIntitialConcentrations (copasi_model m
 /*! 
  \brief Set the initial floating species concentrations 
  \param copasi_model model
- \param tc_matrix Vector of initial floating species concentrations
+ \param c_matrix Vector of initial floating species concentrations
  \ingroup floating
 */
 COPASIAPIEXPORT void setFloatingSpeciesIntitialConcentrations (copasi_model model, double *);
@@ -427,7 +427,7 @@ COPASIAPIEXPORT void setCompartmentByIndex (copasi_model, int, double);
  \param double volume Vector of compartment volumes
  \ingroup compartment
 */
-COPASIAPIEXPORT void setCompartmentVolumes (copasi_model, tc_matrix v);
+COPASIAPIEXPORT void setCompartmentVolumes (copasi_model, c_matrix v);
 
 
 // -----------------------------------------------------------------------
@@ -484,10 +484,10 @@ COPASIAPIEXPORT double* getRatesOfChangeEx(copasi_model model, double* sp);
  \param double start time
  \param double end time
  \param int number of steps in the output
- \return tc_matrix matrix of concentration or particles
+ \return c_matrix matrix of concentration or particles
  \ingroup sbw_rateOfChange
 */
-COPASIAPIEXPORT tc_matrix simulate(copasi_model model, double timeStart, double timeEnd, int numOfPoints);
+COPASIAPIEXPORT c_matrix simulate(copasi_model model, double timeStart, double timeEnd, int numOfPoints);
 
 /*! 
  \brief Simulate the differential equation model over one time step

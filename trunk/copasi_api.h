@@ -11,7 +11,7 @@
  *  
  \code
  copasi_model m;
- tc_matrix output;
+ c_matrix output;
   
  m = cReadSBMLFile ("mymodel.xml");
   
@@ -27,7 +27,7 @@
 
  int main(int nargs, char** argv)
  {
-        tc_matrix efm, output, params;
+        c_matrix efm, output, params;
         copasi_model m1, m2;
         
         if (nargs < 2)
@@ -45,8 +45,8 @@
         printf("Antimony file written to model.txt\nSimulating...\n");  
         output = cSimulateDeterministic(m1, 0, 100, 1000);  //model, start, end, num. points
         printf("output.tab has %i rows and %i columns\n",output.rows, output.cols);
-        tc_printMatrixToFile("output.tab", output);
-        tc_deleteMatrix(output);
+        c_printMatrixToFile("output.tab", output);
+        c_deleteMatrix(output);
                  
         cRemoveModel(m1);
         copasi_end();
@@ -119,8 +119,8 @@ std::map is used for performing the hashing (it is not a real hash-table, but cl
 boost::regex is used for string substitutions.
 */
 
-#include "TC_structs.h"
-#define COPASIAPIEXPORT TCAPIEXPORT
+#include "cstructs.h"
+#define COPASIAPIEXPORT CAPIEXPORT
 
 /*!\brief This struct is used to contain a pointer to an instance of a COPASI object*/
 typedef struct  
@@ -295,11 +295,11 @@ COPASIAPIEXPORT void cSetVolume(copasi_model, const char * compartment, double v
 /*! 
  \brief Get the vector of compartment names and volumes
  \param copasi_model model
- \return tc_matrix column vector with compartment names as row names
+ \return c_matrix column vector with compartment names as row names
  \ingroup compartment
 */
 
-COPASIAPIEXPORT tc_matrix cGetCompartments (copasi_model);
+COPASIAPIEXPORT c_matrix cGetCompartments (copasi_model);
 
 /*! 
  \brief Set all compartment volumes using a vector of compartment values with row names. 
@@ -308,7 +308,7 @@ COPASIAPIEXPORT tc_matrix cGetCompartments (copasi_model);
  \param double row vector with row names corresponding to the compartment names. 
  \ingroup compartment
 */
-COPASIAPIEXPORT void cSetCompartmentVolumes (copasi_model, tc_matrix v);
+COPASIAPIEXPORT void cSetCompartmentVolumes (copasi_model, c_matrix v);
 
 /*! 
  \brief Get number of compartments. This is same as cGetCompartments(model).cols
@@ -454,11 +454,11 @@ COPASIAPIEXPORT double cGetReactionRate(copasi_model, const char * name);
 /*! 
  \brief Returns the rates of change given an array of new species concentrations and/or parameter values 
  \param copasi_model model
- \param tc_matrix vector of floating concentrations. must have row names
- \return tc_matrix vector of reaction rates with row names
+ \param c_matrix vector of floating concentrations. must have row names
+ \return c_matrix vector of reaction rates with row names
  \ingroup reaction
 */
-COPASIAPIEXPORT tc_matrix cGetReactionRatesEx(copasi_model, tc_matrix values);
+COPASIAPIEXPORT c_matrix cGetReactionRatesEx(copasi_model, c_matrix values);
 
 /*! 
  \brief Compute current flux through the given reactions
@@ -482,11 +482,11 @@ COPASIAPIEXPORT double cGetParticleFlux(copasi_model, const char * name);
 /*! 
  \brief Get the list of reaction names and their current fluxes
  \param copasi_model model
- \return tc_matrix row vector with column names corresponding to reaction names
- \sa tc_matrix
+ \return c_matrix row vector with column names corresponding to reaction names
+ \sa c_matrix
  \ingroup reaction
 */
-COPASIAPIEXPORT tc_matrix cGetReactionRates(copasi_model);
+COPASIAPIEXPORT c_matrix cGetReactionRates(copasi_model);
 
 /*! 
  \brief Get number of reactions. This is same as cGetAllFluxes(model).rows
@@ -575,61 +575,61 @@ COPASIAPIEXPORT void cSetSpeciesAmount(copasi_model, const char * species, doubl
 /*! 
  \brief Set multiple boundary or floating species concentration. Order is not important because the names are used to set value.
  \param copasi_model model
- \param tc_matric row vector of boundary or floating species concentrations. rows must be named
+ \param c_matric row vector of boundary or floating species concentrations. rows must be named
  \ingroup boundary
 */
-COPASIAPIEXPORT void cSetSpeciesConcentrations (copasi_model model, tc_matrix d);
+COPASIAPIEXPORT void cSetSpeciesConcentrations (copasi_model model, c_matrix d);
 
 /*! 
  \brief Get the initial floating species concentrations
  \param copasi_model model
- \return tc_matrix row vector of initial floating species concentrations
+ \return c_matrix row vector of initial floating species concentrations
  \ingroup floating
 */
-COPASIAPIEXPORT tc_matrix cGetFloatingSpeciesIntitialConcentrations (copasi_model model);
+COPASIAPIEXPORT c_matrix cGetFloatingSpeciesIntitialConcentrations (copasi_model model);
 
 /*! 
  \brief Set the initial floating species concentrations. Order does not matter because row names are used to assign values.
  \param copasi_model model
- \param tc_matrix row vector of initial floating species concentrations
+ \param c_matrix row vector of initial floating species concentrations
  \ingroup floating
 */
-COPASIAPIEXPORT void cSetFloatingSpeciesIntitialConcentrations (copasi_model model, tc_matrix sp);
+COPASIAPIEXPORT void cSetFloatingSpeciesIntitialConcentrations (copasi_model model, c_matrix sp);
 /*! 
  \brief Get species names and concentrations
  \param copasi_model model
  \param int index ith boundary species
- \return tc_matrix column vector where row names are the species names and first column has the concentrations
+ \return c_matrix column vector where row names are the species names and first column has the concentrations
  \ingroup state
 */
-COPASIAPIEXPORT tc_matrix cGetAllSpecies(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetAllSpecies(copasi_model model);
 
 /*! 
  \brief Get the current concentrations of all floating species
  \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \return c_matrix matrix of with 1 row and n columns, where n = number of species
  The names of the species are included in the matrix column labels
  \ingroup state
 */
-COPASIAPIEXPORT tc_matrix cGetFloatingSpeciesConcentrations(copasi_model);
+COPASIAPIEXPORT c_matrix cGetFloatingSpeciesConcentrations(copasi_model);
 
 /*! 
  \brief Get the current concentrations of all boundary species
  \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \return c_matrix matrix of with 1 row and n columns, where n = number of species
  The names of the species are included in the matrix column labels
  \ingroup state
 */
-COPASIAPIEXPORT tc_matrix cGetBoundarySpecies(copasi_model);
+COPASIAPIEXPORT c_matrix cGetBoundarySpecies(copasi_model);
 
 /*! 
  \brief Get the current amounts of all species. The amounts are calculated from the concentrations and compartment volume
  \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \return c_matrix matrix of with 1 row and n columns, where n = number of species
  The names of the species are included in the matrix column labels
  \ingroup state
 */
-COPASIAPIEXPORT tc_matrix cGetAmounts(copasi_model);
+COPASIAPIEXPORT c_matrix cGetAmounts(copasi_model);
 
 /*! 
  \brief Get the current concentration of a species
@@ -670,6 +670,16 @@ COPASIAPIEXPORT double cGetAmount(copasi_model, const char * name);
 COPASIAPIEXPORT int cSetValue(copasi_model, const char * name, double value);
 
 /*! 
+ \brief Get the concentration of a species, volume of a compartment, or value of a parameter
+      The function will figure out which using the name (fast lookup using hashtables).
+ \param copasi_model model
+ \param char * name
+ \return double value of species, parameters, or compartment
+ \ingroup create
+*/
+COPASIAPIEXPORT double cGetValue(copasi_model, const char * names);
+
+/*! 
  \brief Set the value of an existing global parameter or create a new global parameter
  \param copasi_model model
  \param char* parameter name
@@ -690,26 +700,26 @@ COPASIAPIEXPORT int cGetNumberOfGlobalParameters (copasi_model);
 /*! 
  \brief Get the list of global parameter names and values
  \param copasi_model model 
- \return tc_matrix column vector with parameter names are the row names
+ \return c_matrix column vector with parameter names are the row names
  \ingroup parameter
 */
-COPASIAPIEXPORT tc_matrix cGetGlobalParameters (copasi_model);
+COPASIAPIEXPORT c_matrix cGetGlobalParameters (copasi_model);
 
 /*! 
  \brief Set the vector of global parameters
  \param copasi_model model 
- \paramn tc_matrix column vector containing the values for the global parameters.
+ \paramn c_matrix column vector containing the values for the global parameters.
  \ingroup parameter
 */
-COPASIAPIEXPORT void cSetGlobalParameterValues(copasi_model, tc_matrix gp);
+COPASIAPIEXPORT void cSetGlobalParameterValues(copasi_model, c_matrix gp);
 
 /*! 
  \brief Set values for species, parameters, or compartments
  \param copasi_model model
- \param tc_matrix column vector with names and values of species or parameters or compartments
+ \param c_matrix column vector with names and values of species or parameters or compartments
  \ingroup floating
 */
-COPASIAPIEXPORT void cSetValues(copasi_model model, tc_matrix );
+COPASIAPIEXPORT void cSetValues(copasi_model model, c_matrix );
 
 
 // -----------------------------------------------------------------------
@@ -722,16 +732,16 @@ COPASIAPIEXPORT void cSetValues(copasi_model model, tc_matrix );
 /*! 
  \brief Compute the current rates of change for all species
  \param copasi_model model
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \return c_matrix matrix of with 1 row and n columns, where n = number of species
  \ingroup rateOfChange
 */
-COPASIAPIEXPORT tc_matrix cGetRatesOfChange(copasi_model);
+COPASIAPIEXPORT c_matrix cGetRatesOfChange(copasi_model);
 
 /*! 
  \brief Compute the current rates of change for one species
  \param copasi_model model
  \param string name of species
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \return c_matrix matrix of with 1 row and n columns, where n = number of species
  \ingroup rateOfChange
 */
 COPASIAPIEXPORT double cGetRateOfChange(copasi_model, const char * species);
@@ -739,11 +749,11 @@ COPASIAPIEXPORT double cGetRateOfChange(copasi_model, const char * species);
 /*! 
  \brief Compute the rates of change for all species after updating species concentrations
  \param copasi_model model
- \param tc_matrix new species concentrations
- \return tc_matrix matrix of with 1 row and n columns, where n = number of species
+ \param c_matrix new species concentrations
+ \return c_matrix matrix of with 1 row and n columns, where n = number of species
  \ingroup rateOfChange
 */
-COPASIAPIEXPORT tc_matrix cGetRatesOfChangeEx(copasi_model, tc_matrix);
+COPASIAPIEXPORT c_matrix cGetRatesOfChangeEx(copasi_model, c_matrix);
 
 /*! 
  \brief Simulate using LSODA numerical integrator
@@ -751,14 +761,14 @@ COPASIAPIEXPORT tc_matrix cGetRatesOfChangeEx(copasi_model, tc_matrix);
   \param double start time
  \param double end time
  \param int number of steps in the output
- \return tc_matrix matrix of concentration or particles
+ \return c_matrix matrix of concentration or particles
  
  \code
  result = cSimulateDeterministic (m, 0.0, 10.0, 100);
  \endcode
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cSimulateDeterministic(copasi_model model, double startTime, double endTime, int numSteps);
+COPASIAPIEXPORT c_matrix cSimulateDeterministic(copasi_model model, double startTime, double endTime, int numSteps);
 
 
 /*! 
@@ -776,10 +786,10 @@ COPASIAPIEXPORT double cOneStep(copasi_model model, double timeStep);
  \param double start time
  \param double end time
  \param int number of steps in the output
- \return tc_matrix matrix of concentration or particles
+ \return c_matrix matrix of concentration or particles
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cSimulateStochastic(copasi_model model, double startTime, double endTime, int numSteps);
+COPASIAPIEXPORT c_matrix cSimulateStochastic(copasi_model model, double startTime, double endTime, int numSteps);
 
 /*! 
  \brief Simulate using Hybrid algorithm/deterministic algorithm
@@ -787,10 +797,10 @@ COPASIAPIEXPORT tc_matrix cSimulateStochastic(copasi_model model, double startTi
   \param double start time
  \param double end time
  \param int number of steps in the output
- \return tc_matrix matrix of concentration or particles
+ \return c_matrix matrix of concentration or particles
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, double endTime, int numSteps);
+COPASIAPIEXPORT c_matrix cSimulateHybrid(copasi_model model, double startTime, double endTime, int numSteps);
 
 /*! 
  \brief Simulate using Tau Leap stochastic algorithm
@@ -798,10 +808,10 @@ COPASIAPIEXPORT tc_matrix cSimulateHybrid(copasi_model model, double startTime, 
   \param double start time
  \param double end time
  \param int number of steps in the output
- \return tc_matrix matrix of concentration or particles
+ \return c_matrix matrix of concentration or particles
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cSimulateTauLeap(copasi_model model, double startTime, double endTime, int numSteps);
+COPASIAPIEXPORT c_matrix cSimulateTauLeap(copasi_model model, double startTime, double endTime, int numSteps);
 
 /*! 
  \brief set current state to initial state
@@ -819,38 +829,38 @@ COPASIAPIEXPORT void cResetState(copasi_model);
 /*! 
  \brief Compute all the reaction rates, or flux, for each row of a time course data
  \param copasi_model model
-  \param tc_matrix original results with species as column names
- \return tc_matrix 
+  \param c_matrix original results with species as column names
+ \return c_matrix 
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cGetReactionRatesFromTimeCourse(copasi_model model, tc_matrix results);
+COPASIAPIEXPORT c_matrix cGetReactionRatesFromTimeCourse(copasi_model model, c_matrix results);
 
 /*! 
  \brief Compute derivatives for each species from the time course data
  \param copasi_model model
-  \param tc_matrix original results with species as column names
- \return tc_matrix 
+  \param c_matrix original results with species as column names
+ \return c_matrix 
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cGetDerivativesFromTimeCourse(copasi_model model, tc_matrix results);
+COPASIAPIEXPORT c_matrix cGetDerivativesFromTimeCourse(copasi_model model, c_matrix results);
 
 /*! 
  \brief Get all the control coefficients for each row of a time course data
  \param copasi_model model
-  \param tc_matrix original results with species as column names
- \return tc_matrix 
+  \param c_matrix original results with species as column names
+ \return c_matrix 
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cGetCCFromTimeCourse(copasi_model model, tc_matrix results);
+COPASIAPIEXPORT c_matrix cGetCCFromTimeCourse(copasi_model model, c_matrix results);
 
 /*! 
  \brief Get all the elasticities for each row of a time course data
  \param copasi_model model
-  \param tc_matrix original results with species as column names
- \return tc_matrix 
+  \param c_matrix original results with species as column names
+ \return c_matrix 
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cGetElasticitiesFromTimeCourse(copasi_model model, tc_matrix results);
+COPASIAPIEXPORT c_matrix cGetElasticitiesFromTimeCourse(copasi_model model, c_matrix results);
 
 /*! 
  \brief Filter the results of a time-course simulation based on the list of names provided. -- NOT IMPLEMENTED
@@ -860,12 +870,12 @@ COPASIAPIEXPORT tc_matrix cGetElasticitiesFromTimeCourse(copasi_model model, tc_
 		   Use cc_(x)_y for the control coefficient of x on y
 		   Use elasticities_(x)_y for the scaled elasticity of x wrt y
  \param copasi_model model
-  \param tc_matrix original results with species as column names
-  \param tc_strings array of names to return 
- \return tc_matrix 
+  \param c_matrix original results with species as column names
+  \param c_strings array of names to return 
+ \return c_matrix 
  \ingroup simulation
 */
-COPASIAPIEXPORT tc_matrix cFilterTimeCourseResults(copasi_model model, tc_matrix results, tc_strings names);
+COPASIAPIEXPORT c_matrix cFilterTimeCourseResults(copasi_model model, c_matrix results, c_strings names);
 
 
 // -----------------------------------------------------------------------
@@ -880,35 +890,35 @@ COPASIAPIEXPORT tc_matrix cFilterTimeCourseResults(copasi_model model, tc_matrix
  \brief Bring the system to steady state by solving for the zeros of the ODE's. 
              Performs an initial simulation before solving.
  \param copasi_model model
- \return tc_matrix matrix with 1 row and n columns, where n = number of species
+ \return c_matrix matrix with 1 row and n columns, where n = number of species
  \ingroup steadystate
 */
-COPASIAPIEXPORT tc_matrix cGetSteadyState(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetSteadyState(copasi_model model);
 
 /*! 
  \brief Bring the system to steady state by doing repeated simulations.
              Use this is cGetSteadyState
  \param copasi_model model
  \param int max iterations (each iteration doubles the time duration)
- \return tc_matrix matrix with 1 row and n columns, where n = number of species
+ \return c_matrix matrix with 1 row and n columns, where n = number of species
  \ingroup steadystate
 */
-COPASIAPIEXPORT tc_matrix cGetSteadyStateUsingSimulation(copasi_model model, int iter);
+COPASIAPIEXPORT c_matrix cGetSteadyStateUsingSimulation(copasi_model model, int iter);
 
 /*! 
  \brief Get the full Jacobian at the current state
  \param copasi_model model
- \return tc_matrix matrix with n rows and n columns, where n = number of species
+ \return c_matrix matrix with n rows and n columns, where n = number of species
  \ingroup steadystate
 */
-COPASIAPIEXPORT tc_matrix cGetJacobian(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetJacobian(copasi_model model);
 /*! 
  \brief Get the eigenvalues of the Jacobian at the current state
  \param copasi_model model
- \return tc_matrix matrix with 1 row and n columns, each containing an eigenvalue
+ \return c_matrix matrix with 1 row and n columns, each containing an eigenvalue
  \ingroup steadystate
 */
-COPASIAPIEXPORT tc_matrix cGetEigenvalues(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetEigenvalues(copasi_model model);
 
 
 // -----------------------------------------------------------------------
@@ -922,61 +932,61 @@ COPASIAPIEXPORT tc_matrix cGetEigenvalues(copasi_model model);
 /*! 
  \brief Compute the unscaled flux control coefficients
  \param copasi_model model
- \return tc_matrix rows consist of the fluxes that are perturbed, and columns consist 
+ \return c_matrix rows consist of the fluxes that are perturbed, and columns consist 
                              of the fluxes that are affected
  \ingroup mca
 */
-COPASIAPIEXPORT tc_matrix cGetUnscaledFluxControlCoeffs(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetUnscaledFluxControlCoeffs(copasi_model model);
 
 
 /*! 
  \brief Compute the scaled flux control coefficients
  \param copasi_model model
- \return tc_matrix rows consist of the fluxes that are perturbed, and columns consist 
+ \return c_matrix rows consist of the fluxes that are perturbed, and columns consist 
                              of the fluxes that are affected
  \ingroup mca
 */
-COPASIAPIEXPORT tc_matrix cGetScaledFluxControlCoeffs(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetScaledFluxControlCoeffs(copasi_model model);
 
 
 /*!
  \brief Compute the unscaled concentration control coefficients
  \param copasi_model model
- \return tc_matrix rows consist of the fluxes that are perturbed, and columns consist 
+ \return c_matrix rows consist of the fluxes that are perturbed, and columns consist 
                              of the concentrations that are affected
  \ingroup mca
 */
-COPASIAPIEXPORT tc_matrix cGetUnscaledConcentrationControlCoeffs(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetUnscaledConcentrationControlCoeffs(copasi_model model);
 
 
 /*! 
  \brief Compute the scaled concentration control coefficients
  \param copasi_model model
- \return tc_matrix rows consist of the fluxes that are perturbed, and columns consist 
+ \return c_matrix rows consist of the fluxes that are perturbed, and columns consist 
                              of the concentrations that are affected
  \ingroup mca
 */
-COPASIAPIEXPORT tc_matrix cGetScaledConcentrationConcentrationCoeffs(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetScaledConcentrationConcentrationCoeffs(copasi_model model);
 
 
 /*! 
  \brief Compute the unscaled elasticities
  \param copasi_model model
- \return tc_matrix rows consist of the species that are perturbed, and columns consist 
+ \return c_matrix rows consist of the species that are perturbed, and columns consist 
                              of the reactions that are affected
  \ingroup mca
 */
-COPASIAPIEXPORT tc_matrix cGetUnscaledElasticities(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetUnscaledElasticities(copasi_model model);
 
 
 /*! 
  \brief Compute the scaled elasticities
  \param copasi_model model
- \return tc_matrix rows consist of the species that are perturbed, and columns consist 
+ \return c_matrix rows consist of the species that are perturbed, and columns consist 
                              of the reactions that are affected
  \ingroup mca
 */
-COPASIAPIEXPORT tc_matrix cGetScaledElasticities(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetScaledElasticities(copasi_model model);
 
 
 // -----------------------------------------------------------------------
@@ -990,73 +1000,73 @@ COPASIAPIEXPORT tc_matrix cGetScaledElasticities(copasi_model model);
 /*! 
  \brief Return the full stoichiometry matrix, N
  \param copasi_model model
- \return tc_matrix rows consist of the species and columns are the reactions
+ \return c_matrix rows consist of the species and columns are the reactions
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetFullStoichiometryMatrix(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetFullStoichiometryMatrix(copasi_model model);
 
 
 /*! 
  \brief Return the reduced stoichiometry matrix, Nr
  \param copasi_model model
- \return tc_matrix rows consist of the species and columns are the reactions
+ \return c_matrix rows consist of the species and columns are the reactions
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetReducedStoichiometryMatrix(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetReducedStoichiometryMatrix(copasi_model model);
 
 
 /*! 
  \brief Compute the elementary flux modes
  \param copasi_model model
- \return tc_matrix matrix with reactions as rows and flux modes as columns (no column names)
+ \return c_matrix matrix with reactions as rows and flux modes as columns (no column names)
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetElementaryFluxModes(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetElementaryFluxModes(copasi_model model);
 
 
 /*! 
  \brief Compute the Gamma matrix (i.e. conservation laws)
  \param copasi_model model
- \return tc_matrix 
+ \return c_matrix 
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetGammaMatrix(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetGammaMatrix(copasi_model model);
 
 
 /*! 
  \brief Compute the K matrix (right nullspace)
  \param copasi_model model
- \return tc_matrix 
+ \return c_matrix 
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetKMatrix(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetKMatrix(copasi_model model);
 
 
 /*! 
  \brief Compute the K0 matrix
  \param copasi_model model
- \return tc_matrix 
+ \return c_matrix 
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetK0Matrix(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetK0Matrix(copasi_model model);
 
 
 /*! 
  \brief Compute the L matrix (link matrix, left nullspace)
  \param copasi_model model
- \return tc_matrix 
+ \return c_matrix 
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetLinkMatrix(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetLinkMatrix(copasi_model model);
 
 
 /*! 
  \brief Compute the L0 matrix
  \param copasi_model model
- \return tc_matrix 
+ \return c_matrix 
  \ingroup matrix
 */
-COPASIAPIEXPORT tc_matrix cGetL0Matrix(copasi_model model);
+COPASIAPIEXPORT c_matrix cGetL0Matrix(copasi_model model);
 
 
 // -----------------------------------------------------------------------
@@ -1071,21 +1081,21 @@ COPASIAPIEXPORT tc_matrix cGetL0Matrix(copasi_model model);
  \brief fit the model parameters to time-series data
  \param copasi_model model
  \param char * filename (tab separated)
- \param tc_matrix parameters to optimize. rownames should contain parameter names, column 1 contains parameter min-values, and column 2 contains parameter max values
+ \param c_matrix parameters to optimize. rownames should contain parameter names, column 1 contains parameter min-values, and column 2 contains parameter max values
  \param char * pick method. Use of of the following: "GeneticAlgorithm", "LevenbergMarquardt", "SimulatedAnnealing", "NelderMead", "SRES", "ParticleSwarm", "SteepestDescent", "RandomSearch"
  \ingroup matrix
 */
-//COPASIAPIEXPORT void cFitModelToData(copasi_model model, const char * filename, tc_matrix params, const char * method);
+//COPASIAPIEXPORT void cFitModelToData(copasi_model model, const char * filename, c_matrix params, const char * method);
 
 /*! 
  \brief use genetic algorithms to generate a distribution of parameter values that satisfy an objective function or fit a data file
  \param copasi_model model
  \param char * objective function or filename
- \param tc_matrix parameter initial values and min and max values (3 columns)
- \return tc_matrix optimized parameters as a column vector
+ \param c_matrix parameter initial values and min and max values (3 columns)
+ \return c_matrix optimized parameters as a column vector
  \ingroup optim
 */
-COPASIAPIEXPORT tc_matrix cOptimize(copasi_model model, const char * objective, tc_matrix input);
+COPASIAPIEXPORT c_matrix cOptimize(copasi_model model, const char * objective, c_matrix input);
 
 /*! 
  \brief set the number of iterations for the genetic algorithm based optimizer
@@ -1123,6 +1133,24 @@ COPASIAPIEXPORT void cSetOptimizerCrossoverRate(double);
 COPASIAPIEXPORT void cDisableAssignmentRuleReordering();
 
 /*! 
+ \brief Fit parameters to time-series data in a file (comma-separated or tab-separated)
+ \param copasi_model model
+ \param string file containing the target data
+ \param c_matrix column matrix containing the names and initial values of just the parameters that need to be optimized
+ \param string name of the algorithm to use. The options are:
+                  geneticalgorithm, 
+                  simulatedannealing, 
+                  levenbergmarquardt, 
+                  neldermead, 
+                  sres, 
+                  particleswarm, 
+                  steepestdescent, 
+                  randomsearch
+ \ingroup optim
+*/
+COPASIAPIEXPORT void cFitModelToData(copasi_model model, const char * filename, c_matrix params, const char * method);
+
+/*! 
  \brief modify assignment rules to avoid dependencies between assignment rules (default)
  \ingroup cleanup
 */
@@ -1137,10 +1165,10 @@ COPASIAPIEXPORT void cEnableAssignmentRuleReordering();
  \param double start time for the simulation
  \param double end time for the simulation
  \param int number of steps in-between start and end
- \return tc_matrix matrix with 
+ \return c_matrix matrix with 
  \ingroup optim
 */
-//COPASIAPIEXPORT tc_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int numTimeSteps);
+//COPASIAPIEXPORT c_matrix cSimulationParameterScan(copasi_model model, const char * param, double start, double end, int numSteps, double startTime, double endTime, int numTimeSteps);
 
 /*! 
  \brief repeat steady state calculation multiple times, where a paramater is incremented during each repeated iteration
@@ -1148,12 +1176,15 @@ COPASIAPIEXPORT void cEnableAssignmentRuleReordering();
  \param double start value for the parameter
  \param double final value for the parameter
  \param int number of steps in-between start and end
- \return tc_matrix first column will be the changed parameter values 
+ \return c_matrix first column will be the changed parameter values 
               and the rest of the columns will contain the steady state values for that parameter value
  \ingroup optim
 */
-//COPASIAPIEXPORT tc_matrix cSteadyStateParameterScan(copasi_model model, const char * param, double start, double end, int numsteps);
+//COPASIAPIEXPORT c_matrix cSteadyStateParameterScan(copasi_model model, const char * param, double start, double end, int numsteps);
 
+COPASIAPIEXPORT double runif(double min, double max);
+
+int main1();
 END_C_DECLS
 #endif
 

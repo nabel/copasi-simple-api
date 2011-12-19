@@ -2140,14 +2140,14 @@ SWIGRUNTIME void SWIG_Octave_SetModule(void *clientdata, swig_module_info *point
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_copasi_compartment swig_types[1]
-#define SWIGTYPE_p_copasi_model swig_types[2]
-#define SWIGTYPE_p_copasi_reaction swig_types[3]
-#define SWIGTYPE_p_double swig_types[4]
-#define SWIGTYPE_p_p_char swig_types[5]
-#define SWIGTYPE_p_tc_matrix swig_types[6]
-#define SWIGTYPE_p_tc_strings swig_types[7]
+#define SWIGTYPE_p_c_matrix swig_types[0]
+#define SWIGTYPE_p_c_strings swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_copasi_compartment swig_types[3]
+#define SWIGTYPE_p_copasi_model swig_types[4]
+#define SWIGTYPE_p_copasi_reaction swig_types[5]
+#define SWIGTYPE_p_double swig_types[6]
+#define SWIGTYPE_p_p_char swig_types[7]
 #define SWIGTYPE_p_void swig_types[8]
 static swig_type_info *swig_types[10];
 static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
@@ -2166,7 +2166,7 @@ extern "C" {
 #define SWIG_as_voidptrptr(a) ((void)SWIG_as_voidptr(*a),(void**)(a)) 
 
 
-#include "TC_structs.h"
+#include "cstructs.h"
 #include "copasi_api.h"
 
 
@@ -2297,8 +2297,8 @@ SWIG_AsCharPtrAndSize(octave_value ov, char** cptr, size_t* psize, int *alloc)
 
 }
 
-static octave_value_list _wrap_tc_strings_length_set (const octave_value_list& args, int nargout) {
-  tc_strings *arg1 = (tc_strings *) 0 ;
+static octave_value_list _wrap_c_strings_length_set (const octave_value_list& args, int nargout) {
+  c_strings *arg1 = (c_strings *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -2308,17 +2308,17 @@ static octave_value_list _wrap_tc_strings_length_set (const octave_value_list& a
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_strings_length_set",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_strings_length_set",args.length(),2,2,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_length_set" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_length_set" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_strings_length_set" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_strings_length_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   if (arg1) (arg1)->length = arg2;
@@ -2329,8 +2329,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_strings_length_get (const octave_value_list& args, int nargout) {
-  tc_strings *arg1 = (tc_strings *) 0 ;
+static octave_value_list _wrap_c_strings_length_get (const octave_value_list& args, int nargout) {
+  c_strings *arg1 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
@@ -2338,14 +2338,14 @@ static octave_value_list _wrap_tc_strings_length_get (const octave_value_list& a
   octave_value _outv;
   int result;
   
-  if (!SWIG_check_num_args("tc_strings_length_get",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_strings_length_get",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_length_get" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_length_get" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   result = (int) ((arg1)->length);
   _outv = SWIG_From_int((int)(result));
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2354,8 +2354,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_strings_strings_set (const octave_value_list& args, int nargout) {
-  tc_strings *arg1 = (tc_strings *) 0 ;
+static octave_value_list _wrap_c_strings_strings_set (const octave_value_list& args, int nargout) {
+  c_strings *arg1 = (c_strings *) 0 ;
   char **arg2 = (char **) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -2365,17 +2365,17 @@ static octave_value_list _wrap_tc_strings_strings_set (const octave_value_list& 
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_strings_strings_set",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_strings_strings_set",args.length(),2,2,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_strings_set" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_strings_set" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   res2 = SWIG_ConvertPtr(args(1), &argp2,SWIGTYPE_p_p_char, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_strings_strings_set" "', argument " "2"" of type '" "char **""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_strings_strings_set" "', argument " "2"" of type '" "char **""'"); 
   }
   arg2 = (char **)(argp2);
   if (arg1) (arg1)->strings = arg2;
@@ -2386,8 +2386,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_strings_strings_get (const octave_value_list& args, int nargout) {
-  tc_strings *arg1 = (tc_strings *) 0 ;
+static octave_value_list _wrap_c_strings_strings_get (const octave_value_list& args, int nargout) {
+  c_strings *arg1 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
@@ -2395,14 +2395,14 @@ static octave_value_list _wrap_tc_strings_strings_get (const octave_value_list& 
   octave_value _outv;
   char **result = 0 ;
   
-  if (!SWIG_check_num_args("tc_strings_strings_get",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_strings_strings_get",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_strings_get" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_strings_get" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   result = (char **) ((arg1)->strings);
   _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_p_char, 0 |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2411,39 +2411,39 @@ fail:
 }
 
 
-static octave_value_list _wrap_new_tc_strings (const octave_value_list& args, int nargout) {
+static octave_value_list _wrap_new_c_strings (const octave_value_list& args, int nargout) {
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_strings *result = 0 ;
+  c_strings *result = 0 ;
   
-  if (!SWIG_check_num_args("new_tc_strings",args.length(),0,0,0)) {
+  if (!SWIG_check_num_args("new_c_strings",args.length(),0,0,0)) {
     SWIG_fail;
   }
-  result = (tc_strings *)calloc(1, sizeof(tc_strings));
-  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_strings, 1 |  0 );
+  result = (c_strings *)calloc(1, sizeof(c_strings));
+  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_strings, 1 |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_delete_tc_strings (const octave_value_list& args, int nargout) {
-  tc_strings *arg1 = (tc_strings *) 0 ;
+static octave_value_list _wrap_delete_c_strings (const octave_value_list& args, int nargout) {
+  c_strings *arg1 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("delete_tc_strings",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("delete_c_strings",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_strings, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_strings, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_tc_strings" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_c_strings" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   free((char *) arg1);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2452,17 +2452,17 @@ fail:
 }
 
 
-static swig_octave_member swig_tc_strings_members[] = {
-{"length",0,_wrap_tc_strings_length_get,_wrap_tc_strings_length_set,0,0},
-{"strings",0,_wrap_tc_strings_strings_get,_wrap_tc_strings_strings_set,0,0},
+static swig_octave_member swig_c_strings_members[] = {
+{"length",0,_wrap_c_strings_length_get,_wrap_c_strings_length_set,0,0},
+{"strings",0,_wrap_c_strings_strings_get,_wrap_c_strings_strings_set,0,0},
 {0,0,0,0}
 };
-static const char *swig_tc_strings_base_names[] = {0};
-static const swig_type_info *swig_tc_strings_base[] = {0};
-static swig_octave_class _wrap_class_tc_strings = {"tc_strings", &SWIGTYPE_p_tc_strings,0,_wrap_new_tc_strings,0,_wrap_delete_tc_strings,swig_tc_strings_members,swig_tc_strings_base_names,swig_tc_strings_base };
+static const char *swig_c_strings_base_names[] = {0};
+static const swig_type_info *swig_c_strings_base[] = {0};
+static swig_octave_class _wrap_class_c_strings = {"c_strings", &SWIGTYPE_p_c_strings,0,_wrap_new_c_strings,0,_wrap_delete_c_strings,swig_c_strings_members,swig_c_strings_base_names,swig_c_strings_base };
 
-static octave_value_list _wrap_tc_matrix_rows_set (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_rows_set (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -2472,17 +2472,17 @@ static octave_value_list _wrap_tc_matrix_rows_set (const octave_value_list& args
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_matrix_rows_set",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_matrix_rows_set",args.length(),2,2,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rows_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rows_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_matrix_rows_set" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_matrix_rows_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   if (arg1) (arg1)->rows = arg2;
@@ -2493,8 +2493,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_rows_get (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_rows_get (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
@@ -2502,14 +2502,14 @@ static octave_value_list _wrap_tc_matrix_rows_get (const octave_value_list& args
   octave_value _outv;
   int result;
   
-  if (!SWIG_check_num_args("tc_matrix_rows_get",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_matrix_rows_get",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rows_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rows_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   result = (int) ((arg1)->rows);
   _outv = SWIG_From_int((int)(result));
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2518,8 +2518,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_cols_set (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_cols_set (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -2529,17 +2529,17 @@ static octave_value_list _wrap_tc_matrix_cols_set (const octave_value_list& args
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_matrix_cols_set",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_matrix_cols_set",args.length(),2,2,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_cols_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_cols_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_matrix_cols_set" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_matrix_cols_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   if (arg1) (arg1)->cols = arg2;
@@ -2550,8 +2550,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_cols_get (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_cols_get (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
@@ -2559,14 +2559,14 @@ static octave_value_list _wrap_tc_matrix_cols_get (const octave_value_list& args
   octave_value _outv;
   int result;
   
-  if (!SWIG_check_num_args("tc_matrix_cols_get",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_matrix_cols_get",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_cols_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_cols_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   result = (int) ((arg1)->cols);
   _outv = SWIG_From_int((int)(result));
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2575,8 +2575,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_values_set (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_values_set (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   double *arg2 = (double *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -2586,17 +2586,17 @@ static octave_value_list _wrap_tc_matrix_values_set (const octave_value_list& ar
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_matrix_values_set",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_matrix_values_set",args.length(),2,2,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_values_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_values_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   res2 = SWIG_ConvertPtr(args(1), &argp2,SWIGTYPE_p_double, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_matrix_values_set" "', argument " "2"" of type '" "double *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_matrix_values_set" "', argument " "2"" of type '" "double *""'"); 
   }
   arg2 = (double *)(argp2);
   if (arg1) (arg1)->values = arg2;
@@ -2607,8 +2607,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_values_get (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_values_get (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
@@ -2616,14 +2616,14 @@ static octave_value_list _wrap_tc_matrix_values_get (const octave_value_list& ar
   octave_value _outv;
   double *result = 0 ;
   
-  if (!SWIG_check_num_args("tc_matrix_values_get",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_matrix_values_get",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_values_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_values_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   result = (double *) ((arg1)->values);
   _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2632,9 +2632,9 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_rownames_set (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
-  tc_strings *arg2 = (tc_strings *) 0 ;
+static octave_value_list _wrap_c_matrix_rownames_set (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
+  c_strings *arg2 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -2643,19 +2643,19 @@ static octave_value_list _wrap_tc_matrix_rownames_set (const octave_value_list& 
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_matrix_rownames_set",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_matrix_rownames_set",args.length(),2,2,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rownames_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rownames_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  res2 = SWIG_ConvertPtr(args(1), &argp2,SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  res2 = SWIG_ConvertPtr(args(1), &argp2,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_matrix_rownames_set" "', argument " "2"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_matrix_rownames_set" "', argument " "2"" of type '" "c_strings *""'"); 
   }
-  arg2 = (tc_strings *)(argp2);
+  arg2 = (c_strings *)(argp2);
   if (arg1) (arg1)->rownames = *arg2;
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2664,34 +2664,34 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_rownames_get (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_rownames_get (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_strings *result = 0 ;
+  c_strings *result = 0 ;
   
-  if (!SWIG_check_num_args("tc_matrix_rownames_get",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_matrix_rownames_get",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rownames_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rownames_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  result = (tc_strings *)& ((arg1)->rownames);
-  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  result = (c_strings *)& ((arg1)->rownames);
+  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_strings, 0 |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_tc_matrix_colnames_set (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
-  tc_strings *arg2 = (tc_strings *) 0 ;
+static octave_value_list _wrap_c_matrix_colnames_set (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
+  c_strings *arg2 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -2700,19 +2700,19 @@ static octave_value_list _wrap_tc_matrix_colnames_set (const octave_value_list& 
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_matrix_colnames_set",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_matrix_colnames_set",args.length(),2,2,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_colnames_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_colnames_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  res2 = SWIG_ConvertPtr(args(1), &argp2,SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  res2 = SWIG_ConvertPtr(args(1), &argp2,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_matrix_colnames_set" "', argument " "2"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_matrix_colnames_set" "', argument " "2"" of type '" "c_strings *""'"); 
   }
-  arg2 = (tc_strings *)(argp2);
+  arg2 = (c_strings *)(argp2);
   if (arg1) (arg1)->colnames = *arg2;
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2721,64 +2721,64 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_matrix_colnames_get (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_c_matrix_colnames_get (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_strings *result = 0 ;
+  c_strings *result = 0 ;
   
-  if (!SWIG_check_num_args("tc_matrix_colnames_get",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_matrix_colnames_get",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_colnames_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_colnames_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  result = (tc_strings *)& ((arg1)->colnames);
-  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  result = (c_strings *)& ((arg1)->colnames);
+  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_strings, 0 |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_new_tc_matrix (const octave_value_list& args, int nargout) {
+static octave_value_list _wrap_new_c_matrix (const octave_value_list& args, int nargout) {
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix *result = 0 ;
+  c_matrix *result = 0 ;
   
-  if (!SWIG_check_num_args("new_tc_matrix",args.length(),0,0,0)) {
+  if (!SWIG_check_num_args("new_c_matrix",args.length(),0,0,0)) {
     SWIG_fail;
   }
-  result = (tc_matrix *)calloc(1, sizeof(tc_matrix));
-  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_matrix, 1 |  0 );
+  result = (c_matrix *)calloc(1, sizeof(c_matrix));
+  _outv = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_matrix, 1 |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_delete_tc_matrix (const octave_value_list& args, int nargout) {
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+static octave_value_list _wrap_delete_c_matrix (const octave_value_list& args, int nargout) {
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("delete_tc_matrix",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("delete_c_matrix",args.length(),1,1,0)) {
     SWIG_fail;
   }
-  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_tc_matrix, SWIG_POINTER_DISOWN |  0 );
+  res1 = SWIG_ConvertPtr(args(0), &argp1,SWIGTYPE_p_c_matrix, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_tc_matrix" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_c_matrix" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   free((char *) arg1);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
@@ -2787,19 +2787,19 @@ fail:
 }
 
 
-static swig_octave_member swig_tc_matrix_members[] = {
-{"rows",0,_wrap_tc_matrix_rows_get,_wrap_tc_matrix_rows_set,0,0},
-{"cols",0,_wrap_tc_matrix_cols_get,_wrap_tc_matrix_cols_set,0,0},
-{"values",0,_wrap_tc_matrix_values_get,_wrap_tc_matrix_values_set,0,0},
-{"rownames",0,_wrap_tc_matrix_rownames_get,_wrap_tc_matrix_rownames_set,0,0},
-{"colnames",0,_wrap_tc_matrix_colnames_get,_wrap_tc_matrix_colnames_set,0,0},
+static swig_octave_member swig_c_matrix_members[] = {
+{"rows",0,_wrap_c_matrix_rows_get,_wrap_c_matrix_rows_set,0,0},
+{"cols",0,_wrap_c_matrix_cols_get,_wrap_c_matrix_cols_set,0,0},
+{"values",0,_wrap_c_matrix_values_get,_wrap_c_matrix_values_set,0,0},
+{"rownames",0,_wrap_c_matrix_rownames_get,_wrap_c_matrix_rownames_set,0,0},
+{"colnames",0,_wrap_c_matrix_colnames_get,_wrap_c_matrix_colnames_set,0,0},
 {0,0,0,0}
 };
-static const char *swig_tc_matrix_base_names[] = {0};
-static const swig_type_info *swig_tc_matrix_base[] = {0};
-static swig_octave_class _wrap_class_tc_matrix = {"tc_matrix", &SWIGTYPE_p_tc_matrix,0,_wrap_new_tc_matrix,0,_wrap_delete_tc_matrix,swig_tc_matrix_members,swig_tc_matrix_base_names,swig_tc_matrix_base };
+static const char *swig_c_matrix_base_names[] = {0};
+static const swig_type_info *swig_c_matrix_base[] = {0};
+static swig_octave_class _wrap_class_c_matrix = {"c_matrix", &SWIGTYPE_p_c_matrix,0,_wrap_new_c_matrix,0,_wrap_delete_c_matrix,swig_c_matrix_members,swig_c_matrix_base_names,swig_c_matrix_base };
 
-static octave_value_list _wrap_tc_createMatrix (const octave_value_list& args, int nargout) {
+static octave_value_list _wrap_c_createMatrix (const octave_value_list& args, int nargout) {
   int arg1 ;
   int arg2 ;
   int val1 ;
@@ -2809,56 +2809,56 @@ static octave_value_list _wrap_tc_createMatrix (const octave_value_list& args, i
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
-  if (!SWIG_check_num_args("tc_createMatrix",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_createMatrix",args.length(),2,2,0)) {
     SWIG_fail;
   }
   ecode1 = SWIG_AsVal_int(args(0), &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "tc_createMatrix" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "c_createMatrix" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = (int)(val1);
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_createMatrix" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_createMatrix" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = tc_createMatrix(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  result = c_createMatrix(arg1,arg2);
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_tc_createStringsArray (const octave_value_list& args, int nargout) {
+static octave_value_list _wrap_c_createStringsArray (const octave_value_list& args, int nargout) {
   int arg1 ;
   int val1 ;
   int ecode1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_strings result;
+  c_strings result;
   
-  if (!SWIG_check_num_args("tc_createStringsArray",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_createStringsArray",args.length(),1,1,0)) {
     SWIG_fail;
   }
   ecode1 = SWIG_AsVal_int(args(0), &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "tc_createStringsArray" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "c_createStringsArray" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = (int)(val1);
-  result = tc_createStringsArray(arg1);
-  _outv = SWIG_NewPointerObj((tc_strings *)memcpy((tc_strings *)malloc(sizeof(tc_strings)),&result,sizeof(tc_strings)), SWIGTYPE_p_tc_strings, SWIG_POINTER_OWN |  0 );
+  result = c_createStringsArray(arg1);
+  _outv = SWIG_NewPointerObj((c_strings *)memcpy((c_strings *)malloc(sizeof(c_strings)),&result,sizeof(c_strings)), SWIGTYPE_p_c_strings, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_tc_getMatrixValue (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_getMatrixValue (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   int arg2 ;
   int arg3 ;
   void *argp1 ;
@@ -2872,31 +2872,31 @@ static octave_value_list _wrap_tc_getMatrixValue (const octave_value_list& args,
   octave_value _outv;
   double result;
   
-  if (!SWIG_check_num_args("tc_getMatrixValue",args.length(),3,3,0)) {
+  if (!SWIG_check_num_args("c_getMatrixValue",args.length(),3,3,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getMatrixValue" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getMatrixValue" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getMatrixValue" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getMatrixValue" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getMatrixValue" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getMatrixValue" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   ecode3 = SWIG_AsVal_int(args(2), &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "tc_getMatrixValue" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "c_getMatrixValue" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = (int)(val3);
-  result = (double)tc_getMatrixValue(arg1,arg2,arg3);
+  result = (double)c_getMatrixValue(arg1,arg2,arg3);
   _outv = SWIG_From_double((double)(result));
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -2904,8 +2904,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_setMatrixValue (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_setMatrixValue (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   int arg2 ;
   int arg3 ;
   double arg4 ;
@@ -2921,36 +2921,36 @@ static octave_value_list _wrap_tc_setMatrixValue (const octave_value_list& args,
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_setMatrixValue",args.length(),4,4,0)) {
+  if (!SWIG_check_num_args("c_setMatrixValue",args.length(),4,4,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setMatrixValue" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setMatrixValue" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setMatrixValue" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setMatrixValue" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setMatrixValue" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setMatrixValue" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   ecode3 = SWIG_AsVal_int(args(2), &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "tc_setMatrixValue" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "c_setMatrixValue" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = (int)(val3);
   ecode4 = SWIG_AsVal_double(args(3), &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "tc_setMatrixValue" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "c_setMatrixValue" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = (double)(val4);
-  tc_setMatrixValue(arg1,arg2,arg3,arg4);
+  c_setMatrixValue(arg1,arg2,arg3,arg4);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -2958,8 +2958,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_getRowName (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_getRowName (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   int arg2 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -2970,26 +2970,26 @@ static octave_value_list _wrap_tc_getRowName (const octave_value_list& args, int
   octave_value _outv;
   char *result = 0 ;
   
-  if (!SWIG_check_num_args("tc_getRowName",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_getRowName",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getRowName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getRowName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getRowName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getRowName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getRowName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getRowName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = (char *)tc_getRowName(arg1,arg2);
+  result = (char *)c_getRowName(arg1,arg2);
   _outv = SWIG_FromCharPtr((const char *)result);
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -2997,8 +2997,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_setRowName (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_setRowName (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   void *argp1 ;
@@ -3012,31 +3012,31 @@ static octave_value_list _wrap_tc_setRowName (const octave_value_list& args, int
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_setRowName",args.length(),3,3,0)) {
+  if (!SWIG_check_num_args("c_setRowName",args.length(),3,3,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setRowName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setRowName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setRowName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setRowName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setRowName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setRowName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   res3 = SWIG_AsCharPtrAndSize(args(2), &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "tc_setRowName" "', argument " "3"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "c_setRowName" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = (char *)(buf3);
-  tc_setRowName(arg1,arg2,(char const *)arg3);
+  c_setRowName(arg1,arg2,(char const *)arg3);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
@@ -3045,8 +3045,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_getColumnName (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_getColumnName (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   int arg2 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3057,26 +3057,26 @@ static octave_value_list _wrap_tc_getColumnName (const octave_value_list& args, 
   octave_value _outv;
   char *result = 0 ;
   
-  if (!SWIG_check_num_args("tc_getColumnName",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_getColumnName",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getColumnName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getColumnName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getColumnName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getColumnName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getColumnName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getColumnName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = (char *)tc_getColumnName(arg1,arg2);
+  result = (char *)c_getColumnName(arg1,arg2);
   _outv = SWIG_FromCharPtr((const char *)result);
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -3084,8 +3084,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_setColumnName (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_setColumnName (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   void *argp1 ;
@@ -3099,31 +3099,31 @@ static octave_value_list _wrap_tc_setColumnName (const octave_value_list& args, 
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_setColumnName",args.length(),3,3,0)) {
+  if (!SWIG_check_num_args("c_setColumnName",args.length(),3,3,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setColumnName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setColumnName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setColumnName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setColumnName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setColumnName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setColumnName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   res3 = SWIG_AsCharPtrAndSize(args(2), &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "tc_setColumnName" "', argument " "3"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "c_setColumnName" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = (char *)(buf3);
-  tc_setColumnName(arg1,arg2,(char const *)arg3);
+  c_setColumnName(arg1,arg2,(char const *)arg3);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
@@ -3132,8 +3132,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_getString (const octave_value_list& args, int nargout) {
-  tc_strings arg1 ;
+static octave_value_list _wrap_c_getString (const octave_value_list& args, int nargout) {
+  c_strings arg1 ;
   int arg2 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3144,26 +3144,26 @@ static octave_value_list _wrap_tc_getString (const octave_value_list& args, int 
   octave_value _outv;
   char *result = 0 ;
   
-  if (!SWIG_check_num_args("tc_getString",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_getString",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getString" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getString" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getString" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getString" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getString" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getString" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = (char *)tc_getString(arg1,arg2);
+  result = (char *)c_getString(arg1,arg2);
   _outv = SWIG_FromCharPtr((const char *)result);
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -3171,8 +3171,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_setString (const octave_value_list& args, int nargout) {
-  tc_strings arg1 ;
+static octave_value_list _wrap_c_setString (const octave_value_list& args, int nargout) {
+  c_strings arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   void *argp1 ;
@@ -3186,31 +3186,31 @@ static octave_value_list _wrap_tc_setString (const octave_value_list& args, int 
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_setString",args.length(),3,3,0)) {
+  if (!SWIG_check_num_args("c_setString",args.length(),3,3,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setString" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setString" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setString" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setString" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(args(1), &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setString" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setString" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   res3 = SWIG_AsCharPtrAndSize(args(2), &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "tc_setString" "', argument " "3"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "c_setString" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = (char *)(buf3);
-  tc_setString(arg1,arg2,(char const *)arg3);
+  c_setString(arg1,arg2,(char const *)arg3);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
@@ -3219,8 +3219,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_getStringIndex (const octave_value_list& args, int nargout) {
-  tc_strings arg1 ;
+static octave_value_list _wrap_c_getStringIndex (const octave_value_list& args, int nargout) {
+  c_strings arg1 ;
   char *arg2 = (char *) 0 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3232,26 +3232,26 @@ static octave_value_list _wrap_tc_getStringIndex (const octave_value_list& args,
   octave_value _outv;
   int result;
   
-  if (!SWIG_check_num_args("tc_getStringIndex",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_getStringIndex",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getStringIndex" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getStringIndex" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getStringIndex" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getStringIndex" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
   res2 = SWIG_AsCharPtrAndSize(args(1), &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_getStringIndex" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_getStringIndex" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = (char *)(buf2);
-  result = (int)tc_getStringIndex(arg1,(char const *)arg2);
+  result = (int)c_getStringIndex(arg1,(char const *)arg2);
   _outv = SWIG_From_int((int)(result));
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
@@ -3260,8 +3260,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_getRowIndex (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_getRowIndex (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   char *arg2 = (char *) 0 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3273,26 +3273,26 @@ static octave_value_list _wrap_tc_getRowIndex (const octave_value_list& args, in
   octave_value _outv;
   int result;
   
-  if (!SWIG_check_num_args("tc_getRowIndex",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_getRowIndex",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getRowIndex" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getRowIndex" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getRowIndex" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getRowIndex" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   res2 = SWIG_AsCharPtrAndSize(args(1), &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_getRowIndex" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_getRowIndex" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = (char *)(buf2);
-  result = (int)tc_getRowIndex(arg1,(char const *)arg2);
+  result = (int)c_getRowIndex(arg1,(char const *)arg2);
   _outv = SWIG_From_int((int)(result));
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
@@ -3301,8 +3301,8 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_getColumnIndex (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_getColumnIndex (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   char *arg2 = (char *) 0 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3314,26 +3314,26 @@ static octave_value_list _wrap_tc_getColumnIndex (const octave_value_list& args,
   octave_value _outv;
   int result;
   
-  if (!SWIG_check_num_args("tc_getColumnIndex",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_getColumnIndex",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getColumnIndex" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getColumnIndex" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getColumnIndex" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getColumnIndex" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   res2 = SWIG_AsCharPtrAndSize(args(1), &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_getColumnIndex" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_getColumnIndex" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = (char *)(buf2);
-  result = (int)tc_getColumnIndex(arg1,(char const *)arg2);
+  result = (int)c_getColumnIndex(arg1,(char const *)arg2);
   _outv = SWIG_From_int((int)(result));
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
@@ -3342,29 +3342,29 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_deleteMatrix (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_deleteMatrix (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   void *argp1 ;
   int res1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_deleteMatrix",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_deleteMatrix",args.length(),1,1,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_deleteMatrix" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_deleteMatrix" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_deleteMatrix" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_deleteMatrix" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
-  tc_deleteMatrix(arg1);
+  c_deleteMatrix(arg1);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -3372,29 +3372,29 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_deleteStringsArray (const octave_value_list& args, int nargout) {
-  tc_strings arg1 ;
+static octave_value_list _wrap_c_deleteStringsArray (const octave_value_list& args, int nargout) {
+  c_strings arg1 ;
   void *argp1 ;
   int res1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_deleteStringsArray",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_deleteStringsArray",args.length(),1,1,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_deleteStringsArray" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_deleteStringsArray" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_deleteStringsArray" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_deleteStringsArray" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
-  tc_deleteStringsArray(arg1);
+  c_deleteStringsArray(arg1);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -3402,9 +3402,9 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_appendColumns (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
-  tc_matrix arg2 ;
+static octave_value_list _wrap_c_appendColumns (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -3412,44 +3412,44 @@ static octave_value_list _wrap_tc_appendColumns (const octave_value_list& args, 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
-  if (!SWIG_check_num_args("tc_appendColumns",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_appendColumns",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_appendColumns" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_appendColumns" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendColumns" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendColumns" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_appendColumns" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_appendColumns" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendColumns" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendColumns" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
-  result = tc_appendColumns(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  result = c_appendColumns(arg1,arg2);
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_tc_appendRows (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
-  tc_matrix arg2 ;
+static octave_value_list _wrap_c_appendRows (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -3457,44 +3457,44 @@ static octave_value_list _wrap_tc_appendRows (const octave_value_list& args, int
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
-  if (!SWIG_check_num_args("tc_appendRows",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_appendRows",args.length(),2,2,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_appendRows" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_appendRows" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendRows" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendRows" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_appendRows" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_appendRows" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendRows" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendRows" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
-  result = tc_appendRows(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  result = c_appendRows(arg1,arg2);
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
 }
 
 
-static octave_value_list _wrap_tc_printMatrixToFile (const octave_value_list& args, int nargout) {
+static octave_value_list _wrap_c_printMatrixToFile (const octave_value_list& args, int nargout) {
   char *arg1 = (char *) 0 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
@@ -3504,26 +3504,26 @@ static octave_value_list _wrap_tc_printMatrixToFile (const octave_value_list& ar
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_printMatrixToFile",args.length(),2,2,0)) {
+  if (!SWIG_check_num_args("c_printMatrixToFile",args.length(),2,2,0)) {
     SWIG_fail;
   }
   res1 = SWIG_AsCharPtrAndSize(args(0), &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_printMatrixToFile" "', argument " "1"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_printMatrixToFile" "', argument " "1"" of type '" "char const *""'");
   }
   arg1 = (char *)(buf1);
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_printMatrixToFile" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_printMatrixToFile" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_printMatrixToFile" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_printMatrixToFile" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
-  tc_printMatrixToFile((char const *)arg1,arg2);
+  c_printMatrixToFile((char const *)arg1,arg2);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
@@ -3532,29 +3532,29 @@ fail:
 }
 
 
-static octave_value_list _wrap_tc_printOutMatrix (const octave_value_list& args, int nargout) {
-  tc_matrix arg1 ;
+static octave_value_list _wrap_c_printOutMatrix (const octave_value_list& args, int nargout) {
+  c_matrix arg1 ;
   void *argp1 ;
   int res1 = 0 ;
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
   
-  if (!SWIG_check_num_args("tc_printOutMatrix",args.length(),1,1,0)) {
+  if (!SWIG_check_num_args("c_printOutMatrix",args.length(),1,1,0)) {
     SWIG_fail;
   }
   {
-    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(args(0), &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_printOutMatrix" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_printOutMatrix" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_printOutMatrix" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_printOutMatrix" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
-  tc_printOutMatrix(arg1);
+  c_printOutMatrix(arg1);
   _outv = octave_value();
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
@@ -4785,7 +4785,7 @@ static octave_value_list _wrap_cGetCompartments (const octave_value_list& args, 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetCompartments",args.length(),1,1,0)) {
     SWIG_fail;
@@ -4802,7 +4802,7 @@ static octave_value_list _wrap_cGetCompartments (const octave_value_list& args, 
     }
   }
   result = cGetCompartments(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -4811,7 +4811,7 @@ fail:
 
 static octave_value_list _wrap_cSetCompartmentVolumes (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -4835,14 +4835,14 @@ static octave_value_list _wrap_cSetCompartmentVolumes (const octave_value_list& 
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetCompartmentVolumes(arg1,arg2);
@@ -5278,7 +5278,7 @@ fail:
 
 static octave_value_list _wrap_cGetReactionRatesEx (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -5286,7 +5286,7 @@ static octave_value_list _wrap_cGetReactionRatesEx (const octave_value_list& arg
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetReactionRatesEx",args.length(),2,2,0)) {
     SWIG_fail;
@@ -5303,18 +5303,18 @@ static octave_value_list _wrap_cGetReactionRatesEx (const octave_value_list& arg
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetReactionRatesEx(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -5410,7 +5410,7 @@ static octave_value_list _wrap_cGetReactionRates (const octave_value_list& args,
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetReactionRates",args.length(),1,1,0)) {
     SWIG_fail;
@@ -5427,7 +5427,7 @@ static octave_value_list _wrap_cGetReactionRates (const octave_value_list& args,
     }
   }
   result = cGetReactionRates(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -5800,7 +5800,7 @@ fail:
 
 static octave_value_list _wrap_cSetSpeciesConcentrations (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -5824,14 +5824,14 @@ static octave_value_list _wrap_cSetSpeciesConcentrations (const octave_value_lis
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetSpeciesConcentrations(arg1,arg2);
@@ -5849,7 +5849,7 @@ static octave_value_list _wrap_cGetFloatingSpeciesIntitialConcentrations (const 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetFloatingSpeciesIntitialConcentrations",args.length(),1,1,0)) {
     SWIG_fail;
@@ -5866,7 +5866,7 @@ static octave_value_list _wrap_cGetFloatingSpeciesIntitialConcentrations (const 
     }
   }
   result = cGetFloatingSpeciesIntitialConcentrations(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -5875,7 +5875,7 @@ fail:
 
 static octave_value_list _wrap_cSetFloatingSpeciesIntitialConcentrations (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -5899,14 +5899,14 @@ static octave_value_list _wrap_cSetFloatingSpeciesIntitialConcentrations (const 
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetFloatingSpeciesIntitialConcentrations(arg1,arg2);
@@ -5924,7 +5924,7 @@ static octave_value_list _wrap_cGetAllSpecies (const octave_value_list& args, in
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetAllSpecies",args.length(),1,1,0)) {
     SWIG_fail;
@@ -5941,7 +5941,7 @@ static octave_value_list _wrap_cGetAllSpecies (const octave_value_list& args, in
     }
   }
   result = cGetAllSpecies(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -5955,7 +5955,7 @@ static octave_value_list _wrap_cGetFloatingSpeciesConcentrations (const octave_v
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetFloatingSpeciesConcentrations",args.length(),1,1,0)) {
     SWIG_fail;
@@ -5972,7 +5972,7 @@ static octave_value_list _wrap_cGetFloatingSpeciesConcentrations (const octave_v
     }
   }
   result = cGetFloatingSpeciesConcentrations(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -5986,7 +5986,7 @@ static octave_value_list _wrap_cGetBoundarySpecies (const octave_value_list& arg
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetBoundarySpecies",args.length(),1,1,0)) {
     SWIG_fail;
@@ -6003,7 +6003,7 @@ static octave_value_list _wrap_cGetBoundarySpecies (const octave_value_list& arg
     }
   }
   result = cGetBoundarySpecies(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6017,7 +6017,7 @@ static octave_value_list _wrap_cGetAmounts (const octave_value_list& args, int n
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetAmounts",args.length(),1,1,0)) {
     SWIG_fail;
@@ -6034,7 +6034,7 @@ static octave_value_list _wrap_cGetAmounts (const octave_value_list& args, int n
     }
   }
   result = cGetAmounts(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6259,7 +6259,7 @@ static octave_value_list _wrap_cGetGlobalParameters (const octave_value_list& ar
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetGlobalParameters",args.length(),1,1,0)) {
     SWIG_fail;
@@ -6276,7 +6276,7 @@ static octave_value_list _wrap_cGetGlobalParameters (const octave_value_list& ar
     }
   }
   result = cGetGlobalParameters(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6285,7 +6285,7 @@ fail:
 
 static octave_value_list _wrap_cSetGlobalParameterValues (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6309,14 +6309,14 @@ static octave_value_list _wrap_cSetGlobalParameterValues (const octave_value_lis
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetGlobalParameterValues(arg1,arg2);
@@ -6329,7 +6329,7 @@ fail:
 
 static octave_value_list _wrap_cSetValues (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6353,14 +6353,14 @@ static octave_value_list _wrap_cSetValues (const octave_value_list& args, int na
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetValues" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetValues" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetValues" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetValues" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetValues(arg1,arg2);
@@ -6378,7 +6378,7 @@ static octave_value_list _wrap_cGetRatesOfChange (const octave_value_list& args,
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetRatesOfChange",args.length(),1,1,0)) {
     SWIG_fail;
@@ -6395,7 +6395,7 @@ static octave_value_list _wrap_cGetRatesOfChange (const octave_value_list& args,
     }
   }
   result = cGetRatesOfChange(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6445,7 +6445,7 @@ fail:
 
 static octave_value_list _wrap_cGetRatesOfChangeEx (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6453,7 +6453,7 @@ static octave_value_list _wrap_cGetRatesOfChangeEx (const octave_value_list& arg
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetRatesOfChangeEx",args.length(),2,2,0)) {
     SWIG_fail;
@@ -6470,18 +6470,18 @@ static octave_value_list _wrap_cGetRatesOfChangeEx (const octave_value_list& arg
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetRatesOfChangeEx(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6504,7 +6504,7 @@ static octave_value_list _wrap_cSimulateDeterministic (const octave_value_list& 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cSimulateDeterministic",args.length(),4,4,0)) {
     SWIG_fail;
@@ -6536,7 +6536,7 @@ static octave_value_list _wrap_cSimulateDeterministic (const octave_value_list& 
   } 
   arg4 = (int)(val4);
   result = cSimulateDeterministic(arg1,arg2,arg3,arg4);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6598,7 +6598,7 @@ static octave_value_list _wrap_cSimulateStochastic (const octave_value_list& arg
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cSimulateStochastic",args.length(),4,4,0)) {
     SWIG_fail;
@@ -6630,7 +6630,7 @@ static octave_value_list _wrap_cSimulateStochastic (const octave_value_list& arg
   } 
   arg4 = (int)(val4);
   result = cSimulateStochastic(arg1,arg2,arg3,arg4);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6653,7 +6653,7 @@ static octave_value_list _wrap_cSimulateHybrid (const octave_value_list& args, i
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cSimulateHybrid",args.length(),4,4,0)) {
     SWIG_fail;
@@ -6685,7 +6685,7 @@ static octave_value_list _wrap_cSimulateHybrid (const octave_value_list& args, i
   } 
   arg4 = (int)(val4);
   result = cSimulateHybrid(arg1,arg2,arg3,arg4);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6708,7 +6708,7 @@ static octave_value_list _wrap_cSimulateTauLeap (const octave_value_list& args, 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cSimulateTauLeap",args.length(),4,4,0)) {
     SWIG_fail;
@@ -6740,7 +6740,7 @@ static octave_value_list _wrap_cSimulateTauLeap (const octave_value_list& args, 
   } 
   arg4 = (int)(val4);
   result = cSimulateTauLeap(arg1,arg2,arg3,arg4);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6779,7 +6779,7 @@ fail:
 
 static octave_value_list _wrap_cGetReactionRatesFromTimeCourse (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6787,7 +6787,7 @@ static octave_value_list _wrap_cGetReactionRatesFromTimeCourse (const octave_val
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetReactionRatesFromTimeCourse",args.length(),2,2,0)) {
     SWIG_fail;
@@ -6804,18 +6804,18 @@ static octave_value_list _wrap_cGetReactionRatesFromTimeCourse (const octave_val
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetReactionRatesFromTimeCourse(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6824,7 +6824,7 @@ fail:
 
 static octave_value_list _wrap_cGetDerivativesFromTimeCourse (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6832,7 +6832,7 @@ static octave_value_list _wrap_cGetDerivativesFromTimeCourse (const octave_value
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetDerivativesFromTimeCourse",args.length(),2,2,0)) {
     SWIG_fail;
@@ -6849,18 +6849,18 @@ static octave_value_list _wrap_cGetDerivativesFromTimeCourse (const octave_value
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetDerivativesFromTimeCourse(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6869,7 +6869,7 @@ fail:
 
 static octave_value_list _wrap_cGetCCFromTimeCourse (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6877,7 +6877,7 @@ static octave_value_list _wrap_cGetCCFromTimeCourse (const octave_value_list& ar
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetCCFromTimeCourse",args.length(),2,2,0)) {
     SWIG_fail;
@@ -6894,18 +6894,18 @@ static octave_value_list _wrap_cGetCCFromTimeCourse (const octave_value_list& ar
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetCCFromTimeCourse(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6914,7 +6914,7 @@ fail:
 
 static octave_value_list _wrap_cGetElasticitiesFromTimeCourse (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6922,7 +6922,7 @@ static octave_value_list _wrap_cGetElasticitiesFromTimeCourse (const octave_valu
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetElasticitiesFromTimeCourse",args.length(),2,2,0)) {
     SWIG_fail;
@@ -6939,18 +6939,18 @@ static octave_value_list _wrap_cGetElasticitiesFromTimeCourse (const octave_valu
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetElasticitiesFromTimeCourse(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -6959,8 +6959,8 @@ fail:
 
 static octave_value_list _wrap_cFilterTimeCourseResults (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
-  tc_matrix arg2 ;
-  tc_strings arg3 ;
+  c_matrix arg2 ;
+  c_strings arg3 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6970,7 +6970,7 @@ static octave_value_list _wrap_cFilterTimeCourseResults (const octave_value_list
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cFilterTimeCourseResults",args.length(),3,3,0)) {
     SWIG_fail;
@@ -6987,29 +6987,29 @@ static octave_value_list _wrap_cFilterTimeCourseResults (const octave_value_list
     }
   }
   {
-    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(args(1), &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   {
-    res3 = SWIG_ConvertPtr(args(2), &argp3, SWIGTYPE_p_tc_strings,  0 );
+    res3 = SWIG_ConvertPtr(args(2), &argp3, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "c_strings""'"); 
     }  
     if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "c_strings""'");
     } else {
-      arg3 = *((tc_strings *)(argp3));
+      arg3 = *((c_strings *)(argp3));
     }
   }
   result = cFilterTimeCourseResults(arg1,arg2,arg3);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7023,7 +7023,7 @@ static octave_value_list _wrap_cGetSteadyState (const octave_value_list& args, i
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetSteadyState",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7040,7 +7040,7 @@ static octave_value_list _wrap_cGetSteadyState (const octave_value_list& args, i
     }
   }
   result = cGetSteadyState(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7057,7 +7057,7 @@ static octave_value_list _wrap_cGetSteadyStateUsingSimulation (const octave_valu
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetSteadyStateUsingSimulation",args.length(),2,2,0)) {
     SWIG_fail;
@@ -7079,7 +7079,7 @@ static octave_value_list _wrap_cGetSteadyStateUsingSimulation (const octave_valu
   } 
   arg2 = (int)(val2);
   result = cGetSteadyStateUsingSimulation(arg1,arg2);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7093,7 +7093,7 @@ static octave_value_list _wrap_cGetJacobian (const octave_value_list& args, int 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetJacobian",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7110,7 +7110,7 @@ static octave_value_list _wrap_cGetJacobian (const octave_value_list& args, int 
     }
   }
   result = cGetJacobian(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7124,7 +7124,7 @@ static octave_value_list _wrap_cGetEigenvalues (const octave_value_list& args, i
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetEigenvalues",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7141,7 +7141,7 @@ static octave_value_list _wrap_cGetEigenvalues (const octave_value_list& args, i
     }
   }
   result = cGetEigenvalues(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7155,7 +7155,7 @@ static octave_value_list _wrap_cGetUnscaledFluxControlCoeffs (const octave_value
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetUnscaledFluxControlCoeffs",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7172,7 +7172,7 @@ static octave_value_list _wrap_cGetUnscaledFluxControlCoeffs (const octave_value
     }
   }
   result = cGetUnscaledFluxControlCoeffs(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7186,7 +7186,7 @@ static octave_value_list _wrap_cGetScaledFluxControlCoeffs (const octave_value_l
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetScaledFluxControlCoeffs",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7203,7 +7203,7 @@ static octave_value_list _wrap_cGetScaledFluxControlCoeffs (const octave_value_l
     }
   }
   result = cGetScaledFluxControlCoeffs(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7217,7 +7217,7 @@ static octave_value_list _wrap_cGetUnscaledConcentrationControlCoeffs (const oct
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetUnscaledConcentrationControlCoeffs",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7234,7 +7234,7 @@ static octave_value_list _wrap_cGetUnscaledConcentrationControlCoeffs (const oct
     }
   }
   result = cGetUnscaledConcentrationControlCoeffs(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7248,7 +7248,7 @@ static octave_value_list _wrap_cGetScaledConcentrationConcentrationCoeffs (const
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetScaledConcentrationConcentrationCoeffs",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7265,7 +7265,7 @@ static octave_value_list _wrap_cGetScaledConcentrationConcentrationCoeffs (const
     }
   }
   result = cGetScaledConcentrationConcentrationCoeffs(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7279,7 +7279,7 @@ static octave_value_list _wrap_cGetUnscaledElasticities (const octave_value_list
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetUnscaledElasticities",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7296,7 +7296,7 @@ static octave_value_list _wrap_cGetUnscaledElasticities (const octave_value_list
     }
   }
   result = cGetUnscaledElasticities(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7310,7 +7310,7 @@ static octave_value_list _wrap_cGetScaledElasticities (const octave_value_list& 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetScaledElasticities",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7327,7 +7327,7 @@ static octave_value_list _wrap_cGetScaledElasticities (const octave_value_list& 
     }
   }
   result = cGetScaledElasticities(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7341,7 +7341,7 @@ static octave_value_list _wrap_cGetFullStoichiometryMatrix (const octave_value_l
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetFullStoichiometryMatrix",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7358,7 +7358,7 @@ static octave_value_list _wrap_cGetFullStoichiometryMatrix (const octave_value_l
     }
   }
   result = cGetFullStoichiometryMatrix(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7372,7 +7372,7 @@ static octave_value_list _wrap_cGetReducedStoichiometryMatrix (const octave_valu
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetReducedStoichiometryMatrix",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7389,7 +7389,7 @@ static octave_value_list _wrap_cGetReducedStoichiometryMatrix (const octave_valu
     }
   }
   result = cGetReducedStoichiometryMatrix(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7403,7 +7403,7 @@ static octave_value_list _wrap_cGetElementaryFluxModes (const octave_value_list&
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetElementaryFluxModes",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7420,7 +7420,7 @@ static octave_value_list _wrap_cGetElementaryFluxModes (const octave_value_list&
     }
   }
   result = cGetElementaryFluxModes(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7434,7 +7434,7 @@ static octave_value_list _wrap_cGetGammaMatrix (const octave_value_list& args, i
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetGammaMatrix",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7451,7 +7451,7 @@ static octave_value_list _wrap_cGetGammaMatrix (const octave_value_list& args, i
     }
   }
   result = cGetGammaMatrix(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7465,7 +7465,7 @@ static octave_value_list _wrap_cGetKMatrix (const octave_value_list& args, int n
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetKMatrix",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7482,7 +7482,7 @@ static octave_value_list _wrap_cGetKMatrix (const octave_value_list& args, int n
     }
   }
   result = cGetKMatrix(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7496,7 +7496,7 @@ static octave_value_list _wrap_cGetK0Matrix (const octave_value_list& args, int 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetK0Matrix",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7513,7 +7513,7 @@ static octave_value_list _wrap_cGetK0Matrix (const octave_value_list& args, int 
     }
   }
   result = cGetK0Matrix(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7527,7 +7527,7 @@ static octave_value_list _wrap_cGetLinkMatrix (const octave_value_list& args, in
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetLinkMatrix",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7544,7 +7544,7 @@ static octave_value_list _wrap_cGetLinkMatrix (const octave_value_list& args, in
     }
   }
   result = cGetLinkMatrix(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7558,7 +7558,7 @@ static octave_value_list _wrap_cGetL0Matrix (const octave_value_list& args, int 
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cGetL0Matrix",args.length(),1,1,0)) {
     SWIG_fail;
@@ -7575,7 +7575,7 @@ static octave_value_list _wrap_cGetL0Matrix (const octave_value_list& args, int 
     }
   }
   result = cGetL0Matrix(arg1);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
 fail:
   return _out;
@@ -7585,7 +7585,7 @@ fail:
 static octave_value_list _wrap_cOptimize (const octave_value_list& args, int nargout) {
   copasi_model arg1 ;
   char *arg2 = (char *) 0 ;
-  tc_matrix arg3 ;
+  c_matrix arg3 ;
   void *argp1 ;
   int res1 = 0 ;
   int res2 ;
@@ -7596,7 +7596,7 @@ static octave_value_list _wrap_cOptimize (const octave_value_list& args, int nar
   octave_value_list _out;
   octave_value_list *_outp=&_out;
   octave_value _outv;
-  tc_matrix result;
+  c_matrix result;
   
   if (!SWIG_check_num_args("cOptimize",args.length(),3,3,0)) {
     SWIG_fail;
@@ -7618,18 +7618,18 @@ static octave_value_list _wrap_cOptimize (const octave_value_list& args, int nar
   }
   arg2 = (char *)(buf2);
   {
-    res3 = SWIG_ConvertPtr(args(2), &argp3, SWIGTYPE_p_tc_matrix,  0 );
+    res3 = SWIG_ConvertPtr(args(2), &argp3, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cOptimize" "', argument " "3"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cOptimize" "', argument " "3"" of type '" "c_matrix""'"); 
     }  
     if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cOptimize" "', argument " "3"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cOptimize" "', argument " "3"" of type '" "c_matrix""'");
     } else {
-      arg3 = *((tc_matrix *)(argp3));
+      arg3 = *((c_matrix *)(argp3));
     }
   }
   result = cOptimize(arg1,(char const *)arg2,arg3);
-  _outv = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  _outv = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (_outv.is_defined()) _outp = SWIG_Octave_AppendOutput(_outp, _outv);
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
 fail:
@@ -7767,43 +7767,43 @@ fail:
 
 
 static const struct swig_octave_member swig_globals[] = {
-{"tc_strings_length_set",_wrap_tc_strings_length_set,0,0,2,0},
-{"tc_strings_length_get",_wrap_tc_strings_length_get,0,0,2,0},
-{"tc_strings_strings_set",_wrap_tc_strings_strings_set,0,0,2,0},
-{"tc_strings_strings_get",_wrap_tc_strings_strings_get,0,0,2,0},
-{"new_tc_strings",_wrap_new_tc_strings,0,0,2,0},
-{"delete_tc_strings",_wrap_delete_tc_strings,0,0,2,0},
-{"tc_matrix_rows_set",_wrap_tc_matrix_rows_set,0,0,2,0},
-{"tc_matrix_rows_get",_wrap_tc_matrix_rows_get,0,0,2,0},
-{"tc_matrix_cols_set",_wrap_tc_matrix_cols_set,0,0,2,0},
-{"tc_matrix_cols_get",_wrap_tc_matrix_cols_get,0,0,2,0},
-{"tc_matrix_values_set",_wrap_tc_matrix_values_set,0,0,2,0},
-{"tc_matrix_values_get",_wrap_tc_matrix_values_get,0,0,2,0},
-{"tc_matrix_rownames_set",_wrap_tc_matrix_rownames_set,0,0,2,0},
-{"tc_matrix_rownames_get",_wrap_tc_matrix_rownames_get,0,0,2,0},
-{"tc_matrix_colnames_set",_wrap_tc_matrix_colnames_set,0,0,2,0},
-{"tc_matrix_colnames_get",_wrap_tc_matrix_colnames_get,0,0,2,0},
-{"new_tc_matrix",_wrap_new_tc_matrix,0,0,2,0},
-{"delete_tc_matrix",_wrap_delete_tc_matrix,0,0,2,0},
-{"tc_createMatrix",_wrap_tc_createMatrix,0,0,2,0},
-{"tc_createStringsArray",_wrap_tc_createStringsArray,0,0,2,0},
-{"tc_getMatrixValue",_wrap_tc_getMatrixValue,0,0,2,0},
-{"tc_setMatrixValue",_wrap_tc_setMatrixValue,0,0,2,0},
-{"tc_getRowName",_wrap_tc_getRowName,0,0,2,0},
-{"tc_setRowName",_wrap_tc_setRowName,0,0,2,0},
-{"tc_getColumnName",_wrap_tc_getColumnName,0,0,2,0},
-{"tc_setColumnName",_wrap_tc_setColumnName,0,0,2,0},
-{"tc_getString",_wrap_tc_getString,0,0,2,0},
-{"tc_setString",_wrap_tc_setString,0,0,2,0},
-{"tc_getStringIndex",_wrap_tc_getStringIndex,0,0,2,0},
-{"tc_getRowIndex",_wrap_tc_getRowIndex,0,0,2,0},
-{"tc_getColumnIndex",_wrap_tc_getColumnIndex,0,0,2,0},
-{"tc_deleteMatrix",_wrap_tc_deleteMatrix,0,0,2,0},
-{"tc_deleteStringsArray",_wrap_tc_deleteStringsArray,0,0,2,0},
-{"tc_appendColumns",_wrap_tc_appendColumns,0,0,2,0},
-{"tc_appendRows",_wrap_tc_appendRows,0,0,2,0},
-{"tc_printMatrixToFile",_wrap_tc_printMatrixToFile,0,0,2,0},
-{"tc_printOutMatrix",_wrap_tc_printOutMatrix,0,0,2,0},
+{"c_strings_length_set",_wrap_c_strings_length_set,0,0,2,0},
+{"c_strings_length_get",_wrap_c_strings_length_get,0,0,2,0},
+{"c_strings_strings_set",_wrap_c_strings_strings_set,0,0,2,0},
+{"c_strings_strings_get",_wrap_c_strings_strings_get,0,0,2,0},
+{"new_c_strings",_wrap_new_c_strings,0,0,2,0},
+{"delete_c_strings",_wrap_delete_c_strings,0,0,2,0},
+{"c_matrix_rows_set",_wrap_c_matrix_rows_set,0,0,2,0},
+{"c_matrix_rows_get",_wrap_c_matrix_rows_get,0,0,2,0},
+{"c_matrix_cols_set",_wrap_c_matrix_cols_set,0,0,2,0},
+{"c_matrix_cols_get",_wrap_c_matrix_cols_get,0,0,2,0},
+{"c_matrix_values_set",_wrap_c_matrix_values_set,0,0,2,0},
+{"c_matrix_values_get",_wrap_c_matrix_values_get,0,0,2,0},
+{"c_matrix_rownames_set",_wrap_c_matrix_rownames_set,0,0,2,0},
+{"c_matrix_rownames_get",_wrap_c_matrix_rownames_get,0,0,2,0},
+{"c_matrix_colnames_set",_wrap_c_matrix_colnames_set,0,0,2,0},
+{"c_matrix_colnames_get",_wrap_c_matrix_colnames_get,0,0,2,0},
+{"new_c_matrix",_wrap_new_c_matrix,0,0,2,0},
+{"delete_c_matrix",_wrap_delete_c_matrix,0,0,2,0},
+{"c_createMatrix",_wrap_c_createMatrix,0,0,2,0},
+{"c_createStringsArray",_wrap_c_createStringsArray,0,0,2,0},
+{"c_getMatrixValue",_wrap_c_getMatrixValue,0,0,2,0},
+{"c_setMatrixValue",_wrap_c_setMatrixValue,0,0,2,0},
+{"c_getRowName",_wrap_c_getRowName,0,0,2,0},
+{"c_setRowName",_wrap_c_setRowName,0,0,2,0},
+{"c_getColumnName",_wrap_c_getColumnName,0,0,2,0},
+{"c_setColumnName",_wrap_c_setColumnName,0,0,2,0},
+{"c_getString",_wrap_c_getString,0,0,2,0},
+{"c_setString",_wrap_c_setString,0,0,2,0},
+{"c_getStringIndex",_wrap_c_getStringIndex,0,0,2,0},
+{"c_getRowIndex",_wrap_c_getRowIndex,0,0,2,0},
+{"c_getColumnIndex",_wrap_c_getColumnIndex,0,0,2,0},
+{"c_deleteMatrix",_wrap_c_deleteMatrix,0,0,2,0},
+{"c_deleteStringsArray",_wrap_c_deleteStringsArray,0,0,2,0},
+{"c_appendColumns",_wrap_c_appendColumns,0,0,2,0},
+{"c_appendRows",_wrap_c_appendRows,0,0,2,0},
+{"c_printMatrixToFile",_wrap_c_printMatrixToFile,0,0,2,0},
+{"c_printOutMatrix",_wrap_c_printOutMatrix,0,0,2,0},
 {"copasi_model_CopasiModelPtr_set",_wrap_copasi_model_CopasiModelPtr_set,0,0,2,0},
 {"copasi_model_CopasiModelPtr_get",_wrap_copasi_model_CopasiModelPtr_get,0,0,2,0},
 {"copasi_model_CopasiDataModelPtr_set",_wrap_copasi_model_CopasiDataModelPtr_set,0,0,2,0},
@@ -7929,47 +7929,47 @@ static const struct swig_octave_member swig_globals[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_c_matrix = {"_p_c_matrix", "c_matrix *", 0, 0, (void*)&_wrap_class_c_matrix, 0};
+static swig_type_info _swigt__p_c_strings = {"_p_c_strings", "c_strings *", 0, 0, (void*)&_wrap_class_c_strings, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_copasi_compartment = {"_p_copasi_compartment", "copasi_compartment *", 0, 0, (void*)&_wrap_class_copasi_compartment, 0};
 static swig_type_info _swigt__p_copasi_model = {"_p_copasi_model", "copasi_model *", 0, 0, (void*)&_wrap_class_copasi_model, 0};
 static swig_type_info _swigt__p_copasi_reaction = {"_p_copasi_reaction", "copasi_reaction *", 0, 0, (void*)&_wrap_class_copasi_reaction, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tc_matrix = {"_p_tc_matrix", "tc_matrix *", 0, 0, (void*)&_wrap_class_tc_matrix, 0};
-static swig_type_info _swigt__p_tc_strings = {"_p_tc_strings", "tc_strings *", 0, 0, (void*)&_wrap_class_tc_strings, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_c_matrix,
+  &_swigt__p_c_strings,
   &_swigt__p_char,
   &_swigt__p_copasi_compartment,
   &_swigt__p_copasi_model,
   &_swigt__p_copasi_reaction,
   &_swigt__p_double,
   &_swigt__p_p_char,
-  &_swigt__p_tc_matrix,
-  &_swigt__p_tc_strings,
   &_swigt__p_void,
 };
 
+static swig_cast_info _swigc__p_c_matrix[] = {  {&_swigt__p_c_matrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_c_strings[] = {  {&_swigt__p_c_strings, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_copasi_compartment[] = {  {&_swigt__p_copasi_compartment, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_copasi_model[] = {  {&_swigt__p_copasi_model, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_copasi_reaction[] = {  {&_swigt__p_copasi_reaction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tc_matrix[] = {  {&_swigt__p_tc_matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tc_strings[] = {  {&_swigt__p_tc_strings, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_c_matrix,
+  _swigc__p_c_strings,
   _swigc__p_char,
   _swigc__p_copasi_compartment,
   _swigc__p_copasi_model,
   _swigc__p_copasi_reaction,
   _swigc__p_double,
   _swigc__p_p_char,
-  _swigc__p_tc_matrix,
-  _swigc__p_tc_strings,
   _swigc__p_void,
 };
 

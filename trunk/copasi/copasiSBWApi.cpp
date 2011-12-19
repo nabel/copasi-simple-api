@@ -20,35 +20,35 @@
 #include "copasi/model/CReaction.h"
 #include "copasi/model/CModelValue.h"
 
-char** returnColNamesOnly(tc_matrix);
+char** returnColNamesOnly(c_matrix);
 
-char** returnRowNamesOnly(tc_matrix m)
+char** returnRowNamesOnly(c_matrix m)
 {
 	if (m.rows == 1 && m.cols > 1) 
 		return returnColNamesOnly(m);
 
 	char ** names = m.rownames.strings;
 	m.rownames.strings = 0;
-	tc_deleteMatrix(m);
+	c_deleteMatrix(m);
 	return names;
 }
 
-char** returnColNamesOnly(tc_matrix m)
+char** returnColNamesOnly(c_matrix m)
 {
 	if (m.cols == 1 && m.rows > 1) 
 		return returnRowNamesOnly(m);
 
 	char ** names = m.colnames.strings;
 	m.colnames.strings = 0;
-	tc_deleteMatrix(m);
+	c_deleteMatrix(m);
 	return names;
 }
 
-double* returnValuesOnly(tc_matrix m)
+double* returnValuesOnly(c_matrix m)
 {
 	double* values = m.values;
 	m.values = 0;
-	tc_deleteMatrix(m);
+	c_deleteMatrix(m);
 	return values;
 }
 
@@ -86,7 +86,7 @@ int getNumberOfReactions (copasi_model model)
 */
 char** getReactionNames (copasi_model model)
 {
-	tc_matrix m = cGetReactionRates(model);
+	c_matrix m = cGetReactionRates(model);
 	return returnRowNamesOnly(m);
 }
 
@@ -176,7 +176,7 @@ int getNumberOfBoundarySpecies(copasi_model model)
 */
 char** getBoundarySpeciesNames(copasi_model model)
 {
-	tc_matrix m = cGetBoundarySpecies(model);
+	c_matrix m = cGetBoundarySpecies(model);
 	return returnColNamesOnly(m);
 }
 
@@ -232,7 +232,7 @@ void setBoundarySpeciesConcentrations (copasi_model model, double * d)
 */
 double * getBoundarySpeciesConcentrations (copasi_model model)
 {
-	tc_matrix m = cGetBoundarySpecies(model);
+	c_matrix m = cGetBoundarySpecies(model);
 	return returnValuesOnly(m);
 }
 
@@ -279,12 +279,12 @@ int getNumberFloatingSpecies(copasi_model model)
 /*! 
  \brief sGet a list the floating species names
  \param copasi_model model
- \return tc_strings array of char * and length n, where n = number of species
+ \return c_strings array of char * and length n, where n = number of species
  \ingroup state
 */
 char** getFloatingSpeciesNames(copasi_model model)
 {
-	tc_matrix m = cGetFloatingSpeciesConcentrations(model);
+	c_matrix m = cGetFloatingSpeciesConcentrations(model);
 	return returnRowNamesOnly(m);
 }
 
@@ -388,7 +388,7 @@ double* getFloatingSpeciesIntitialConcentrations (copasi_model model)
 /*! 
  \brief Set the initial floating species concentrations
  \param copasi_model model
- \param tc_matrix Vector of initial floating species concentrations
+ \param c_matrix Vector of initial floating species concentrations
  \ingroup floating
 */
 void setFloatingSpeciesIntitialConcentrations (copasi_model model, double * d)
@@ -450,7 +450,7 @@ char** getGlobalParameterNames (copasi_model model)
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);	
 	if (!pModel) return 0;
 
-	tc_matrix m = cGetGlobalParameters(model);
+	c_matrix m = cGetGlobalParameters(model);
 	return returnRowNamesOnly(m);	
 }
 
@@ -494,7 +494,7 @@ void setGlobalParameterByIndex (copasi_model model, int index, double value)
 /*! 
  \brief set the vector of global parameters
  \param copasi_model model 
- \paramn tc_matrix a vector containing names and values for the global parameters. names must be present
+ \paramn c_matrix a vector containing names and values for the global parameters. names must be present
  \ingroup parameter
 */
 void setGlobalParameterValues (copasi_model model, double * values)
@@ -533,7 +533,7 @@ int getNumberOfCompartments (copasi_model model)
 */
 char** getCompartmentNames (copasi_model model)
 {
-	tc_matrix m = cGetCompartments(model);
+	c_matrix m = cGetCompartments(model);
 	return returnRowNamesOnly(m);
 }
 
@@ -611,7 +611,7 @@ void setCompartmentVolumes (copasi_model model, double * v)
 */
 double* getRatesOfChange(copasi_model model)
 {
-	tc_matrix m = cGetRatesOfChange(model);
+	c_matrix m = cGetRatesOfChange(model);
 	return returnValuesOnly(m);
 }
 
@@ -646,7 +646,7 @@ double getRateOfChange(copasi_model model, int index)
 */
 char** getRatesOfChangeNames(copasi_model model)
 {
-	tc_matrix m = cGetRatesOfChange(model);
+	c_matrix m = cGetRatesOfChange(model);
 	return returnColNamesOnly(m);
 }
 
@@ -676,10 +676,10 @@ double* getRatesOfChangeEx(copasi_model model, double* sp)
  \param double start time
  \param double end time
  \param int number of steps in the output
- \return tc_matrix matrix of concentration or particles
+ \return c_matrix matrix of concentration or particles
  \ingroup sbw_rateOfChange
 */
-tc_matrix simulate(copasi_model model, double timeStart, double timeEnd, int numOfPoints)
+c_matrix simulate(copasi_model model, double timeStart, double timeEnd, int numOfPoints)
 {
 	return cSimulateDeterministic(model, timeStart, timeEnd, numOfPoints);
 }

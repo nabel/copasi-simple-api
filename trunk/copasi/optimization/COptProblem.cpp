@@ -307,6 +307,7 @@ bool COptProblem::initializeSubtaskBeforeOutput()
 
 bool COptProblem::initialize()
 {
+std::cout << "COptProblem initialize\n";
   mInfinity = (*mpParmMaximize ? - std::numeric_limits<C_FLOAT64>::infinity() : std::numeric_limits<C_FLOAT64>::infinity());
 
   if (!mpModel) return false;
@@ -363,6 +364,7 @@ bool COptProblem::initialize()
   for (i = 0; it != end; ++it, i++)
     {
       success &= (*it)->compile(ContainerList);
+		std::cout << (*it)->getObjectCN() << "  " << success <<"\n"; "\n";
 
       mUpdateMethods[i] = (*it)->getUpdateMethod();
       changedObjects.insert((*it)->getObject());
@@ -389,18 +391,19 @@ bool COptProblem::initialize()
   mRefreshConstraints = CCopasiObject::buildUpdateSequence(Objects, mpModel->getUptoDateObjects());
 
   mCPUTime.start();
-
+std::cout << "infix = " << mpObjectiveExpression->getInfix() << "\n";
   if (mpObjectiveExpression == NULL ||
       mpObjectiveExpression->getInfix() == "" ||
       !mpObjectiveExpression->compile(ContainerList))
     {
       mRefreshMethods.clear();
       CCopasiMessage(CCopasiMessage::ERROR, MCOptimization + 5);
+	  std::cout << "returning false\n";
       return false;
     }
 
   mRefreshMethods = CCopasiObject::buildUpdateSequence(mpObjectiveExpression->getDirectDependencies(), mpModel->getUptoDateObjects());
-
+std::cout << "returning true\n";
   return success;
 }
 

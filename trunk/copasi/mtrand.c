@@ -138,5 +138,8 @@ void setMTseeds(unsigned long long * init)
 /* generates a random number on [0,1)-real-interval */
 double mtrand(void)
 {
-    return (genrand64_int64() >> 11) * (1.0/9007199254740992.0);
+	if (!HAS_BEEN_INITIALIZED)
+		initMTrand();
+    double d = (genrand64_int64() >> 11) * (1.0/9007199254740992.0);
+	return d;
 }

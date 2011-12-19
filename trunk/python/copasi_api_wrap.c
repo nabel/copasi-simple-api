@@ -2659,14 +2659,14 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_char swig_types[0]
-#define SWIGTYPE_p_copasi_compartment swig_types[1]
-#define SWIGTYPE_p_copasi_model swig_types[2]
-#define SWIGTYPE_p_copasi_reaction swig_types[3]
-#define SWIGTYPE_p_double swig_types[4]
-#define SWIGTYPE_p_p_char swig_types[5]
-#define SWIGTYPE_p_tc_matrix swig_types[6]
-#define SWIGTYPE_p_tc_strings swig_types[7]
+#define SWIGTYPE_p_c_matrix swig_types[0]
+#define SWIGTYPE_p_c_strings swig_types[1]
+#define SWIGTYPE_p_char swig_types[2]
+#define SWIGTYPE_p_copasi_compartment swig_types[3]
+#define SWIGTYPE_p_copasi_model swig_types[4]
+#define SWIGTYPE_p_copasi_reaction swig_types[5]
+#define SWIGTYPE_p_double swig_types[6]
+#define SWIGTYPE_p_p_char swig_types[7]
 #define SWIGTYPE_p_void swig_types[8]
 static swig_type_info *swig_types[10];
 static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
@@ -2701,7 +2701,7 @@ static swig_module_info swig_module = {swig_types, 9, 0, 0, 0, 0};
 #define SWIG_as_voidptrptr(a) ((void)SWIG_as_voidptr(*a),(void**)(a)) 
 
 
-#include "TC_structs.h"
+#include "cstructs.h"
 #include "copasi_api.h"
 
 
@@ -2985,9 +2985,9 @@ SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
 #ifdef __cplusplus
 extern "C" {
 #endif
-SWIGINTERN PyObject *_wrap_tc_strings_length_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_strings_length_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings *arg1 = (tc_strings *) 0 ;
+  c_strings *arg1 = (c_strings *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -2996,15 +2996,15 @@ SWIGINTERN PyObject *_wrap_tc_strings_length_set(PyObject *SWIGUNUSEDPARM(self),
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_strings_length_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_strings_length_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_length_set" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_length_set" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_strings_length_set" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_strings_length_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   if (arg1) (arg1)->length = arg2;
@@ -3015,20 +3015,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_strings_length_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_strings_length_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings *arg1 = (tc_strings *) 0 ;
+  c_strings *arg1 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_strings_length_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:c_strings_length_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_length_get" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_length_get" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   result = (int) ((arg1)->length);
   resultobj = SWIG_From_int((int)(result));
   return resultobj;
@@ -3037,9 +3037,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_strings_strings_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_strings_strings_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings *arg1 = (tc_strings *) 0 ;
+  c_strings *arg1 = (c_strings *) 0 ;
   char **arg2 = (char **) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3048,15 +3048,15 @@ SWIGINTERN PyObject *_wrap_tc_strings_strings_set(PyObject *SWIGUNUSEDPARM(self)
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_strings_strings_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_strings_strings_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_strings_set" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_strings_set" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_strings_strings_set" "', argument " "2"" of type '" "char **""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_strings_strings_set" "', argument " "2"" of type '" "char **""'"); 
   }
   arg2 = (char **)(argp2);
   if (arg1) (arg1)->strings = arg2;
@@ -3067,20 +3067,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_strings_strings_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_strings_strings_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings *arg1 = (tc_strings *) 0 ;
+  c_strings *arg1 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   char **result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_strings_strings_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_strings, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:c_strings_strings_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_strings_strings_get" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_strings_strings_get" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   result = (char **) ((arg1)->strings);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_p_char, 0 |  0 );
   return resultobj;
@@ -3089,32 +3089,32 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_new_tc_strings(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_c_strings(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings *result = 0 ;
+  c_strings *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)":new_tc_strings")) SWIG_fail;
-  result = (tc_strings *)calloc(1, sizeof(tc_strings));
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_strings, SWIG_POINTER_NEW |  0 );
+  if (!PyArg_ParseTuple(args,(char *)":new_c_strings")) SWIG_fail;
+  result = (c_strings *)calloc(1, sizeof(c_strings));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_strings, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_tc_strings(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_c_strings(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings *arg1 = (tc_strings *) 0 ;
+  c_strings *arg1 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_tc_strings",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_strings, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_c_strings",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_strings, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_tc_strings" "', argument " "1"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_c_strings" "', argument " "1"" of type '" "c_strings *""'"); 
   }
-  arg1 = (tc_strings *)(argp1);
+  arg1 = (c_strings *)(argp1);
   free((char *) arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3123,16 +3123,16 @@ fail:
 }
 
 
-SWIGINTERN PyObject *tc_strings_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *c_strings_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_tc_strings, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_c_strings, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_tc_matrix_rows_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_rows_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3141,15 +3141,15 @@ SWIGINTERN PyObject *_wrap_tc_matrix_rows_set(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_matrix_rows_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_matrix_rows_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rows_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rows_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_matrix_rows_set" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_matrix_rows_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   if (arg1) (arg1)->rows = arg2;
@@ -3160,20 +3160,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_rows_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_rows_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_matrix_rows_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:c_matrix_rows_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rows_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rows_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   result = (int) ((arg1)->rows);
   resultobj = SWIG_From_int((int)(result));
   return resultobj;
@@ -3182,9 +3182,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_cols_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_cols_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3193,15 +3193,15 @@ SWIGINTERN PyObject *_wrap_tc_matrix_cols_set(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_matrix_cols_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_matrix_cols_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_cols_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_cols_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_matrix_cols_set" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_matrix_cols_set" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   if (arg1) (arg1)->cols = arg2;
@@ -3212,20 +3212,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_cols_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_cols_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_matrix_cols_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:c_matrix_cols_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_cols_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_cols_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   result = (int) ((arg1)->cols);
   resultobj = SWIG_From_int((int)(result));
   return resultobj;
@@ -3234,9 +3234,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_values_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_values_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   double *arg2 = (double *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3245,15 +3245,15 @@ SWIGINTERN PyObject *_wrap_tc_matrix_values_set(PyObject *SWIGUNUSEDPARM(self), 
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_matrix_values_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_matrix_values_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_values_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_values_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_matrix_values_set" "', argument " "2"" of type '" "double *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_matrix_values_set" "', argument " "2"" of type '" "double *""'"); 
   }
   arg2 = (double *)(argp2);
   if (arg1) (arg1)->values = arg2;
@@ -3264,20 +3264,20 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_values_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_values_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   double *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_matrix_values_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:c_matrix_values_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_values_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_values_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   result = (double *) ((arg1)->values);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_double, 0 |  0 );
   return resultobj;
@@ -3286,10 +3286,10 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_rownames_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_rownames_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
-  tc_strings *arg2 = (tc_strings *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
+  c_strings *arg2 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -3297,17 +3297,17 @@ SWIGINTERN PyObject *_wrap_tc_matrix_rownames_set(PyObject *SWIGUNUSEDPARM(self)
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_matrix_rownames_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_matrix_rownames_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rownames_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rownames_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_matrix_rownames_set" "', argument " "2"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_matrix_rownames_set" "', argument " "2"" of type '" "c_strings *""'"); 
   }
-  arg2 = (tc_strings *)(argp2);
+  arg2 = (c_strings *)(argp2);
   if (arg1) (arg1)->rownames = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3316,32 +3316,32 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_rownames_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_rownames_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_strings *result = 0 ;
+  c_strings *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_matrix_rownames_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:c_matrix_rownames_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_rownames_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_rownames_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  result = (tc_strings *)& ((arg1)->rownames);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  result = (c_strings *)& ((arg1)->rownames);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_strings, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_colnames_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_colnames_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
-  tc_strings *arg2 = (tc_strings *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
+  c_strings *arg2 = (c_strings *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   void *argp2 = 0 ;
@@ -3349,17 +3349,17 @@ SWIGINTERN PyObject *_wrap_tc_matrix_colnames_set(PyObject *SWIGUNUSEDPARM(self)
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_matrix_colnames_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_matrix_colnames_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_colnames_set" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_colnames_set" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_c_strings, 0 |  0 );
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_matrix_colnames_set" "', argument " "2"" of type '" "tc_strings *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_matrix_colnames_set" "', argument " "2"" of type '" "c_strings *""'"); 
   }
-  arg2 = (tc_strings *)(argp2);
+  arg2 = (c_strings *)(argp2);
   if (arg1) (arg1)->colnames = *arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3368,54 +3368,54 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_matrix_colnames_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_matrix_colnames_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_strings *result = 0 ;
+  c_strings *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_matrix_colnames_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, 0 |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:c_matrix_colnames_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_matrix_colnames_get" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_matrix_colnames_get" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
-  result = (tc_strings *)& ((arg1)->colnames);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_strings, 0 |  0 );
+  arg1 = (c_matrix *)(argp1);
+  result = (c_strings *)& ((arg1)->colnames);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_strings, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_new_tc_matrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_new_c_matrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *result = 0 ;
+  c_matrix *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)":new_tc_matrix")) SWIG_fail;
-  result = (tc_matrix *)calloc(1, sizeof(tc_matrix));
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_tc_matrix, SWIG_POINTER_NEW |  0 );
+  if (!PyArg_ParseTuple(args,(char *)":new_c_matrix")) SWIG_fail;
+  result = (c_matrix *)calloc(1, sizeof(c_matrix));
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_c_matrix, SWIG_POINTER_NEW |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_delete_tc_matrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_delete_c_matrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix *arg1 = (tc_matrix *) 0 ;
+  c_matrix *arg1 = (c_matrix *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_tc_matrix",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_tc_matrix, SWIG_POINTER_DISOWN |  0 );
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_c_matrix",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_c_matrix, SWIG_POINTER_DISOWN |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_tc_matrix" "', argument " "1"" of type '" "tc_matrix *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_c_matrix" "', argument " "1"" of type '" "c_matrix *""'"); 
   }
-  arg1 = (tc_matrix *)(argp1);
+  arg1 = (c_matrix *)(argp1);
   free((char *) arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
@@ -3424,14 +3424,14 @@ fail:
 }
 
 
-SWIGINTERN PyObject *tc_matrix_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *c_matrix_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_tc_matrix, SWIG_NewClientData(obj));
+  SWIG_TypeNewClientData(SWIGTYPE_p_c_matrix, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_tc_createMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_createMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int arg2 ;
@@ -3441,52 +3441,52 @@ SWIGINTERN PyObject *_wrap_tc_createMatrix(PyObject *SWIGUNUSEDPARM(self), PyObj
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_createMatrix",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_createMatrix",&obj0,&obj1)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "tc_createMatrix" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "c_createMatrix" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = (int)(val1);
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_createMatrix" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_createMatrix" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = tc_createMatrix(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  result = c_createMatrix(arg1,arg2);
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_createStringsArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_createStringsArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
   int val1 ;
   int ecode1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_strings result;
+  c_strings result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_createStringsArray",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:c_createStringsArray",&obj0)) SWIG_fail;
   ecode1 = SWIG_AsVal_int(obj0, &val1);
   if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "tc_createStringsArray" "', argument " "1"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "c_createStringsArray" "', argument " "1"" of type '" "int""'");
   } 
   arg1 = (int)(val1);
-  result = tc_createStringsArray(arg1);
-  resultobj = SWIG_NewPointerObj((tc_strings *)memcpy((tc_strings *)malloc(sizeof(tc_strings)),&result,sizeof(tc_strings)), SWIGTYPE_p_tc_strings, SWIG_POINTER_OWN |  0 );
+  result = c_createStringsArray(arg1);
+  resultobj = SWIG_NewPointerObj((c_strings *)memcpy((c_strings *)malloc(sizeof(c_strings)),&result,sizeof(c_strings)), SWIGTYPE_p_c_strings, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_getMatrixValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_getMatrixValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   int arg2 ;
   int arg3 ;
   void *argp1 ;
@@ -3500,29 +3500,29 @@ SWIGINTERN PyObject *_wrap_tc_getMatrixValue(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject * obj2 = 0 ;
   double result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:tc_getMatrixValue",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:c_getMatrixValue",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getMatrixValue" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getMatrixValue" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getMatrixValue" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getMatrixValue" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getMatrixValue" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getMatrixValue" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "tc_getMatrixValue" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "c_getMatrixValue" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = (int)(val3);
-  result = (double)tc_getMatrixValue(arg1,arg2,arg3);
+  result = (double)c_getMatrixValue(arg1,arg2,arg3);
   resultobj = SWIG_From_double((double)(result));
   return resultobj;
 fail:
@@ -3530,9 +3530,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_setMatrixValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_setMatrixValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   int arg2 ;
   int arg3 ;
   double arg4 ;
@@ -3549,34 +3549,34 @@ SWIGINTERN PyObject *_wrap_tc_setMatrixValue(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:tc_setMatrixValue",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:c_setMatrixValue",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setMatrixValue" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setMatrixValue" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setMatrixValue" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setMatrixValue" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setMatrixValue" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setMatrixValue" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   ecode3 = SWIG_AsVal_int(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "tc_setMatrixValue" "', argument " "3"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "c_setMatrixValue" "', argument " "3"" of type '" "int""'");
   } 
   arg3 = (int)(val3);
   ecode4 = SWIG_AsVal_double(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "tc_setMatrixValue" "', argument " "4"" of type '" "double""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "c_setMatrixValue" "', argument " "4"" of type '" "double""'");
   } 
   arg4 = (double)(val4);
-  tc_setMatrixValue(arg1,arg2,arg3,arg4);
+  c_setMatrixValue(arg1,arg2,arg3,arg4);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3584,9 +3584,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_getRowName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_getRowName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   int arg2 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3596,24 +3596,24 @@ SWIGINTERN PyObject *_wrap_tc_getRowName(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj1 = 0 ;
   char *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_getRowName",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_getRowName",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getRowName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getRowName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getRowName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getRowName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getRowName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getRowName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = (char *)tc_getRowName(arg1,arg2);
+  result = (char *)c_getRowName(arg1,arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
 fail:
@@ -3621,9 +3621,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_setRowName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_setRowName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   void *argp1 ;
@@ -3637,29 +3637,29 @@ SWIGINTERN PyObject *_wrap_tc_setRowName(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:tc_setRowName",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:c_setRowName",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setRowName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setRowName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setRowName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setRowName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setRowName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setRowName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "tc_setRowName" "', argument " "3"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "c_setRowName" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = (char *)(buf3);
-  tc_setRowName(arg1,arg2,(char const *)arg3);
+  c_setRowName(arg1,arg2,(char const *)arg3);
   resultobj = SWIG_Py_Void();
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
   return resultobj;
@@ -3669,9 +3669,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_getColumnName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_getColumnName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   int arg2 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3681,24 +3681,24 @@ SWIGINTERN PyObject *_wrap_tc_getColumnName(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject * obj1 = 0 ;
   char *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_getColumnName",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_getColumnName",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getColumnName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getColumnName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getColumnName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getColumnName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getColumnName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getColumnName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = (char *)tc_getColumnName(arg1,arg2);
+  result = (char *)c_getColumnName(arg1,arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
 fail:
@@ -3706,9 +3706,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_setColumnName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_setColumnName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   void *argp1 ;
@@ -3722,29 +3722,29 @@ SWIGINTERN PyObject *_wrap_tc_setColumnName(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:tc_setColumnName",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:c_setColumnName",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setColumnName" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setColumnName" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setColumnName" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setColumnName" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setColumnName" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setColumnName" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "tc_setColumnName" "', argument " "3"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "c_setColumnName" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = (char *)(buf3);
-  tc_setColumnName(arg1,arg2,(char const *)arg3);
+  c_setColumnName(arg1,arg2,(char const *)arg3);
   resultobj = SWIG_Py_Void();
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
   return resultobj;
@@ -3754,9 +3754,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_getString(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_getString(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings arg1 ;
+  c_strings arg1 ;
   int arg2 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3766,24 +3766,24 @@ SWIGINTERN PyObject *_wrap_tc_getString(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject * obj1 = 0 ;
   char *result = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_getString",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_getString",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getString" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getString" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getString" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getString" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_getString" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_getString" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
-  result = (char *)tc_getString(arg1,arg2);
+  result = (char *)c_getString(arg1,arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
 fail:
@@ -3791,9 +3791,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_setString(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_setString(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings arg1 ;
+  c_strings arg1 ;
   int arg2 ;
   char *arg3 = (char *) 0 ;
   void *argp1 ;
@@ -3807,29 +3807,29 @@ SWIGINTERN PyObject *_wrap_tc_setString(PyObject *SWIGUNUSEDPARM(self), PyObject
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OOO:tc_setString",&obj0,&obj1,&obj2)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OOO:c_setString",&obj0,&obj1,&obj2)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_setString" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_setString" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_setString" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_setString" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
   ecode2 = SWIG_AsVal_int(obj1, &val2);
   if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "tc_setString" "', argument " "2"" of type '" "int""'");
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "c_setString" "', argument " "2"" of type '" "int""'");
   } 
   arg2 = (int)(val2);
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
-    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "tc_setString" "', argument " "3"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "c_setString" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = (char *)(buf3);
-  tc_setString(arg1,arg2,(char const *)arg3);
+  c_setString(arg1,arg2,(char const *)arg3);
   resultobj = SWIG_Py_Void();
   if (alloc3 == SWIG_NEWOBJ) free((char*)buf3);
   return resultobj;
@@ -3839,9 +3839,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_getStringIndex(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_getStringIndex(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings arg1 ;
+  c_strings arg1 ;
   char *arg2 = (char *) 0 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3852,24 +3852,24 @@ SWIGINTERN PyObject *_wrap_tc_getStringIndex(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject * obj1 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_getStringIndex",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_getStringIndex",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getStringIndex" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getStringIndex" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getStringIndex" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getStringIndex" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_getStringIndex" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_getStringIndex" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = (char *)(buf2);
-  result = (int)tc_getStringIndex(arg1,(char const *)arg2);
+  result = (int)c_getStringIndex(arg1,(char const *)arg2);
   resultobj = SWIG_From_int((int)(result));
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return resultobj;
@@ -3879,9 +3879,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_getRowIndex(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_getRowIndex(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   char *arg2 = (char *) 0 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3892,24 +3892,24 @@ SWIGINTERN PyObject *_wrap_tc_getRowIndex(PyObject *SWIGUNUSEDPARM(self), PyObje
   PyObject * obj1 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_getRowIndex",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_getRowIndex",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getRowIndex" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getRowIndex" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getRowIndex" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getRowIndex" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_getRowIndex" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_getRowIndex" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = (char *)(buf2);
-  result = (int)tc_getRowIndex(arg1,(char const *)arg2);
+  result = (int)c_getRowIndex(arg1,(char const *)arg2);
   resultobj = SWIG_From_int((int)(result));
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return resultobj;
@@ -3919,9 +3919,9 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_getColumnIndex(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_getColumnIndex(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   char *arg2 = (char *) 0 ;
   void *argp1 ;
   int res1 = 0 ;
@@ -3932,24 +3932,24 @@ SWIGINTERN PyObject *_wrap_tc_getColumnIndex(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject * obj1 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_getColumnIndex",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_getColumnIndex",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_getColumnIndex" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_getColumnIndex" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_getColumnIndex" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_getColumnIndex" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_getColumnIndex" "', argument " "2"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_getColumnIndex" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = (char *)(buf2);
-  result = (int)tc_getColumnIndex(arg1,(char const *)arg2);
+  result = (int)c_getColumnIndex(arg1,(char const *)arg2);
   resultobj = SWIG_From_int((int)(result));
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return resultobj;
@@ -3959,26 +3959,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_deleteMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_deleteMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_deleteMatrix",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:c_deleteMatrix",&obj0)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_deleteMatrix" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_deleteMatrix" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_deleteMatrix" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_deleteMatrix" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
-  tc_deleteMatrix(arg1);
+  c_deleteMatrix(arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -3986,26 +3986,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_deleteStringsArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_deleteStringsArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_strings arg1 ;
+  c_strings arg1 ;
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_deleteStringsArray",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:c_deleteStringsArray",&obj0)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_strings,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_deleteStringsArray" "', argument " "1"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_deleteStringsArray" "', argument " "1"" of type '" "c_strings""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_deleteStringsArray" "', argument " "1"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_deleteStringsArray" "', argument " "1"" of type '" "c_strings""'");
     } else {
-      arg1 = *((tc_strings *)(argp1));
+      arg1 = *((c_strings *)(argp1));
     }
   }
-  tc_deleteStringsArray(arg1);
+  c_deleteStringsArray(arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4013,96 +4013,96 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_appendColumns(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_appendColumns(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg1 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_appendColumns",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_appendColumns",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_appendColumns" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_appendColumns" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendColumns" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendColumns" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_appendColumns" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_appendColumns" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendColumns" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendColumns" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
-  result = tc_appendColumns(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  result = c_appendColumns(arg1,arg2);
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_appendRows(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_appendRows(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg1 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_appendRows",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_appendRows",&obj0,&obj1)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_appendRows" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_appendRows" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendRows" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendRows" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_appendRows" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_appendRows" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_appendRows" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_appendRows" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
-  result = tc_appendRows(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  result = c_appendRows(arg1,arg2);
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_printMatrixToFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_printMatrixToFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   int res1 ;
   char *buf1 = 0 ;
   int alloc1 = 0 ;
@@ -4111,24 +4111,24 @@ SWIGINTERN PyObject *_wrap_tc_printMatrixToFile(PyObject *SWIGUNUSEDPARM(self), 
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"OO:tc_printMatrixToFile",&obj0,&obj1)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"OO:c_printMatrixToFile",&obj0,&obj1)) SWIG_fail;
   res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_printMatrixToFile" "', argument " "1"" of type '" "char const *""'");
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_printMatrixToFile" "', argument " "1"" of type '" "char const *""'");
   }
   arg1 = (char *)(buf1);
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "tc_printMatrixToFile" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "c_printMatrixToFile" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_printMatrixToFile" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_printMatrixToFile" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
-  tc_printMatrixToFile((char const *)arg1,arg2);
+  c_printMatrixToFile((char const *)arg1,arg2);
   resultobj = SWIG_Py_Void();
   if (alloc1 == SWIG_NEWOBJ) free((char*)buf1);
   return resultobj;
@@ -4138,26 +4138,26 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_tc_printOutMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_c_printOutMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  tc_matrix arg1 ;
+  c_matrix arg1 ;
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:tc_printOutMatrix",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:c_printOutMatrix",&obj0)) SWIG_fail;
   {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_tc_matrix,  0 );
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "tc_printOutMatrix" "', argument " "1"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "c_printOutMatrix" "', argument " "1"" of type '" "c_matrix""'"); 
     }  
     if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "tc_printOutMatrix" "', argument " "1"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "c_printOutMatrix" "', argument " "1"" of type '" "c_matrix""'");
     } else {
-      arg1 = *((tc_matrix *)(argp1));
+      arg1 = *((c_matrix *)(argp1));
     }
   }
-  tc_printOutMatrix(arg1);
+  c_printOutMatrix(arg1);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -5274,7 +5274,7 @@ SWIGINTERN PyObject *_wrap_cGetCompartments(PyObject *SWIGUNUSEDPARM(self), PyOb
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetCompartments",&obj0)) SWIG_fail;
   {
@@ -5289,7 +5289,7 @@ SWIGINTERN PyObject *_wrap_cGetCompartments(PyObject *SWIGUNUSEDPARM(self), PyOb
     }
   }
   result = cGetCompartments(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5299,7 +5299,7 @@ fail:
 SWIGINTERN PyObject *_wrap_cSetCompartmentVolumes(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -5320,14 +5320,14 @@ SWIGINTERN PyObject *_wrap_cSetCompartmentVolumes(PyObject *SWIGUNUSEDPARM(self)
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetCompartmentVolumes" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetCompartmentVolumes(arg1,arg2);
@@ -5765,14 +5765,14 @@ fail:
 SWIGINTERN PyObject *_wrap_cGetReactionRatesEx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:cGetReactionRatesEx",&obj0,&obj1)) SWIG_fail;
   {
@@ -5787,18 +5787,18 @@ SWIGINTERN PyObject *_wrap_cGetReactionRatesEx(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesEx" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetReactionRatesEx(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5891,7 +5891,7 @@ SWIGINTERN PyObject *_wrap_cGetReactionRates(PyObject *SWIGUNUSEDPARM(self), PyO
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetReactionRates",&obj0)) SWIG_fail;
   {
@@ -5906,7 +5906,7 @@ SWIGINTERN PyObject *_wrap_cGetReactionRates(PyObject *SWIGUNUSEDPARM(self), PyO
     }
   }
   result = cGetReactionRates(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6268,7 +6268,7 @@ fail:
 SWIGINTERN PyObject *_wrap_cSetSpeciesConcentrations(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6289,14 +6289,14 @@ SWIGINTERN PyObject *_wrap_cSetSpeciesConcentrations(PyObject *SWIGUNUSEDPARM(se
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetSpeciesConcentrations" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetSpeciesConcentrations(arg1,arg2);
@@ -6313,7 +6313,7 @@ SWIGINTERN PyObject *_wrap_cGetFloatingSpeciesIntitialConcentrations(PyObject *S
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetFloatingSpeciesIntitialConcentrations",&obj0)) SWIG_fail;
   {
@@ -6328,7 +6328,7 @@ SWIGINTERN PyObject *_wrap_cGetFloatingSpeciesIntitialConcentrations(PyObject *S
     }
   }
   result = cGetFloatingSpeciesIntitialConcentrations(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6338,7 +6338,7 @@ fail:
 SWIGINTERN PyObject *_wrap_cSetFloatingSpeciesIntitialConcentrations(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6359,14 +6359,14 @@ SWIGINTERN PyObject *_wrap_cSetFloatingSpeciesIntitialConcentrations(PyObject *S
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetFloatingSpeciesIntitialConcentrations" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetFloatingSpeciesIntitialConcentrations(arg1,arg2);
@@ -6383,7 +6383,7 @@ SWIGINTERN PyObject *_wrap_cGetAllSpecies(PyObject *SWIGUNUSEDPARM(self), PyObje
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetAllSpecies",&obj0)) SWIG_fail;
   {
@@ -6398,7 +6398,7 @@ SWIGINTERN PyObject *_wrap_cGetAllSpecies(PyObject *SWIGUNUSEDPARM(self), PyObje
     }
   }
   result = cGetAllSpecies(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6411,7 +6411,7 @@ SWIGINTERN PyObject *_wrap_cGetFloatingSpeciesConcentrations(PyObject *SWIGUNUSE
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetFloatingSpeciesConcentrations",&obj0)) SWIG_fail;
   {
@@ -6426,7 +6426,7 @@ SWIGINTERN PyObject *_wrap_cGetFloatingSpeciesConcentrations(PyObject *SWIGUNUSE
     }
   }
   result = cGetFloatingSpeciesConcentrations(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6439,7 +6439,7 @@ SWIGINTERN PyObject *_wrap_cGetBoundarySpecies(PyObject *SWIGUNUSEDPARM(self), P
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetBoundarySpecies",&obj0)) SWIG_fail;
   {
@@ -6454,7 +6454,7 @@ SWIGINTERN PyObject *_wrap_cGetBoundarySpecies(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   result = cGetBoundarySpecies(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6467,7 +6467,7 @@ SWIGINTERN PyObject *_wrap_cGetAmounts(PyObject *SWIGUNUSEDPARM(self), PyObject 
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetAmounts",&obj0)) SWIG_fail;
   {
@@ -6482,7 +6482,7 @@ SWIGINTERN PyObject *_wrap_cGetAmounts(PyObject *SWIGUNUSEDPARM(self), PyObject 
     }
   }
   result = cGetAmounts(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6701,7 +6701,7 @@ SWIGINTERN PyObject *_wrap_cGetGlobalParameters(PyObject *SWIGUNUSEDPARM(self), 
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetGlobalParameters",&obj0)) SWIG_fail;
   {
@@ -6716,7 +6716,7 @@ SWIGINTERN PyObject *_wrap_cGetGlobalParameters(PyObject *SWIGUNUSEDPARM(self), 
     }
   }
   result = cGetGlobalParameters(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6726,7 +6726,7 @@ fail:
 SWIGINTERN PyObject *_wrap_cSetGlobalParameterValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6747,14 +6747,14 @@ SWIGINTERN PyObject *_wrap_cSetGlobalParameterValues(PyObject *SWIGUNUSEDPARM(se
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetGlobalParameterValues" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetGlobalParameterValues(arg1,arg2);
@@ -6768,7 +6768,7 @@ fail:
 SWIGINTERN PyObject *_wrap_cSetValues(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -6789,14 +6789,14 @@ SWIGINTERN PyObject *_wrap_cSetValues(PyObject *SWIGUNUSEDPARM(self), PyObject *
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetValues" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cSetValues" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetValues" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cSetValues" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   cSetValues(arg1,arg2);
@@ -6813,7 +6813,7 @@ SWIGINTERN PyObject *_wrap_cGetRatesOfChange(PyObject *SWIGUNUSEDPARM(self), PyO
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetRatesOfChange",&obj0)) SWIG_fail;
   {
@@ -6828,7 +6828,7 @@ SWIGINTERN PyObject *_wrap_cGetRatesOfChange(PyObject *SWIGUNUSEDPARM(self), PyO
     }
   }
   result = cGetRatesOfChange(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6878,14 +6878,14 @@ fail:
 SWIGINTERN PyObject *_wrap_cGetRatesOfChangeEx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:cGetRatesOfChangeEx",&obj0,&obj1)) SWIG_fail;
   {
@@ -6900,18 +6900,18 @@ SWIGINTERN PyObject *_wrap_cGetRatesOfChangeEx(PyObject *SWIGUNUSEDPARM(self), P
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetRatesOfChangeEx" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetRatesOfChangeEx(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6936,7 +6936,7 @@ SWIGINTERN PyObject *_wrap_cSimulateDeterministic(PyObject *SWIGUNUSEDPARM(self)
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:cSimulateDeterministic",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
@@ -6966,7 +6966,7 @@ SWIGINTERN PyObject *_wrap_cSimulateDeterministic(PyObject *SWIGUNUSEDPARM(self)
   } 
   arg4 = (int)(val4);
   result = cSimulateDeterministic(arg1,arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7028,7 +7028,7 @@ SWIGINTERN PyObject *_wrap_cSimulateStochastic(PyObject *SWIGUNUSEDPARM(self), P
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:cSimulateStochastic",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
@@ -7058,7 +7058,7 @@ SWIGINTERN PyObject *_wrap_cSimulateStochastic(PyObject *SWIGUNUSEDPARM(self), P
   } 
   arg4 = (int)(val4);
   result = cSimulateStochastic(arg1,arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7083,7 +7083,7 @@ SWIGINTERN PyObject *_wrap_cSimulateHybrid(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:cSimulateHybrid",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
@@ -7113,7 +7113,7 @@ SWIGINTERN PyObject *_wrap_cSimulateHybrid(PyObject *SWIGUNUSEDPARM(self), PyObj
   } 
   arg4 = (int)(val4);
   result = cSimulateHybrid(arg1,arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7138,7 +7138,7 @@ SWIGINTERN PyObject *_wrap_cSimulateTauLeap(PyObject *SWIGUNUSEDPARM(self), PyOb
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
   PyObject * obj3 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOO:cSimulateTauLeap",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
   {
@@ -7168,7 +7168,7 @@ SWIGINTERN PyObject *_wrap_cSimulateTauLeap(PyObject *SWIGUNUSEDPARM(self), PyOb
   } 
   arg4 = (int)(val4);
   result = cSimulateTauLeap(arg1,arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7205,14 +7205,14 @@ fail:
 SWIGINTERN PyObject *_wrap_cGetReactionRatesFromTimeCourse(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:cGetReactionRatesFromTimeCourse",&obj0,&obj1)) SWIG_fail;
   {
@@ -7227,18 +7227,18 @@ SWIGINTERN PyObject *_wrap_cGetReactionRatesFromTimeCourse(PyObject *SWIGUNUSEDP
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetReactionRatesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetReactionRatesFromTimeCourse(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7248,14 +7248,14 @@ fail:
 SWIGINTERN PyObject *_wrap_cGetDerivativesFromTimeCourse(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:cGetDerivativesFromTimeCourse",&obj0,&obj1)) SWIG_fail;
   {
@@ -7270,18 +7270,18 @@ SWIGINTERN PyObject *_wrap_cGetDerivativesFromTimeCourse(PyObject *SWIGUNUSEDPAR
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetDerivativesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetDerivativesFromTimeCourse(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7291,14 +7291,14 @@ fail:
 SWIGINTERN PyObject *_wrap_cGetCCFromTimeCourse(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:cGetCCFromTimeCourse",&obj0,&obj1)) SWIG_fail;
   {
@@ -7313,18 +7313,18 @@ SWIGINTERN PyObject *_wrap_cGetCCFromTimeCourse(PyObject *SWIGUNUSEDPARM(self), 
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetCCFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetCCFromTimeCourse(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7334,14 +7334,14 @@ fail:
 SWIGINTERN PyObject *_wrap_cGetElasticitiesFromTimeCourse(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
+  c_matrix arg2 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:cGetElasticitiesFromTimeCourse",&obj0,&obj1)) SWIG_fail;
   {
@@ -7356,18 +7356,18 @@ SWIGINTERN PyObject *_wrap_cGetElasticitiesFromTimeCourse(PyObject *SWIGUNUSEDPA
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cGetElasticitiesFromTimeCourse" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   result = cGetElasticitiesFromTimeCourse(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7377,8 +7377,8 @@ fail:
 SWIGINTERN PyObject *_wrap_cFilterTimeCourseResults(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   copasi_model arg1 ;
-  tc_matrix arg2 ;
-  tc_strings arg3 ;
+  c_matrix arg2 ;
+  c_strings arg3 ;
   void *argp1 ;
   int res1 = 0 ;
   void *argp2 ;
@@ -7388,7 +7388,7 @@ SWIGINTERN PyObject *_wrap_cFilterTimeCourseResults(PyObject *SWIGUNUSEDPARM(sel
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:cFilterTimeCourseResults",&obj0,&obj1,&obj2)) SWIG_fail;
   {
@@ -7403,29 +7403,29 @@ SWIGINTERN PyObject *_wrap_cFilterTimeCourseResults(PyObject *SWIGUNUSEDPARM(sel
     }
   }
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_tc_matrix,  0 );
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "c_matrix""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "2"" of type '" "c_matrix""'");
     } else {
-      arg2 = *((tc_matrix *)(argp2));
+      arg2 = *((c_matrix *)(argp2));
     }
   }
   {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_tc_strings,  0 );
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_c_strings,  0 );
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "tc_strings""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "c_strings""'"); 
     }  
     if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "tc_strings""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cFilterTimeCourseResults" "', argument " "3"" of type '" "c_strings""'");
     } else {
-      arg3 = *((tc_strings *)(argp3));
+      arg3 = *((c_strings *)(argp3));
     }
   }
   result = cFilterTimeCourseResults(arg1,arg2,arg3);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7438,7 +7438,7 @@ SWIGINTERN PyObject *_wrap_cGetSteadyState(PyObject *SWIGUNUSEDPARM(self), PyObj
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetSteadyState",&obj0)) SWIG_fail;
   {
@@ -7453,7 +7453,7 @@ SWIGINTERN PyObject *_wrap_cGetSteadyState(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
   }
   result = cGetSteadyState(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7470,7 +7470,7 @@ SWIGINTERN PyObject *_wrap_cGetSteadyStateUsingSimulation(PyObject *SWIGUNUSEDPA
   int ecode2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:cGetSteadyStateUsingSimulation",&obj0,&obj1)) SWIG_fail;
   {
@@ -7490,7 +7490,7 @@ SWIGINTERN PyObject *_wrap_cGetSteadyStateUsingSimulation(PyObject *SWIGUNUSEDPA
   } 
   arg2 = (int)(val2);
   result = cGetSteadyStateUsingSimulation(arg1,arg2);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7503,7 +7503,7 @@ SWIGINTERN PyObject *_wrap_cGetJacobian(PyObject *SWIGUNUSEDPARM(self), PyObject
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetJacobian",&obj0)) SWIG_fail;
   {
@@ -7518,7 +7518,7 @@ SWIGINTERN PyObject *_wrap_cGetJacobian(PyObject *SWIGUNUSEDPARM(self), PyObject
     }
   }
   result = cGetJacobian(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7531,7 +7531,7 @@ SWIGINTERN PyObject *_wrap_cGetEigenvalues(PyObject *SWIGUNUSEDPARM(self), PyObj
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetEigenvalues",&obj0)) SWIG_fail;
   {
@@ -7546,7 +7546,7 @@ SWIGINTERN PyObject *_wrap_cGetEigenvalues(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
   }
   result = cGetEigenvalues(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7559,7 +7559,7 @@ SWIGINTERN PyObject *_wrap_cGetUnscaledFluxControlCoeffs(PyObject *SWIGUNUSEDPAR
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetUnscaledFluxControlCoeffs",&obj0)) SWIG_fail;
   {
@@ -7574,7 +7574,7 @@ SWIGINTERN PyObject *_wrap_cGetUnscaledFluxControlCoeffs(PyObject *SWIGUNUSEDPAR
     }
   }
   result = cGetUnscaledFluxControlCoeffs(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7587,7 +7587,7 @@ SWIGINTERN PyObject *_wrap_cGetScaledFluxControlCoeffs(PyObject *SWIGUNUSEDPARM(
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetScaledFluxControlCoeffs",&obj0)) SWIG_fail;
   {
@@ -7602,7 +7602,7 @@ SWIGINTERN PyObject *_wrap_cGetScaledFluxControlCoeffs(PyObject *SWIGUNUSEDPARM(
     }
   }
   result = cGetScaledFluxControlCoeffs(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7615,7 +7615,7 @@ SWIGINTERN PyObject *_wrap_cGetUnscaledConcentrationControlCoeffs(PyObject *SWIG
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetUnscaledConcentrationControlCoeffs",&obj0)) SWIG_fail;
   {
@@ -7630,7 +7630,7 @@ SWIGINTERN PyObject *_wrap_cGetUnscaledConcentrationControlCoeffs(PyObject *SWIG
     }
   }
   result = cGetUnscaledConcentrationControlCoeffs(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7643,7 +7643,7 @@ SWIGINTERN PyObject *_wrap_cGetScaledConcentrationConcentrationCoeffs(PyObject *
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetScaledConcentrationConcentrationCoeffs",&obj0)) SWIG_fail;
   {
@@ -7658,7 +7658,7 @@ SWIGINTERN PyObject *_wrap_cGetScaledConcentrationConcentrationCoeffs(PyObject *
     }
   }
   result = cGetScaledConcentrationConcentrationCoeffs(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7671,7 +7671,7 @@ SWIGINTERN PyObject *_wrap_cGetUnscaledElasticities(PyObject *SWIGUNUSEDPARM(sel
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetUnscaledElasticities",&obj0)) SWIG_fail;
   {
@@ -7686,7 +7686,7 @@ SWIGINTERN PyObject *_wrap_cGetUnscaledElasticities(PyObject *SWIGUNUSEDPARM(sel
     }
   }
   result = cGetUnscaledElasticities(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7699,7 +7699,7 @@ SWIGINTERN PyObject *_wrap_cGetScaledElasticities(PyObject *SWIGUNUSEDPARM(self)
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetScaledElasticities",&obj0)) SWIG_fail;
   {
@@ -7714,7 +7714,7 @@ SWIGINTERN PyObject *_wrap_cGetScaledElasticities(PyObject *SWIGUNUSEDPARM(self)
     }
   }
   result = cGetScaledElasticities(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7727,7 +7727,7 @@ SWIGINTERN PyObject *_wrap_cGetFullStoichiometryMatrix(PyObject *SWIGUNUSEDPARM(
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetFullStoichiometryMatrix",&obj0)) SWIG_fail;
   {
@@ -7742,7 +7742,7 @@ SWIGINTERN PyObject *_wrap_cGetFullStoichiometryMatrix(PyObject *SWIGUNUSEDPARM(
     }
   }
   result = cGetFullStoichiometryMatrix(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7755,7 +7755,7 @@ SWIGINTERN PyObject *_wrap_cGetReducedStoichiometryMatrix(PyObject *SWIGUNUSEDPA
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetReducedStoichiometryMatrix",&obj0)) SWIG_fail;
   {
@@ -7770,7 +7770,7 @@ SWIGINTERN PyObject *_wrap_cGetReducedStoichiometryMatrix(PyObject *SWIGUNUSEDPA
     }
   }
   result = cGetReducedStoichiometryMatrix(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7783,7 +7783,7 @@ SWIGINTERN PyObject *_wrap_cGetElementaryFluxModes(PyObject *SWIGUNUSEDPARM(self
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetElementaryFluxModes",&obj0)) SWIG_fail;
   {
@@ -7798,7 +7798,7 @@ SWIGINTERN PyObject *_wrap_cGetElementaryFluxModes(PyObject *SWIGUNUSEDPARM(self
     }
   }
   result = cGetElementaryFluxModes(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7811,7 +7811,7 @@ SWIGINTERN PyObject *_wrap_cGetGammaMatrix(PyObject *SWIGUNUSEDPARM(self), PyObj
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetGammaMatrix",&obj0)) SWIG_fail;
   {
@@ -7826,7 +7826,7 @@ SWIGINTERN PyObject *_wrap_cGetGammaMatrix(PyObject *SWIGUNUSEDPARM(self), PyObj
     }
   }
   result = cGetGammaMatrix(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7839,7 +7839,7 @@ SWIGINTERN PyObject *_wrap_cGetKMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject 
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetKMatrix",&obj0)) SWIG_fail;
   {
@@ -7854,7 +7854,7 @@ SWIGINTERN PyObject *_wrap_cGetKMatrix(PyObject *SWIGUNUSEDPARM(self), PyObject 
     }
   }
   result = cGetKMatrix(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7867,7 +7867,7 @@ SWIGINTERN PyObject *_wrap_cGetK0Matrix(PyObject *SWIGUNUSEDPARM(self), PyObject
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetK0Matrix",&obj0)) SWIG_fail;
   {
@@ -7882,7 +7882,7 @@ SWIGINTERN PyObject *_wrap_cGetK0Matrix(PyObject *SWIGUNUSEDPARM(self), PyObject
     }
   }
   result = cGetK0Matrix(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7895,7 +7895,7 @@ SWIGINTERN PyObject *_wrap_cGetLinkMatrix(PyObject *SWIGUNUSEDPARM(self), PyObje
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetLinkMatrix",&obj0)) SWIG_fail;
   {
@@ -7910,7 +7910,7 @@ SWIGINTERN PyObject *_wrap_cGetLinkMatrix(PyObject *SWIGUNUSEDPARM(self), PyObje
     }
   }
   result = cGetLinkMatrix(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7923,7 +7923,7 @@ SWIGINTERN PyObject *_wrap_cGetL0Matrix(PyObject *SWIGUNUSEDPARM(self), PyObject
   void *argp1 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:cGetL0Matrix",&obj0)) SWIG_fail;
   {
@@ -7938,7 +7938,7 @@ SWIGINTERN PyObject *_wrap_cGetL0Matrix(PyObject *SWIGUNUSEDPARM(self), PyObject
     }
   }
   result = cGetL0Matrix(arg1);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7949,7 +7949,7 @@ SWIGINTERN PyObject *_wrap_cOptimize(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   PyObject *resultobj = 0;
   copasi_model arg1 ;
   char *arg2 = (char *) 0 ;
-  tc_matrix arg3 ;
+  c_matrix arg3 ;
   void *argp1 ;
   int res1 = 0 ;
   int res2 ;
@@ -7960,7 +7960,7 @@ SWIGINTERN PyObject *_wrap_cOptimize(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  tc_matrix result;
+  c_matrix result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:cOptimize",&obj0,&obj1,&obj2)) SWIG_fail;
   {
@@ -7980,18 +7980,18 @@ SWIGINTERN PyObject *_wrap_cOptimize(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   }
   arg2 = (char *)(buf2);
   {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_tc_matrix,  0 );
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_c_matrix,  0 );
     if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cOptimize" "', argument " "3"" of type '" "tc_matrix""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "cOptimize" "', argument " "3"" of type '" "c_matrix""'"); 
     }  
     if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cOptimize" "', argument " "3"" of type '" "tc_matrix""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "cOptimize" "', argument " "3"" of type '" "c_matrix""'");
     } else {
-      arg3 = *((tc_matrix *)(argp3));
+      arg3 = *((c_matrix *)(argp3));
     }
   }
   result = cOptimize(arg1,(char const *)arg2,arg3);
-  resultobj = SWIG_NewPointerObj((tc_matrix *)memcpy((tc_matrix *)malloc(sizeof(tc_matrix)),&result,sizeof(tc_matrix)), SWIGTYPE_p_tc_matrix, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((c_matrix *)memcpy((c_matrix *)malloc(sizeof(c_matrix)),&result,sizeof(c_matrix)), SWIGTYPE_p_c_matrix, SWIG_POINTER_OWN |  0 );
   if (alloc2 == SWIG_NEWOBJ) free((char*)buf2);
   return resultobj;
 fail:
@@ -8110,45 +8110,45 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
-	 { (char *)"tc_strings_length_set", _wrap_tc_strings_length_set, METH_VARARGS, NULL},
-	 { (char *)"tc_strings_length_get", _wrap_tc_strings_length_get, METH_VARARGS, NULL},
-	 { (char *)"tc_strings_strings_set", _wrap_tc_strings_strings_set, METH_VARARGS, NULL},
-	 { (char *)"tc_strings_strings_get", _wrap_tc_strings_strings_get, METH_VARARGS, NULL},
-	 { (char *)"new_tc_strings", _wrap_new_tc_strings, METH_VARARGS, NULL},
-	 { (char *)"delete_tc_strings", _wrap_delete_tc_strings, METH_VARARGS, NULL},
-	 { (char *)"tc_strings_swigregister", tc_strings_swigregister, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_rows_set", _wrap_tc_matrix_rows_set, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_rows_get", _wrap_tc_matrix_rows_get, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_cols_set", _wrap_tc_matrix_cols_set, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_cols_get", _wrap_tc_matrix_cols_get, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_values_set", _wrap_tc_matrix_values_set, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_values_get", _wrap_tc_matrix_values_get, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_rownames_set", _wrap_tc_matrix_rownames_set, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_rownames_get", _wrap_tc_matrix_rownames_get, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_colnames_set", _wrap_tc_matrix_colnames_set, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_colnames_get", _wrap_tc_matrix_colnames_get, METH_VARARGS, NULL},
-	 { (char *)"new_tc_matrix", _wrap_new_tc_matrix, METH_VARARGS, NULL},
-	 { (char *)"delete_tc_matrix", _wrap_delete_tc_matrix, METH_VARARGS, NULL},
-	 { (char *)"tc_matrix_swigregister", tc_matrix_swigregister, METH_VARARGS, NULL},
-	 { (char *)"tc_createMatrix", _wrap_tc_createMatrix, METH_VARARGS, NULL},
-	 { (char *)"tc_createStringsArray", _wrap_tc_createStringsArray, METH_VARARGS, NULL},
-	 { (char *)"tc_getMatrixValue", _wrap_tc_getMatrixValue, METH_VARARGS, NULL},
-	 { (char *)"tc_setMatrixValue", _wrap_tc_setMatrixValue, METH_VARARGS, NULL},
-	 { (char *)"tc_getRowName", _wrap_tc_getRowName, METH_VARARGS, NULL},
-	 { (char *)"tc_setRowName", _wrap_tc_setRowName, METH_VARARGS, NULL},
-	 { (char *)"tc_getColumnName", _wrap_tc_getColumnName, METH_VARARGS, NULL},
-	 { (char *)"tc_setColumnName", _wrap_tc_setColumnName, METH_VARARGS, NULL},
-	 { (char *)"tc_getString", _wrap_tc_getString, METH_VARARGS, NULL},
-	 { (char *)"tc_setString", _wrap_tc_setString, METH_VARARGS, NULL},
-	 { (char *)"tc_getStringIndex", _wrap_tc_getStringIndex, METH_VARARGS, NULL},
-	 { (char *)"tc_getRowIndex", _wrap_tc_getRowIndex, METH_VARARGS, NULL},
-	 { (char *)"tc_getColumnIndex", _wrap_tc_getColumnIndex, METH_VARARGS, NULL},
-	 { (char *)"tc_deleteMatrix", _wrap_tc_deleteMatrix, METH_VARARGS, NULL},
-	 { (char *)"tc_deleteStringsArray", _wrap_tc_deleteStringsArray, METH_VARARGS, NULL},
-	 { (char *)"tc_appendColumns", _wrap_tc_appendColumns, METH_VARARGS, NULL},
-	 { (char *)"tc_appendRows", _wrap_tc_appendRows, METH_VARARGS, NULL},
-	 { (char *)"tc_printMatrixToFile", _wrap_tc_printMatrixToFile, METH_VARARGS, NULL},
-	 { (char *)"tc_printOutMatrix", _wrap_tc_printOutMatrix, METH_VARARGS, NULL},
+	 { (char *)"c_strings_length_set", _wrap_c_strings_length_set, METH_VARARGS, NULL},
+	 { (char *)"c_strings_length_get", _wrap_c_strings_length_get, METH_VARARGS, NULL},
+	 { (char *)"c_strings_strings_set", _wrap_c_strings_strings_set, METH_VARARGS, NULL},
+	 { (char *)"c_strings_strings_get", _wrap_c_strings_strings_get, METH_VARARGS, NULL},
+	 { (char *)"new_c_strings", _wrap_new_c_strings, METH_VARARGS, NULL},
+	 { (char *)"delete_c_strings", _wrap_delete_c_strings, METH_VARARGS, NULL},
+	 { (char *)"c_strings_swigregister", c_strings_swigregister, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_rows_set", _wrap_c_matrix_rows_set, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_rows_get", _wrap_c_matrix_rows_get, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_cols_set", _wrap_c_matrix_cols_set, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_cols_get", _wrap_c_matrix_cols_get, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_values_set", _wrap_c_matrix_values_set, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_values_get", _wrap_c_matrix_values_get, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_rownames_set", _wrap_c_matrix_rownames_set, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_rownames_get", _wrap_c_matrix_rownames_get, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_colnames_set", _wrap_c_matrix_colnames_set, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_colnames_get", _wrap_c_matrix_colnames_get, METH_VARARGS, NULL},
+	 { (char *)"new_c_matrix", _wrap_new_c_matrix, METH_VARARGS, NULL},
+	 { (char *)"delete_c_matrix", _wrap_delete_c_matrix, METH_VARARGS, NULL},
+	 { (char *)"c_matrix_swigregister", c_matrix_swigregister, METH_VARARGS, NULL},
+	 { (char *)"c_createMatrix", _wrap_c_createMatrix, METH_VARARGS, NULL},
+	 { (char *)"c_createStringsArray", _wrap_c_createStringsArray, METH_VARARGS, NULL},
+	 { (char *)"c_getMatrixValue", _wrap_c_getMatrixValue, METH_VARARGS, NULL},
+	 { (char *)"c_setMatrixValue", _wrap_c_setMatrixValue, METH_VARARGS, NULL},
+	 { (char *)"c_getRowName", _wrap_c_getRowName, METH_VARARGS, NULL},
+	 { (char *)"c_setRowName", _wrap_c_setRowName, METH_VARARGS, NULL},
+	 { (char *)"c_getColumnName", _wrap_c_getColumnName, METH_VARARGS, NULL},
+	 { (char *)"c_setColumnName", _wrap_c_setColumnName, METH_VARARGS, NULL},
+	 { (char *)"c_getString", _wrap_c_getString, METH_VARARGS, NULL},
+	 { (char *)"c_setString", _wrap_c_setString, METH_VARARGS, NULL},
+	 { (char *)"c_getStringIndex", _wrap_c_getStringIndex, METH_VARARGS, NULL},
+	 { (char *)"c_getRowIndex", _wrap_c_getRowIndex, METH_VARARGS, NULL},
+	 { (char *)"c_getColumnIndex", _wrap_c_getColumnIndex, METH_VARARGS, NULL},
+	 { (char *)"c_deleteMatrix", _wrap_c_deleteMatrix, METH_VARARGS, NULL},
+	 { (char *)"c_deleteStringsArray", _wrap_c_deleteStringsArray, METH_VARARGS, NULL},
+	 { (char *)"c_appendColumns", _wrap_c_appendColumns, METH_VARARGS, NULL},
+	 { (char *)"c_appendRows", _wrap_c_appendRows, METH_VARARGS, NULL},
+	 { (char *)"c_printMatrixToFile", _wrap_c_printMatrixToFile, METH_VARARGS, NULL},
+	 { (char *)"c_printOutMatrix", _wrap_c_printOutMatrix, METH_VARARGS, NULL},
 	 { (char *)"copasi_model_CopasiModelPtr_set", _wrap_copasi_model_CopasiModelPtr_set, METH_VARARGS, NULL},
 	 { (char *)"copasi_model_CopasiModelPtr_get", _wrap_copasi_model_CopasiModelPtr_get, METH_VARARGS, NULL},
 	 { (char *)"copasi_model_CopasiDataModelPtr_set", _wrap_copasi_model_CopasiDataModelPtr_set, METH_VARARGS, NULL},
@@ -8278,47 +8278,47 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_c_matrix = {"_p_c_matrix", "c_matrix *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_c_strings = {"_p_c_strings", "c_strings *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_copasi_compartment = {"_p_copasi_compartment", "copasi_compartment *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_copasi_model = {"_p_copasi_model", "copasi_model *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_copasi_reaction = {"_p_copasi_reaction", "copasi_reaction *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tc_matrix = {"_p_tc_matrix", "tc_matrix *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_tc_strings = {"_p_tc_strings", "tc_strings *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_c_matrix,
+  &_swigt__p_c_strings,
   &_swigt__p_char,
   &_swigt__p_copasi_compartment,
   &_swigt__p_copasi_model,
   &_swigt__p_copasi_reaction,
   &_swigt__p_double,
   &_swigt__p_p_char,
-  &_swigt__p_tc_matrix,
-  &_swigt__p_tc_strings,
   &_swigt__p_void,
 };
 
+static swig_cast_info _swigc__p_c_matrix[] = {  {&_swigt__p_c_matrix, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_c_strings[] = {  {&_swigt__p_c_strings, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_copasi_compartment[] = {  {&_swigt__p_copasi_compartment, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_copasi_model[] = {  {&_swigt__p_copasi_model, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_copasi_reaction[] = {  {&_swigt__p_copasi_reaction, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tc_matrix[] = {  {&_swigt__p_tc_matrix, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_tc_strings[] = {  {&_swigt__p_tc_strings, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_c_matrix,
+  _swigc__p_c_strings,
   _swigc__p_char,
   _swigc__p_copasi_compartment,
   _swigc__p_copasi_model,
   _swigc__p_copasi_reaction,
   _swigc__p_double,
   _swigc__p_p_char,
-  _swigc__p_tc_matrix,
-  _swigc__p_tc_strings,
   _swigc__p_void,
 };
 

@@ -99,6 +99,7 @@ bool COptTask::initialize(const OutputFlag & of,
                           COutputHandler * pOutputHandler,
                           std::ostream * pOstream)
 {
+std::cout << "COptTask initialize\n";
   COptProblem * pProblem = dynamic_cast<COptProblem *>(mpProblem);
   COptMethod * pMethod = dynamic_cast<COptMethod *>(mpMethod);
 
@@ -116,7 +117,10 @@ bool COptTask::initialize(const OutputFlag & of,
   //if (!mReport.open(pOstream)) success = false;
   //if (!mReport.compile()) success = false;
 
-  if (!pProblem->initialize()) success = false;
+bool b = pProblem->initialize();
+  if (!b) success = false;
+
+	std::cout << "success @ COptTask = " << success << "   " << b << "\n";
 
   pMethod->setProblem(pProblem);
   //  if (!pMethod->initialize()) return false;
