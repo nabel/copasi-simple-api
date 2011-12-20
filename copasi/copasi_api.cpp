@@ -236,7 +236,7 @@ void populate_hash(copasi_model model)
 		if (compartments[i])
 		{
 			CopasiPtr copasiPtr = { 
-				compartments[i]->getCN(),
+				(std::string)compartments[i]->getCN(),
 				compartments[i]->getKey(),
 				0,				
 				compartments[i],
@@ -246,13 +246,14 @@ void populate_hash(copasi_model model)
 				false};
 
 			hashInsert(hash,   compartments[i]->getObjectName(),		copasiPtr );
+			hashInsert(hash,   compartments[i]->getSBMLId(),		copasiPtr );
 		}
 
 	for (int i=0; i < species.size(); ++i)
 		if (species[i])
 		{
 			CopasiPtr copasiPtr = { 
-				species[i]->getCN(),
+				(std::string)species[i]->getCN(),
 				species[i]->getKey(),
 				species[i],
 				0,
@@ -262,9 +263,11 @@ void populate_hash(copasi_model model)
 				false};
 
 			hashInsert(hash,  species[i]->getObjectName(),	  copasiPtr );
+			hashInsert(hash,  species[i]->getSBMLId(),	  copasiPtr );
 
 			if (species[i]->getCompartment())
 				hashInsert(hash,  species[i]->getCompartment()->getObjectName() + string("_") + species[i]->getObjectName(), copasiPtr);
+				hashInsert(hash,  species[i]->getCompartment()->getCN() + string("_") + species[i]->getSBMLId(), copasiPtr);
 
 		}
 
@@ -272,7 +275,7 @@ void populate_hash(copasi_model model)
 		if (reacs[i])
 		{
 			CopasiPtr copasiPtr = { 
-				reacs[i]->getCN(),
+				(std::string)reacs[i]->getCN(),
 				reacs[i]->getKey(),
 				0,		
 				0,		
@@ -282,13 +285,14 @@ void populate_hash(copasi_model model)
 				false};
 
 			hashInsert(hash,   reacs[i]->getObjectName(),		copasiPtr );
+			hashInsert(hash,   reacs[i]->getSBMLId(),		copasiPtr );
 		}
 
 	for (int i=0; i < params.size(); ++i)
 		if (params[i])
 		{
 			CopasiPtr copasiPtr = { 
-				params[i]->getCN(),
+				(std::string)params[i]->getCN(),
 				params[i]->getKey(),
 				0,		
 				0,		
@@ -298,6 +302,7 @@ void populate_hash(copasi_model model)
 				false};
 
 			hashInsert(hash,   params[i]->getObjectName(),	 copasiPtr );
+			hashInsert(hash,   params[i]->getSBMLId(),	 copasiPtr );
 		}
 }
 
@@ -2453,11 +2458,11 @@ void cFitModelToData(copasi_model model, const char * filename, c_matrix params,
 
 	if (!pModel || !pDataModel || !hash) return;
 
-cout << filename << "\n";
+	string delim;
 
 	ifstream file(filename);
 	list<string> words;
-	int numlines=1;
+	int numlines=0;
 	
 	if (file.is_open())
 	{
@@ -2468,27 +2473,28 @@ cout << filename << "\n";
 			line = line.substr(1,line.length());
 
 		if (contains(line,"\t"))
-			words = splitString(line, "\t");
+			delim = "\t";
 		else
 		if (contains(line,","))
-			words = splitString(line, ",");
+			delim = ",";
 		else
 		if (contains(line,";"))
-			words = splitString(line, ";");
+			delim = ";";
 		else
-		if (contains(line," "))
-			words = splitString(line, " ");
-		else
-			return; //no valid delimiter
+			delim = " ";
+
+		words = splitString(line, delim);
 
 		while (file.good())
 		{
-			file >> line;
+			getline(file, line);
 			++numlines;
 		}
 		
 		file.close();
 	}
+
+std::cout << "delim = " << delim << "\n";
 
 	//find the species from the header of the data file
 	vector<CMetab*> targetSpecies(words.size(), (CMetab*)0);
@@ -2497,6 +2503,7 @@ cout << filename << "\n";
 	for (int i=0; i < words.size() && itr != words.end(); ++i, ++itr)
 	{
 		string s(*itr);
+		remove_if(s.begin(), s.end(), ::isspace);
 		if (contains(hash,s))
 		{
 			copasiPtr = getHashValue(hash,s);
@@ -2506,6 +2513,8 @@ cout << filename << "\n";
 				cout << i << "  =  " << s << endl;
 			}
 		}
+		else
+			cout << "'" << s << "' not found \n";
 	}
 	
 	//get the target parameters
@@ -2581,19 +2590,16 @@ cout << filename << "\n";
 	// tell COPASI where to find the data
 	// reading data from string is not possible with the current C++ API
 	pExperiment->setFileName(filename);
-	// we have to tell COPASI that the data for the experiment is ...
-	// separated list (the default is TAB separated)
-	//pExperiment->setSeparator(","); //use default
+	pExperiment->setSeparator(delim); //tab-delimited
 	pExperiment->setFirstRow(1);
-	pExperiment->setLastRow(numlines);
-	pExperiment->setHeaderRow(1);
+	pExperiment->setLastRow(numlines-1);
+	pExperiment->setHeaderRow(0);
 	pExperiment->setExperimentType(CCopasiTask::timeCourse);
-	//assert(pExperiment->getExperimentType() == CCopasiTask::timeCourse);
-	pExperiment->setNumColumns(targetSpecies.size() + 1);
+	pExperiment->setNumColumns(targetSpecies.size());
 	CExperimentObjectMap* pObjectMap = &pExperiment->getObjectMap();
 
 	//assign index for time
-	pObjectMap->setNumCols(targetSpecies.size() + 1);
+	pObjectMap->setNumCols(targetSpecies.size());
 	pObjectMap->setRole(0, CExperiment::time);
 	const CCopasiObject* pTimeReference = pModel->getObject(CCopasiObjectName("Reference=Time"));
 	pObjectMap->setObjectCN(0, pTimeReference->getCN());
@@ -2601,7 +2607,7 @@ cout << filename << "\n";
 	// now we tell COPASI which column contain the concentrations of metabolites and belong to dependent variables	
 	int k;
 	CMetab * pMetab;
-	cout <<" num = " << targetSpecies.size() << endl;
+	cout << "num = " << targetSpecies.size() << endl;
 	for (int i=1; i < targetSpecies.size(); ++i)
 	{
 		k = i;
@@ -2632,10 +2638,10 @@ cout << filename << "\n";
 			pFitItem->setStartValue(c_getMatrixValue(params,i,0));
 
 			stringstream ss1, ss2;
-			/*ss1 << "0.0";//c_getMatrixValue(params,i,1);
-			ss1 << "100.0"; //c_getMatrixValue(params,i,2);
-			std::cout << "set lower bound " << pFitItem->setLowerBound(CCopasiObjectName(ss1.str()));
-			std::cout << "set upper bound " << pFitItem->setUpperBound(CCopasiObjectName(ss2.str()));*/
+			ss1 << "0.0";//c_getMatrixValue(params,i,1);
+			ss1 << "2.0"; //c_getMatrixValue(params,i,2);
+			std::cout << "set lower bound " << pFitItem->setLowerBound(CCopasiObjectName("0.0"));
+			std::cout << "set upper bound " << pFitItem->setUpperBound(CCopasiObjectName("1.0"));
 			pOptimizationItemGroup->addParameter(pFitItem);
 		}
 	
@@ -2648,15 +2654,11 @@ cout << filename << "\n";
 		{
 			// running the task for this example will probably take some time
 			result = pFitTask->process(true);
-			cout << "result = " << result << "\n";
 		}
-		else
-			cout << "failed\n";
 	}
 	catch (...)
 	{
 		// failed
-		cout << "failed\n";
 		return;
 	}
 	pFitTask->restore();
@@ -2869,9 +2871,9 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 	pData.params = &params;
 	
 	list<string> words;
+	int numlines=0;
 	if (file.is_open())
 	{
-		int numlines=0;
 		string delim("\t");
 	
 		string line;
@@ -2886,7 +2888,7 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 		
 		if (!words.empty())
 		{
-			while (!file.good())
+			while (file.good())
 			{
 				getline(file,line);
 				++numlines;
@@ -4311,7 +4313,6 @@ double runif(double min, double max)
 	return d;
 }
 
-extern const char* MODEL_STRING;
 int main1()
 {
 // initialize the backend library
@@ -4478,22 +4479,16 @@ std::cerr << "Error. Could not write time course data to file." << std::endl;
 std::cout << e.what() << std::endl;
 exit(1);
 }
+CModel* pModel = pDataModel->getModel();
 // now we change the parameter values to see if the parameter fitting
 // can really find the original values
 random = (double)rand() / (double)RAND_MAX * 10.0;
-CReaction* pReaction = pDataModel->getModel()->getReactions()[0];
-// we know that it is an irreversible mass action, so there is one
-// parameter
-assert(pReaction->getParameters().size() == 1);
-assert(pReaction->isLocalParameter(0));
+CCopasiVectorN< CModelValue > & params = pModel->getModelValues();
 // the parameter of a irreversible mass action is called k1
-pReaction->setParameterValue("k1", random);
-pReaction = pDataModel->getModel()->getReactions()[1];
+params[0]->setInitialValue(random);
 // we know that it is an irreversible mass action, so there is one
 // parameter
-assert(pReaction->getParameters().size() == 1);
-assert(pReaction->isLocalParameter(0));
-pReaction->setParameterValue("k1", random);
+params[1]->setInitialValue(random);
 CFitTask* pFitTask = dynamic_cast<CFitTask*>(TaskList["Parameter Estimation"]);
 assert(pFitTask != NULL);
 // the method in a fit task is an instance of COptMethod or a subclass of
@@ -4533,7 +4528,6 @@ assert(result == true);
 result = pObjectMap->setRole(0, CExperiment::time);
 assert(result == true);
 assert(pObjectMap->getRole(0) == CExperiment::time);
-CModel* pModel = pDataModel->getModel();
 assert(pModel != NULL);
 const CCopasiObject* pTimeReference = pModel->getObject(CCopasiObjectName("Reference=Time"));
 assert(pTimeReference != NULL);
@@ -4569,11 +4563,7 @@ delete pExperiment;
 pExperiment = pExperimentSet->getExperiment(0);
 assert(pExperiment != NULL);
 // now we have to define the two fit items for the two local parameters
-// of the two reactions
-pReaction = pModel->getReactions()[0];
-assert(pReaction != NULL);
-assert(pReaction->isLocalParameter(0) == true);
-CCopasiParameter* pParameter = pReaction->getParameters().getParameter(0);
+CModelValue* pParameter = params[0];
 assert(pParameter != NULL);
 // get the list where we have to add the fit items
 CCopasiParameterGroup* pOptimizationItemGroup = dynamic_cast<CCopasiParameterGroup*>( pFitProblem->getParameter("OptimizationItemList"));
@@ -4589,10 +4579,7 @@ pFitItem1->setLowerBound(CCopasiObjectName("0.00001"));
 pFitItem1->setUpperBound(CCopasiObjectName("10"));
 // add the fit item
 pOptimizationItemGroup->addParameter(pFitItem1);
-pReaction = pModel->getReactions()[1];
-assert(pReaction != NULL);
-assert(pReaction->isLocalParameter(0) == true);
-pParameter = pReaction->getParameters().getParameter(0);
+pParameter = params[1];
 assert(pParameter != NULL);
 // define a CFitItem
 pParameterReference = pParameter->getObject(CCopasiObjectName("Reference=Value"));
@@ -4661,6 +4648,10 @@ const char* MODEL_STRING = "\
 </listOfUnits>\n\
 </unitDefinition>\n\
 </listOfUnitDefinitions>\n\
+<listOfParameters>\n\
+<parameter id=\"k1\" name=\"k1\" value=\"0.004\"/>\n\
+<parameter id=\"k1\" name=\"k1\" value=\"0.03\"/>\n\
+</listOfParameters>\n\
 <listOfCompartments>\n\
 <compartment id=\"compartment_1\" name=\"compartment\" size=\"1\"/>\n\
 </listOfCompartments>\n\
@@ -4686,9 +4677,6 @@ const char* MODEL_STRING = "\
 <ci> species_1 </ci>\n\
 </apply>\n\
 </math>\n\
-<listOfParameters>\n\
-<parameter id=\"k1\" name=\"k1\" value=\"0.03\"/>\n\
-</listOfParameters>\n\
 </kineticLaw>\n\
 </reaction>\n\
 <reaction id=\"reaction_2\" name=\"reaction_1\" reversible=\"false\">\n\
@@ -4707,9 +4695,6 @@ const char* MODEL_STRING = "\
 <ci> species_2 </ci>\n\
 </apply>\n\
 </math>\n\
-<listOfParameters>\n\
-<parameter id=\"k1\" name=\"k1\" value=\"0.004\"/>\n\
-</listOfParameters>\n\
 </kineticLaw>\n \
 </reaction>\n \
 </listOfReactions> \

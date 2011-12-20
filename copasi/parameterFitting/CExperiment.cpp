@@ -694,6 +694,7 @@ bool CExperiment::read(std::istream & in,
       return false; // More column types specified than we have data columns
     }
 
+std::cout << "mpNumCol ok imax\n";
   unsigned C_INT32 IndependentCount = 0;
   unsigned C_INT32 DependentCount = 0;
   unsigned C_INT32 TimeCount = 0;
@@ -736,18 +737,21 @@ bool CExperiment::read(std::istream & in,
   if (!TimeCount && *mpTaskType == CCopasiTask::timeCourse)
     {
       CCopasiMessage(CCopasiMessage::ERROR, MCFitting + 3, getObjectName().c_str());
+std::cout << "TimeCount\n";
       return false;
     }
 
   if (DependentCount == 0)
     {
       CCopasiMessage(CCopasiMessage::ERROR, MCFitting + 10, getObjectName().c_str());
+std::cout << "DependentCount == 0\n";
       return false;
     }
 
   if (mNumDataRows == 0)
     {
       CCopasiMessage(CCopasiMessage::ERROR, MCFitting + 9, getObjectName().c_str());
+std::cout << "mNumDataRows == 0\n";
       return false;
     }
 
@@ -756,7 +760,10 @@ bool CExperiment::read(std::istream & in,
 
   unsigned C_INT32 j;
 
-  if (currentLine > *mpFirstRow) return false; // We are past our first line
+  if (currentLine > *mpFirstRow) {
+std::cout << "currentLine > first row\n";
+return false; // We are past our first line
+}
 
   // forwind to our first line
   for (j = currentLine; j < *mpFirstRow && !in.fail(); j++)
@@ -768,7 +775,6 @@ bool CExperiment::read(std::istream & in,
   for (j = 0; j < mNumDataRows && !in.fail(); j++, currentLine++)
     {
       in >> Row;
-
       if (currentLine == *mpHeaderRow)
         {
           j--;
@@ -798,6 +804,7 @@ bool CExperiment::read(std::istream & in,
                   {
                     CCopasiMessage(CCopasiMessage::ERROR, MCFitting + 11,
                                    getObjectName().c_str(), currentLine, i + 1);
+std::cout << "gone A\n";
                     return false;
                   }
 
@@ -816,6 +823,7 @@ bool CExperiment::read(std::istream & in,
                   {
                     CCopasiMessage(CCopasiMessage::ERROR, MCFitting + 11,
                                    getObjectName().c_str(), currentLine, i + 1);
+std::cout << "gone B\n";
                     return false;
                   }
 

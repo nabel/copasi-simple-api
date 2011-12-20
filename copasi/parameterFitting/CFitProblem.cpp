@@ -323,8 +323,10 @@ bool CFitProblem::initialize()
       ContainerList.push_back(mpTrajectory);
     }
 
+std::cout << "CFitProblem 1\n";
   if (!mpExperimentSet->compile(ContainerList)) return false;
 
+std::cout << "CFitProblem 2\n";
   // Build a matrix of experiment and experiment local items.
   mExperimentUpdateMethods.resize(mpExperimentSet->getExperimentCount(),
                                   mpOptItems->size());
@@ -387,7 +389,7 @@ bool CFitProblem::initialize()
       mpCorrelationMatrix->setAnnotationString(0, j, Annotation);
       mpCorrelationMatrix->setAnnotationString(1, j, Annotation);
     }
-
+std::cout << "CFitProblem 3\n";
   for (i = 0, imax = mpExperimentSet->getExperimentCount(); i < imax; i++)
     mExperimentInitialRefreshes[i] = mpModel->buildInitialRefreshSequence(ObjectSet[i]);
 
