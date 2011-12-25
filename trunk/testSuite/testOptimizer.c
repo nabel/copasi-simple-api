@@ -4,23 +4,27 @@
 
 int main(int narg, char** argv)
 {
-
-	return main1();
-
 	int i;
 	double d;
 	c_matrix results, params, params2;
 	const char * filename = "results.tab";
 	copasi_model m;
-	
-	if (narg < 2)
-	{
-		printf("Please specify the Antimony file\n");
-		return 0;
-	}
+	const char * antimonymodel = "\
+	-> A; 2.0 \n\
+	A -> B; 2* k1 * A/(2 + k1)\n\
+	B -> B; 2* k2 * B/(2 + k2)\n\
+	C -> ; (0.1 + k3) * C\n\
+	k1 = 0.2\n\
+	k2 = 0.2\n\
+	k3 = 0.2\n\
+	A = 0\n\
+	B = 0\n\
+	C = 0\n\
+	";
 
 	//cSetSBMLLevelAndVersion(2,3);
-	m = cReadAntimonyFile(argv[1]);
+	m = cReadAntimonyString(antimonymodel);
+	//m = cReadSBMLString(MODEL_STRING);
 
 	if (m.errorMessage != NULL)
 	{
@@ -30,7 +34,12 @@ int main(int narg, char** argv)
 		return 0;
 	}
 
-	printf("simulating...\n");	
+	printf("Original parameters are:\n");
+	params = cGetGlobalParameters(m);
+	c_printOutMatrix(params);
+	c_deleteMatrix(params);
+
+	printf("simulating...\n");
 	results = cSimulateDeterministic(m, 0, 10, 1000);  //model, start, end, num. points
 
 	printf("%s has original simulation data\n\n",filename);
@@ -38,29 +47,31 @@ int main(int narg, char** argv)
 	c_deleteMatrix(results);
 
 	//jumble the parameters
-	params = cGetGlobalParameters(m);
-	/*for (i=0; i < params.rows; ++i)
+/*	params = cGetGlobalParameters(m);
+	for (i=0; i < params.rows; ++i)
 	{
-		d = runif(0,10);
+		d = runif(0,1);
 		cSetValue(m, c_getRowName(params,i), d);
 		c_setMatrixValue(params, i, 0, d);
-	}*/
+	}
 
-	results = cSimulateDeterministic(m, 0, 10, 1000);  //model, start, end, num. points
-
-	printf("results2.tab has original simulation data\n\n","results2.tab");
-	c_printMatrixToFile("results2.tab", results);
-	c_deleteMatrix(results);
+	printf("Randomly initialized parameters are:\n");
 	c_printOutMatrix(params);
-	
-	cFitModelToData(m, filename, params, "levenbergmarquardt");
+
+	cFitModelToData(m, "fakedata_example6.txt", params, "levenbergmarquardt");
 	c_deleteMatrix(params);
+*/
+
+    printf(" maximized value = %lf\n", cMaximize(m,"C-B"));
 	params = cGetGlobalParameters(m);
+
+	printf("Optimized parameters are:\n");
 	c_printOutMatrix(params);
 	c_deleteMatrix(params);
+
 	//printf("%s\n",m1.errorMessage);
 	/*
-	//the optmization code below works but 
+	//the optmization code below works but
 	//has been tested only a couple of times
 
 	//setup for optimization using GA
@@ -83,18 +94,18 @@ int main(int narg, char** argv)
 	c_setMatrixValue(params, 2, 0, 1);
 	c_setMatrixValue(params, 2, 1, 0.0);
 	c_setMatrixValue(params, 2, 2, 5.0);
-	
+
 	cSetValue(m1,"k1",2.0);
 	cSetValue(m1,"k2",1.0);
 	cSetValue(m1,"k3",1.0);
-	
+
 	cSetOptimizerIterations(10);  //set num interations
 	results = cOptimize(m1, "output.tab", params); //optimize
 	c_printMatrixToFile("params.out", results);  //optimized parameters
 	c_deleteMatrix(results);
 	*/
-	
-	//cleanup	
+
+	//cleanup
 	cRemoveModel(m);
 	copasi_end();
 	printf ("Hit the return key to continue\n");
