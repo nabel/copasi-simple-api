@@ -35,6 +35,7 @@
 #include "copasi/scan/CScanProblem.h"
 #include "copasi/trajectory/CTimeSeries.h"
 #include "copasi/steadystate/CSteadyStateTask.h"
+#include "copasi/steadystate/CSteadyStateProblem.h"
 #include "copasi/steadystate/CMCATask.h"
 #include "copasi/steadystate/CMCAMethod.h"
 #include "copasi/elementaryFluxModes/CFluxMode.h"
@@ -85,19 +86,19 @@ using namespace std;
 //using macro instead of this variable (as in original copasi code) causes some issues in visual studio
 unsigned C_INT32 C_INVALID_INDEX = std::numeric_limits< unsigned C_INT32 >::max();
 //#ifdef _WIN32
-    static double NaN = std::numeric_limits<double>::quiet_NaN(); 
+    static double NaN = std::numeric_limits<double>::quiet_NaN();
 //#else
 	//static double NaN = 0.0/0.0;
 //#endif
 
-//this "wrapper" struct is used to store pointer to 
+//this "wrapper" struct is used to store pointer to
 //either a compartment, species, reaction, or parameter
 //it also stores the copasi's unique name and the normal human readable name
-struct CopasiPtr 
-{ 
+struct CopasiPtr
+{
 	string name;
 	string key;
-	CMetab * species; 
+	CMetab * species;
 	CCompartment * compartment;
 	CReaction * reaction;
 	CModelValue * param;
@@ -176,7 +177,7 @@ double string_to_double( const std::string& s )
 	if (!(i >> x))
 		return 0;
 	return x;
-} 
+}
 
 list<string> splitString(const string& seq, const string& delim);
 
@@ -204,7 +205,7 @@ void copasi_end()
 }
 
 //enable assignment rule substitutions, e.g. if A = sin(time), then B = 2*A  becomes B = 2*sin(time)
-int cSetAssignmentRuleHelper(copasi_model , CMetab * , const char * );
+std::string cSetAssignmentRuleHelper(copasi_model , const char * );
 
 static int DO_CLEANUP_ASSIGNMENT_RULES = 1;
 
@@ -218,7 +219,7 @@ void cDisableAssignmentRuleReordering()
 	DO_CLEANUP_ASSIGNMENT_RULES = 0;
 }
 
-//populate the hash table 
+//populate the hash table
 void populate_hash(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
@@ -231,14 +232,14 @@ void populate_hash(copasi_model model)
 	CCopasiVector< CMetab > & species = pModel->getMetabolites();
 	CCopasiVectorNS < CReaction > & reacs = pModel->getReactions();
 	CCopasiVectorN< CModelValue > & params = pModel->getModelValues();
-	
+
 	for (int i=0; i < compartments.size(); ++i)
 		if (compartments[i])
 		{
-			CopasiPtr copasiPtr = { 
+			CopasiPtr copasiPtr = {
 				(std::string)compartments[i]->getCN(),
 				compartments[i]->getKey(),
-				0,				
+				0,
 				compartments[i],
 				0,
 				0,
@@ -252,7 +253,7 @@ void populate_hash(copasi_model model)
 	for (int i=0; i < species.size(); ++i)
 		if (species[i])
 		{
-			CopasiPtr copasiPtr = { 
+			CopasiPtr copasiPtr = {
 				(std::string)species[i]->getCN(),
 				species[i]->getKey(),
 				species[i],
@@ -274,11 +275,11 @@ void populate_hash(copasi_model model)
 	for (int i=0; i < reacs.size(); ++i)
 		if (reacs[i])
 		{
-			CopasiPtr copasiPtr = { 
+			CopasiPtr copasiPtr = {
 				(std::string)reacs[i]->getCN(),
 				reacs[i]->getKey(),
-				0,		
-				0,		
+				0,
+				0,
 				reacs[i],
 				0,
 				"",
@@ -291,11 +292,11 @@ void populate_hash(copasi_model model)
 	for (int i=0; i < params.size(); ++i)
 		if (params[i])
 		{
-			CopasiPtr copasiPtr = { 
+			CopasiPtr copasiPtr = {
 				(std::string)params[i]->getCN(),
 				params[i]->getKey(),
-				0,		
-				0,		
+				0,
+				0,
 				0,
 				params[i],
 				"",
@@ -310,7 +311,7 @@ int copasi_cleanup_assignments(copasi_model model)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
 	if (!hash) return 0;
-	
+
 	CMetab* pSpecies = 0;
 	vector<string> names, assignments;
 	names.reserve(hash->size());
@@ -330,7 +331,7 @@ int copasi_cleanup_assignments(copasi_model model)
 
 	int retval = 1;
 	bool replace_needed = (bool)(DO_CLEANUP_ASSIGNMENT_RULES);
-	
+
 	while (replace_needed)
 	{
 		replace_needed = false;
@@ -338,8 +339,8 @@ int copasi_cleanup_assignments(copasi_model model)
 			if ((*i).second.species && !(*i).second.assignmentRule.empty())
 			{
 				for (int j=0; j < names.size(); ++j)
-					if (!names[j].empty() && 
-						names[j] != (*i).first && 
+					if (!names[j].empty() &&
+						names[j] != (*i).first &&
 						contains((*i).second.assignmentRule, names[j]))
 					{
 						if (rename((*i).second.assignmentRule, names[j], assignments[j]))
@@ -359,7 +360,16 @@ int copasi_cleanup_assignments(copasi_model model)
 			}
 			else
 			{
-				retval = retval * cSetAssignmentRuleHelper(model, (*i).second.species, (*i).second.assignmentRule.c_str());
+                std::string s = cSetAssignmentRuleHelper(model, (*i).second.assignmentRule.c_str());
+                if (s.length() < 1)
+                {
+                    (*i).second.species->setStatus(CModelEntity::REACTIONS);
+                }
+                else
+                {
+                    (*i).second.species->setStatus(CModelEntity::ASSIGNMENT);
+                    retval = retval & (*i).second.species->setExpression(s);
+                }
 			}
 	return retval;
 }
@@ -368,8 +378,8 @@ int copasi_cleanup_assignments(copasi_model model)
  The following function is a "hack" for avoiding repeated memory allocations when calling
   c_createMatrix. For example, suppose a function is calling getSpeciesConcentrations
   inside a look, then it can use setStorageMatrix to prevent re-allocation of new memory
-  during every iteration (for speedup). The calling function must be extremely careful. 
-  The unsetStorageMatrix must be called at the end of the loop, otherwise there is a good    
+  during every iteration (for speedup). The calling function must be extremely careful.
+  The unsetStorageMatrix must be called at the end of the loop, otherwise there is a good
 ***********************************************************************************/
 static c_matrix * _StorageMatrix = NULL;
 void setStorageMatrix(c_matrix * m)
@@ -415,9 +425,9 @@ void clearcopasi_model(copasi_model model)
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel || !pDataModel || !hash) return;
-	
+
 	CopasiPtr p;
 
 	for (CCMap::iterator i = hash->begin(); i != hash->end(); i++)
@@ -435,7 +445,7 @@ void clearcopasi_model(copasi_model model)
 		if (p.reaction)
 			pModel->remove(p.reaction);
 	}
-	
+
 	hash->clear();
 }
 
@@ -452,7 +462,7 @@ copasi_model cCreateModel(const char * name)
 	CModel* pModel = pDataModel->getModel();
 	CCMap * qHash = new CCMap();
 	copasi_model m = { (void*)(pModel) , (void*)(pDataModel), (void*)(qHash), (char*)(NULL), (char*)(NULL)};
-	
+
 	hashTablesToCleanup.push_back(qHash);
 	copasi_modelsToCleanup.push_back(m);
 
@@ -464,9 +474,9 @@ copasi_model cCreateModel(const char * name)
 	pModel->setTimeUnit(CModel::dimensionlessTime);
 	pModel->setVolumeUnit(CModel::dimensionlessVolume);
 	pModel->setQuantityUnit(CModel::dimensionlessQuantity);
-	
+
 	cCreateVariable(m, "time", "time");
-	
+
 	return m;
 }
 
@@ -476,8 +486,8 @@ void cCreateSpecies(copasi_compartment compartment, const char* name, double iv)
 	CCompartment* pCompartment = (CCompartment*)(compartment.CopasiCompartmentPtr);
 	CCMap * hash = (CCMap*)(compartment.qHash);
 	CMetab* pSpecies;
-	
-	if (!pModel || !hash || !pCompartment) return;	
+
+	if (!pModel || !hash || !pCompartment) return;
 	if (contains(hash, string(name)))
 	{
 		pSpecies = getHashValue(hash,string(name)).species;
@@ -490,14 +500,14 @@ void cCreateSpecies(copasi_compartment compartment, const char* name, double iv)
 		}
 		return;
 	}
-	
+
 	pSpecies = pModel->createMetabolite(name, pCompartment->getObjectName(), iv, CMetab::REACTIONS);
 	pSpecies->setConcentration(iv);
 	//pSpecies->setValue(iv);
 	//pSpecies->setInitialValue(iv);
 	pSpecies->setInitialConcentration(iv);
 
-	CopasiPtr copasiPtr = { 
+	CopasiPtr copasiPtr = {
 			pSpecies->getCN(),
 			pSpecies->getKey(),
 			pSpecies,
@@ -507,7 +517,7 @@ void cCreateSpecies(copasi_compartment compartment, const char* name, double iv)
 			"",
 			true};
 
-	hashInsert(hash, 
+	hashInsert(hash,
 				(pCompartment->getObjectName() + string("_") + string(name)),
 				copasiPtr
 				);
@@ -521,25 +531,25 @@ copasi_compartment cCreateCompartment(copasi_model model, const char* name, doub
 	CCompartment* pCompartment = pModel->createCompartment(name, volume);
 	CCMap * hash = (CCMap*)(model.qHash);
 	copasi_compartment c = { 0, 0 , 0};
-	
+
 	if (!pModel || !hash) return c;
-	
+
 	c.CopasiModelPtr = (void*)(pModel);
 	c.qHash = model.qHash;
-	
+
 	if (contains(hash,string(name)))
 	{
 		if (getHashValue(hash, string(name)).compartment)
 			c.CopasiCompartmentPtr = (void*)(getHashValue(hash, string(name)).compartment);
-		
+
 		return c;
 	}
 	else
 	{
 		c.CopasiCompartmentPtr = (void*)(pCompartment);
-	}	
-	
-	CopasiPtr copasiPtr = { 
+	}
+
+	CopasiPtr copasiPtr = {
 			pCompartment->getCN(),
 			pCompartment->getKey(),
 			0,
@@ -550,7 +560,7 @@ copasi_compartment cCreateCompartment(copasi_model model, const char* name, doub
 			false};
 
 	hashInsert(hash, string(name),copasiPtr); //for speedy lookup
-	
+
 	return c;
 }
 
@@ -558,9 +568,9 @@ int cSetValue(copasi_model model, const char * name, double value)
 {
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
-	
+
 	if (!hash) return 0;
-	
+
 	if (!contains(hash,s))
 	{
 		cSetGlobalParameter(model,name,value);
@@ -568,7 +578,7 @@ int cSetValue(copasi_model model, const char * name, double value)
 	}
 
 	CopasiPtr & p = getHashValue(hash,s);
-	
+
 	if (p.compartment)
 	{
 		p.compartment->setInitialValue(value);
@@ -591,7 +601,7 @@ int cSetValue(copasi_model model, const char * name, double value)
 		p.param->setValue(value);
 		return 1;
 	}
-	
+
 	cSetGlobalParameter(model,name,value);
 	return 0;
 }
@@ -601,14 +611,14 @@ double cGetValue(copasi_model model, const char * name)
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	double value = 0.0;
-	
+
 	if (!hash || !contains(hash,s))
 	{
 		return value;
 	}
 
 	CopasiPtr & p = getHashValue(hash,s);
-	
+
 	if (p.compartment)
 	{
 		value = p.compartment->getValue();
@@ -623,7 +633,7 @@ double cGetValue(copasi_model model, const char * name)
 	{
 		value = p.param->getInitialValue();
 	}
-	
+
 	return value;
 }
 
@@ -632,10 +642,10 @@ void cSetVolume(copasi_model model, const char * name, double vol)
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	CCompartment* pVol = NULL;
-	
+
 	if (!hash) return;
-	
-	if (contains(hash,s) && 
+
+	if (contains(hash,s) &&
 		(pVol = getHashValue(hash,s).compartment))
 	{
 		pVol->setInitialValue(vol);
@@ -648,10 +658,10 @@ void cSetSpeciesConcentration(copasi_model model, const char * name, double conc
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	CMetab* pSpecies = NULL;
-	
+
 	if (!hash) return;
-	
-	if (contains(hash,s) && 
+
+	if (contains(hash,s) &&
 		(pSpecies = getHashValue(hash,s).species))
 	{
 		pSpecies->setConcentration(conc);
@@ -663,10 +673,10 @@ void cSetInitialConcentration(copasi_model model, const char * name, double conc
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	CMetab* pSpecies = NULL;
-	
+
 	if (!hash) return;
-	
-	if (contains(hash,s) && 
+
+	if (contains(hash,s) &&
 		(pSpecies = getHashValue(hash,s).species))
 	{
 		pSpecies->setInitialConcentration(conc);
@@ -678,10 +688,10 @@ void cSetSpeciesAmount(copasi_model model, const char * name, double amnt)
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	CMetab* pSpecies = NULL;
-	
+
 	if (!hash) return;
-	
-	if (contains(hash,s) && 
+
+	if (contains(hash,s) &&
 		(pSpecies = getHashValue(hash,s).species))
 	{
 		pSpecies->setValue(amnt);
@@ -695,10 +705,10 @@ int cSetGlobalParameter(copasi_model model, const char * name, double value)
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	CModelValue * pValue = NULL;
-	
+
 	if (!hash || !pModel) return 0;
-	
-	if (contains(hash,s) && 
+
+	if (contains(hash,s) &&
 		(pValue = getHashValue(hash,s).param))
 	{
 		pValue->setInitialValue(value);
@@ -711,7 +721,7 @@ int cSetGlobalParameter(copasi_model model, const char * name, double value)
 	{
 		pValue = pModel->createModelValue(string(name),value);
 		pValue->setInitialValue(value);
-	
+
 		CopasiPtr copasiPtr = {
 				pValue->getCN(),
 				pValue->getKey(),
@@ -724,7 +734,7 @@ int cSetGlobalParameter(copasi_model model, const char * name, double value)
 
 		hashInsert(hash, s, copasiPtr); //for speedy lookup
 	}
-	
+
 	return 0;
 }
 
@@ -733,10 +743,10 @@ void cSetSpeciesType(copasi_model model, const char * name, int isBoundary)
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	CMetab* pSpecies = NULL;
-	
+
 	if (!hash) return;
-	
-	if (contains(hash,s) && 
+
+	if (contains(hash,s) &&
 		(pSpecies = getHashValue(hash,s).species))
 	{
 		if (isBoundary)
@@ -774,9 +784,9 @@ int cSetAssignmentRule(copasi_model model, const char * name, const char * formu
 	string s(name);
 	int i;
 	bool retval=true;
-	
+
 	if (!pModel || !hash) return 0;
-	
+
 	if (!contains(hash,s))
 	{
 		cCreateSpecies(pModel, hash, s);
@@ -792,18 +802,17 @@ int cSetAssignmentRule(copasi_model model, const char * name, const char * formu
 	return 0;
 }
 
-int cSetAssignmentRuleHelper(copasi_model model, CMetab* pSpecies, const char * formula)
+std::string cSetAssignmentRuleHelper(copasi_model model, const char * formula)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
 	int i;
 	bool retval=true;
-	
-	if (!pModel || !hash || !pSpecies) return 0;
-	
+
+	if (!pModel || !hash) return string();
+
 	if (formula)
 	{
-		pSpecies->setStatus(CModelEntity::ASSIGNMENT);
 		CFunction pFunction;
 		string qFormula(formula);
 		if (pFunction.setInfix(string(formula)))
@@ -816,8 +825,8 @@ int cSetAssignmentRuleHelper(copasi_model model, CMetab* pSpecies, const char * 
 				pParam = variables[i];
 
 				string s0(pParam->getObjectName());
-				
-				if (s0 == string("time") || 
+
+				if (s0 == string("time") ||
 					  s0 == string("Time") ||
 			     	  s0 == string("TIME"))
 				{
@@ -840,20 +849,17 @@ int cSetAssignmentRuleHelper(copasi_model model, CMetab* pSpecies, const char * 
 				}
 			}
 		}
-
-		retval = retval & pSpecies->setExpression(qFormula);
+		return qFormula;
 	}
-	else
-		pSpecies->setStatus(CModelEntity::REACTIONS);
-	
-	return (int)retval;
+
+	return string();
 }
 
 int cCreateVariable(copasi_model model, const char * name, const char * formula)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!hash || !pModel) return 0;
 
 	CModelValue* pModelValue;
@@ -867,7 +873,7 @@ int cCreateVariable(copasi_model model, const char * name, const char * formula)
 			if (ptr.param)
 				pModelValue = ptr.param;
 			else
-				return 0;	
+				return 0;
 	}
 	else
 	{
@@ -890,7 +896,7 @@ int cCreateVariable(copasi_model model, const char * name, const char * formula)
 			pParam = variables[i];
 
 			string s0(pParam->getObjectName());
-			if (s0 == string("time") || 
+			if (s0 == string("time") ||
 				  s0 == string("Time") ||
 		     	  s0 == string("TIME"))
 			{
@@ -902,8 +908,8 @@ int cCreateVariable(copasi_model model, const char * name, const char * formula)
 			else
 			{
 				if (!contains(hash,s0))
-					cSetGlobalParameter(model,pParam->getObjectName().c_str(),1.0);				
-				
+					cSetGlobalParameter(model,pParam->getObjectName().c_str(),1.0);
+
 				if (contains(hash,s0))
 				{
 				 	string s1("<");
@@ -916,10 +922,10 @@ int cCreateVariable(copasi_model model, const char * name, const char * formula)
 	}
 
 	string sFormula( qFormula );
-	
+
 	retval = retval & pModelValue->setInitialExpression(sFormula);
 	retval = retval & pModelValue->setExpression(sFormula);
-	
+
 	CopasiPtr copasiPtr = {
 			pModelValue->getCN(),
 			pModelValue->getKey(),
@@ -931,7 +937,7 @@ int cCreateVariable(copasi_model model, const char * name, const char * formula)
 			true};
 
 	hashInsert(hash, qname, copasiPtr); //for speedy lookup
-	
+
 	return (int)retval;
 }
 
@@ -939,12 +945,12 @@ int cCreateEvent(copasi_model model, const char * name, const char * trigger, co
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!hash || !pModel)
 	{
 		return 0;
 	}
-	
+
 	int i;
 	bool retval = true;
 
@@ -952,11 +958,11 @@ int cCreateEvent(copasi_model model, const char * name, const char * trigger, co
 	{
 		cSetGlobalParameter(model,variable,1.0);
 	}
-	
+
 	if (!contains(hash,string(variable))) return 0;
 
 	CopasiPtr & ptr = getHashValue(hash,string(variable));
-	
+
 	if (!ptr.species && !ptr.param) return 0;
 
 	CEvent * pEvent = pModel->createEvent(string(name));
@@ -979,7 +985,7 @@ int cCreateEvent(copasi_model model, const char * name, const char * trigger, co
 			pParam = variables[i];
 
 			string s0(pParam->getObjectName());
-			if (s0 == string("time") || 
+			if (s0 == string("time") ||
 				  s0 == string("Time") ||
 		     	  s0 == string("TIME"))
 			{
@@ -1006,13 +1012,13 @@ int cCreateEvent(copasi_model model, const char * name, const char * trigger, co
 	{
 		retval = false;
 	}
-	
+
 	CExpression * expression = new CExpression(name,pModel);
 	retval = retval & expression->setInfix(qFormula);
 	pEvent->setTriggerExpressionPtr(expression);   //set trigger
-	
+
 	qFormula = string(formula);
-	
+
 	if (pFunction.setInfix(string(formula)))   //parse response expression
 	{
 		CFunctionParameters& variables = pFunction.getVariables();
@@ -1023,7 +1029,7 @@ int cCreateEvent(copasi_model model, const char * name, const char * trigger, co
 			pParam = variables[i];
 
 			string s0(pParam->getObjectName().c_str());
-			if (s0 == string("time") || 
+			if (s0 == string("time") ||
 				  s0 == string("Time") ||
 			 	  s0 == string("TIME"))
 			{
@@ -1051,7 +1057,7 @@ int cCreateEvent(copasi_model model, const char * name, const char * trigger, co
 	{
 		return 0;
 	}
-	
+
 	CCopasiVectorN< CEventAssignment > & assignments = pEvent->getAssignments();
 	CEventAssignment * assgn = new CEventAssignment(string(name) + string("_assgn"),pModel);
 	if (ptr.species)
@@ -1062,8 +1068,8 @@ int cCreateEvent(copasi_model model, const char * name, const char * trigger, co
 	expression = new CExpression(name,pModel);
 	retval = retval & expression->setInfix(qFormula);
 	assgn->setExpressionPtr(  expression );   //set expression
-	assignments.add(assgn); 
-	
+	assignments.add(assgn);
+
 	return (int)retval;
 }
 
@@ -1071,18 +1077,18 @@ copasi_reaction cCreateReaction(copasi_model model, const char* name)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel || !hash)
 	{
 		copasi_reaction r = { 0, 0, 0 };
 		return r;
 	}
-	
+
 	CReaction* pReaction = pModel->createReaction(name);
-	
+
 	copasi_reaction r = { (void*)(pReaction), (void*)(pModel), (void*)hash };
-	
-	CopasiPtr copasiPtr = { 
+
+	CopasiPtr copasiPtr = {
 			pReaction->getCN(),
 			pReaction->getKey(),
 			0,
@@ -1102,7 +1108,7 @@ void cAddReactant(copasi_reaction reaction, const char * species, double stoichi
 {
 	CReaction* pReaction = (CReaction*)(reaction.CopasiReactionPtr);
 	CCMap * hash = (CCMap*)(reaction.qHash);
-	
+
 	if (!pReaction || !hash)
 	{
 		return;
@@ -1115,7 +1121,7 @@ void cAddReactant(copasi_reaction reaction, const char * species, double stoichi
 	{
 		cCreateSpecies((CModel*)reaction.CopasiModelPtr, (CCMap*)reaction.qHash, s);
 	}
-	
+
 	if (contains(hash,s))
 	{
 		CopasiPtr & p = getHashValue(hash,s);
@@ -1144,9 +1150,9 @@ void cAddProduct(copasi_reaction reaction, const char * species, double stoichio
 	CReaction* pReaction = (CReaction*)(reaction.CopasiReactionPtr);
 	CCMap * hash = (CCMap*)(reaction.qHash);
 	CMetab* pSpecies = NULL;
-	
+
 	if (!pReaction || !hash || !reaction.CopasiModelPtr) return;
-	
+
 	string s(species);
 	if (!contains(hash, s))
 	{
@@ -1183,13 +1189,13 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 	CCMap * hash = (CCMap*)(reaction.qHash);
 	CModel* pModel = (CModel*)(reaction.CopasiModelPtr);
 	CFunctionDB* pFunDB = CCopasiRootContainer::getFunctionList();
-	
+
 	if (!pReaction || !pModel || !hash) return 0;
-	
+
 	if (pFunDB)
 	{
 		string rateLawName(pReaction->getObjectName() + string("_rate_law")); //existing rate law
-		
+
 		CFunction * pFunction = dynamic_cast<CFunction*>(pFunDB->findFunction(rateLawName));
 		if (pFunction)
 			return (int)(pReaction->setFunction(pFunction)) - 1;
@@ -1197,10 +1203,10 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 		CKinFunction* pKinFunction = new CKinFunction(rateLawName);
 		pFunDB->add(pKinFunction, true);
 		pFunction = pKinFunction;//dynamic_cast<CFunction*>(pFunDB->findFunction(rateLawName));
-		
+
 		if (!pFunction)
 			return 0;
-		
+
 		pFunction->setReversible(TriFalse);
 
 		int retval = 0;
@@ -1208,7 +1214,7 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 		string formula2(formula);
 		//formula2.replace(sbmlPowFunction, QString("((\\1)^(\\2))"));
 		boost::regex_replace(formula2, sbmlPowFunction, string("((\\1)^(\\2))"));
-		
+
 		if (pFunction->setInfix(string(formula2.c_str())))
 		{
 			retval = (int)(pReaction->setFunction(pFunction));
@@ -1218,18 +1224,18 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 			for (i=0; i < variables.size(); ++i)
 			{
 				pParam = variables[i];
-				
+
 				string s(pParam->getObjectName().c_str());
-				
+
 				if (s == string("Time") || s == string("TIME") )
 					s = string("time");
-				
+
 				if (!contains(hash,s))
 				{
 					copasi_model model = { (void*)(pModel) , (void*)(0), (void*)(hash), (char*)(NULL), (char*)(NULL)};
-					cSetGlobalParameter(model,pParam->getObjectName().c_str(),1.0);				
+					cSetGlobalParameter(model,pParam->getObjectName().c_str(),1.0);
 				}
-				
+
 				if (contains(hash,s))
 				{
 					CopasiPtr & p = getHashValue(hash,s);
@@ -1261,7 +1267,7 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 			}
 
 			pFunction->compile();
-			
+
 			return retval;
 		}
 	}
@@ -1272,17 +1278,17 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 void cCompileModel(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	
+
 	if (!pModel) return;
 
 	copasi_cleanup_assignments(model);
-	
+
 	CCopasiVectorNS < CCompartment > & compartments = pModel->getCompartments();
 	CCopasiVector< CMetab > & species = pModel->getMetabolites();
 	CCopasiVectorN< CModelValue > & params = pModel->getModelValues();
 	const CCopasiObject* pObject = NULL;
 	set<const CCopasiObject*> changedObjects;
-	
+
 	for (int i=0; i < compartments.size(); ++i)
 		if (compartments[i])
 		{
@@ -1305,7 +1311,7 @@ void cCompileModel(copasi_model model)
 			pObject = params[i]->getObject(CCopasiObjectName("Reference=Value"));
 			if (pObject)
 				changedObjects.insert(pObject);
-			
+
 			pObject = params[i]->getObject(CCopasiObjectName("Reference=InitialValue"));
 			if (pObject)
 				changedObjects.insert(pObject);
@@ -1314,13 +1320,13 @@ void cCompileModel(copasi_model model)
 	// compile needs to be done before updating all initial values for
 	// the model with the refresh sequence
 	pModel->compileIfNecessary(NULL);
-	
+
 	// now that we are done building the model, we have to make sure all
 	// initial values are updated according to their dependencies
 	vector<Refresh*> refreshes = pModel->buildInitialRefreshSequence(changedObjects);
-	
+
 	vector<Refresh*>::iterator it2 = refreshes.begin(), endit2 = refreshes.end();
-	
+
 	while (it2 != endit2)
 	{
 		// call each refresh
@@ -1336,7 +1342,7 @@ c_matrix simulate(copasi_model model, double startTime, double endTime, int numS
 
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the trajectory task object
@@ -1356,10 +1362,10 @@ c_matrix simulate(copasi_model model, double startTime, double endTime, int numS
 	CState state = pModel->getInitialState();
 
 	CCopasiMessage::clearDeque();
-	
+
 	if (startTime >= endTime)
 		endTime += startTime;
-	
+
 	if (pTask && pTask->setMethodType(method))
 	{
 		//set the start and end time, number of steps, and save output in memory
@@ -1389,14 +1395,14 @@ c_matrix simulate(copasi_model model, double startTime, double endTime, int numS
 			pTask = NULL;
 		}
 	}
-	
+
 	if (pTask)
 	{
 		const CTimeSeries & timeSeries = pTask->getTimeSeries();
-		int rows = timeSeries.getRecordedSteps(), 
+		int rows = timeSeries.getRecordedSteps(),
 			  cols = (1+pModel->getNumMetabs());//timeSeries.getNumVariables();
 		int i,j,k;
-	
+
 		c_matrix output = efficiently_createMatrix(rows, cols);
 		list<string> colnames;
 
@@ -1409,7 +1415,7 @@ c_matrix simulate(copasi_model model, double startTime, double endTime, int numS
 		j = 0;
 		for (list<string>::iterator it=colnames.begin(); j < cols && it != colnames.end(); ++j, it++)
 			c_setColumnName( output, j, (*it).c_str() );
-	
+
 		for (j=0; j < cols; ++j)
 		{
 			k = indexOf(colnames,timeSeries.getTitle(j));
@@ -1497,26 +1503,26 @@ copasi_model cReadAntimonyFile(const char * filename)
 static copasi_model cReadSBML_helper(const char * sbml, bool isFile)
 {
 	copasi_init();
-	
+
 	CCopasiDataModel* pDataModel = CCopasiRootContainer::addDatamodel();
 	CModel* pModel = 0;
-	CCMap * qHash = 0;	
+	CCMap * qHash = 0;
 	char * error = NULL;
 	char * warning = NULL;
 	string s;
 	CCopasiMessage::Type type;
 
-	try 
+	try
 	{
 		if (isFile)  //here, the code is different depending on file or string input
 			pDataModel->importSBML(sbml); //SBML file -> COPASI
 		else
-			pDataModel->importSBMLFromString(sbml); //SBML string -> COPASI	
+			pDataModel->importSBMLFromString(sbml); //SBML string -> COPASI
 
 		s = CCopasiMessage::getAllMessageText();
 		type = CCopasiMessage::getHighestSeverity();
 		pModel = pDataModel->getModel();
-		qHash = new CCMap();	
+		qHash = new CCMap();
 	}
 	catch(...)
 	{
@@ -1572,10 +1578,10 @@ c_matrix cGetJacobian(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the steady state task object
@@ -1591,9 +1597,9 @@ c_matrix cGetJacobian(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -1607,24 +1613,24 @@ c_matrix cGetJacobian(copasi_model model)
 		cerr << "Error when computing steady state." << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	const CArrayAnnotation* pAJ = pTask->getJacobianAnnotated();
 	//const CEigen & cGetEigenvalues() const;
-	
+
 	if (pAJ && pAJ->dimensionality() == 2)
 	{
 		vector<unsigned int> index(2);
 		const vector<string>& annotations = pAJ->getAnnotationsString(1);
-		
+
 		int n = annotations.size();
 		c_matrix J = efficiently_createMatrix(n,n);
-		
+
 		for (int i=0; i < J.rows; ++i)
 		{
 			c_setRowName(J, i, annotations[i].c_str());
 			c_setColumnName(J, i, annotations[i].c_str());
 		}
-		
+
 		for (int i=0; i < n; ++i)
 		{
 			index[0] = i;
@@ -1634,7 +1640,7 @@ c_matrix cGetJacobian(copasi_model model)
 				c_setMatrixValue(J, i, j, (*pAJ->array())[index]);
 			}
 		}
-		
+
 		return J;
 	}
 
@@ -1645,9 +1651,9 @@ c_matrix cGetSteadyStateUsingSimulation(copasi_model model, int maxiter)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
-	
+
 	//cCompileModel(model);
 
     int iter = 0;
@@ -1745,9 +1751,9 @@ c_matrix cGetSteadyState(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
-	
+
 	//cCompileModel(model);
 
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
@@ -1763,10 +1769,10 @@ c_matrix cGetSteadyState(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTrajTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
 	CState state = pModel->getInitialState();
-	
+
 	if (pTrajTask && pTrajTask->setMethodType(CCopasiMethod::deterministic))
 	{
 		//set the start and end time, number of steps, and save output in memory
@@ -1799,7 +1805,7 @@ c_matrix cGetSteadyState(copasi_model model)
 		TaskList.remove("Steady-State");
 		TaskList.add(pTask, true);
 	}
-	
+
 	try
 	{
 		pTask->setUpdateModel(true);
@@ -1814,10 +1820,10 @@ c_matrix cGetSteadyState(copasi_model model)
 	}
 
 	CCopasiMessage::clearDeque();
-	
+
 	c_matrix m = cGetFloatingSpeciesConcentrations(model);
 	pModel->setInitialState(state);
-	
+
 	return m;
 }
 
@@ -1825,10 +1831,10 @@ c_matrix cGetEigenvalues(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the steady state task object
@@ -1844,9 +1850,9 @@ c_matrix cGetEigenvalues(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -1862,11 +1868,11 @@ c_matrix cGetEigenvalues(copasi_model model)
 	}
 
 	const CEigen & eigen = pTask->getEigenValues();
-	const CVector< C_FLOAT64 > & im = eigen.getI(), 
+	const CVector< C_FLOAT64 > & im = eigen.getI(),
 													& re = eigen.getR();
 
 	c_matrix E = efficiently_createMatrix(im.size(),2);
-	
+
 	c_setColumnName(E, 0, "real\0");
 	c_setColumnName(E, 1, "imaginary\0");
 	for (int i=0; i < im.size() && i < re.size(); ++i)
@@ -1874,7 +1880,7 @@ c_matrix cGetEigenvalues(copasi_model model)
 		c_setMatrixValue(E, i,0,re[i]);
 		c_setMatrixValue(E, i,1,im[i]);
 	}
-	
+
 	return E;
 }
 
@@ -1882,10 +1888,10 @@ c_matrix cGetUnscaledElasticities(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the MCA task object
@@ -1901,9 +1907,9 @@ c_matrix cGetUnscaledElasticities(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -1916,11 +1922,11 @@ c_matrix cGetUnscaledElasticities(copasi_model model)
 		cerr << "Error when performing MCA" << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	CMCAMethod * mcaMethod = dynamic_cast<CMCAMethod*>(pTask->getMethod());
-	
+
 	if (!mcaMethod) return c_createMatrix(0,0);
-	
+
 	const CMatrix<C_FLOAT64> & cmatrix = mcaMethod->getUnscaledElasticities();
 	const CArrayAnnotation * annot = mcaMethod->getUnscaledElasticitiesAnn();
 	const vector<string>& rownames = annot->getAnnotationsString(1),
@@ -1931,13 +1937,13 @@ c_matrix cGetUnscaledElasticities(copasi_model model)
 	if (cols > colnames.size()) cols = colnames.size();
 
 	c_matrix M = efficiently_createMatrix(rows, cols);
-	
+
 	for (int i=0; i < rows; ++i)
 		c_setRowName(M, i, rownames[i].c_str());
-	
+
 	for (int i=0; i < cols; ++i)
 		c_setColumnName(M, i, colnames[i].c_str());
-	
+
 	for (int i=0; i < rows; ++i)
 		for (int j=0; j < cols; ++j)
 		{
@@ -1950,10 +1956,10 @@ c_matrix cGetUnscaledConcentrationControlCoeffs(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the MCA task object
@@ -1969,9 +1975,9 @@ c_matrix cGetUnscaledConcentrationControlCoeffs(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -1984,11 +1990,11 @@ c_matrix cGetUnscaledConcentrationControlCoeffs(copasi_model model)
 		cerr << "Error when performing MCA" << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	CMCAMethod * mcaMethod = dynamic_cast<CMCAMethod*>(pTask->getMethod());
-	
+
 	if (!mcaMethod) return c_createMatrix(0,0);
-	
+
 	const CMatrix<C_FLOAT64> & cmatrix = mcaMethod->getUnscaledConcentrationCC();
 	const CArrayAnnotation * annot = mcaMethod->getUnscaledConcentrationCCAnn();
 	const vector<string>& rownames = annot->getAnnotationsString(1),
@@ -1999,13 +2005,13 @@ c_matrix cGetUnscaledConcentrationControlCoeffs(copasi_model model)
 	if (cols > colnames.size()) cols = colnames.size();
 
 	c_matrix M = efficiently_createMatrix(rows, cols);
-	
+
 	for (int i=0; i < rows; ++i)
 		c_setRowName(M, i, rownames[i].c_str());
-	
+
 	for (int i=0; i < cols; ++i)
 		c_setColumnName(M, i, colnames[i].c_str());
-	
+
 	for (int i=0; i < rows; ++i)
 		for (int j=0; j < cols; ++j)
 		{
@@ -2018,10 +2024,10 @@ c_matrix cGetUnscaledFluxControlCoeffs(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the MCA task object
@@ -2037,9 +2043,9 @@ c_matrix cGetUnscaledFluxControlCoeffs(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -2052,11 +2058,11 @@ c_matrix cGetUnscaledFluxControlCoeffs(copasi_model model)
 		cerr << "Error when performing MCA" << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	CMCAMethod * mcaMethod = dynamic_cast<CMCAMethod*>(pTask->getMethod());
-	
+
 	if (!mcaMethod) return c_createMatrix(0,0);
-	
+
 	const CMatrix<C_FLOAT64> & cmatrix = mcaMethod->getUnscaledFluxCC();
 	const CArrayAnnotation * annot = mcaMethod->getUnscaledFluxCCAnn();
 	const vector<string>& rownames = annot->getAnnotationsString(1),
@@ -2067,13 +2073,13 @@ c_matrix cGetUnscaledFluxControlCoeffs(copasi_model model)
 	if (cols > colnames.size()) cols = colnames.size();
 
 	c_matrix M = efficiently_createMatrix(rows, cols);
-	
+
 	for (int i=0; i < rows; ++i)
 		c_setRowName(M, i, rownames[i].c_str());
-	
+
 	for (int i=0; i < cols; ++i)
 		c_setColumnName(M, i, colnames[i].c_str());
-	
+
 	for (int i=0; i < rows; ++i)
 		for (int j=0; j < cols; ++j)
 		{
@@ -2086,10 +2092,10 @@ c_matrix cGetScaledElasticities(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the MCA task object
@@ -2105,9 +2111,9 @@ c_matrix cGetScaledElasticities(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -2120,11 +2126,11 @@ c_matrix cGetScaledElasticities(copasi_model model)
 		cerr << "Error when performing MCA" << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	CMCAMethod * mcaMethod = dynamic_cast<CMCAMethod*>(pTask->getMethod());
-	
+
 	if (!mcaMethod) return c_createMatrix(0,0);
-	
+
 	const CMatrix<C_FLOAT64> & cmatrix = mcaMethod->getScaledElasticities();
 	const CArrayAnnotation * annot = mcaMethod->getScaledElasticitiesAnn();
 	const vector<string>& rownames = annot->getAnnotationsString(1),
@@ -2135,13 +2141,13 @@ c_matrix cGetScaledElasticities(copasi_model model)
 	if (cols > colnames.size()) cols = colnames.size();
 
 	c_matrix M = efficiently_createMatrix(rows, cols);
-	
+
 	for (int i=0; i < rows; ++i)
 		c_setRowName(M, i, rownames[i].c_str());
-	
+
 	for (int i=0; i < cols; ++i)
 		c_setColumnName(M, i, colnames[i].c_str());
-	
+
 	for (int i=0; i < rows; ++i)
 		for (int j=0; j < cols; ++j)
 		{
@@ -2154,10 +2160,10 @@ c_matrix cGetScaledConcentrationConcentrationCoeffs(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the MCA task object
@@ -2173,9 +2179,9 @@ c_matrix cGetScaledConcentrationConcentrationCoeffs(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -2188,11 +2194,11 @@ c_matrix cGetScaledConcentrationConcentrationCoeffs(copasi_model model)
 		cerr << "Error when performing MCA" << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	CMCAMethod * mcaMethod = dynamic_cast<CMCAMethod*>(pTask->getMethod());
-	
+
 	if (!mcaMethod) return c_createMatrix(0,0);
-	
+
 	const CMatrix<C_FLOAT64> & cmatrix = mcaMethod->getScaledConcentrationCC();
 	const CArrayAnnotation * annot = mcaMethod->getScaledConcentrationCCAnn();
 	const vector<string>& rownames = annot->getAnnotationsString(1),
@@ -2203,13 +2209,13 @@ c_matrix cGetScaledConcentrationConcentrationCoeffs(copasi_model model)
 	if (cols > colnames.size()) cols = colnames.size();
 
 	c_matrix M = efficiently_createMatrix(rows, cols);
-	
+
 	for (int i=0; i < rows; ++i)
 		c_setRowName(M, i, rownames[i].c_str());
-	
+
 	for (int i=0; i < cols; ++i)
 		c_setColumnName(M, i, colnames[i].c_str());
-	
+
 	for (int i=0; i < rows; ++i)
 		for (int j=0; j < cols; ++j)
 		{
@@ -2222,10 +2228,10 @@ c_matrix cGetScaledFluxControlCoeffs(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the MCA task object
@@ -2241,9 +2247,9 @@ c_matrix cGetScaledFluxControlCoeffs(copasi_model model)
 		// add the new time course task to the task list
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		// initialize the trajectory task
@@ -2256,11 +2262,11 @@ c_matrix cGetScaledFluxControlCoeffs(copasi_model model)
 		cerr << "Error when performing MCA" << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	CMCAMethod * mcaMethod = dynamic_cast<CMCAMethod*>(pTask->getMethod());
-	
+
 	if (!mcaMethod) return c_createMatrix(0,0);
-	
+
 	const CMatrix<C_FLOAT64> & cmatrix = mcaMethod->getScaledFluxCC();
 	const CArrayAnnotation * annot = mcaMethod->getScaledFluxCCAnn();
 	const vector<string>& rownames = annot->getAnnotationsString(1),
@@ -2269,15 +2275,15 @@ c_matrix cGetScaledFluxControlCoeffs(copasi_model model)
 	size_t rows = cmatrix.numRows(), cols = cmatrix.numCols();
 	if (rows > rownames.size()) rows = rownames.size();
 	if (cols > colnames.size()) cols = colnames.size();
-	
+
 	c_matrix M = efficiently_createMatrix(rows, cols);
 
 	for (int i=0; i < rows; ++i)
 		c_setRowName(M, i, rownames[i].c_str());
-	
-	for (int i=0; i < cols; ++i)	
+
+	for (int i=0; i < cols; ++i)
 		c_setColumnName(M, i, colnames[i].c_str());
-	
+
 	for (int i=0; i < rows; ++i)
 		for (int j=0; j < cols; ++j)
 		{
@@ -2340,10 +2346,10 @@ c_matrix cGetReducedStoichiometryMatrix(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	CCopasiVector< CMetab > & species = pModel->getMetabolitesX();
 	CCopasiVectorNS < CReaction > & reacs = pModel->getReactions();
 	CMatrix < C_FLOAT64 > stoi = pModel->getRedStoi();
@@ -2369,10 +2375,10 @@ c_matrix cGetFullStoichiometryMatrix(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	CCopasiVector< CMetab > & species = pModel->getMetabolites();
 	CCopasiVectorNS < CReaction > & reacs = pModel->getReactions();
 	CMatrix < C_FLOAT64 > stoi = pModel->getStoi();
@@ -2398,26 +2404,26 @@ c_matrix cGetElementaryFluxModes(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
-	
+
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
 	//cCompileModel(model);
-	
+
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 
 	CEFMTask* pTask = 0;
-	
+
 	if (TaskList["Elementary Flux Modes"])
 		pTask = dynamic_cast<CEFMTask*>(TaskList["Elementary Flux Modes"]);
-	
+
 	if (!pTask)
 	{
 		pTask = new CEFMTask();
 		TaskList.remove("Elementary Flux Modes");
 		TaskList.add(pTask, true);
 	}
-	
+
 	CCopasiMessage::clearDeque();
-	
+
 	try
 	{
 		pTask->initialize(CCopasiTask::OUTPUT_COMPLETE, pDataModel, NULL);
@@ -2428,10 +2434,10 @@ c_matrix cGetElementaryFluxModes(copasi_model model)
 		cerr << "Error when computing EFM" << endl;
 		return c_createMatrix(0,0);
 	}
-	
+
 	const vector< CFluxMode > & fluxModes = pTask->getFluxModes();
 	CEFMProblem* pProblem = dynamic_cast<CEFMProblem*>(pTask->getProblem());
-	
+
 	if (!pProblem)
 		return c_createMatrix(0,0);
 
@@ -2439,7 +2445,7 @@ c_matrix cGetElementaryFluxModes(copasi_model model)
 	c_matrix M = efficiently_createMatrix( reactions.size() , fluxModes.size() );
 	for (int i=0; i < reactions.size(); ++i)
 		c_setRowName(M, i, reactions[i]->getObjectName().c_str());
-	
+
 	for (int i=0; i < fluxModes.size(); ++i)
 	{
 		CFluxMode::const_iterator itMode = fluxModes[i].begin();
@@ -2463,7 +2469,7 @@ void cFitModelToData(copasi_model model, const char * filename, c_matrix params,
 	ifstream file(filename);
 	list<string> words;
 	int numlines=0;
-	
+
 	if (file.is_open())
 	{
 		string line;
@@ -2490,7 +2496,7 @@ void cFitModelToData(copasi_model model, const char * filename, c_matrix params,
 			getline(file, line);
 			++numlines;
 		}
-		
+
 		file.close();
 	}
 
@@ -2516,7 +2522,7 @@ std::cout << "delim = " << delim << "\n";
 		else
 			cout << "'" << s << "' not found \n";
 	}
-	
+
 	//get the target parameters
 	vector< CModelValue* > targetParams(params.rows, (CModelValue*)0);
 	for (int i=0; i < params.rows; ++i)
@@ -2532,7 +2538,7 @@ std::cout << "delim = " << delim << "\n";
 			}
 		}
 	}
-	
+
 	// get the task object
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 
@@ -2551,37 +2557,24 @@ std::cout << "delim = " << delim << "\n";
 		// add the new task to the task list
 		TaskList.add(pFitTask, true);
 	}
-	
+
 	//set method
-	string sMethod( method );
-	std::transform(sMethod.begin(), sMethod.end(), sMethod.begin(), ::tolower); 
-	if (sMethod.compare( string("geneticalgorithm")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::GeneticAlgorithm);
-	else
-	if (sMethod.compare( string("simulatedannealing")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::SimulatedAnnealing);
-	else
-	if (sMethod.compare( string("levenbergmarquardt")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::LevenbergMarquardt);
-	else
-	if (sMethod.compare( string("neldermead")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::NelderMead);
-	else
-	if (sMethod.compare( string("sres")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::SRES);
-	else
-	if (sMethod.compare( string("particleswarm")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::ParticleSwarm);
-	else
-	if (sMethod.compare( string("steepestdescent")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::SteepestDescent);
-	else
-	if (sMethod.compare( string("randomsearch")) == 0)
-		pFitTask->setMethodType(CCopasiMethod::RandomSearch);
+	string sMethod( method ), s;
+
+	for (int i=0; s.size() > 1; ++i)
+	{
+        s = string(CCopasiMethod::SubTypeName[i]);
+	    if (sMethod.compare( s ) == 0)
+		{
+			pFitTask->setMethodType((CCopasiMethod::SubType)i);
+			sMethod = string("");
+			break;
+		}
+	}
 
 	// the method in a fit task is an instance of COptMethod or a subclass
 	COptMethod* pFitMethod = dynamic_cast<COptMethod*>(pFitTask->getMethod());
-	// the object must be an instance of COptMethod or a subclass 
+	// the object must be an instance of COptMethod or a subclass
 	CFitProblem* pFitProblem = dynamic_cast<CFitProblem*>(pFitTask->getProblem());
 	pFitProblem->setModel(pModel);
 	CExperimentSet* pExperimentSet = dynamic_cast<CExperimentSet*>(pFitProblem->getParameter("Experiment Set"));
@@ -2603,8 +2596,8 @@ std::cout << "delim = " << delim << "\n";
 	pObjectMap->setRole(0, CExperiment::time);
 	const CCopasiObject* pTimeReference = pModel->getObject(CCopasiObjectName("Reference=Time"));
 	pObjectMap->setObjectCN(0, pTimeReference->getCN());
-	
-	// now we tell COPASI which column contain the concentrations of metabolites and belong to dependent variables	
+
+	// now we tell COPASI which column contain the concentrations of metabolites and belong to dependent variables
 	int k;
 	CMetab * pMetab;
 	cout << "num = " << targetSpecies.size() << endl;
@@ -2644,7 +2637,7 @@ std::cout << "delim = " << delim << "\n";
 			std::cout << "set upper bound " << pFitItem->setUpperBound(CCopasiObjectName("1.0"));
 			pOptimizationItemGroup->addParameter(pFitItem);
 		}
-	
+
 	try
 	{
 		// initialize the fit task
@@ -2662,7 +2655,7 @@ std::cout << "delim = " << delim << "\n";
 		return;
 	}
 	pFitTask->restore();
-	
+
 	//assign optimized values back into the model
 	for (int i=0; i < params.rows && i < pFitProblem->getSolutionVariables().size(); ++i)
 	{
@@ -2689,7 +2682,7 @@ struct GAData
 };
 
 static void InitializeGenome(GAGenome & x)
-{	
+{
 	RealGenome & g = (RealGenome &)x;
 	GAData * data = (GAData*)(g.geneticAlgorithm()->userData());
 	c_matrix * params = data->params;
@@ -2727,30 +2720,30 @@ static float MatrixDistance(c_matrix * data1, c_matrix * data2)
 static float ObjectiveForFittingTimeSeries(GAGenome & x)
 {
 	RealGenome & g = (RealGenome &)x;
-	
+
 	if (!g.geneticAlgorithm())
 		return numeric_limits<float>::max();
-	
+
 	GAData * pData = (GAData*)(g.geneticAlgorithm()->userData());
 	copasi_model * model = pData->model;
 	c_matrix * data = pData->data;
 	c_matrix * params = pData->params;
 	double retval;
-	
+
 	for (int i=0; i < params->rows && i < g.length(); ++i)
 		cSetValue( *model, c_getRowName(*params,i), g.gene(i) );
-	
+
 	double start = c_getMatrixValue(*data, 0, 0),
 			   end = c_getMatrixValue(*data, data->rows-1, 0);
 	c_matrix output = cSimulateDeterministic(*model, start, end, data->rows);
-	
+
 	retval = MatrixDistance(data, &output);
-	
+
 	c_deleteMatrix(output);
-	
+
 	for (int i=0; i < params->rows; ++i)
 	{
-		if (g.gene(i) < c_getMatrixValue(*params, i, 1) || 
+		if (g.gene(i) < c_getMatrixValue(*params, i, 1) ||
 			 g.gene(i) > c_getMatrixValue(*params, i, 2))
 		 {
 		 	retval = numeric_limits<float>::max();
@@ -2763,20 +2756,20 @@ static float ObjectiveForFittingTimeSeries(GAGenome & x)
 static float ObjectiveForFittingSteadyStateData(GAGenome & x)
 {
 	RealGenome & g = (RealGenome &)x;
-	
+
 	GAData * pData = (GAData*)(g.geneticAlgorithm()->userData());
 	copasi_model * model = pData->model;
 	c_matrix * data = pData->data;
 	c_matrix * params = pData->params;
-	
+
 	for (int i=0; i < params->rows && i < g.length(); ++i)
 		cSetValue( *model, c_getRowName(*params,i), g.gene(i) );
-	
+
 	double retval;
 
 	c_matrix output = efficiently_createMatrix(data->rows, data->cols);
 	const char * name = c_getRowName(*data,0);
-	
+
 	for (int i=0; i < data->rows; ++i)
 	{
 		cSetValue(*model, name, c_getMatrixValue(*data, i, 0));
@@ -2791,13 +2784,13 @@ static float ObjectiveForFittingSteadyStateData(GAGenome & x)
 				}
 		c_deleteMatrix(ss);
 	}
-	
+
 	retval = MatrixDistance(data, &output);
 	c_deleteMatrix(output);
-	
+
 	for (int i=0; i < params->rows; ++i)
 	{
-		if (g.gene(i) < c_getMatrixValue(*params, i, 1) || 
+		if (g.gene(i) < c_getMatrixValue(*params, i, 1) ||
 			 g.gene(i) > c_getMatrixValue(*params, i, 2))
 		 {
 		 	retval = numeric_limits<float>::max();
@@ -2811,23 +2804,23 @@ static float ObjectiveForFittingSteadyStateData(GAGenome & x)
 static float ObjectiveForMaximizingFormula(GAGenome & x)
 {
 	RealGenome & g = (RealGenome &)x;
-	
+
 	GAData * pData = (GAData*)(g.geneticAlgorithm()->userData());
 	mu::Parser * parser = pData->parser;
 	copasi_model * model = pData->model;
 	c_matrix * data = pData->data;
 	c_matrix * params = pData->params;
 	double retval;
-	
+
 	for (int i=0; i < params->rows && i < g.length(); ++i)
 		cSetValue( *model, c_getRowName(*params,i), g.gene(i) );
-	
+
 	if (parser)
 	{
 		c_matrix ss = cGetSteadyState(*model);
 		for (int i=0; i < ss.rows; ++i)
 			pData->parserValues[i] = c_getMatrixValue(ss, i, 0);
-		
+
 		retval = parser->Eval();
 		c_deleteMatrix(ss);
 	}
@@ -2835,10 +2828,10 @@ static float ObjectiveForMaximizingFormula(GAGenome & x)
 	{
 		retval = numeric_limits<float>::max();
 	}
-	
+
 	for (int i=0; i < params->rows; ++i)
 	{
-		if (g.gene(i) < c_getMatrixValue(*params, i, 1) || 
+		if (g.gene(i) < c_getMatrixValue(*params, i, 1) ||
 			 g.gene(i) > c_getMatrixValue(*params, i, 2))
 		 {
 		 	retval = numeric_limits<float>::max();
@@ -2860,22 +2853,22 @@ static double _OPTIMIZATION_CROSSOVER_RATE = 0.8;
 c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 {
 	ifstream file(objective);
-	
+
 	mu::Parser parser;
 	GAData pData;
 	c_matrix data;
-	
+
 	pData.parser = 0;
 	pData.model = &model;
 	pData.data = 0;
 	pData.params = &params;
-	
+
 	list<string> words;
 	int numlines=0;
 	if (file.is_open())
 	{
 		string delim("\t");
-	
+
 		string line;
 		getline(file, line);
 		if (line[0] == '#')
@@ -2885,7 +2878,7 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 			delim = string(",");
 
 		words = splitString(line , delim);
-		
+
 		if (!words.empty())
 		{
 			while (file.good())
@@ -2894,9 +2887,9 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 				++numlines;
 			}
 		}
-		
+
 		file.close();
-		
+
 		if (words.empty() || numlines < 1)
 		{
 			return c_createMatrix(0,0);
@@ -2917,7 +2910,7 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 				{
 					c_setColumnName(data, i, (*it).c_str());
 				}
-				
+
 				i = 0;
 				while (file.good() && i < numlines)
 				{
@@ -2946,7 +2939,7 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 		}
 		pData.parserValues = array;
 		parser.SetExpr(objective);
-		
+
 		try
 		{
 			parser.Eval();  //just checking if the eq. is valid
@@ -2957,9 +2950,9 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 			return c_createMatrix(0,0);
 		}
 	}
-	
-	GAPopulation pop;	
-	
+
+	GAPopulation pop;
+
 	if (pData.parser)
 	{
 		RealGenome genome( params.rows , &ObjectiveForMaximizingFormula );
@@ -3053,9 +3046,9 @@ c_matrix cOptimize(copasi_model model, const char * objective, c_matrix params)
 	{
 		return c_createMatrix(0,0);
 	}
-	
+
 	c_matrix result = efficiently_createMatrix( pop.size(), params.rows );
-	
+
 	for (int i=0; i < pop.size(); ++i)
 	{
 		RealGenome & g = (RealGenome &)(pop.individual(i));
@@ -3091,7 +3084,7 @@ void cSetOptimizerCrossoverRate(double q)
 c_matrix convertFromDoubleMatrix(DoubleMatrix& matrix, vector< string > &rowNames, vector< string > &colNames)
 {
 	c_matrix m = efficiently_createMatrix(matrix.numRows(), matrix.numCols());
-	
+
 	for (int i=0; i < m.rows && i < rowNames.size(); ++i)
 		c_setRowName(m, i, rowNames[i].c_str());
 
@@ -3101,23 +3094,23 @@ c_matrix convertFromDoubleMatrix(DoubleMatrix& matrix, vector< string > &rowName
 	for (int i=0; i < m.rows; ++i)
 		for (int j=0; j < m.cols; ++j)
 			c_setMatrixValue(m, i, j, matrix(i,j));
-	
+
 	return m;
 }
 
 void convertToDoubleMatrix(c_matrix m, DoubleMatrix & matrix, vector< string > &rowNames, vector< string > &colNames)
 {
 	matrix.resize(m.rows, m.cols);
-	
+
 	rowNames.resize(m.rows);
 	colNames.resize(m.cols);
-	
+
 	for (int i=0; i < m.rows && i < rowNames.size(); ++i)
 		rowNames[i] = string(c_getRowName(m, i));
 
 	for (int i=0; i < m.cols && i < colNames.size(); ++i)
 		colNames[i] = string(c_getColumnName(m, i));
-	
+
 	for (int i=0; i < m.rows; ++i)
 		for (int j=0; j < m.cols; ++j)
 			matrix(i,j) = c_getMatrixValue(m, i, j);
@@ -3131,11 +3124,11 @@ c_matrix cGetGammaMatrix(copasi_model model)
 
 	//get stoichiometry
 	c_matrix c_N = cGetFullStoichiometryMatrix(model);
-	vector< string > rowNames, colNames;	
+	vector< string > rowNames, colNames;
 	DoubleMatrix N;
-	
+
 	convertToDoubleMatrix( c_N , N, rowNames, colNames );
-	
+
 	//use libstructural
 	LibStructural * instance = LibStructural::getInstance();
 	instance->loadStoichiometryMatrix (N);
@@ -3145,24 +3138,24 @@ c_matrix cGetGammaMatrix(copasi_model model)
 	for (int i=0; i < metabolites.size(); ++i)
 		if (metabolites[i] != NULL)
 			iv[i] = metabolites[i]->getInitialConcentration();
-	
+
 	instance->loadSpecies (rowNames, iv);
 	instance->loadReactionNames (colNames);
 	instance->analyzeWithQR();
-	
+
 	DoubleMatrix * matrix = instance->getGammaMatrix();
-	
+
 	rowNames.clear();
 	colNames.clear();
 	instance->getGammaMatrixLabels(rowNames, colNames);
-	
+
 	//convert
 	c_matrix m = convertFromDoubleMatrix(*matrix, rowNames, colNames);
-	
+
 	//cleanup
 	//delete matrix;
 	c_deleteMatrix(c_N);
-	
+
 	return m;
 }
 
@@ -3174,11 +3167,11 @@ c_matrix cGetKMatrix(copasi_model model)
 
 	//get stoichiometry
 	c_matrix c_N = cGetFullStoichiometryMatrix(model);
-	vector< string > rowNames, colNames;	
+	vector< string > rowNames, colNames;
 	DoubleMatrix N;
-	
+
 	convertToDoubleMatrix( c_N , N, rowNames, colNames );
-	
+
 	//use libstructural
 	LibStructural * instance = LibStructural::getInstance();
 	instance->loadStoichiometryMatrix (N);
@@ -3188,24 +3181,24 @@ c_matrix cGetKMatrix(copasi_model model)
 	for (int i=0; i < metabolites.size(); ++i)
 		if (metabolites[i] != NULL)
 			iv[i] = metabolites[i]->getInitialConcentration();
-	
+
 	instance->loadSpecies (rowNames, iv);
 	instance->loadReactionNames (colNames);
 	instance->analyzeWithQR();
-	
+
 	DoubleMatrix * matrix = instance->getKMatrix();
-	
+
 	rowNames.clear();
 	colNames.clear();
 	instance->getKMatrixLabels(rowNames, colNames);
-	
+
 	//convert
 	c_matrix m = convertFromDoubleMatrix(*matrix, rowNames, colNames);
-	
+
 	//cleanup
 	//delete matrix;
 	c_deleteMatrix(c_N);
-	
+
 	return m;
 }
 
@@ -3217,11 +3210,11 @@ c_matrix cGetLinkMatrix(copasi_model model)
 
 	//get stoichiometry
 	c_matrix c_N = cGetFullStoichiometryMatrix(model);
-	vector< string > rowNames, colNames;	
+	vector< string > rowNames, colNames;
 	DoubleMatrix N;
-	
+
 	convertToDoubleMatrix( c_N , N, rowNames, colNames );
-	
+
 	//use libstructural
 	LibStructural * instance = LibStructural::getInstance();
 	instance->loadStoichiometryMatrix (N);
@@ -3231,24 +3224,24 @@ c_matrix cGetLinkMatrix(copasi_model model)
 	for (int i=0; i < metabolites.size(); ++i)
 		if (metabolites[i] != NULL)
 			iv[i] = metabolites[i]->getInitialConcentration();
-	
+
 	instance->loadSpecies (rowNames, iv);
 	instance->loadReactionNames (colNames);
 	instance->analyzeWithQR();
-	
+
 	DoubleMatrix * matrix = instance->getLinkMatrix();
-	
+
 	rowNames.clear();
 	colNames.clear();
 	instance->getLinkMatrixLabels(rowNames, colNames);
-	
+
 	//convert
 	c_matrix m = convertFromDoubleMatrix(*matrix, rowNames, colNames);
-	
+
 	//cleanup
 	//delete matrix;
 	c_deleteMatrix(c_N);
-	
+
 	return m;
 }
 
@@ -3260,11 +3253,11 @@ c_matrix cGetK0Matrix(copasi_model model)
 
 	//get stoichiometry
 	c_matrix c_N = cGetFullStoichiometryMatrix(model);
-	vector< string > rowNames, colNames;	
+	vector< string > rowNames, colNames;
 	DoubleMatrix N;
-	
+
 	convertToDoubleMatrix( c_N , N, rowNames, colNames );
-	
+
 	//use libstructural
 	LibStructural * instance = LibStructural::getInstance();
 	instance->loadStoichiometryMatrix (N);
@@ -3274,24 +3267,24 @@ c_matrix cGetK0Matrix(copasi_model model)
 	for (int i=0; i < metabolites.size(); ++i)
 		if (metabolites[i] != NULL)
 			iv[i] = metabolites[i]->getInitialConcentration();
-	
+
 	instance->loadSpecies (rowNames, iv);
 	instance->loadReactionNames (colNames);
 	instance->analyzeWithQR();
-	
+
 	DoubleMatrix * matrix = instance->getK0Matrix();
-	
+
 	rowNames.clear();
 	colNames.clear();
 	instance->getK0MatrixLabels(rowNames, colNames);
-	
+
 	//convert
 	c_matrix m = convertFromDoubleMatrix(*matrix, rowNames, colNames);
-	
+
 	//cleanup
 	//delete matrix;
 	c_deleteMatrix(c_N);
-	
+
 	return m;
 }
 
@@ -3303,11 +3296,11 @@ c_matrix cGetL0Matrix(copasi_model model)
 
 	//get stoichiometry
 	c_matrix c_N = cGetFullStoichiometryMatrix(model);
-	vector< string > rowNames, colNames;	
+	vector< string > rowNames, colNames;
 	DoubleMatrix N;
-	
+
 	convertToDoubleMatrix( c_N , N, rowNames, colNames );
-	
+
 	//use libstructural
 	LibStructural * instance = LibStructural::getInstance();
 	instance->loadStoichiometryMatrix (N);
@@ -3317,24 +3310,24 @@ c_matrix cGetL0Matrix(copasi_model model)
 	for (int i=0; i < metabolites.size(); ++i)
 		if (metabolites[i] != NULL)
 			iv[i] = metabolites[i]->getInitialConcentration();
-	
+
 	instance->loadSpecies (rowNames, iv);
 	instance->loadReactionNames (colNames);
 	instance->analyzeWithQR();
-	
+
 	DoubleMatrix * matrix = instance->getL0Matrix();
-	
+
 	rowNames.clear();
 	colNames.clear();
 	instance->getL0MatrixLabels(rowNames, colNames);
-	
+
 	//convert
 	c_matrix m = convertFromDoubleMatrix(*matrix, rowNames, colNames);
-	
+
 	//cleanup
 	//delete matrix;
 	c_deleteMatrix(c_N);
-	
+
 	return m;
 }
 
@@ -3342,12 +3335,12 @@ list<string> splitString(const string& seq, const string& _1cdelim)
 {
 	bool keeptoken = false, _removews = true;
 	list<string> L;
-	
+
 	string delims = _1cdelim;
 	string STR;
 	if(delims.empty()) delims = "\n\r";
 	if(_removews) delims += " ";
-	 
+
 	string::size_type pos=0, LEN = seq.size();
 	while(pos < LEN ){
 	STR=""; // Init/clear the STR token buffer
@@ -3391,7 +3384,7 @@ int replaceSubstring(std::string& s,const std::string& from, const std::string& 
 c_matrix cGetReactionRates(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	
+
 	if (!pModel) return c_createMatrix(0,0);
 
 	const CCopasiVectorNS < CReaction > & reactions = pModel->getReactions();
@@ -3404,7 +3397,7 @@ c_matrix cGetReactionRates(copasi_model model)
 			c_setColumnName(res, i, reactions[i]->getObjectName().c_str());
 			c_setMatrixValue(res, 0, i, reactions[i]->calculateFlux());
 		}
-	
+
 	return res;
 }
 
@@ -3433,7 +3426,7 @@ c_matrix cGetReactionRatesEx(copasi_model model, c_matrix conc)
 	c_matrix rates = cGetReactionRates(model);
 
 	cResetState(model);
-	
+
 	return rates;
 }
 
@@ -3441,21 +3434,21 @@ c_matrix cGetFloatingSpeciesConcentrations(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return c_createMatrix(0,0);
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
 
 	int n = 0;
 	for (int i=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::ODE || species[i]->getStatus() == CModelEntity::REACTIONS))
 			++n;
 
 	c_matrix res  = efficiently_createMatrix(n,1);
 
 	for (int i=0, j=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::ODE || species[i]->getStatus() == CModelEntity::REACTIONS))
 		{
 			c_setMatrixValue(res, j, 0, species[i]->getConcentration());
@@ -3470,21 +3463,21 @@ c_matrix cGetBoundarySpecies(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return c_createMatrix(0,0);
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
 
 	int n = 0;
 	for (int i=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::FIXED))
 			++n;
 
 	c_matrix res  = efficiently_createMatrix(n,1);
 
 	for (int i=0, j=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::FIXED))
 		{
 			c_setMatrixValue(res, j, 0, species[i]->getConcentration());
@@ -3499,7 +3492,7 @@ int cGetNumberOfSpecies(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return 0;
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
@@ -3512,14 +3505,14 @@ int cGetNumberOfFloatingSpecies(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return 0;
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
 
 	int n = 0;
 	for (int i=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::ODE || species[i]->getStatus() == CModelEntity::REACTIONS))
 			++n;
 	return n;
@@ -3529,14 +3522,14 @@ int cGetNumberOfBoundarySpecies(copasi_model model)
 {
 		CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return 0;
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
 
 	int n = 0;
 	for (int i=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::FIXED))
 			++n;
 	return n;
@@ -3545,21 +3538,21 @@ c_matrix cGetFloatingSpeciesIntitialConcentrations (copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return c_createMatrix(0,0);
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
 
 	int n = 0;
 	for (int i=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::ODE || species[i]->getStatus() == CModelEntity::REACTIONS))
 			++n;
 
 	c_matrix res  = efficiently_createMatrix(n,1);
 
 	for (int i=0, j=0; i < species.size(); ++i)
-		if (species[i] && 
+		if (species[i] &&
 			(species[i]->getStatus() == CModelEntity::ODE || species[i]->getStatus() == CModelEntity::REACTIONS))
 		{
 			c_setMatrixValue(res, j, 0, species[i]->getInitialConcentration());
@@ -3581,7 +3574,7 @@ void cSetFloatingSpeciesIntitialConcentrations (copasi_model model, c_matrix sp)
 	{
 		for (int i=0; i < sp.cols; ++i)
 			cSetInitialConcentration(model, c_getColumnName(sp,i), c_getMatrixValue(sp, 0, i));
-	} 
+	}
 }
 
 void cSetBoundarySpeciesConcentrations (copasi_model model, c_matrix d)
@@ -3593,7 +3586,7 @@ c_matrix cGetAllSpecies(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return c_createMatrix(0,0);
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
@@ -3606,7 +3599,7 @@ c_matrix cGetAllSpecies(copasi_model model)
 			c_setColumnName(res, i, species[i]->getObjectName().c_str());
 			c_setMatrixValue(res, 0, i, species[i]->getConcentration());
 		}
-	
+
 	return res;
 }
 
@@ -3614,7 +3607,7 @@ c_matrix cGetCompartments(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return c_createMatrix(0,0);
 
 	const CCopasiVectorNS< CCompartment > & compartments = pModel->getCompartments();
@@ -3634,7 +3627,7 @@ c_matrix cGetAmounts(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	
+
 	if (!pModel) return c_createMatrix(0,0);
 
 	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
@@ -3645,7 +3638,7 @@ c_matrix cGetAmounts(copasi_model model)
 		if (species[i] && species[i]->getCompartment())
 		{
 			c_setColumnName(res, i, species[i]->getObjectName().c_str());
-			c_setMatrixValue(res, 0, i, 
+			c_setMatrixValue(res, 0, i,
 					CMetab::convertToNumber( species[i]->getConcentration(), *species[i]->getCompartment(), pModel ));
 		}
 
@@ -3657,11 +3650,11 @@ double cGetConcentration(copasi_model model, const char * name)
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
-	
+
 	if (!pModel || !contains(hash, s)) return -1.0;
 	CopasiPtr & p = getHashValue(hash, s);
 
-	if (!p.species || !p.species->getCompartment()) return -1.0;	
+	if (!p.species || !p.species->getCompartment()) return -1.0;
 
 	return p.species->getConcentration();
 }
@@ -3671,11 +3664,11 @@ double cGetAmount(copasi_model model, const char * name)
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
-	
+
 	if (!pModel || !contains(hash, s)) return -1.0;
 	CopasiPtr & p = getHashValue(hash, s);
 
-	if (!p.species || !p.species->getCompartment()) return -1.0;	
+	if (!p.species || !p.species->getCompartment()) return -1.0;
 
 	return CMetab::convertToNumber( p.species->getConcentration(), *p.species->getCompartment(), pModel );
 }
@@ -3691,7 +3684,7 @@ c_matrix cGetRatesOfChangeEx(copasi_model model, c_matrix m)
 c_matrix cGetRatesOfChange(copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	
+
 	if (!pModel)
 		return c_createMatrix(0,0);
 
@@ -3716,7 +3709,7 @@ double cGetRateOfChange(copasi_model model, const char * name)
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
-	
+
 	if (!pModel || !contains(hash, s)) return 0.0;
 	CopasiPtr & p = getHashValue(hash, s);
 
@@ -3730,7 +3723,7 @@ double cGetFlux(copasi_model model, const char * name)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	string s (name);	
+	string s (name);
 
 	if (!pModel || !contains(hash, s)) return NaN;
 
@@ -3745,7 +3738,7 @@ double cGetParticleFlux(copasi_model model, const char * name)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
 	CCMap * hash = (CCMap*)(model.qHash);
-	string s (name);	
+	string s (name);
 
 	if (!pModel || !contains(hash, s)) return NaN;
 
@@ -3767,10 +3760,10 @@ int sSetGlobalParameter(copasi_model model, const char * name, double value)
 	CCMap * hash = (CCMap*)(model.qHash);
 	string s(name);
 	CModelValue * pValue = NULL;
-	
+
 	if (!hash || !pModel) return 0;
-	
-	if (contains(hash,s) && 
+
+	if (contains(hash,s) &&
 		(pValue = getHashValue(hash,s).param))
 	{
 		pValue->setInitialValue(value);
@@ -3783,7 +3776,7 @@ int sSetGlobalParameter(copasi_model model, const char * name, double value)
 	{
 		pValue = pModel->createModelValue(string(name),value);
 		pValue->setInitialValue(value);
-	
+
 		CopasiPtr copasiPtr = {
 				pValue->getCN(),
 				pValue->getKey(),
@@ -3796,7 +3789,7 @@ int sSetGlobalParameter(copasi_model model, const char * name, double value)
 
 		hashInsert(hash, s, copasiPtr); //for speedy lookup
 	}
-	
+
 	return 0;
 }
 
@@ -3866,7 +3859,7 @@ void cSetSpeciesAmounts (copasi_model model, c_matrix v)
 int cGetNumberOfCompartments (copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	
+
 	if (!pModel) return 0;
 
 	const CCopasiVectorNS< CCompartment > & compartments = pModel->getCompartments();
@@ -3876,7 +3869,7 @@ int cGetNumberOfCompartments (copasi_model model)
 int cGetNumberOfReactions (copasi_model model)
 {
 	CModel* pModel = (CModel*)(model.CopasiModelPtr);
-	
+
 	if (!pModel) return 0;
 
 	CCopasiVectorNS < CReaction > & reacs = pModel->getReactions();
@@ -3907,7 +3900,7 @@ c_matrix cGetXFromTimeCourse(copasi_model model, c_matrix results, int type)
 			metabs[i-1] = p.species;
 		}
 	}
-	
+
 	c_matrix m;
 	if (type == GET_ELAS)
 		m = cGetScaledElasticities(model);
@@ -3921,14 +3914,14 @@ c_matrix cGetXFromTimeCourse(copasi_model model, c_matrix results, int type)
 		m = cGetRatesOfChange(model);
 
 	setStorageMatrix(&m); //for speed-up.. might be risky on multithreaded apps
-	
+
 	int i,j,k;
 	//get column names
 	list<string> colnames;
 	for (i=0; i < m.rows; ++i)
 	{
 		char c0[] = {0};
-		char * c = (char*)c_getRowName(m, i);		
+		char * c = (char*)c_getRowName(m, i);
 		if (c == 0)
 			c = c0;
 		string rowname( c );
@@ -3939,7 +3932,7 @@ c_matrix cGetXFromTimeCourse(copasi_model model, c_matrix results, int type)
 			if (c == 0)
 				c = c0;
 			string colname( c );
-				
+
 			if (type == GET_ELAS)
 				colnames.push_back( string("ec_") + rowname + string("_") + colname); //naming convention: es_x_y
 			else
@@ -3955,19 +3948,19 @@ c_matrix cGetXFromTimeCourse(copasi_model model, c_matrix results, int type)
 				colnames.push_back( colname); //same
 		}
 	}
-	
+
 	c_matrix output = c_createMatrix(results.rows, 1 + colnames.size()); //the matrix with calculations for each row in the time series
 
 	j = 0;
 	c_setColumnName( output, 0, c_getColumnName(results,0) );  //first column name remains same, e.g. "time"
-	
+
 	for (list<string>::iterator it=colnames.begin(); j < (1+output.cols) && it != colnames.end(); ++j, it++) //set column names
 		c_setColumnName( output, 1+j, (*it).c_str() );
-	
+
 	//the main loop -- make calculations for each row
 	for (i=0; i < results.rows; ++i)
 	{
-		c_setMatrixValue( output, i, 0, 
+		c_setMatrixValue( output, i, 0,
 				c_getMatrixValue(results,i,0) );  //copy the first column, presumably the independent variable (e.g. time)
 
 		for (j=1; j < results.cols; ++j) //update metab concentrations
@@ -3988,9 +3981,9 @@ c_matrix cGetXFromTimeCourse(copasi_model model, c_matrix results, int type)
 			m = cGetReactionRates(model);
 		else
 			m = cGetRatesOfChange(model);
-			
+
 		//c_printOutMatrix(m);
-			
+
 		int l = 0;
 		for (j=0; j <  m.rows; ++j)
 			for (k=0; k <  m.cols; ++k)
@@ -4026,7 +4019,7 @@ c_matrix cGetDerivativesFromTimeCourse(copasi_model model, c_matrix results)
 }
 
 c_matrix cFilterTimeCourseResults(copasi_model model, c_matrix results, c_strings names)
-{	
+{
 	c_matrix rates = cGetReactionRatesFromTimeCourse(model, results);
 	c_matrix derivs = cGetDerivativesFromTimeCourse(model, results);
 	c_matrix ccs = cGetCCFromTimeCourse(model, results);
@@ -4311,6 +4304,118 @@ double runif(double min, double max)
 	d *= (max - min);
 	d += min;
 	return d;
+}
+
+static int _COPASI_OPTIM_METHOD=10;
+COPASIAPIEXPORT int cSetOptimizationMethod(const char * method)
+{
+    string s = string(CCopasiMethod::SubTypeName[0]),
+              sMethod(method);
+
+    for (int i=0; s.size() > 1; ++i)
+	{
+        s = string(CCopasiMethod::SubTypeName[i]);
+	    if (sMethod.compare( s ) == 0)
+		{
+			_COPASI_OPTIM_METHOD = i;
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+double cMinimizeOrMaximize(copasi_model model, const char * formula, int minimize)
+{
+	CModel* pModel = (CModel*)(model.CopasiModelPtr);
+	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
+	CCMap * hash = (CCMap*)(model.qHash);
+
+	if (!pModel || !pDataModel || !hash) return 0;
+
+	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
+	// get the optimization task
+	COptTask* pOptTask = dynamic_cast<COptTask*>(TaskList["Optimization"]);
+
+	//set method
+	string s;
+    pOptTask->setMethodType((CCopasiMethod::SubType)_COPASI_OPTIM_METHOD);
+
+	// next we need to set subtask type on the problem
+	COptProblem* pOptProblem = dynamic_cast<COptProblem*>(pOptTask->getProblem());
+	pOptProblem->setModel(pModel);
+	pOptProblem->setSubtaskType(CCopasiTask::steadyState);
+	CSteadyStateTask* pTask = dynamic_cast<CSteadyStateTask*>(TaskList["Steady-State"]);
+	CSteadyStateProblem* pProblem = dynamic_cast<CSteadyStateProblem*>(pTask->getProblem());
+    //pProblem->setDuration(1);
+    s = cSetAssignmentRuleHelper(model, formula);
+    // now we set the objective function in the problem
+    pOptProblem->setObjectiveFunction(s);
+    // now we create the optimization items
+    // i.e. the model elements that have to be changed during the optimization
+    // in order to get to the optimal solution
+
+    CCopasiVectorN< CModelValue > & params = pModel->getModelValues();
+
+    for (int i=0; i < params.size(); ++i)
+    {
+        CModelValue * p = params[i];
+        double x = p->getInitialValue();
+        COptItem* pOptItem = &pOptProblem->addOptItem(CCopasiObjectName(p->getObject(CCopasiObjectName("Reference=InitialValue"))->getCN()));
+        pOptItem->setStartValue(x);
+
+        stringstream ss1,ss2;
+        ss1 << (x*0.1);
+        ss2 << (x*10.0);
+
+        pOptItem->setLowerBound(CCopasiObjectName(ss1.str()));
+        pOptItem->setUpperBound(CCopasiObjectName(ss2.str()));
+    }
+
+    COptMethod* pOptMethod = dynamic_cast<COptMethod*>(pOptTask->getMethod());
+    CCopasiParameter* pParameter = pOptMethod->getParameter("Iteration Limit");
+    if (pParameter != NULL)
+        pParameter->setValue((long int)2000);
+   pParameter = pOptMethod->getParameter("Tolerance");
+   if (pParameter != NULL)
+        pParameter->setValue(1.0e-5);
+
+    try
+    {
+        // initialize the trajectory task
+        pOptTask->initialize(CCopasiTask::OUTPUT_COMPLETE, pDataModel, NULL);
+        // now we run the actual trajectory
+        pOptTask->process(true);
+    }
+    catch (...)
+    {
+        //std::cerr << "Error. Running the optimization failed." << std::endl;
+        // check if there are additional error messages
+        pOptTask->restore();
+        return 0.0;
+    }
+    double bestValue = pOptProblem->getSolutionValue();
+    const CVector< C_FLOAT64 > & solution = pOptProblem->getSolutionVariables();
+
+    for (int i=0; i < params.size() && i < solution.size(); ++i)
+    {
+        CModelValue * p = params[i];
+        p->setValue(solution[i]);
+        p->setInitialValue(solution[i]);
+        cout << solution[i] << "\n";
+    }
+
+    return bestValue;
+}
+
+double cMinimize(copasi_model model, const char * formula)
+{
+	return cMinimizeOrMaximize(model, formula, 0);
+}
+
+double cMaximize(copasi_model model, const char * formula)
+{
+	return cMinimizeOrMaximize(model, formula, 1);
 }
 
 int main1()

@@ -293,7 +293,7 @@ CAPIEXPORT void c_printMatrixToFile(const char* s, c_matrix output)
 	FILE * outfile = fopen(s,"w+");
 	if (output.colnames.strings)
 	{
-		//fprintf(outfile, "#");
+		fprintf(outfile, "#");
 		for (j=0; j < output.cols; ++j)
 			if (j < (output.cols-1))
 				fprintf(outfile, "%s\t", c_getColumnName(output, j));
