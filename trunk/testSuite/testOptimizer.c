@@ -8,6 +8,16 @@ int main(int narg, char** argv)
 	double d;
 	c_matrix results, params, params2;
 	const char * filename = "results.tab";
+	const char * ant = "\
+A + B -> 2B; k1 * A * B;\
+C + B -> 2C; k2 * B * C;\
+A + C -> 2A; k3 * A * C;\
+k1 = 0.2\
+k2 = 0.5\
+k3 = 0.3\
+A = 100\
+B = 20\
+C = 50";
 	copasi_model m;
 	const char * antimonymodel = "\
 	-> A; 2.0 \n\

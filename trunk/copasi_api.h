@@ -1261,8 +1261,8 @@ COPASIAPIEXPORT void cEnableAssignmentRuleReordering();
 
 COPASIAPIEXPORT double runif(double min, double max);
 
-int main1();
-extern const char* MODEL_STRING;
+COPASIAPIEXPORT int main1();
+extern const char * MODEL_STRING;
 END_C_DECLS
 #endif
 
