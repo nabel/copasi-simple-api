@@ -796,7 +796,7 @@ int cSetAssignmentRule(copasi_model model, const char * name, const char * formu
 	{
 		CopasiPtr & p = (*hash)[s];
 		p.assignmentRule = string(formula);
-		boost::regex_replace(p.assignmentRule, sbmlPowFunction, string("((\\1)^(\\2))"));
+		p.assignmentRule = boost::regex_replace(p.assignmentRule, sbmlPowFunction, string("((\\1)^(\\2))"));
 		return 1;
 	}
 	return 0;
@@ -1213,7 +1213,7 @@ int cSetReactionRate(copasi_reaction reaction, const char * formula)
 
 		string formula2(formula);
 		//formula2.replace(sbmlPowFunction, QString("((\\1)^(\\2))"));
-		boost::regex_replace(formula2, sbmlPowFunction, string("((\\1)^(\\2))"));
+		formula2 = boost::regex_replace(formula2, sbmlPowFunction, string("((\\1)^(\\2))"));
 
 		if (pFunction->setInfix(string(formula2.c_str())))
 		{
