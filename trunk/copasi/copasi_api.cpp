@@ -86,10 +86,19 @@ using namespace std;
 //using macro instead of this variable (as in original copasi code) causes some issues in visual studio
 unsigned C_INT32 C_INVALID_INDEX = std::numeric_limits< unsigned C_INT32 >::max();
 //#ifdef _WIN32
-    static double NaN = std::numeric_limits<double>::quiet_NaN();
+	static double NaN = std::numeric_limits<double>::quiet_NaN();
 //#else
 	//static double NaN = 0.0/0.0;
 //#endif
+
+static double _EPSILON = 1E-3;
+
+double cSetEpsilon(double eps)
+{
+	if (eps > 0)
+		_EPSILON = eps;
+	return _EPSILON;
+}
 
 //this "wrapper" struct is used to store pointer to
 //either a compartment, species, reaction, or parameter
@@ -377,9 +386,9 @@ int copasi_cleanup_assignments(copasi_model model)
 /**********************************************************************************
  The following function is a "hack" for avoiding repeated memory allocations when calling
   c_createMatrix. For example, suppose a function is calling getSpeciesConcentrations
-  inside a look, then it can use setStorageMatrix to prevent re-allocation of new memory
+  inside a loop, then it can use setStorageMatrix to prevent re-allocation of new memory
   during every iteration (for speedup). The calling function must be extremely careful.
-  The unsetStorageMatrix must be called at the end of the loop, otherwise there is a good
+  The unsetStorageMatrix must be called at the end of the loop.
 ***********************************************************************************/
 static c_matrix * _StorageMatrix = NULL;
 void setStorageMatrix(c_matrix * m)
@@ -394,9 +403,16 @@ void unsetStorageMatrix()
 
 c_matrix efficiently_createMatrix(int r, int c)
 {
-	if (_StorageMatrix)
+	c_matrix m;
+	if (_StorageMatrix && _StorageMatrix->rows == r && _StorageMatrix->cols == c)
 		return (*_StorageMatrix);
-	return c_createMatrix(r,c);
+
+	m = c_createMatrix(r,c);
+
+	//if (!_StorageMatrix)
+		//_StorageMatrix = &m;
+
+	return m;
 }
 
 /* The Main API functions */
@@ -1580,8 +1596,22 @@ c_matrix cGetJacobian(copasi_model model)
 	CCopasiDataModel* pDataModel = (CCopasiDataModel*)(model.CopasiDataModelPtr);
 
 	if (!pModel || !pDataModel) return c_createMatrix(0,0);
-	//cCompileModel(model);
 
+	const CCopasiVector< CMetab > & species = pModel->getMetabolites();
+
+	double epsilon = _EPSILON;
+	CMatrix< C_FLOAT64 > jacobian(species.size(), species.size()); 
+	pModel->calculateJacobian(jacobian, epsilon, epsilon);
+
+	c_matrix J = efficiently_createMatrix(species.size(),species.size());
+	for (int i=0; i < species.size(); ++i)
+		for (int j=0; j < species.size(); ++j)
+			c_setMatrixValue(J, i, j, jacobian[i][j]);
+	
+	return J;
+
+	//cCompileModel(model);
+	/*
 	// get the task list
 	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	// get the steady state task object
@@ -1642,7 +1672,7 @@ c_matrix cGetJacobian(copasi_model model)
 		}
 
 		return J;
-	}
+	}*/
 
 	return c_createMatrix(0,0);
 }
@@ -1657,7 +1687,7 @@ c_matrix cGetSteadyStateUsingSimulation(copasi_model model, int maxiter)
 	//cCompileModel(model);
 
     int iter = 0;
-    double err = 2.0, eps = 0.01, time = 10.0;
+    double err = 2.0, eps = _EPSILON, time = 10.0;
 
    	CCopasiVectorN< CCopasiTask > & TaskList = * pDataModel->getTaskList();
 	CTrajectoryTask* pTask = dynamic_cast<CTrajectoryTask*>(TaskList["Time-Course"]);
