@@ -906,6 +906,15 @@ COPASIAPIEXPORT c_matrix cGetSteadyState(copasi_model model);
 COPASIAPIEXPORT c_matrix cGetSteadyStateUsingSimulation(copasi_model model, int iter);
 
 /*!
+ \brief Set the epsilon value (small positive number) that is used in a few functions, e.g.
+            cGetJacobian, to perform small perturbations
+ \param double new epsilon value, default is 1E-3
+ \return double updated epsilon value (should be same as argument if >0)
+ \ingroup steadystate
+*/
+COPASIAPIEXPORT double cSetEpsilon(double eps);
+
+/*!
  \brief Get the full Jacobian at the current state
  \param copasi_model model
  \return c_matrix matrix with n rows and n columns, where n = number of species

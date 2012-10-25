@@ -9,7 +9,7 @@ void eigen(copasi_model, const char*); //compute eigenvalues by changing paramet
 
 int main()
 {
-	c_matrix results, results2;
+	c_matrix results, results2, jac;
 	copasi_model m;
 	
 	printf("creating model...\n");
